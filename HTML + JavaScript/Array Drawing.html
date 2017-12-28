@@ -1,0 +1,30 @@
+<html>
+<head>
+<title> Array Drawing </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+	<script>
+
+	var arr1 = ["2","5","22","12","-4","6","-7","19"];
+	document.write (arr1 [0] + ":" + arr1 [1] + ":" + arr1 [2] + ":" + arr1 [3] + ":" + arr1 [4] + ":" + arr1 [5] + ":" + arr1 [6] + ":" + arr1 [7])
+
+	document.write ("<br>" + "<br>")
+
+	var div = '';
+	for (var add = 0; add <= arr1.length-1; add=add+1)
+	{
+		document.write (div + arr1 [add]);
+		div = ':';
+	}
+
+	</script>
+</body>
+</html>
+
+<!-- 
+- Втора задача(нова)  - 
+   ако имаме следния масив : var arr1 = [ 2, 5,22, 12, -4, 6, -7, 19 ]; Да се отпечатат стойноститему в следния формат като стринг:
+   2:5:22 ....
+-->

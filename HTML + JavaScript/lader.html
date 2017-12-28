@@ -1,0 +1,64 @@
+<html>
+<head>
+<title> Lader </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+
+<script>
+function Lader (x)
+{
+	for (var i = 1; i <= x; i=i+1) 
+	{
+		var line = "";
+		for (var c = 1; c <= i; c=c+1)
+			line = line + '#';
+	  	document.write (line + "<br>");	
+	}
+
+}
+
+Lader (4);
+// &lt; _____ &gt; to make < and > so document.write doens't make the commend show as HTML
+document.write ("<hr>");
+
+function BackwardsLader (y,p)
+{
+	for (var t = y; t >= 1; t=t-1) 
+	{
+		var space = "";
+		for (var q = t; q >= 1; q=q-1)
+			space = space + p;
+	  	document.write (space + "<br>");	
+	}
+}
+BackwardsLader (4,"*");
+BackwardsLader (10,"@");
+
+	{	
+		var k = 5
+  		do 
+  		{
+  			k=k+1;
+  			BackwardsLader (k,"&");
+  		}
+  		while(k <= 10);
+	}
+
+//for (var k = 5; k <= 10; k=k+1) 
+/*var k=1;
+		var count = 5;
+	while(k <= 5)
+	{
+
+		BackwardsLader (count,"*");
+		count+=3;
+		k++;
+	}*/
+
+</script>
+
+</body>
+</html>
+

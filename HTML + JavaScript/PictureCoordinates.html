@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Picture Coordinates </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+.theHouseImage {border: 2px solid #333;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1 style="margin-bottom: 0px; padding-bottom: 0px;"> I made a responsive image! </h1>
+	<h6 style="margin-top: 0px; padding-top: 0px;"> Click the objects to get a closer look </h6>
+	<img src="house.jpeg" alt="House Picture" class="theHouseImage" usemap="#houseMap">
+
+	<map name="houseMap">
+		<area shape="rect" coords="260,241,496,407" alt="The Bedroom" href="bedroom.jpeg">
+		<area shape="rect" coords="259,413,497,568" alt="The Livingroom" href="livingroom.jpeg">
+		<area shape="rect" coords="260,584,499,729" alt="The Basemeant" href="basemeant.jpeg">
+		<area shape="rect" coords="502,403,629,260" alt="The Toilet" href="toilet.jpeg">
+		<area shape="rect" coords="500,416,629,563" alt="The Kitchen" href="kitchen.jpeg">
+		<area shape="rect" coords="698,432,753,554" alt="The Door" href="door.jpeg">
+		<area shape="poly" coords="508,627,507,710,532,711,533,628" alt="The Boiler" href="boiler.jpeg">
+	</map>
+</div>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+</body>
+</html>
+
+<!--
+Make a responsive picture, add coordinates so upon clicking it another image pops up which pretty much tells more about the specific clicked object
+-->

@@ -1,0 +1,47 @@
+<html>
+<head>
+<title> Most Common Array </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+	<script>
+
+	var arr2 = ['3','v','s','e','2','2','2','2','1','a','3','s','2','4','9','3','v','v'];
+
+	document.write ('<h1>'+ "There are" + " " + arr2.length + "/" + arr2.length + " " + "arrays in the Array :D" +'</h1>');
+
+	var mostpopuler = "";
+	var cnt = 0;
+	for (var check = 0; check < arr2.length; check=check+1)
+	{
+		var tmp_cnt=0;
+		for (var check2 = 0; check2 < arr2.length; check2=check2+1)
+		{
+			if(arr2[check] == arr2[check2])
+			{
+				tmp_cnt ++;
+			}
+		}
+
+		if (cnt < tmp_cnt)
+		{
+			mostpopuler = arr2 [check];
+			cnt = tmp_cnt;
+		}
+	}
+
+	document.write ("Out of " + arr2.length + " Arrays " + '"' + mostpopuler + '"' + " is the most populer and it appears" + " " + cnt + " times.");
+
+	</script>
+</body>
+</html>
+
+<!--
+ - Трета задача - 
+    Да се напише програма, която да намери кой е най-срещания символ в следния масив.
+
+     arr1=[3, 'v', 's', 'e', 2, 1, 'a', 3, 's', 2, 4, 9, 3, 'v', 'v'];
+
+накрая резултата да се изпише в сления вид пример: "Най-срещания елемент е 'x' и се среща 5 пъти"
+-->

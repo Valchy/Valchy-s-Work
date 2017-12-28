@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Cloning Array </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style>
+.i1 {width: 12.5%; border: 1px solid black; margin: 10px; margin-right: 10px; height: 20px;}
+.i2 {width: 12.5%; border: 1px solid black; margin: 10px; margin-left: 0px; height: 20px;}
+.s3 {width: 26%; border: 1px solid black; margin: 10px; margin-top: 0px; height: 20px; background-color: lightgrey;}
+::-webkit-input-placeholder {color: #84fdfc; text-align: center; font-size: 12px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
+</style>
+</head>
+
+<body style="background-color: lightgreen;">
+<p> All of the Inputs under should be written with different values which will be transformed to Array, <br> 
+	as well as that I changed the CSS of the placeholder of the Inputs (only works on chrome) :D
+</p>
+
+<script>
+function cloningArray ()
+{
+	console.log ('it worked')
+	ar = [];
+
+	var temp = document.getElementById ('theInputOne').value
+	ar.push (temp);
+	temp = document.getElementById ('theInputTwo').value
+	ar.push (temp);
+	var arr = ar.concat ();
+	document.getElementById ('theResult').innerHTML = "The Result, but in a new Array is: " + arr [0] + " || " + arr [1];
+	return false; // This is neccessary because of the submit form etc. method I am using :D
+}
+
+</script>
+
+<form>
+	<input type="input" id="theInputOne" placeholder="Type Array One" class="i1">
+	<input type="input" id="theInputTwo" placeholder="Type Array Two" class="i2"> <br>
+	<input type="submit" id="theSubmit" class="s3" onclick="return cloningArray ()">
+
+<div id="theResult">
+</div>
+</form>
+</body>
+</html>
+
+<!--
+Да се направи жава скрипт функция която да клонира арей с зададени данни с събмит (или бутон - инпут)
+-->

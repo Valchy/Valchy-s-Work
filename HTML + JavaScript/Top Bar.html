@@ -1,0 +1,93 @@
+<html>
+<head>
+<title> Top Bar </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css">
+body {margin: 0px; padding: 0px;}
+.topBar {/*margin-top: 10px; I want once scrolling starts for the topBar to go to normal position */ width: 100%; z-index: 3; height: 50px; border-bottom: 2px solid black; background-color: #555555; position: fixed; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.titleSpan {color: white; font-family: 'Montserrat-Bold'; font-size: 40px; padding: 0 20 0 0px; letter-spacing: 0px;}
+.ulBar {list-style: none; float: left; margin: 0px; padding: 0px;}
+.ulBar li {float: left;}
+.dropDownMenuDiv {display: none;}
+.ulBar li:hover div.dropDownMenuDiv ul li {display: block;}
+.ulBar li sub:hover {cursor: pointer;}
+.dropDownMenuDiv {height: auto; width: 100px;}
+</style>
+</head>
+
+<body>
+	<div class="topBar">
+		<div style="float: right;"> <!-- The style is for the Text to go to the right... -->
+			<span class="titleSpan">
+				Welcome to the ValchyGaming Site
+			</span>
+		</div>
+
+		<ul class="ulBar">
+			<li title="Show/Hide UI"> 
+				<sub class="material-icons"> 
+					view_headline
+				</sub>
+
+				<div class="dropDownMenuDiv">
+					<ul>
+						<li> Show Ui</li>
+						<li> Hide Ui </li>
+						<li class="material-icons" title="Download the document"> 
+						<sub> 
+							get_app
+						</sub> 
+					</li>
+					</ul>
+				</div>
+			</li>
+
+			<li title="Go to Welcome Page"> 
+				<a href="EverythingPrg.html">
+					<sub class="material-icons"> 
+						home 
+					</sub> 
+				</a>
+			</li> 
+			<li title="Create a new File"> 
+				<a href="EverythingPrgBuild.html">
+					<sub class="material-icons"> 
+						build 
+					</sub>
+				</a> 
+			</li> 
+			<li title="Buy ValchyGaming Merch"> 
+				<sub class="material-icons"> 
+					shopping_cart
+				</sub> 
+			</li>
+			<li title="Invert Colors"> 
+				<sub class="material-icons"> 
+					invert_colors
+				</sub> 
+			</li>
+			<li title="Search!"> 
+				<sub class="material-icons" onclick="showInput ();"> 
+					search
+				</sub> 
+			</li>
+			<li> 
+				<sup class="divSearch" id="searchInputBox">
+					<input placeholder="Search for Something..." title="Search for Something" class="theSearchInput">
+					<button class="buttonSearch" title="Search!">
+						<sub class="material-icons" class="subHighlight">
+							search
+						</sub>
+					</button>
+					<button class="buttonSearch" title="Close Search Box" onclick="hideInput ();">
+						<sub class="material-icons" class="subHighlight">
+							close
+						</sub>
+					</button>
+				</sup>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

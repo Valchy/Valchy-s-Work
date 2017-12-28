@@ -1,0 +1,340 @@
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title> HELLO HTML </title>	
+	<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+	<script type="text/javascript">
+			function displynum(n1)
+			{console.log(n1);Valeri.txt1.value=Valeri.txt1.value+n1.innerHTML;}
+	</script>
+
+	<link href="css.css" type="text/css" rel="stylesheet">
+
+	<script type="text/javascript" src="jquery-3.2.1.min.js"> 
+	</script>
+
+	</head>
+
+	<body style="background-color:lightgreen"> <!--style="background-image:url(yellow.jpg);"background-size:cover;background-repeat:no-repeat; -->
+	<center> 
+	<h1 class="fontsize1"> <img src="cat.png" alt="Cat picture :D" width="50px" title="Cat Picture 1"> Hello and Welcome to My Website <img src="cat.png" alt="Cat picture :D" width="50px" title="Cat Picture 2"> </h1> </center>
+	<hr style="border-color:black"> <br> 
+
+	<h3> Today we will be learning all about HTML, <br> 
+	where it came from, how it works and how to use it! </h3>
+
+	<link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+
+	<img src="HTML.jpg" width="404px" height="228px" onmouseover="this.src='TWITCH.jpg'" onmouseout="this.src='HTML.jpg'"> </a> 
+		<!-- The comnds above makes pics or texts have links as well as upon mouse hover the pic will change -->
+	
+	<a href="https://www.youtube.com/c/ValchyGaming" target="blank"> <img src="dog.gif" alt="dog gif" width="404px" height="228px" title="I am DOG"> </a> 
+
+	<img src="snoop.gif" alt="ThugLife" height="200px" title="SnoopDOGGGGGGG">
+
+	<img src="gun.gif" alt="GunSpinning" title="MAC-10 from CSGO xD" height="200px"> <br>
+
+	<h3> As you can see on the image there is a little guy with <br>
+	pointing at HTML, well to get more info how this was <br> 
+	made <a class="highlight1" href="https://www.youtube.com/watch?v=PnCUhd8ef8A" target="blank" title="You will see more information about HTML programing (video format)"> <span> click </span> </a> here! </h3> 
+
+	<div> <ul type="square">
+	<li> What is HTML and what does it stand <a href="https://www.youtube.com/ValchyGaming"> for? </a> </li> </div> </ul>
+	<div> <ul type="circle">
+	<li> HTML <img src="arrow.png" alt="arrow pic" width="20x" heigh="20px"> </li> 
+	<li class="highlight2"> 
+			<ol type="a"> 
+				<li> What is HTML and what does it stand for? <li> 
+			</ol> 
+	</li>
+	</ul> </div>
+
+	<hr class="LineColor">
+	<p style="text-align:center;background:#0000;color:#fff;font-size:40px"> <a href="https://www.google.com/search?q=calculator+photos&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiqzdT0lrrTAhVHziYKHc7fCwEQ_AUICCgB&biw=1440&bih=750" title="Pictures of Calculators" target="blank"> <span style="color:black"> Underneath you can see my coded calculator... YAY </span> </a> </p>
+
+	
+	<img src="calculator.png" alt="Calculator Picture" style="width:315px;float:left;" title="Pic Calculator">
+
+	<form name="Valeri">
+		<table class="HoverEffectBox" id="cent" title="Real Working Calculator">
+						<!-- Colspan / rowspan etc merges colums or rows -->
+			<tr> 
+				<th colspan="4" bgcolor="black" style="text-align:right"> 
+				<input type=text name=txt1 style="text-align:right; border: 2px solid black;">
+				</th>  
+			</tr>
+			<tr>
+				<td bgcolor="white" onclick="displynum(this)">7</td> 
+				<td bgcolor="white" onclick="displynum(this)">8</td>
+				<td bgcolor="white" onclick="displynum(this)">9</td>
+				<td bgcolor="orange" title="Multiply" onclick="displynum(this)">*</td>
+			</tr>
+			<tr> 
+				<td bgcolor="white" onclick="displynum(this)">4</td> 
+				<td bgcolor="white" onclick="displynum(this)">5</td>
+				<td bgcolor="white" onclick="displynum(this)">6</td>
+				<td bgcolor="orange" title="Minus" onclick="displynum(this)">-</td>
+			</tr>
+			<tr> 
+				<td bgcolor="white" onclick="displynum(this)">1</td> 
+				<td bgcolor="white" onclick="displynum(this)">2</td>
+				<td bgcolor="white" onclick="displynum(this)">3</td>
+				<td bgcolor="orange" title="Add" onclick="displynum(this)">+</td>
+			</tr>
+			<tr> 
+				<td colspan="2" bgcolor="white" style="text-align:left" onclick="displynum(this)">0</td> 
+				<td bgcolor="white"onclick="displynum(this)">/</td>
+				<td bgcolor="orange" title="Sum" onclick="Valeri.txt1.value=eval(Valeri.txt1.value)">=</td>
+			</tr>
+		 </table> 
+	 </form>
+
+	<script>
+		function theAlert ()
+		{
+			window.alert ("I just found a Easter Egg!")
+		}
+	</script>
+
+		 <!--  <tr> is for making a row and <td> is for making a colum | the arrows are to make a comment -->
+		 <br>
+		<table class="HoverEffect">
+		 	<tr>
+		 		<td colspan="4"> <b> <center> <h2> Web Fundamentals Exam Results </h2> </center> </b> </td>
+		 	</tr>
+		 	<tr style="text-align:middle">
+		 		<th onclick="theAlert ();"> No. </th>
+		 		<th> First Name </th>
+		 		<th> Last Name </th>
+		 		<th> Score </th>
+		 	</tr>
+		 	<tr style="text-align:left">
+		 		<td> 01 </th> <td> Gosho </th> <td> Goshev </th> <td> 500 </th>
+		 	</tr>
+		 	<tr style="text-align:left">
+		 		<td> 02 </th>
+		 		<td> Tosho </th>
+		 		<td> Toshev </th>
+		 		<td> 500 </th>
+		 	</tr>
+		 	<tr style="text-align:left">
+		 		<td> 03 </th>
+		 		<td> Pesho </th>
+		 		<td> Pesho </th>
+		 		<td> 500 </th>
+		 	</tr>
+		 	<tr style="text-align:left">
+		 		<td> 04 </th>
+		 		<td> Gencho </th>
+		 		<td> Genshev </th>
+		 		<td> 500 </th>
+		 	</tr>
+		 	<tr style="text-align:left">
+		 		<td> 05 </th>
+		 		<td> Draga </th>
+		 		<td> Draganova </th>
+		 		<td> 500 </th>
+		 	</tr>
+		 	<tr style="text-align:right">
+		 		<th colspan="4"> Average score from 05 participants: 500 </th>
+		 	</tr>
+		 </table> <br> <br>
+
+		<table class="TextBox">
+		 	<tr>
+		 		<td colsapn="4" style="font-size:30px"> 
+		 		<center> I made a Text Box YAY </center>
+		 		</th>
+		 	</tr>
+		 </table>
+
+		 <input class="IDK" type="text" name="TextBox1"/> <hr class="LineColor"> <br>
+
+		 <div class="experiment"> <!-- Used FlexBox to center text -->
+		 	<center> <b> Center me PLZ! </b> </center>
+		 </div> 
+
+		  <br> <br> <br> <br>
+
+		 <div class="experiment2">
+		 	<center> <b> I am his brother XD </b> </center>
+		 </div> 
+
+		 <hr style="border-color:transparent;">
+		 <br>
+		 <div class="experiment3">
+		 </div>
+
+		 <div class="experiment4">
+		</div>
+
+		<br> <br> <br> <br> <br> <br> <hr class="LineColor"> 
+
+		<div>
+		<table class="LastTable" id="CenterDiv">
+			<tr>
+				<th colspan="2"> <a href="https://www.google.bg" target="blank"> <span style="color:black"> Name and color of Somebody </span> </a> </th>
+			</tr>
+			<tr>
+				<td> <li> My name is Gosho and I like the color yellow </li> </td>
+			</tr>
+			<tr>
+				<td> <li> My name is Stancho and I like the color blue </li> </td>
+			</tr>
+		</table>
+		</div>
+
+		<div class="MotherBox">
+			<div>
+				Pesho
+			</div>
+			<div>
+				Valeri :P
+			</div>
+			<div>
+				Gosho
+			</div>
+		</div> <br> <br> <hr style="border-color:blue"> <br>
+
+	<div id="clockDisplay" class="ClockStyle"> </div> 
+	<script type="text/javascript">
+	function RenderTime2 ()
+	{
+		var CurrentTime = new Date ();
+		var diem = "AM"
+		var h = CurrentTime.getHours ();
+		var m = CurrentTime.getMinutes ();
+		var s = CurrentTime.getSeconds ();
+
+		if (h == 0)
+		{
+			h = 12;
+		} else if (h > 12) 
+		{
+			h = h - 12;
+			diem = "PM"
+		}
+		if (h < 10)
+		{
+			h = "0" + h;
+		}
+		if (m < 10)
+		{
+			m = "0" + m;
+		}
+		if (s < 10)
+		{
+			s = "0" + s;
+		}
+
+		var myClock = document.getElementById ('clockDisplay');
+		myClock.textContent = h + ":" + m + ":" + s + " " + diem;
+		setTimeout ('RenderTime2 ()',1000);
+
+	}
+	RenderTime2 ();
+	</script>
+
+	<br> <br>
+
+	<input id="showtime" type="text" class="c1" style="background-color:red;border:black 1px solid;width:10%;"/>
+	<script type="text/javascript" src="Clock.js"> </script> <hr class="LineColor">
+
+	<div>	
+		<h1 style="font-family:'Comic Sans MS"> <center> Everything is in the Console </center> </h1>
+		<h6> <center> Press F12 or Cmd + Alt + I | To open the Console! </center> </h6>
+	</div>
+	<script type="text/javascript" src="ConsoleNumbers.js"> </script>
+
+	<div id="AnB2">
+	</div>
+	<script type="text/javascript" src="AnB.js"> </script>
+
+	<script type="text/javascript" src="FunctionN.js"> </script>
+	<div>
+	</div>
+	<button onclick="this.innerHTML = 'Try It!   ' + RandomNumber (1,10)"> Try It! </button>
+
+	<script type="text/javascript" src="Numbers 1 - 100.js"> </script>
+
+	<script type="text/javascript" src="Between 10 - 20.js"> </script> <br>
+
+	<script type="text/javascript" src="asdf.js"> </script>
+
+	<hr class="LineColor">
+
+	<script>
+		function TableMaker (start,end)
+		{	
+			if (start < end)
+			{
+				for (var o = start; o <= end; o=o+1)
+				{	
+					document.write ("<tr>");
+					document.write ("<td> "+ o +" </td>");
+					document.write ("<td>" + (o*o) +  "</td>");
+					document.write ("<td>" + OddOrEven (o * o) + "</td>");		
+					document.write ("</tr>");
+				}
+			}
+			else 
+			{
+				document.write ("ERROR")
+			}
+		}
+
+		function OddOrEven (a)
+			{
+				if ((a % 2) == 0)
+				{
+					return " " + 'True';
+				}
+				return " " + 'False';
+			}
+	</script>
+
+	<table class="LastTable">
+		<script type="text/javascript"> 
+			TableMaker (1,10);
+		</script>
+	</table>
+	</body>
+</html>
+
+<!-- 
+Extra notes:
+
+array
+
+In a "if" '||' = or and '&&' = and
+
+	function NumberAdding (a)
+		for (var i = 1; i <= a; i=i+1) {
+  		console.log (i);
+  		} 
+  		if (a < 0)
+  		return ;
+  		var result = 0;
+  		var i = 1;
+  		while(i <= a)
+  		{
+  			result = result + i;		
+  			i = i+1;
+  		}
+  		console.log (result)
+  	} 
+  		
+
+	{	
+		var i = 1;
+		var result = 0
+  		do 
+  		{
+  			result = result + i;
+  			i = i+1;
+  		}
+  		while(i <= a);
+  		console.log (result)
+	}
+
+	NumberAdding (4);

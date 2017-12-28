@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> AddOrMinus </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style>
+.Div_Clicking {border:black 1px solid black; width:30px;text-align:center; display: table-cell; vertical-align: middle; width: 25px; height: 25px; border: 1px solid black; font-family: "Arial Black";}
+</style>
+</head>
+
+<body onload="div ()">
+<script>
+var a = 0;
+var click_counter = 0;
+
+function div ()
+{
+	document.getElementById ('Clicking').innerHTML = click_counter;
+	if (click_counter == 10)
+		{
+			window.alert ("Congrats, you made 10 clicks!");
+		}
+}
+
+function Add ()
+{
+
+	if (true)
+	{
+		a++;
+		document.getElementById ('TextBox').value = a;
+		click_counter++;
+		console.log (click_counter);
+		div ();
+		if (a > 0)
+		{
+			document.getElementById ("Subtracting").disabled = false;
+		}
+		if (a == 13)
+		{
+			window.alert ("WOW, you passed 13, that's the maximum you can go!");
+			document.getElementById ("Adding").disabled = true;
+			return false;
+		}
+
+		return false;
+	}
+
+}
+
+function Subtract ()
+{
+
+	if (true)
+	{
+		a--;
+		document.getElementById ('TextBox').value = a;
+		click_counter++;
+		console.log (click_counter);
+		div ();
+		if (a > 0)
+		{
+			document.getElementById ("Adding").disabled = false;
+		}
+		if (a == 0)
+		{
+			window.alert ("WOW, went to 0, that's the minimum you can go!");
+			document.getElementById ("Subtracting").disabled = true;
+			return false;
+			
+		}
+		return false;
+	}
+}
+
+</script>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+
+<div class="mainPage">
+<h1> This is a input with usable Buttons </h1>
+
+Adding Numbers to the Text Box 
+<br>
+
+<button id="Adding" onclick="return true && Add ()"> +
+</button>
+
+<input id="TextBox" style="width: 160px" value="0" />
+
+<button id="Subtracting" onclick="return true && Subtract ()"> -
+</button> <br>
+
+Press '+' to add a Number <br>
+Press '-' to subtract a Number <br>
+from the Input field <br>
+
+<div id="Clicking" class="Div_Clicking">
+</div> <span style="margin: 4px"> ⬆ В този див се появявът колко пъти сте кликнали общо! </span>
+<br> <span style="margin: 4px"> Направи 10 кликваня за Алърт :) </span>
+</div>
+</body>
+</html>
+
+<!--
+Задача 1:
+нека да имаш текстово поле, което да има цифри. До полето да има два бутона '-' и '+' . Така, че при натискане на '-' от числото да се изважда 1,а при натискане на'+' към числото да се прибавя 1.
+
+Задача 2:
+Ако искаш малко да разширим тази задача ,като добавим и още условия. Нека не се позволява да се намалява числото под 0 и да не може да е по-голямо от 13. Ако се достигне някоя от тези граници да се показва алерт със съобщение. 
+-->

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Snake Game </title>
+<link rel="shortcut icon" href="snake.png" type="image/x-icon">
+</head>
+
+<body>
+<canvas id="myCanvas" width="1425" height="735" style="border-radius: 20px"> </canvas>
+
+<script type="text/javascript">
+var canvas = document.getElementById ('myCanvas');
+var context = canvas.getContext ('2d');
+var snakeSize = 3;
+var snakePosY = canvas.height/2-30;
+var snakePosX = canvas.width/2-10;
+var snakeSpeed = 1;
+var lastKey = 'w';
+
+window.onload = function () {
+	setInterval (function (){
+		drawEverything ();
+		moveSnake ();
+	}, 20);
+}
+
+function moveSnake (){
+   	if (lastKey === 'w'){
+   		// snakePosY = snakePosY - snakeSpeed;
+   	}
+}
+
+function lastKeyPressed (){
+	
+}
+
+function drawEverything () {
+	context.fillStyle = 'black';
+	context.fillRect (0, 0, canvas.width, canvas.height);
+
+	context.fillStyle = 'red';
+	context.fillRect (snakePosX, snakePosY, 20, 60);
+}
+
+addEventListener ('keypress', function (){
+	snakePosY = snakePosY - snakeSpeed;
+	snakePosY = snakePosY - snakeSpeed;
+});
+</script>
+</body>
+</html>
+
+<!--
+Да се направи игра на канвас подобна на 'Snake Game'
+-->

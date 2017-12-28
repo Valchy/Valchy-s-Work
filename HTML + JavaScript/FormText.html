@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Form Text </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+#textarea-0, #textarea-1, #textarea-2, #textarea-3 {border: 1px solid black; background-color: lightyellow; text-align: center; vertical-align: middle;}
+#button-change:hover {cursor: pointer;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Form Text/Color Change </h1>
+	<form id="the-form">
+		<textarea id="textarea-0"> </textarea>
+		<textarea id="textarea-1"> </textarea>
+		<textarea id="textarea-2"> </textarea>
+		<textarea id="textarea-3"> </textarea>
+		<br>
+		<button type="button" id="button-change" onclick="return theChange ();">
+			Change!
+		</button>
+	</form>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var outcome = 1;
+var difColors = ['red', 'orange', 'green', 'blue']
+var difValues = ['One', 'Two', 'Three', 'Four', 'Abc', 'Def', 'Ghi', 'Jkl']
+
+function theChange () {
+	if (outcome == 1) {
+		$('#the-form textarea').each(function (index, element) {
+			$(element).css({'background-color': difColors[index], 'transition': 'all 1s ease 0s'})
+			$(element).html(difValues[index]);
+		});
+		outcome--;
+	}
+	else if (outcome == 0) {
+		$('#the-form textarea').each(function (i) {
+			$(this).css({'background-color': 'lightyellow', 'transition': 'all 1s ease 0s'})
+			$(this).html(difValues[i+4]);
+		});
+		outcome++;
+	}
+}
+</script>
+</body>
+</html>
+
+<!--
+ето една задача в която е добре да приложиш JQuery функции. 
+Нека имаме форма с няколко текстови полета за въвеждане - 4. 
+Най-отдолу да има бутон , при натискането на който на всички полета да се сменя цвета(background-color). Може при натискане отново на
+бутона полетата да си връщат стария цвят.
+-->

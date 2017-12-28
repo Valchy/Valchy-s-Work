@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8/>
+<title> Concat F_A' </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: #ff9">
+<script type="text/javascript">
+function concatValue ()
+{
+	var x = document.getElementById ('first_name').value;
+	var y = document.getElementById ('last_name').value;
+	// console.log (x)
+
+	document.getElementById ('fullname').innerHTML = "Your Full Name is:" + " " + x + " " + y;
+	return false;
+}
+</script>
+
+<form id="form_data" onsubmit=" return concatValue ()">
+First name: <input type="text" name="first_name" value="Valeri" id="first_name">
+<br>
+
+Last name: <input type="text" name="last_name" value="Sabev" id="last_name">
+<br>
+
+<div id="fullname">
+</div>
+
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+<!--
+имаш html  форма с две полета за първо име и фамилия. Да се напише функцията "concatValue()" kоято се извиква при натискане на бутона "Submit" ,която да събира данните (двете имена) от двете полета и да ги показва в div  елемента с id  fullname. 
+-->

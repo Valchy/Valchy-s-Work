@@ -1,0 +1,52 @@
+<html>
+<head>
+<title> TableFunction </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<script>
+function RandomNum (min,max)
+{
+	min = Math.floor(min);
+	max = Math.ceil(max);
+	return Math.floor(Math.random() * (max - min)) + min;	
+}
+var num = RandomNum (1,10);
+
+
+function TableMaker (start,end)
+{	
+	for (var o = 10; o >= num; o=o-1)
+		{
+			document.write ("<br>" + o)
+		}
+	document.write(" ");
+	return num*num;
+	document.write(" ");
+}
+
+function OddOrEven (a)
+	{
+		var a = num;
+		if ((a % 2) == 0)
+		{
+			return " " + 'True';
+		}
+		return " " + 'False';
+	}
+
+document.write (TableMaker (1,10));
+document.write (OddOrEven (num));
+
+</script>
+</body>
+</html>
+
+<!-- Да се напише функция с два параметъра start и end, които са числа и start < end(като интервал например 1 до 10). Функцията да отпечатва нещо като таблица със следните колони:
+
+първа колона - да е номера на числото например-num, което се променя от start до end(например 1,2,3 ...).
+втора колона - повдигнато числото num на квадрат(num*num) .
+трета колона - ако получения резултат в колона 2 е четно число 'yes' иначе 'no' -->
+
+

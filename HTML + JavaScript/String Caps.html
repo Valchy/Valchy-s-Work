@@ -1,0 +1,69 @@
+<html>
+<head>
+<title> String Caps </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style>
+.DivStyle {font-family: 'Arial Black';}
+</style>
+</head>
+
+<body style="background-color: lightgrey">
+
+<input id="theId"/>
+
+<script>
+function UpperToLowerCase ()
+{
+	var sentence = document.getElementById ('theId').value
+	console.log (sentence.length);
+
+	if (sentence.length > 3)
+	{
+		console.log ("Function went through (Lower)...");
+
+		// Here I make everything to lowercase
+		var resultOne = sentence.toLowerCase ();
+
+		// Here I extract the three symbols and the rest into two different variables
+		var upperThree = resultOne.substring (0,3);
+		var theRest = resultOne.substring (4,sentence.length);
+
+		// Here I make the first three symbols in uppercase
+		var resultTwo = upperThree.toUpperCase ();
+
+		// Here is everything from the sentence put back together
+    	document.getElementById("theResults").innerHTML = resultTwo + theRest;
+	}
+	else
+	{
+		console.log ("Function went through (Upper)...");
+
+		var result = sentence.toUpperCase ();
+    	document.getElementById("theResults").innerHTML = result;
+	}
+}
+</script>
+
+<button id="theButton" onclick="UpperToLowerCase ()"> 
+	Transform Sentence...
+</button>
+
+<div id="theResults" class="DivStyle">
+</div>
+
+</body>
+</html>
+
+<!--
+Ето и една лесна задача.
+
+  Напиши функция която да има като входни данни стринг. Функцията да обработва стринга така, че първите 3 символа винаги да са с малки букви. Ако стринга е по-малък от 3 символа те да стaват с главни. Например: Ако на функцията се подаде стринг 
+JAVAScript 
+функцията да върне:
+javAScript 
+
+Или ако се подаде:
+Be
+да върне:
+BE
+-->

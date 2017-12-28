@@ -1,0 +1,73 @@
+<html>
+<head>
+<title> Drawing Circles </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: lightgrey">
+<canvas id="theCanvas" width="600" height="500"> </canvas>
+
+<script>
+var canvas = document.getElementById('theCanvas');
+var context = canvas.getContext('2d');
+var clock = 0;
+var maxCircles = 0;
+var colorNumber = 256/maxCircles;
+
+function circleNumbers ()
+{
+	maxCircles = document.getElementById ('theInput2').value;
+	colorNumber = 256/maxCircles;
+}
+
+function init ()
+{
+	clock = 0;
+	context.clearRect (0, 0, canvas.width, canvas.height);
+}
+
+function drawCircles ()
+{
+	if (maxCircles > 6)
+	{
+		window.alert ("Too Many Circles, please choose a number LESS than 7!")
+	}
+	else
+	{
+		if (clock >= maxCircles) return;
+		context.clearRect (0, 0, canvas.width, canvas.height);
+   		context.beginPath();
+   		context.arc(clock*80+40, clock*80+40, 30, 0, 2 * Math.PI, false);
+   		var colorChange = 255 - Math.round (colorNumber * clock);
+   		context.fillStyle = "rgb("+ colorChange +","+ colorChange +","+ colorChange +")";
+   		context.fill();
+  		context.lineWidth = 5;
+   		context.strokeStyle = 'red';
+    	context.stroke();
+
+    	clock++;
+    	setTimeout (drawCircles, document.getElementById ('theInput').value);  
+	}
+}
+</script>
+<br>
+
+<input id="theInput" placeholder="Speed..."/>
+<br>
+
+<input id="theInput2" placeholder="Number of Circles..."/>
+<br>
+
+<button id="theButton" onmousedown="init (); circleNumbers (); drawCircles ();">
+	Click Me!
+</button>
+
+</body>
+</html>
+
+<!--
+ прикачено изпращам изображение, което да се нарисува с javascript. Така че кръкчета по диагонал с цветове от бяло към черно(приблизително).
+
+ Екстра:
+ Да се направи бутон който при натискането му да рисува едно кръкче на рандом място...
+ -->

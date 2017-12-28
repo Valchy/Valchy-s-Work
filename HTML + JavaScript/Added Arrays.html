@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Added Arrays </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+
+<script>
+var arr1 = [1,3,4];
+var arr2 = [2,0,3];
+var EMPTY = [];
+
+function AddedArrays (a,b)
+{
+	for (var add = 0; add < arr1.length; add=add+1)
+	{
+		EMPTY.push (arr1 [add] + arr2 [add]);
+	}
+	//PrintArrayData (EMPTY);
+	//document.write (EMPTY.join (" || "));
+}
+
+function PrintArrayData (a)
+{
+	for (var o = 0; o < a.length; o++)
+	{
+		//document.write (a [o]);
+	}
+}
+
+AddedArrays (arr1,arr2);
+</script>
+<div class="mainPage">
+	<h1> This is two Arrays sumed together and made into a new array! </h1>
+	[1,3,4] + [2,0,3] = <br>
+	3 || 3 || 7
+	<br> <br>
+	<span>
+- да се напише функция, която да има за параметър два числови масива a, b . Функцията да изчислява сумата на съответните клетки от масивите, като резултат да се получи отново масив със съответните суми. Например ако a=[1,3,4] и b=[2,0,3] то като резултат би трябвало функцията  да върне [3,3,7]. 
+	</span>
+</body>
+</html>
+
+<!--
+- да се напише функция, която да има за параметър два числови масива a, b . Функцията да изчислява сумата на съответните клетки от масивите, като резултат да се получи отново масив със съответните суми. Например ако a=[1,3,4] и b=[2,0,3] то като резултат би трябвало функцията  да върне [3,3,7]. 
+-->

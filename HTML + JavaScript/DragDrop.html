@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Drag &amp; Drop </title> <!-- &#38; and &amp; make the & symbol -->
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+div div {display: flex; flex-direction: row;}
+div div div {justify-content: center; align-items: center; display: flex; border: 0px dotted black; width: 150px; height: 150px; background-color: rgba(255,255,255,0.2); padding: 16px;}
+div div div:last-child {border-left: 0px !important;}
+p {margin: 0px;}
+img {margin-top: 16px;}
+img:hover {cursor: pointer;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Drag &amp; Drop and Image, see what happens! </h1>
+	<div>
+		<div ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p>
+				Place Image here...
+			</p>
+		</div>
+		<div ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p>
+				Now try place it here...
+			</p>
+		</div>
+	</div>
+
+	<img src="hi.png" draggable="true" ondragstart="drag(event);" id="theIMG1">
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var pHTML = 'Now try place it here...';
+var goatSF = new Audio ('goat.mp3')
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.innerHTML = '';
+    ev.target.appendChild(document.getElementById(data));
+    $('.mainPage').append($('<div/>', {'ondrop': 'drop(event)', 'ondragover': 'allowDrop(event)'}));
+    $('.mainPage').append($('<img/>', {'src': 'hi.png', 'draggable': 'true', 'ondragstart': 'drag(event)'}));
+    goatSF.play();
+}
+</script>
+</body>
+</html>
+
+<!-- 
+Create a document in which the user is allowed to drop a picture inside the document and the picture then gets placed inside a gallary
+Also make another possibility which then allows the user to place the img from on gallery cell into another
+-->

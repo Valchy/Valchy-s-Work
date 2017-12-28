@@ -1,0 +1,40 @@
+<html>
+<head>
+<title> Fill Array </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<script>
+function FillArray (number,data1,data2)
+{
+	var space = ""
+	var AddArray = [];
+	for (var DataArray = 0; DataArray < number; DataArray=DataArray+1)
+	{
+		if (DataArray %2 == 0)
+		{
+			AddArray.push (data1);
+		}
+		else
+		{
+			AddArray.push (data2);
+		}
+	}
+	console.log (AddArray);
+	for (var i = 0; i< number; i++)
+	{
+		document.write (space + AddArray [i]);
+		space = " || "
+	}
+}
+
+FillArray (4,"abv","123");
+
+</script>
+</body>
+</html>
+
+<!--
+- да се напише функция на която да се подаде число и тя да върне масив с такъм размер и запълнен с '0'. Например ако fill_array(3) -> [0,0,0]  
+-->

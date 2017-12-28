@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> JSON &amp; AJAX </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+header {display: flex; flex-direction: row;}
+.theFetchButton {/* make button very pretty :D xd .... */;}
+.theFetchButton:hover {cursor: pointer;}
+.theFetchButton:focus, #animalFetchResultDiv:focus {outline: none;}
+#animalFetchResultDiv {margin-top: 20px;}
+.theTableExplenation {text-align: left; margin-right: 55px;}
+.theTableExplenation tr {padding: 0px; margin: 0px;}
+.theTableExplenation td {padding: 0px; margin: 0px;}
+.theTableExplenation tr td:first-of-type {font-weight: 900; text-align: center;}
+.theHR {width: 200px; float: left;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> JSON &amp; AJAX </h1>
+
+	<header>
+		<table class="theTableExplenation">
+			<tr> <td>J</td> <td>ava</td> </tr> <tr> <td>S</td> <td>cript</td> </tr> <tr> <td>O</td> <td>bject</td> </tr> <tr> <td>N</td> <td>otation</td> </tr>
+		</table>
+
+		<table class="theTableExplenation"> 
+			<tr> <td>A</td> <td title="(in the background, not requiring a page refresh)">asynchronous</td> </tr> <tr> <td>J</td> <td>avaScript</td> </tr> <tr> <td>A</td> <td>nd</td> </tr> <tr> <td>X</td> <td title="XML is data format very similar to JSON">ML (JSON)</td> </tr>
+		</table>
+	</header>
+	<hr>
+
+	<button class="theFetchButton" onclick="fetchInfo();">
+		Fetch Info for 3 New Animals
+	</button>
+
+	<div id="animalFetchResultDiv"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+// Try using local storage to later on save the information even if conecction fales (also can use session storage [w3s])
+var theDiv = document.getElementById('animalFetchResultDiv');
+var clickButtonCounter = 1;
+
+function fetchInfo () {
+	if (clickButtonCounter >= 4) return;
+
+	var infoRequest = new XMLHttpRequest();
+	// Options: HEAD, GET, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT
+	infoRequest.open('DELETE', 'https://learnwebcode.github.io/json-example/animals-'+clickButtonCounter+'.json');
+	infoRequest.onload = function () {
+		if (infoRequest.status >= 200 && infoRequest.status < 400) {
+			var ourData = JSON.parse(infoRequest.responseText);
+			addHTML(ourData);
+		}
+		else {
+			$('#animalFetchResultDiv').html('Server failure, please try again!');
+		}
+	};
+	infoRequest.onerror = function () {
+		$('#animalFetchResultDiv').html('Connection lost, please fix and try again!');
+	};
+	infoRequest.send();
+}
+
+function addHTML (data) {
+// This is the different possibilities for element.insertAdjacentHTML        EXTRA: Security Considerations, When inserting HTML into a page by using insertAdjacentHTML be careful not to use user input that hasn't been escaped. It is recommended you not use insertAdjacentHTML when inserting plain text; instead, use the node.textContent property or node.insertAdjacentText() method. This doesn't interpret the passed content as HTML, but instead inserts it as raw text.
+// ------------------------------------------------------------------
+// 		<!-- beforebegin -->
+//	<p>
+//		<!-- afterbegin -->
+//			Random stuff in 'P' element (could be anything!)
+//		<!-- beforeend -->
+//	</p>
+//		<!-- afterend -->
+var theString = '';
+
+	if ($('#animalFetchResultDiv').html() === 'Connection lost, please fix and try again!') {
+		$('#animalFetchResultDiv').html('');
+	}
+
+	for (var i = 0; i < data.length; i++) {
+		theString = data[i].name + ' the ' + data[i].species + ' likes: ' + data[i].foods.likes + ' and dislikes: ' + data[i].foods.dislikes;
+		$('#animalFetchResultDiv').append($('<p/>', {'html': theString}));
+	}
+
+	theDiv.insertAdjacentHTML('beforeend', "<hr class='theHR'>"+"<br>");
+	clickButtonCounter++;
+}
+</script>
+</body>
+</html>

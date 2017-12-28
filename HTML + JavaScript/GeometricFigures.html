@@ -1,0 +1,162 @@
+<html>
+<head>
+<title> GeometricFigures </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: lightgrey">
+
+<canvas id="GeometricCanvas" width="1250" height="600"> </canvas>
+
+<script>
+var canvasContext;
+
+// Function making everything load at the same time :D
+window.onload = function () 
+{
+	canvas = document.getElementById ('GeometricCanvas');
+	canvasContext = canvas.getContext ('2d');
+
+	drawEverything ();
+}
+
+
+function drawEverything ()
+{
+	// This is drawing the background
+	canvasContext.fillStyle = 'black';
+	canvasContext.fillRect (0,0,canvas.width,canvas.height);
+
+	// This is drawing the small blue square in the middle
+	canvasContext.fillStyle = 'blue';
+	canvasContext.fillRect (canvas.width /2-20, canvas.height /2-20, 40, 40);
+
+	// This is drawing my big green circle in the bottom left cornor
+	canvasContext.fillStyle = 'green';
+	canvasContext.beginPath();
+    canvasContext.arc(150, 450, 70, 0, 2 * Math.PI, false);
+    canvasContext.fill();
+
+	// This is drawing my yellow triangle in the bottom right cornor
+	canvasContext.fillStyle = 'yellow'
+	canvasContext.beginPath ();
+    canvasContext.moveTo (900, 400); // left cornor
+    canvasContext.lineTo (1200, 550); // bottom corner
+    canvasContext.lineTo (1200, 250); // top cornor
+    canvasContext.fill ();
+
+	// This is drawing 'My Canvas'
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (100	, 50, 10, 100);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (110	, 50, 10, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (120	, 60, 10, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (130	, 70, 10, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (140	, 80, 20, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (160	, 70, 10, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (170	, 60, 10, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (180	, 50, 10, 10);
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (190	, 50, 10, 100);
+		// Leter 'M'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (230	, 90, 10, 10);
+	canvasContext.fillRect (240	, 100, 10, 10);
+	canvasContext.fillRect (250	, 110, 10, 10);
+	canvasContext.fillRect (260	, 120, 10, 10);
+	canvasContext.fillRect (270	, 130, 10, 10);
+	canvasContext.fillRect (260	, 140, 10, 10);
+	canvasContext.fillRect (250	, 150, 10, 10);
+	canvasContext.fillRect (240	, 160, 10, 10);
+	canvasContext.fillRect (230	, 170, 10, 10);
+	canvasContext.fillRect (220	, 180, 10, 10);
+	canvasContext.fillRect (210	, 190, 10, 10);
+	canvasContext.fillRect (280	, 120, 10, 10);
+	canvasContext.fillRect (290	, 110, 10, 10);
+	canvasContext.fillRect (300	, 100, 10, 10);
+	canvasContext.fillRect (310	, 90, 10, 10);
+		// Letter 'Y'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (450	, 60, 10, 80);
+	canvasContext.fillRect (460	, 50, 50, 10);
+	canvasContext.fillRect (460	, 140, 50, 10);
+		// Letter 'C'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (530	, 100, 10, 50);
+	canvasContext.fillRect (540	, 90, 25, 10);
+	canvasContext.fillRect (565	, 100, 10, 50);
+	canvasContext.fillRect (540	, 110, 25, 10);
+		// Letter 'A'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (590	, 90, 10, 60);
+	canvasContext.fillRect (600	, 100, 25, 10);
+	canvasContext.fillRect (625	, 100, 10, 50);
+		// Letter 'N'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (655	, 100, 10, 10);
+	canvasContext.fillRect (660	, 110, 10, 10);
+	canvasContext.fillRect (665	, 120, 10, 10);
+	canvasContext.fillRect (670	, 130, 10, 10);
+	canvasContext.fillRect (675	, 140, 10, 10);
+	canvasContext.fillRect (680	, 130, 10, 10);
+	canvasContext.fillRect (685	, 120, 10, 10);
+	canvasContext.fillRect (690	, 110, 10, 10);
+	canvasContext.fillRect (695	, 100, 10, 10);
+		// Letter 'V'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (725	, 100, 10, 50);
+	canvasContext.fillRect (735	, 90, 25, 10);
+	canvasContext.fillRect (760	, 100, 10, 50);
+	canvasContext.fillRect (735	, 110, 25, 10);
+		// Letter 'A'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (785	, 140, 10, 10);
+	canvasContext.fillRect (795	, 140, 10, 10);
+	canvasContext.fillRect (805	, 130, 10, 10);
+	canvasContext.fillRect (795	, 120, 10, 10);
+	canvasContext.fillRect (785	, 110, 10, 10);
+	canvasContext.fillRect (795	, 100, 10, 10);
+	canvasContext.fillRect (805	, 100, 10, 10);
+		// Letter 'S'
+
+	canvasContext.fillStyle = 'red';
+	canvasContext.fillRect (835	, 110, 10, 10);
+	canvasContext.fillRect (835	, 130, 10, 10);
+		// The ':'
+}
+</script>
+
+<p> 
+	What I was able to make: <br>
+		1. One blue square in the middle of the canvas <br>
+		2. One big green circle in bottom left cornor (незнам защо ама кръкчето нестава, защо е така, също така премахва другите фигури) <br>
+		3. A yellow triangle in bottom right cornor <br>
+		4. Letters... <br>
+</p>
+
+</body>
+</html>
+
+<!--
+Задача 2:
+Да се напише javascript програма, която да рисува геометрична фигура - правоъгълен триъгълник. 
+
+Такива задачи за рисуване май не сме правили ,но предполагам ще са ти интересни. Ще ти дам като насоки - да се ползва html обек :
+<canvas id="canvas"></canvas>
+
+и функцията:
+getContext
+-->

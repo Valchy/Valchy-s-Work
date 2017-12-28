@@ -1,0 +1,321 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Calender Form </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+ul {list-style-type: circle; margin: 0px; padding: 5 0 10 25px;}
+hr {margin: 0px;}
+#theFormCalender {width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.calenderArrowBefore {transform: rotate(180deg); margin-right: 16px;}
+.calenderArrowAfter {margin-left: 16px;}
+.calenderArrowBefore:before {content: '➜'; font-size: 50px;}
+.calenderArrowAfter:after {content: '➜'; font-size: 50px;}
+.calenderArrowBefore:hover, .calenderArrowAfter:hover {cursor: pointer;}
+#theTableCalender {border-collapse: collapse; border: 2px solid black;}
+#theTableCalender td {text-align: center; width: 120px; padding: 25px 0px;}
+#theTableCalender td:hover {background-color: #eee;}
+#weekDays:hover {background-color: #eee !important;}
+#theTableCalender td:empty {background-color: #fff;}
+#theTableCalender th {text-align: center; width: 120px; padding: 15px 0px;}
+#thetableCalender tr {background-color: #fff;}
+#theDaysTr td {padding: 5px 0px !important;}
+#bottom-calender-div {display: flex; flex-direction: row; justify-content: space-between; width: 100%;}
+#theButtonClickDiv {display: none; display: flex; flex-direction: column; align-self: flex-start; justify-content: flex-start;}
+#theButtonClickDivDiv {display: none; display: flex; flex-direction: column; justify-content: flex-end; align-self: flex-start;}
+.buttonCalender {margin: 0px; height: 20px; border: 1px solid #222; align-self: flex-end;}
+.buttonCalender:hover, .button-events:hover, .hoveringDays:hover {cursor: pointer;}
+.buttonCalender:focus, .button-events:focus {outline: none;}
+.theTh {background-color: #ff535d; font-size: 40px;}
+#theTableTdCalender {border: 1px solid #888;}
+#theTableTdCalenderOther {border: 1px solid #888; padding: 34px 0px !important;}
+.calender {display: flex; flex-direction: row; align-items: center;}
+.add-event, .show-events {display: none; position: fixed; top: 0%; left: 0%; background-color: rgba(1, 1, 1, 0.7); width: 100%; height: 100%; z-index: 99998; justify-content: center; align-items: center; align-content: center; align-self: center; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.add-event-content {border: 1px solid black; background-color: white; z-index: 99999; width: 400px; height: 300px; box-shadow: 1px 1px 40px black; border-radius: 15px; padding: 10px;}
+.button-event {float: right; border: 0px;}
+.button-event:hover {cursor: pointer; color: red;}
+.button-event:focus, .add-event-content input:focus {outline: none;}
+.button-events {display: flex; align-self: flex-end; border: 1px solid black; margin-top: 10px;}
+#the-events-div {display: none;}
+#the-events-div p {display: flex; flex-direction: column; justify-content: space-between;}
+.events-show-p {display: flex; justify-content: center; width: 100%; height: 100%; margin: 0px;}
+.difHighlightFill {background-color: #ffbcac !important;}
+.difHighlightFill:hover {background-color: #eb8c7f !important;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> This is my own made calender: </h1>
+
+	<div class="add-event">
+		<div class="add-event-content">
+			<button onclick="addEvent();" class="button-event"> ✖ </button>
+			<h3 style="text-align: center;"> Add Event </h3> <hr>
+			<input type="text" id="theEventInput">
+			<button onclick="addingEvent(document.getElementById('theEventInput'));"> Add Event </button>
+		</div>
+	</div>
+	<div class="show-events">
+		<div class="add-event-content">
+			<button onclick="showEvents();" class="button-event"> ✖ </button>
+			<h3 style="text-align: center;"> Events: </h3> <hr>
+			<p class="events-show-p" id="events-show-p"> No Events have been added yet! </p>
+		</div>
+	</div>
+
+	<form id="theFormCalender">
+		<div class="calender"></div>
+	</form>
+
+	<div id="bottom-calender-div">
+		<div id="theButtonClickDiv"> </div>
+		<div id="theButtonClickDivDiv"> 
+			<button onclick="showDiv(); return theCount ();" class="buttonCalender">
+				The <b> BIG </b> Counting...
+			</button>
+			<button onclick="return showEvents();" class="button-events">
+				Show Events!
+			</button>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var theDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+var theMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+var eventsArray = ['No Events have been added yet!'];
+var dateObj = new Date();
+var monthEnd = new Date();
+var theMonth = dateObj.getUTCMonth();
+var theYear = dateObj.getUTCFullYear();
+var theDate = new Date(theYear, theMonth, 1);
+var dayDate = 0;
+var numberEvents = 0;
+
+$(function(){
+	$('.add-event, .show-events').css({display: 'flex'}).hide();
+	$('#theButtonClickDiv').css({visibility: 'hidden'});
+	whichDay ();
+	theMonthMake();
+});
+
+function theMonthMake () {
+	monthDayEnd();
+	$('.calender').html('');
+	$('.calender').append($('<div/>', {'class': 'calenderArrowBefore', 'onclick': 'monthChange (0);'}));
+	$('.calender').append($('<table/>', {'id': 'theTableCalender'}).append($('<th/>', {'class': 'theTh', 'html': theMonths[theMonth]+ ' ' +theYear})));
+	$('.theTh').attr('colspan', '7');
+	$('#theTableCalender').append($('<tr/>', {'id': 'theDaysTr'}));
+	for (var i = 1; i <= 7; i++) {
+		$('#theDaysTr').append($('<td/>', {'html': theDays[i-1], 'class': 'colorFill', 'id': 'weekDays', 'onclick': 'dayHighlight(-'+(i-1)+');'}));
+	}
+	for (var i = 1; i <= 6; i++) {
+		$('#theTableCalender').append($('<tr/>', {'id': 'theTrTable'+i}));
+		for (var x = 1; x <= 7; x++) {
+			if (dayDate <= 0 || dayDate > monthEnd) {
+				$('#theTrTable'+i).append($('<td/>', {'class': 'colorFill', 'id': 'theTableTdCalenderOther', 'html': ''}));
+				dayDate++;
+			}
+			else {
+ 				$('#theTrTable'+i).append($('<td/>', {'class': 'colorFill', 'id': 'theTableTdCalender', 'onclick': 'addEvent();', 'html': dayDate}));
+				dayDate++;
+			}
+		}
+	}
+	$('.calender').append($('<div/>', {'class': 'calenderArrowAfter', 'onclick': 'monthChange (1);'}));
+	if (document.getElementById('theButtonClickDiv').style.cssText != 'display: none;') {
+		theCount();
+	}
+}
+
+function monthChange (a) {
+	if (a == 1) {
+		addMonth();
+		whichDay();
+		theMonthMake();
+	}
+	else if (a == 0) {
+		subtractMonth();
+		whichDay();
+		theMonthMake();
+	}
+}
+
+function whichDay () {
+	if (theDate.getDay () == 0) {
+		dayDate = -5;
+	}
+	else if (theDate.getDay () == 1) {
+		dayDate = 1;
+	}
+	else if (theDate.getDay () == 2) {
+		dayDate = 0;
+	}
+	else if (theDate.getDay () == 3) {
+		dayDate = -1;
+	}
+	else if (theDate.getDay () == 4) {
+		dayDate = -2;
+	}
+	else if (theDate.getDay () == 5) {
+		dayDate = -3;
+	}
+	else if (theDate.getDay () == 6) {
+		dayDate = -4;
+	}
+}
+
+function monthDayEnd () {
+	monthEnd = new Date(theYear, theMonth+1, 0).getDate();
+}
+
+function subtractMonth () {
+	dayDate = 0;
+	theMonth--;
+	if (theMonth < 0) {
+		theMonth = 11;
+		theYear--;
+	}
+	theDate = new Date(theYear, theMonth, 1);
+}
+
+function addMonth () {
+	dayDate = 0;
+	theMonth++;
+	if (theMonth > 11) {
+		theMonth = 0;
+		theYear++;
+	}
+	theDate = new Date(theYear, theMonth, 1);
+}
+
+function showDiv () {
+	document.getElementById('theButtonClickDiv').style.cssText = 'display: block;';
+}
+
+function addEvent () {
+	$('.add-event').fadeToggle(300);
+}
+
+function dayHighlight (a) {
+var dayNum = a;
+
+	$('.colorFill').each(function (i) {
+		if (dayNum <= 0) {
+			console.log('no')
+			$(this).css({'background-color': '#fff'});
+			return dayNum++;
+		}
+		else {
+			dayNum++;
+		}
+		console.log((1*dayNum % 7) == 0)
+		if ((1*dayNum % 7) == 0) {
+			if ($(this).html() == '') return dayNum++;
+			$(this).addClass('difHighlightFill');
+			return dayNum++;
+		}
+		else {
+			$(this).removeClass('difHighlightFill');
+			return dayNum++;
+		}
+	});
+}
+
+function theCount () {
+var theRowCount = 0;
+var theColumnCount = 0;
+var theCellCount = 0;
+var notUsedCell = 0;
+
+	$('#theTrTable1 td').each(function () {
+		theColumnCount++;
+	});
+	$('tr').each(function () {
+		theRowCount++;
+	});
+	$('th').each(function () {
+		theRowCount++;
+		theCellCount++;
+	});
+	$('td').each(function (i) {
+		if ($(this).html() == '') {
+			notUsedCell++;
+			theCellCount++;
+		}
+		else {
+			theCellCount++;
+		}
+	});
+
+	$('#theButtonClickDiv').html('<b> The Calender contains: </b>').append($('<ul/>', {'id': 'theUlCalender'}));
+	$('#theUlCalender').append($('<li/>', {'html': theColumnCount+' columns'}));
+	$('#theUlCalender').append($('<li/>', {'html': theRowCount+ ' rows'}));
+	$('#theUlCalender').append($('<li/>', {'html': theCellCount+ ' cells'}));
+	$('#theUlCalender').append($('<li/>', {'html': notUsedCell+ ' not used cells'}));
+	return false;
+}
+
+$('.add-event').on('click', function (child) {
+	if (child.target !== this) {
+		return;
+	}
+	else {
+		addEvent();
+	}
+});
+
+$('.show-events').on('click', function (child) {
+	if (child.target !== this) {
+		return;
+	}
+	else {
+		showEvents();
+	}
+});
+
+function showEvents () {
+	$('.show-events').fadeToggle(300);
+	return false;
+}
+
+function addingEvent (a) {
+var theP = document.getElementById('events-show-p');
+
+	if (a.value !== '') {
+		if (eventsArray.length == 1) {
+			theP.innerHTML = '';
+		}
+		numberEvents++;
+		$('.events-show-p').css({display: 'block', width: '100%', height: '100%', margin: '0px'});
+		if (numberEvents >= 13) {
+			window.alert('Too many events! Please remove an event in order to add one...');
+			numberEvents--;
+		}
+		else {
+			eventsArray.push(numberEvents+'. '+a.value);
+			theP.innerHTML += '<br>'+eventsArray[numberEvents];
+		}
+	}
+	else {
+		return;
+	}
+}
+
+</script>
+</body>
+</html>
+
+<!--
+нека имаме форма с таблица в нея да се напишат jquery  функции, които да броят(върне като резултат), броя колони и редове на таблицата.
+-->

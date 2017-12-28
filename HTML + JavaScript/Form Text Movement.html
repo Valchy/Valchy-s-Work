@@ -1,0 +1,257 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Form Text Movement </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style type="text/css">
+.theSpanOne {color: white; font-size: 55px; font-weight: 100; text-shadow: 2px 2px 20px #ff0000, -2px -2px 20px #ff0000, 2px -2px 20px #ff0000, -2px 2px 20px #ff0000; cursor: progress;}
+.theSpanTwo {color: white; font-size: 45px; font-weight: 900; text-shadow: 2px 2px black; cursor: not-allowed;}
+.theForm {margin: 50px; cursor: crosshair; transition: all 0.6s ease 0s;}
+.theButton {background-color: #aaaaaa; border: 1px solid black; height: 50px}
+.theButton:hover {cursor: pointer;}
+.theButton:focus {outline: none;}
+.theSpanCSS {color: yellow; font-weight: 900; float: right; font-size: 33px; letter-spacing: 4px;font-family: 'Luckiest Guy';}
+
+#theButtonOne {transition: width 2s, height 2s, transform 1s; position: relative; background-color: red; animation-name:buttonOne; animation-duration: 4s; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: ; animation-timing-function: ease;}
+#theButtonOne:hover {transform: rotate(360deg);}
+
+#theButtonTwo {transition: width 2s, height 2s, transform 1s; position: relative; background-color: red; animation-name: buttonTwo; animation-duration: 4s; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: reverse; animation-timing-function: ease;}
+#theButtonTwo:hover {transform: rotate(-360deg);}
+
+@keyframes buttonOne 
+{
+    0% {background-color: red;}
+    25% {background-color: orange;}
+    50% {background-color: purple;}
+    75% {background-color: yellow;}
+    100% {background-color: blue;}
+}
+
+@keyframes buttonTwo
+{
+    0% {background-color: orange;}
+    25% {background-color: purple;}
+    50% {background-color: yellow;}
+    75% {background-color: blue;}
+    100% {background-color: red;}
+}
+</style>
+</head>
+
+<body style="background-color: #394999;">
+	<div> </div>
+<h1 style="text-align: center; margin-bottom: 10px;"> 
+	<span class="theSpanOne" onclick="window.alert ('Why did you Click me?')"> 
+		A Moving Form!!! -
+	</span>  
+	<span class="theSpantwo"> 
+		Just left click on it :D 
+	</span> 
+</h1> <hr>
+<script type="text/javascript">
+var theSwitch = true;
+var switcherino = 1;
+var randomHeight;
+var randomWidth;
+var OnOff = true;
+var lastKeyPressed = 'w';
+var theSaveMarginTop = 'margin-top: 50px;';
+var theSaveMarginLeft = 'margin-left: 50px';
+
+function moveFormUpDown ()
+{
+	var theChange = document.getElementById ('theForm');
+
+	if (switcherino === 1)
+	{
+		theChange.style.cssText = 'margin-top: 500px;';
+		switcherino++;
+		return;
+	}
+	
+	if (switcherino === 2)
+	{
+		theChange.style.cssText = 'margin-top: 500px;';
+		theChange.style.cssText += 'margin-left: 800px;'; // += cobines the two strings
+		switcherino++
+		return;
+	}	
+
+	if (switcherino === 3)
+	{
+		theChange.style.cssText = 'margin-top: 50px; margin-left: 800px;';
+		switcherino++
+		return;
+	}	
+
+	if (switcherino === 4)
+	{
+		theChange.style.cssText = 'margin-top: 50px;';
+		switcherino = 1;
+		return;
+	}	
+}
+
+function randomMovement ()
+{
+	document.getElementById ('theButtonTwo').disabled = false;
+	document.getElementById ('theButtonOne').disabled = true;
+
+	var theChange = document.getElementById ('theForm');
+	var changieOne = document.getElementById ('theButtonOne');
+	var changieTwo = document.getElementById ('theButtonTwo');
+	randomNum ();
+
+	if (OnOff === true)
+	{
+		theChange.style.cssText = 'margin-left: '+randomWidth+'%; margin-top: '+randomHeight+'px;';
+		changieOne.style.cssText = 'cursor: not-allowed;'
+		changieTwo.style.cssText = 'cursor: pointer;'
+		setTimeout (again, 1000);
+	}
+}
+
+function again ()
+{
+	var theChange = document.getElementById ('theForm');
+	var changieOne = document.getElementById ('theButtonOne');
+	var changieTwo = document.getElementById ('theButtonTwo');
+	randomNum ();
+
+	if (OnOff === true)
+	{
+		theChange.style.cssText = 'margin-left: '+randomWidth+'%; margin-top: '+randomHeight+'px;';
+		changieOne.style.cssText = 'cursor: not-allowed;'
+		changieTwo.style.cssText = 'cursor: pointer;'
+		setTimeout (again, 1000);
+	}
+}
+
+function turnRandomMovementOn ()
+{
+	OnOff = true;
+}
+
+function randomNum ()
+{
+	randomWidth = Math.floor (Math.random () * 80) + 0;
+	randomHeight = Math.floor (Math.random () * 550) + 0;
+}
+
+function stopRandomMovement ()
+{
+	document.getElementById ('theButtonOne').disabled = false;
+	document.getElementById ('theButtonTwo').disabled = true;
+
+	var changieOne = document.getElementById ('theButtonOne');
+	var changieTwo = document.getElementById ('theButtonTwo');
+
+	OnOff = false;
+	changieOne.style.cssText = 'cursor: pointer;'
+	changieTwo.style.cssText = 'cursor: not-allowed;'
+	setTimeout (turnRandomMovementOn, 1000);
+}
+
+addEventListener('keydown', function (e) 
+{
+	var theChange = document.getElementById ('theForm');
+    var key = e.which || e.keyCode;
+
+    //console.log (key);
+    if (key === 38) // W
+   	{
+   		if (lastKeyPressed === 'w')
+   		{
+   			return;
+   		}
+   		else if (lastKeyPressed != 'w')
+   		{
+   			theSaveMarginTop = '; margin-top: 50px;';
+   			theChange.style.cssText = theSaveMarginTop + theSaveMarginLeft;
+   			lastKeyPressed = 'w';
+   		}
+   	}
+
+   	if (key === 40) // S
+   	{
+   		if (lastKeyPressed === 's')
+   		{
+   			return;
+   		}
+   		else if (lastKeyPressed != 's')
+   		{
+   			theSaveMarginTop = '; margin-top: 460px;';
+   			theChange.style.cssText = theSaveMarginTop + theSaveMarginLeft;
+   			lastKeyPressed = 's';
+   		}
+   	}
+
+   	if (key === 39) // D
+   	{
+   		if (lastKeyPressed === 'd')
+   		{
+   			return;
+   		}
+   		else if (lastKeyPressed != 'd')
+   		{
+   			theSaveMarginLeft = '; margin-left: 800px;';
+   			theChange.style.cssText = theSaveMarginTop + theSaveMarginLeft;
+   			lastKeyPressed = 'd';
+   		}
+   	}
+
+   	if (key === 37) // A
+   	{
+   		if (lastKeyPressed === 'a')
+   		{
+   			return;
+   		}
+   		else if (lastKeyPressed != 'a')
+   		{
+   			theSaveMarginLeft = '; margin-left: 50px;';
+   			theChange.style.cssText = theSaveMarginTop + theSaveMarginLeft;
+   			lastKeyPressed = 'a';
+   		}
+   	}
+});
+
+addEventListener ('keypress', function (a)
+{
+	var key = a.which || a.keyCode;
+	if (key === 13)
+	{
+		moveFormUpDown ();
+	}
+});
+</script>
+
+<button class="theButton" id="theButtonOne" onclick="randomMovement ();">
+	Click for <br>
+	Random Movement
+</button>
+
+<button class="theButton" style="cursor: not-allowed;" id="theButtonTwo" onclick="stopRandomMovement ();" disabled>
+	Click to stop <br>
+	Random Movement
+</button>
+
+<span class="theSpanCSS"> Use 'Enter' or the Arrow Keys to also make the form Move </span>
+
+<!-- Има ли начин докото се мърда текста да е друг и като отиде на дадената локация да стане пак същия МОЖЕ! --> 
+<form class="theForm" onclick="moveFormUpDown ();" id="theForm"> 
+	<span style="color: yellow; font-weight: 900; font-size: 50px; letter-spacing: 8px; line-height: 50px;">
+		I am text in a form <br>
+		please click me...
+	</span>
+</form>
+
+</body>
+</html>
+
+<!--
+ една задача за events  и текстове. 
+
+ Нека имаме форма и някакъв текс в нея. Когато показалеца на мишката попадне върху текста, нека текста се прести на
+ 500px  надолу (без да се връща при махане на мишката).  Когато отново показалеца попадне върху текста той да се
+ премести на 500px  нагоре. 
+-->

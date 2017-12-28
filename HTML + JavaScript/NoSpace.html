@@ -1,0 +1,32 @@
+<html>
+<head>
+<title> NoSpace </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<script>
+var sentence = "This is a test";
+function NoSpace (a)
+{
+	//a = a.replace (/ /g, "-"); this is very hard default commnands etc.
+	for (var i = 0; -1 != a.indexOf (' '); i=i+1)
+	{
+		console.log (a.indexOf (' '));
+	    a = a.replace (" ", "-");
+	}
+		document.write (a);
+}
+
+NoSpace (sentence);
+// '==' e znaka za sruvnenie
+// '===' e za znaka za sruvnenie ako e edin u sushti tip
+// '!=' obratnoto na tova ot gore 
+</script>
+</body>
+</html>
+
+<!--
+- да се напише javascript функция, която  да заменя space в изреченията с '-' тирета. Например :
+'This is a test' -> 'This-is-a-test'
+-->

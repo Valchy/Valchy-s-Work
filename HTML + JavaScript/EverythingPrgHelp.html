@@ -1,0 +1,155 @@
+<html>
+<head>
+<title> EverythingPrgHelp </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+</head>
+
+<body>
+<div class="topBar">
+		<div id="topBarDiv"> <!-- The style is for the Text to go to the right... -->
+			<span class="titleSpan" id="topBarSpan">
+				Welcome to the ValchyGaming Site
+			</span>
+		</div>
+
+		<ul class="ulBar" id="ulBar">
+			<li title="Show/Hide Side Bar"> 
+				<sub class="material-icons" onclick="showHideSideBar ();"> 
+					view_headline
+				</sub> 
+			</li> 
+			<li title="Options/Settings" id="settingsButton"
+				onmouseover="showHideDropDownMenuDiv ();" onmouseout="showHideDropDownMenuDiv ();">
+				<sub class="material-icons"> 
+					settings
+				</sub>
+
+				<ul class="dropDownMenuUl" id="dropDownMenuUl">
+					<li onclick="showUi ();"> <span> &#10148; </span> <a> Show Ui </a> </li>
+					<li onclick="hideUi ();"> <span> &#10148; </span> <a> Hide Ui </a> </li>
+					<li title="Download the Document"> <span> &#10148; </span> <a> Download Document &#8681; </a> </li>
+				</ul>
+			</li>
+			<li title="Create a new File" id="buildButton"> 
+				<a href="EverythingPrgBuild.html">
+					<sub class="material-icons"> 
+						build 
+					</sub>
+				</a> 
+			</li> 
+			<li title="Buy ValchyGaming Merch" id="shoppingButton"> 
+				<sub class="material-icons"> 
+					shopping_cart
+				</sub> 
+			</li>
+			<li title="Invert Colors" id="colorsButton"> 
+				<sub class="material-icons"> 
+					invert_colors
+				</sub> 
+			</li>
+			<li title="Search!" id="theSearch"> 
+				<sub class="material-icons" onclick="showInput (); showHideDropDownMenuSearch ();"> 
+					search
+				</sub> 
+			</li>
+			<li style="margin: 0px;"> 
+				<sup class="divSearch" id="searchInputBox">
+					<sup> 
+						<input placeholder="Search for Something..." title="Search for Something" class="theSearchInput" id="IP"> 
+					</sup> <!-- make all caps -->
+					<button class="buttonSearch" title="Search!">
+						<sub class="material-icons" class="subHighlight">
+							search
+						</sub>
+					</button>
+					<button class="buttonSearch" title="Close Search Box" onclick="hideInput (); showHideDropDownMenuSearch ();">
+						<sub class="material-icons" class="subHighlight">
+							close
+						</sub>
+					</button>
+				</sup>
+			</li>
+		</ul>
+	</div>
+	<div class="dropDownMenuSearch" id="dropDownMenuSearch">
+		<ul>
+			<li> <span> &#10148; </span> <a href="Length of Object.html"> Favourite Document </a> </li>
+			<li> <span> &#10148; </span> <a> More About Me </a> </li>
+			<li> <span> &#10148; </span> <a> My Future </a> </li>
+			<li> <span> &#10148; </span> <a href="https://www.youtube.com/ValchyGaming" target="blank">YouTube/ValchyGaming</a> </li>
+		</ul>
+	</div>
+
+	<div id="mainBarRandom" class="mainBarRandom">
+		<ul class="theUl" id="theUl">	
+		</ul>
+	</div>
+
+	<div class="mainPageDiv">
+		<div class="buildDocument">
+			<h1 class="mainPageTitle" style="padding: 10 0 20 0px; font-size: 50px !important;"> 
+			Please select your Probelm below! 
+			</h1>
+
+	<nav class="navigationBarHelp">
+		<ul>
+			<li onclick="sectionCheck = 1; showSectionHelp ();" id="li1" class="liFirstHelp">
+				<a > Switching the Site Colors </a> <span id="span1"> &#8674; </span>
+				<section class="theSectionHelp" id="section1">
+				</section>
+			</li>
+			<li onclick="sectionCheck = 2; showSectionHelp ();" id="li2" class="liFirstHelp">
+				<a> Using the Search Box </a> <span id="span2"> &#8674; </span>
+				<section class="theSectionHelp" id="section2">
+				</section>
+			</li>
+			<li onclick="sectionCheck = 3; showSectionHelp ();" id="li3" class="liFirstHelp">
+				<a> Contacting ValchyGaming </a> <span id="span3"> &#8674; </span>
+				<section class="theSectionHelp" id="section3">
+				</section>
+			</li>
+			<li onclick="sectionCheck = 4; showSectionHelp ();" id="li4" class="liFirstHelp">
+				<a> Making a new Document </a> <span id="span4"> &#8674; </span>
+				<section class="theSectionHelp" id="section4">
+				</section>
+			</li>
+			<li onclick="sectionCheck = 5; showSectionHelp ();" id="li5" class="liFirstHelp">
+				<a> Report a Bug </a> <span id="span5"> &#8674; </span>
+				<section class="theSectionHelp" id="section5">
+				</section>
+			</li>
+		</ul>
+	</nav>
+	</div>
+</div>
+
+	<div class="bottomBar" id="bottomBar">
+		<div class="bottomBarDiv">
+			<ul class="bottomUl">
+				<li>
+					<span onclick="contactMe ();"> Contact Me </span>
+				</li>
+				<li>
+					<span> 
+						<a href="EverythingPrg.html"> 
+							Home Page
+						</a>
+					</span>
+				</li>
+				<li>
+					<span> 
+						<a href="https://twitter.com/valchygaming" target="blank"> 
+							Social Media 
+						</a> 
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+</body>
+</html>

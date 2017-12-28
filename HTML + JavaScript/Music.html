@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Music </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+#mother-div {display: flex;}
+#the-first-audio {margin-bottom: 0px;}
+#music-button, #music-restart-button {width: 100px; flex-direction: row; margin-right: 16px;}
+#music-button:hover, #music-restart-button:hover {cursor: pointer;}
+#music-restart-button, #the-seccond-audio, #the-video {display: none;}
+#boss-button {float: left; margin-left: 16px; border: 1px solid #222; transition: all 0.4s ease 0s;}
+#boss-button:focus {outline: none;}
+#boss-button:hover {cursor: pointer; background-color: red;}
+#the-video {margin-bottom: 0px;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Play Music </h1>
+	<p id="the-first-audio">
+		Hello there, my name is the 'P' element and right under me there is a very good lookking button, CLICK IT! <br>
+		<div id="mother-div">
+		<button onclick="playMusic ();" id="music-button">
+			Play!
+		</button>
+		<button onclick="musicSwitch = 3; playMusic ();" id="music-restart-button">
+			Restart!
+		</button>
+		</div>
+	</p>
+
+	<p id="the-seccond-audio">
+		Now that you had fun with play button look at this sound effect! <br>
+		<audio style="float: left;" controls>
+  		<source src="cat fx meow Sound Effect.mp3" type="audio/mpeg">
+  		Your browser does not support the audio element. <!-- It comes up if the users browser doesnt support audio element -->
+  		</audio>
+  		<button id="boss-button" onclick="musicSwitch = 2; playMusic ();">
+  			Unleash <br>
+  			the Boss!
+  		</button>
+  	</p>
+  	<br>
+
+  	<p id="the-video">
+  		You have unlocked the final Boss!!! <br>
+  		<video width="300" height="180" controls>
+  		<source src="cat standing on dumpster vine.mp4" type="video/mp4">
+  		Your browser does not support the video element. <!-- It comes up if the users browser doesnt support video element -->
+		</video>
+	</p>
+</div>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var musicSwitch = 1;
+var theSound = new Audio("Nightcore  - Shooting Stars (Remix) .mp3");
+theSound.loop=true;
+
+function playMusic () {
+	if (musicSwitch == 0) {
+		document.getElementById('music-button').innerHTML = 'Play!';
+		theSound.pause();
+		musicSwitch++;
+	}
+	else if (musicSwitch == 1) {
+		document.getElementById('music-button').innerHTML = 'Stop!';
+		theSound.play();
+		document.getElementById('music-restart-button').style.cssText = 'display: block;';
+		$('#the-seccond-audio').delay(3000).show(3000);
+		musicSwitch--;
+	}
+	else if (musicSwitch == 2) {
+		$('#the-video').slideDown(3000);
+		if (document.getElementById('music-button').innerHTML == 'Stop!') {
+			musicSwitch = 0;
+		}
+		else if (document.getElementById('music-button').innerHTML == 'Play!') {
+			musicSwitch = 1;
+		}
+	}
+	else if (musicSwitch == 3) {
+		theSound.currentTime = 0; // to make it start from beginning
+		if (document.getElementById('music-button').innerHTML == 'Stop!') {
+			musicSwitch = 0;
+		}
+		else if (document.getElementById('music-button').innerHTML == 'Play!') {
+			musicSwitch = 1;
+		}
+	}
+}
+</script>
+</body>
+</html>
+
+<!--
+++ after sound effect is done to not show stop button ++
+make a simple page where upon a click or a certain thing music starts playing
+-->

@@ -1,0 +1,36 @@
+    /* Its always best to change the name of the css file inorder for the browser to always download 
+    the file the way it is */
+
+    .highlight1 {color:red; background-color:transparent; text-decoration:none}
+	.highlight1:hover {color:orange; background-color:transparent; text-decoration:underline}
+	.highlight2:hover {color:red; background-color:transparent; text-decoration:none;}
+	.fontsize1 {font-size:50px; margin-bottom:0px;}
+	#cent {text-align:center;}
+	#cent input {text-align:center;font-size:30px;width:100%;}
+	.LineColor {border-color:blue}
+  	.HoverEffect {width:46%;border-collapse:collapse;}
+	.HoverEffect td {padding:7px;border:blue 1px solid;}
+	.HoverEffect tr {background:white;}
+    .HoverEffect tr:hover {background-color:lightblue;}
+    .HoverEffect th {padding:7px;border:blue 1px solid;}
+    .TextBox {border:3px;background:white;width:342px;border:black 3px solid;}
+    .IDK {border:red 3px solid;width:342px;}
+    .HoverEffectBox {font-size:50px;text-align:middle;border-collapse:collapse;}
+    .HoverEffectBox td {border:black 3px solid;}
+    .HoverEffectBox th {border:black 3px so/id;}
+    .HoverEffectBox td:hover {background-color:red;}
+    .experiment {width:200px;height:200px;background:green;float:right;margin-right:835px;display:flex;align-items:center;justify-content:center;}
+    .experiment2 {width:300px;height:200px;background:green;display:flex;align-items:center;justify-content:center;border-radius:200px;border:1px black solid;}
+    .experiment3 {width:0px;height:0px;border-top:50px solid orange;border-bottom:50px solid red;border-left:50px solid yellow;border-right:50px solid pink;float:left;margin-left:50px;}
+    .experiment4 {width:0px;height:0px;float:right;margin-right:1200px;display:flex;align-items:center;justify-content:center;border-top:50px solid purple;border-left:30px solid transparent;border-right:30px solid transparent;}
+    .LastTable {background:lightblue;margin:20px;border-collapse:collapse;}
+    .LastTable th {padding:7px;border:purple 2px solid;}
+    .LastTable td {padding:7px;border:purple 2px solid;}
+	.MotherBox {display:flex;align-items:center}
+	.MotherBox div {flex-grow: 1;text-align:center;background:white;border:1px black solid;width:30%;vertical-align:middle;display:row;}
+	#CenterDiv {margin: 10px auto}
+    #AnB2 {border:black 2px solid;width:30px;text-align:center;margin:1px auto;padding:5px;}
+	.ClockStyle {background-color:#000;border:#999 2px inset;padding:6px;color:lightblue;font-family:"Arial Black";font-size:16px;font-weight:bold;letter-spacing:2px;display:inline;margin:2px;}
+
+     /* font-size:20px; makes the text get bigger (could be added in style for text or links) */
+     /* A different way to make a class is to use id and then # (eg. id="Valri" | #Valeri */

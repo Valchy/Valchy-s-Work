@@ -1,0 +1,71 @@
+<html>
+<head>
+<title> Repeat String </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<script>
+var RN = 0;
+function RepeatString (a,b)
+{
+	var NU = ""
+	var RS = ""
+	for (var i = 1; i <= b; i++)
+	{
+		// += is so that the last information isnt just shown!
+		RS += i + "." + " " + a + "<br>";
+	}
+	NU = "I used the symbol " + (i-1) + " amount of times!";
+	if (b > 0)
+	{
+		// location.reload() makes the page reload
+		NU += "<button onclick=\"document.getElementById ('Result').innerHTML = '';document.getElementById ('Show_Button').style.display = 'none';\"> Clear Data </button>"
+		document.getElementById ('Show_Button').style.display = 'inline';
+	}
+	else
+	{
+		document.getElementById ('Show_Button').style.display = 'none';
+	}
+	document.getElementById ('Result').innerHTML = RS + NU;
+}
+
+function RandomNumber (min, max) 
+	{
+		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min)) + min;
+  	}
+
+RandomNumber (1,100);
+</script>
+<br> <hr>
+<h3 style="padding: 1px solid; margin: 1px"> This is something I made at home, hope I make it work </h3>
+<button style="border-color:black; border: 1px solid; background-color:lightblue;" onclick ="RepeatString ('v',RandomNumber (1,100))"> 
+	Click me! 
+</button>
+
+<button onclick="document.getElementById ('Result').innerHTML = '';document.getElementById ('Show_Button').style.display = 'none';" style="display:none" id="Show_Button"> 
+Clear Data 
+</button>
+
+<div id="Result">
+
+</div>
+
+<script>
+RepeatString ("v",RN);
+</script>
+
+</body>
+</html>
+
+<!--
+/ buton za random number i sled tova buton za izchislqvane...
+
+- да се напише функция,  която да и се подават два параметъра - първия да е символ втория число . Функцията да изписва символа толкова пъти колкото е числото. Например ако функцията се извика така:
+repeat_string('v', 6);
+
+функцията да върне:
+'vvvvvv'
+-->

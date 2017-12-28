@@ -1,0 +1,49 @@
+<html>
+<head>
+<style type="text/css">
+.HoverEffect {background-color:grey;border: 1px solid black; width:100%;}
+.HoverEffect:hover {background-color:white;}
+#divoto {background-color:blue; border:black 1px solid; width:100%; height:100px; display:flex; align-items: center;justify-content:center; font-size: 20px; box-sizing: border-box;}
+</style>
+<title> Seconds </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color:lightblue">
+
+<h2> This is a Hour to Seconds Converter: </h2>
+
+<script>
+function Seconds (a)
+{
+	var a = document.getElementById ('t').value;
+	for (var ii = 1; ii < a; ii++)
+	{
+		console.log (ii + " Hour(s) " + "= " + ii*3600 + " Seconds" + "<br>");
+	}
+	console.log ('--------------------------------');
+	console.log (a + " Hours are " + a*3600 + " Seconds");
+	document.getElementById ('divoto').innerHTML = a * 3600;
+}
+
+</script>
+<br>
+
+<div style="width:18%">
+<input type="text" id="t" placeholder="Type an amount of Hours" style="width:100%; border:1px solid black" value="">
+<br>
+
+<button onclick="Seconds (1)" class="HoverEffect"> 
+	Click me to Reveal Answer!
+</button>
+
+
+<div id="divoto">
+
+</div>
+</div>
+</body>
+</html>
+<!--
+- да се напише функция на която да се подаде като параметър часове и да връща колко секунди прави това. Например  ако се подаде 2 функцията да върне 7200. 
+-->

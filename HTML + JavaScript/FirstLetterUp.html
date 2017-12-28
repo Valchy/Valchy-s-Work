@@ -1,0 +1,38 @@
+<html>
+<head>
+<title> FirstLetterUp </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: brown">
+<script>
+function WordUpperCase (r)
+{
+	var results = r.toLowerCase (); // This is inorder to have ONLY the first letter upper case
+	document.getElementById ('theResults').innerHTML = results;
+}
+
+</script>
+
+<input id="theId"/>
+
+<button id="theButton" onclick="WordUpperCase (document.getElementById ('theId').value)">
+	Capitalize Sentence
+</button>
+
+<p>
+
+<div id="theResults" style="text-transform: capitalize; font-family: 'Chalkduster'">
+</div>
+</body>
+</html>
+
+<!--
+Задача 1:
+- да се напише функция, която да приема стринг като параметър. Функцията да обработва стринга, така че всяка отделна буква да започва с главна. Например ако имаме стринг:
+
+Your ticket covers the conference day.
+да стане :
+Your Тicket Covers The Conference Day.
+-->
+

@@ -1,0 +1,131 @@
+<html>
+<head>
+<title> Drawing </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<canvas id="theCanvas" width="1425" height="700" tabindex='1'> </canvas>
+
+<!-- Искам да се направя така че топката да следва мишката ми -->
+
+<script>
+var ballX = 90;
+var ballY = 90;
+var ballSpeedX = 5;
+var ballSpeedY = 2;
+
+var mouseXposition;
+var mouseYposition;
+
+var canvas = document.getElementById ('theCanvas');
+var context = canvas.getContext ('2d');
+drawBackground ();
+
+function mouseMove (event)
+{
+		var ctx = document.getElementById ('theCanvas').getContext ('2d');
+		var mouseX = event.clientX - ctx.canvas.offsetLeft;
+		var mouseY = event.clientY - ctx.canvas.offsetTop;
+		var status = document.getElementById ('status');
+}
+
+function initEverything ()
+{
+	var ctx = document.getElementById ('theCanvas').getContext ('2d');
+	ctx.canvas.addEventListener ('mousemove', mouseMove); // Different way of doing the same thing (same as the click)
+
+	ctx.canvas.addEventListener ('click', function (event)
+	{
+		var mouseX = event.clientX - ctx.canvas.offsetLeft;
+		var mouseY = event.clientY - ctx.canvas.offsetTop;
+		ctx.fillStyle = '#ff0';
+		ctx.beginPath ();
+		var result = Math.floor(Math.random () * 55) + 0;
+    	ctx.arc (mouseX, mouseY, result, 0, 2 * Math.PI, false);
+    	ctx.fill ();
+    	ctx.lineWidth = 3;
+   		ctx.strokeStyle = 'green';
+    	ctx.stroke();
+	});
+
+	ctx.canvas.addEventListener ('mousedown', function (event) // Защо не работи 'keydown?
+	{
+		var mouseX = event.clientX - ctx.canvas.offsetLeft;
+		var mouseY = event.clientY - ctx.canvas.offsetTop;
+		ctx.fillStyle = '#ff0';
+		ctx.beginPath ();
+		var result = Math.floor(Math.random () * 55) + 0;
+    	ctx.arc (mouseX, mouseY, result, 0, 2 * Math.PI, false);
+    	ctx.fill ();
+    	ctx.lineWidth = 3;
+   		ctx.strokeStyle = 'green';
+    	ctx.stroke();
+	});
+
+    document.addEventListener('keydown', function (event) 
+    {
+       	console.log ('hi') // Защо не работи?
+		var mouseX = event.clientX - ctx.canvas.offsetLeft;
+		var mouseY = event.clientY - ctx.canvas.offsetTop;
+		ctx.fillStyle = 'red';
+		ctx.fillRect (mouseX-15, mouseY-15, 30, 30);
+    });
+}
+
+window.addEventListener ('load', function (event)
+{
+	initEverything ();
+})
+
+function Everything ()
+{
+	canvas = document.getElementById ('theCanvas');
+	canvasContext = canvas.getContext ('2d');
+
+	var framesPerSecond = 30;
+	setInterval(function() 
+	{
+		// So it earses the tracks... drawBackground ();
+		moveEverything ();	
+		drawEverything ();
+	}, 1000/framesPerSecond);
+}
+
+function drawBackground ()
+{
+	context.fillStyle = 'black';
+	context.fillRect (0,0,canvas.width,canvas.height);
+}
+
+function drawEverything ()
+{
+	context.fillStyle = '#ff0';
+	context.beginPath();
+    context.arc(ballX, ballY, 70, 0, 2 * Math.PI, false);
+    context.fill();
+    context.lineWidth = 3;
+   	context.strokeStyle = 'red';
+    context.stroke();
+}
+
+function moveEverything ()
+{
+	// Да го направя изпозвайки add.EventListainer (да следва мишката ми);
+	ballX = ballX + ballSpeedX;
+	ballY = ballY + ballSpeedY;
+}
+
+</script>
+
+<br>
+<button id="theButton" onclick="Everything ();//initEverything с бутон" style="width: 10%; height: 5%; font-size: 20px">
+	Draw Circles!
+</button>
+
+</body>
+</html>
+
+<!--
+- ако искаш за задачата с кръгчетата, които рисувахме по диагонал. Да пробваш да ги направиш да се движат по диагонал. Така че във всеки един момент да се вижда само едно кръгче и когато се покаче последното да почне отначало.
+-->

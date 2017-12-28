@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> BinaryToDecimal </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style>
+.inputCSS1 {margin: 30px; margin-bottom: 2px; margin-right: 2px; height: 5%;}
+.inputCSS2 {margin: 30px; margin-top: 2px; margin-right: 2px; height: 5%;}
+.buttonCSS1 {margin-top: 30px; margin-right: 2px; height: 5%;}
+.buttonCSS2 {margin-bottom: 30px; height: 5%;}
+.theDivCSS1 {margin-top: 38px; margin-left: 2px; background-color: white; float: right; margin-bottom: 2px; border: 1px solid black; width: 400px; height: 15px; text-align: center;}
+.theDivCSS2 {margin-bottom: 30px; margin-top: 10px; margin-left: 2px; background-color: white; float: right; border: 1px solid black; width: 400px; height: 15px; text-align: center;}
+.mainDiv {width: 54%;}
+</style>
+</head>
+
+<body style="background-color: lightgrey;">
+<div style="width: 100%; margin: 0px; padding: 0px; border: 0px; float: left; background-color: lightblue;">
+<h1 style="text-align: center;"> Converting Numbers - Binary and Decimals </h1>
+</div>
+
+<div style="background-color: #fef488; width: 100%; margin: 0px; padding: 0px; border: 0px; float: left; flex-flow: column; height: 100%; align-items: center; display: flex;">
+	<div class="mainDiv">
+		<input id="theInput1" class="inputCSS1" placeholder="Type a Binary Number">
+		<button class="buttonCSS1" onclick="binaryToDecimal ();">
+			Convert Binary to Decimals
+		</button>
+		<span style="margin-left: 10px;"> &#10095; </span>
+		<div class="theDivCSS1" id="div1" title="Result comes here!">
+		</div>
+		<br>
+
+		<input id="theInput2" class="inputCSS2" placeholder="Type a Decimal Number">
+		<button class="buttonCSS2" onclick="decimalToBinary ('theInput2', 'div2');">
+			Convert Decimals to Binary
+		</button>
+		<span style="margin-left: 10px"> &#10095; </span>
+		<div class="theDivCSS2" id="div2" title="Result comes here!">
+		</div>
+	</div>
+</div>
+
+
+<script>
+function binaryToDecimal ()
+{
+	var theValue = document.getElementById ('theInput1').value;
+
+	theValue.toString ();
+	var theResult = parseInt (theValue, 2);
+
+	console.log (theResult);
+	document.getElementById ('div1').innerHTML = theResult;
+	console.log ("It Worked! btd...");
+}
+
+function decimalToBinary (inp, outp) 
+{
+    var pd = '';
+    var output = document.getElementById (outp);
+    var input = document.getElementById (inp).value;
+    output.innerHTML = '';
+
+    for (i=0; i < input.length; i++) {var e=input[i].charCodeAt(0); var s = "";
+        do 
+	    {
+	        var a =e%2;
+	        console.log (a);
+	        e=(e-a)/2;
+	        s=a+s;
+	        console.log (s);
+        }
+        while(e!=0);
+        output.innerHTML += s.substring (2) + pd;
+    }
+}
+
+</script>
+</body>
+</html>
+
+<!--
+Да се направи задача, в която се променя нормална в двоична цифра и обратно.
+-->

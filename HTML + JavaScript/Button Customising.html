@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Button Customising </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon"> <!-- cursor in style changes the cursor look -->
+<style>
+.theButton {width: 20%; height: 10%; text-align: center; font-size: 20px; font-family: 'Arial Black'; background-color: blue; border: 2px solid grey; position: absolute; top: 20%; left: 40%; border-radius: 20px; transition: all 0.6s ease 0s;}
+.theButton:focus {outline:0;}
+.theButton:hover {background-color: lightblue; border: 2px solid black; color: yellow; cursor: pointer;}
+.theDiv {position: absolute; top: 30%; left: 44%;}
+</style>
+</head>
+
+<body style="background-color: lightgrey;">
+<h1 style="text-align: center;"> Creating a Stylish Buttton </h1>
+
+<button class="theButton" onclick="buttonClickCounter ()">
+	View
+</button>
+
+<script>
+var counter = 0;
+
+function buttonClickCounter ()
+{
+	counter++;
+	document.getElementById ('theDiv').innerHTML = "You Have Clicked " + counter + " times!";
+}
+</script>
+
+<div id="theDiv" class="theDiv">
+</div>
+</body>
+</html>
+
+<!--
+една малко по-практична задача. 
+Да направим един красив бутон. 
+Например да е със заоблени краища, нормално да е син ,но като се мине с мишката отгоре да става светло син с по-тъмен бордер. В бутона да пише "View".  Текста в бутона да е черен след заставане с мишката да свети в жълто.  
+-->

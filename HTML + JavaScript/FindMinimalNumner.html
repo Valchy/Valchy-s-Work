@@ -1,0 +1,66 @@
+<html>
+<head>
+<title> FindMinimalNumner </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: ff0">
+<script>
+var arr =[-232, 23,-2, 14, 17, -1, -23, 19];
+function FindMinNumber (x)
+{
+	var arr2 = arr [0];
+	for (var i = 1; i < x.length; i++)
+	{
+		if (arr2 > arr [i])
+		{
+			console.log (arr [i]);
+			arr2 = arr [i];
+		}
+	}
+	document.write ("And the Answer is: " + arr2);
+}
+
+function SortTopThree (q)
+{
+	var tmp = "";
+	for (var t = 0; t < q.length; t++)
+	{
+		var is_sorted = true;
+		for (var i = 0; i <= q.length; i++)
+		{
+			if (arr [i] > arr [i+1])
+			{
+				tmp = arr [i];
+				arr [i] = arr [i+1];
+				arr [i+1] = tmp;
+				is_sorted = false;
+			}
+			console.log (arr [0] + arr [1] + arr [2])
+		}
+				if (is_sorted === true)
+				{
+					break;
+					// break makes you leave the cycle and continue with the rest fo the function but return stop the entire fucntion and makes you leave the function
+				} 
+	}
+	document.write ("<br>" + t + " :Answer: " + arr [0] + " | " + arr [1] + " | " + arr [2])
+}
+
+FindMinNumber (arr);
+SortTopThree (arr);
+</script>
+</body>
+</html>
+
+<!--
+Нека имаме масив с числа - положителни и отрицателни. Да се напише функция, което да и се подава като параметър такъв масив с числа, а функцията да връща числото с минимална стойност.
+Примерен масив : 
+var num_data[2, 23,-2, 14, 17, -1, -23, 19];
+
+ ако предположим, че функцията се казва min(),  то min(num_data) трябва да върне -23.
+-->
+
+<!--
+DOWNLOAD SUBLINE TEXT 2 OR 3 AND USE THAT INSTEAD!
+-->

@@ -1,0 +1,70 @@
+<html>
+<head>
+<title> TableAdding </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style>
+.tableOne {border-collapse: collapse; width: 60.1%; text-align: center;}
+.tableOne td {padding: 7px; border: lightgreen 1px solid;}
+.tableOne tr {background:white;}
+.inputOne {width: 100%; border: 1px solid black; height: 5%; border-right: 0px; border-bottom: 0px}
+.inputTwo {width: 100%; border: 1px solid black; height: 5%; border-bottom: 0px;}
+.buttons {width: 100%; border: 1px solid black; height: 5%; border-right: 0px;}
+.buttonss {width: 100%; border: 1px solid black; height: 5%;}
+.divoto {width: 50%; float: left;}
+</style>
+</head>
+
+<body style="background-color: lightgrey;">
+<script>
+var counter = 3;
+
+function rowAdd ()
+{
+	var theSave = document.getElementById('theTable').innerHTML;
+	var theAdd = '<tr> <td id="' + counter + '" > Add Information... </td> <td id="' + (counter+1) + '" > Add Information... </td> </tr>';
+	document.getElementById('theTable').innerHTML = theSave + theAdd;
+	counter += 2;
+}
+
+function Counting ()
+{
+	var value = document.getElementById ('theInputNumber').value;
+	document.getElementById (value).innerHTML = document.getElementById ('theInputValue').value;
+}
+
+</script>
+
+<table id="theTable" class="tableOne">
+	<tr>
+		<td id="1">
+			Add Information...
+		</td>
+		<td id="2">
+			Add Information...
+		</td>
+	</tr>
+</table>
+
+<div style="width: 60%;">
+	<div class="divoto">
+		<input id="theInputNumber" class="inputOne" placeholder="Place a Number of TD..."/>
+		<br>
+		<button id="theButtonOne" class="buttons" onclick="rowAdd ()">
+			Add a row :D
+		</button>
+	</div>
+	<div class="divoto">
+		<input id="theInputValue" class="inputTwo" placeholder="Change the Value..."/>
+		<button id="theButtonTwo" class="buttonss" onclick="Counting ()">
+			Change Info :O
+		</button>
+	</div>
+</div>
+
+</body>
+</html>
+
+<!--
+- друга задача: 
+ ако имаме таблица с две колони и бутон под нея при натискане на бутона да се добавя нов ред в края на таблицата.
+ -->

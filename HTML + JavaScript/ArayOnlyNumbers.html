@@ -1,0 +1,48 @@
+<html>
+<head>
+<title> ArayOnlyNumbers </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">
+	</ul>
+</div>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script>
+function ArrayOnlyNumbers (x)
+{
+	var Arr = [];
+	for (var i = 0; i < x.length; i=i+1)
+	{
+		var c = x.charAt (i);
+		if (isFinite (c) && c!=' ')
+		{
+			Arr.push (c);
+		}
+	}
+	// var HI = Arr.toString ();
+	// document.getElementById ('mp').innerHTML = HI;
+}
+
+// ArrayOnlyNumbers ("I am 15 years old. The Price is 10.88€");
+</script>
+
+<div class="mainPage" id="mp">
+	<h1> Basic Array number Function </h1>
+	Answer: 1,5,1,0,8,8
+</div>
+
+</body>
+</html>
+
+<!--
+- да се напише програма ,която да изкара числата ,които се срещнат в изречение. Нека на функция се подаде стринг/изречение. В резултат да се върне арей само с намерените числа. Например:
+
+"I am 15 years old. The prise is 10.88€."
+Резултат:
+[15,10.88]
+-->

@@ -1,0 +1,275 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> On/Off Switch </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+/* The switch - the box around the slider */
+.switch {position: relative; display: inline-block; width: 60px; height: 34px;}
+/* Hide default HTML checkbox */
+.switch input {display: none;}
+/* The slider */
+.slider {position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;  background-color: #ccc; -webkit-transition: .4s;transition: .4s;}
+.slider:before {position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .4s; transition: .4s;}
+input:checked + .slider {background-color: #2196F3;}
+input:focus + .slider {box-shadow: 0 0 1px #2196F3;}
+input:checked + .slider:before {-webkit-transform: translateX(26px); -ms-transform: translateX(26px);transform: translateX(26px);}
+/* Rounded sliders */
+.slider.round {border-radius: 34px;}
+.slider.round:before {border-radius: 50%;}
+.theFlexCheckboxDiv {display: flex; flex-direction: column;}
+
+
+/* The container */
+.container {display: block; position: relative; padding-left: 35px; margin-bottom: 12px; cursor: pointer; font-size: 22px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+/* Hide the browser's default checkbox */
+.container input {position: absolute; opacity: 0;}
+/* Create a custom checkbox */
+.checkmark {position: absolute; top: 0; left: 0; height: 25px; width: 25px; background-color: #eee;}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {background-color: #ccc;}
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {background-color: #2196F3;}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {content: ""; position: absolute; display: none;}
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {display: block;}
+/* Style the checkmark/indicator */
+.container .checkmark:after {left: 9px; top: 5px; width: 5px; height: 10px; border: solid white; border-width: 0 3px 3px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);}
+
+
+body {overflow-x: hidden; overflow-y: hidden;}
+label {display: flex; flex-direction: row; justify-content: flex-end; width: 720px;}
+h4 {margin-top: 0px; padding-top: 0px;}
+h4:first-of-type {margin-bottom: 5px !important;}
+/* That's because the <h4> is not the first child of its parent. Element:first-child represents the first child of its parent, 
+matching the element. And in this particular instance, the first element of <article> is a <h2> element; Not the <h4>.
+You could use :first-of-type pseudo class to select the first <h4> element */
+.theFlexCheckboxDiv {font-size: 30px; font-family: 'Montserrat-Thin'; display: flex; flex-direction: row;}
+.theFlexCheckboxDiv input[type="checkbox"] {zoom: 2;}
+.theFlexCheckboxDiv input[type="checkbox"]:hover {cursor: pointer;}
+.theFlexCheckBoxDiv div:last-of-type {margin-left: 20px;}
+.theInput {visibility: hidden; margin-left: 16px; font-size: 20px; height: 40px; width: 300px;}
+.theButtonSubmit {width: 35%; transition: all 0.30s ease 0s;}
+.submitTwo {margin-top: 10px; transition: all 0.30s ease 0s;}
+.submitTwo:hover, .theButtonSubmit:hover {cursor: pointer; background-color: lightblue;}
+.submitTwo:focus, .theButtonSubmit:focus {outline: none;}
+.theParentCheckboxDiv {display: flex; flex-direction: column;}
+.difLabels label {display: flex; justify-content: flex-start; font-family: 'Montserrat-Light';}
+.smallLabel {font-size: 15px; display: flex !important; flex-direction: row; align-items: baseline; align-content: center;}
+.hiddenInput {display: none; margin-left: 4px;}
+#theResultsDiv, #theResultsDivOther {font-family: 'Arial' !important; font-size: 16px !important; margin-top: 10px;}
+.hiddenInput:first-letter {text-transform: capitalize;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> On/Off Switch - Click it and see what changes </h1>
+
+	<h4> Custom On &amp; Off Switches: </h4>
+	<!-- Rectangular Switch -->
+	<label class="switch">
+ 		<input type="checkbox">
+  		<span class="slider"></span>
+	</label>
+
+	<!-- Circular Switch -->
+	<label class="switch">
+  		<input type="checkbox">
+  		<span class="slider round" onclick="theSwitch();"></span>
+	</label>
+
+	<hr>
+	<h4> Custom Checkboxes: </h4>
+	<!-- Custom Checkboxes -->
+	<label class="container">One
+  		<input type="checkbox">
+  		<span class="checkmark"></span>
+	</label>
+	<label class="container">Two
+ 		<input type="checkbox">
+  		<span class="checkmark"></span>
+	</label>
+	<label class="container">Three
+  		<input type="checkbox">
+  		<span class="checkmark"></span>
+	</label>
+	<label class="container">Four
+  		<input type="checkbox">
+  		<span class="checkmark"></span>
+	</label>
+
+	<hr>
+	<h4 style="margin-bottom: 10px;"> My own Checkboxes &amp; Switches: </h4>
+	<!-- My checkbox -->
+	<div class="theFlexCheckboxDiv">
+		<div class="difSwitches">
+		<label class="mySwitch"> I like cats because:
+			<input type="checkbox" onclick="inputShowHide(this);">
+			<input type="text" class="theInput" placeholder="Answer..." oninput="submitAnswers(true);" maxlength="61">
+		</label>
+		<label class="mySwitch"> What I like in cats is:
+			<input type="checkbox" onclick="inputShowHide(this);">
+			<input type="text" class="theInput" placeholder="Answer..." oninput="submitAnswers(true);" maxlength="60">
+		</label>
+		<label class="mySwitch"> Favourite cat breeds are:
+			<input type="checkbox" onclick="inputShowHide(this);">
+			<input type="text" class="theInput" placeholder="Answer..." oninput="submitAnswers(true);" maxlength="56">
+		</label>
+		<!-- Why can I click on the checkbox event when im not hovering it? -->
+		<!-- Make button as big as text above -->
+		<button onclick="submitAnswers(true);" class="theButtonSubmit">
+			Submit Answers
+		</button>
+
+		<div id="theResultsDiv"></div>
+		</div>
+
+		<div class="difLabels">
+			<label> Which animals do you like? </label>
+			<label class="smallLabel"> <input type="checkbox" id="i1" onclick="uncheckOthers(1);"> I like all of them! </label>
+			<label class="smallLabel"> <input type="checkbox" id="i2" onclick="uncheckOthers(2);"> I hate them! </label>
+
+			<div class="theParentCheckboxDiv">
+				<label class="smallLabel"> <input type="checkbox" onclick="uncheckOthers(3);"> Cats </label>
+				<label class="smallLabel"> <input type="checkbox" onclick="uncheckOthers(3);"> Dogs </label>
+				<label class="smallLabel"> <input type="checkbox" onclick="uncheckOthers(3);"> Birds </label>
+				<label class="smallLabel"> <input type="checkbox" id="i3" onclick="uncheckOthers(4);"> Other: <input type="text" class="hiddenInput" maxlength="30"> </label>
+			</div>
+
+			<button onclick="submitAnswers(false);" class="submitTwo">
+				Show Final Answers!
+			</button>
+
+			<p id="theResultsDivOther"> </p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+// pageConfirmation();
+var tempValue;
+
+function finishOffSentence (string) { // Може ли функция да има 'space'?
+	var temp = string.toLowerCase();
+	tempValue = temp.charAt(0).toUpperCase() + temp.slice(1); // <-- '1, temp.length'
+}
+
+function uncheckOthers (wut) { // $(this).wut('input').prop('checked', false);
+	if (wut == 1) {
+		$('#i2').prop('checked', false);
+		$('.hiddenInput').hide();
+		$('.theParentCheckboxDiv input[type=checkbox]').each(function (i) {
+		$(this).prop('checked', false);
+	});
+	}
+	else if (wut == 2) {
+		$('#i1').prop('checked', false);
+		$('.hiddenInput').hide();
+		$('.theParentCheckboxDiv input[type=checkbox]').each(function (i) {
+		$(this).prop('checked', false);
+	});
+	}
+	else if (wut == 3) {
+		$('#i1, #i2').prop('checked', false);
+	}
+	else if (wut == 4) {
+		$('#i1, #i2').prop('checked', false);
+		if ($('#i3').prop('checked')) {
+			$('.hiddenInput').show();
+		}
+		else {
+			$('.hiddenInput').hide();
+		}
+	}
+}
+
+function inputShowHide (theInput) {
+var checked = $(theInput).prop('checked');
+
+	$('.theFlexCheckboxDiv input[type=checkbox]').each(function (i) {
+		$(this).prop('checked', false);
+		$(this).next('input').css({'visibility': 'hidden'});
+	});
+
+	$(theInput).prop('checked', checked);
+
+	if ($(theInput).prop('checked') == true) {
+		$(theInput).next('input').css({'visibility': 'visible'});
+	}
+	else {
+		$(theInput).next('input').css({'visibility': 'hidden'});
+	}
+}
+
+function submitAnswers (a) {
+var sentences = ['I like cats because:', 'What I like in cats is:', 'Favourite cat breeds are:'];
+var animals = ['Cats', 'Dogs', 'Birds'];
+var counter = 0;
+
+	if (a === true) {
+		document.getElementById('theResultsDiv').innerHTML =  '';
+		$('.difSwitches input[type=text]').each(function (i) {
+			var temp = $(this).val();
+
+			$('#theResultsDiv').append('<br>'+sentences[counter]+' '+temp);
+			counter++;
+		});
+	}
+	else if (a === false) {
+		document.getElementById('theResultsDivOther').innerHTML =  '';
+
+		if ($('.hiddenInput').val() != '') {
+			var temp = $('.hiddenInput').val();
+			finishOffSentence (temp);
+
+			$('#theResultsDivOther').append('Based on the Results you like:'+'<br>'+ tempValue + ', ');
+		}
+		else {
+			$('#theResultsDivOther').append('Based on the Results you like:'+'<br>');
+		}
+
+		$('.theParentCheckboxDiv input[type=checkbox]').each(function (i) {
+			if ($(this).prop('checked') == true && counter <= 2) {
+				$('#theResultsDivOther').append(animals[counter]+', ');
+				counter++;
+			}
+			else {
+				counter++;
+			}
+		});
+
+		var html = document.getElementById('theResultsDivOther').innerHTML;
+		var theHTML = html.slice(0, html.length-1);
+		document.getElementById('theResultsDivOther').innerHTML = theHTML;
+	}
+}
+
+function pageConfirmation () {
+	if (confirm('Proceed to Page?')) {
+		return;
+	}
+	else {
+		$('.mainPage').css({'display': 'flex', 'align-items': 'center', 'justify-content': 'center'}).html('Content not avaliable, please refresh the Page or try again later...');
+	}
+}
+</script>
+</body>
+</html>
+<!--
+нека имаме списък с редове, който да имат чекбоксове, текст  и накрая поле за въвеждане на текст(input type=text). 
+Да се направи така, че при кликане на чекбокс да се размаркират(да не са чекнати) другите чекбоксове . И освен това на чекнатите
+редове да се покаже полето за писане на всички не чекнати това поле за писане да е скрито. 
+
+Make a beautiful on off switch which depending if it on or off has a different thing happen
+TRY USING Boolean(10 > 3) returns true;
+-->

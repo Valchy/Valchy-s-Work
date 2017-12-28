@@ -1,0 +1,293 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Row Change</title>
+<link rel="icon shortcut" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css">
+.theCenterDiv {width: 60%; margin-left: 20%;}
+table {border: 1px solid black; text-align: center; width: 33%; border-collapse: collapse; background-color: white; float: left;}
+th {padding: 10px;}
+th:hover {background-color: red; cursor: pointer;}
+tr {padding: 0px;}
+td:hover {background-color: red !important; cursor: pointer;}
+.theTable td {border: 1px solid black; padding: 10px; text-align: left;}
+.theTable2 td {border: 1px solid black; padding: 10px; text-align: center;}
+.theTable2 tr:hover td, .theTable2 tr:hover td {background-color: red;}
+.theTable3 td {border: 1px solid black; padding: 10px; text-align: right;}
+#theButton:focus {outline: none;}
+#rotation {font-size: 50px; color: white; text-shadow: 2px 2px 4px black; cursor: pointer; transition: transform 1s;}
+#rotation:hover {color: lightgrey; transform: rotate(-360deg);}
+#green {font-size: 50px; color: white; text-shadow: 2px 2px 4px black; cursor: pointer; transition: transform 1s ease;}
+#green:hover {color: lightgreen; transform: rotate(-360deg);}
+#blue {font-size: 50px; color: white; text-shadow: 2px 2px 4px black; cursor: pointer; transition: transform 1s ease; position: relative;}
+#blue:hover {color: blue; transform: rotate(-360deg);}
+.theSpan {text-align: center; padding: 0px; font-weight: 900; font-size: 40px; width: 100%;}
+.aLink {text-decoration: none; color: white;transform: rotate(-360deg);}
+.aLink:hover {color: lightblue; transform: rotate(-360deg);}
+#theSpanDiv {font-size: 20px; text-align: center; text-shadow: 2px 1px 5px black;}
+.trStyle td, .trStyle th {
+	background-color: #00FFFF;
+}
+@keyframes spanDiv
+{
+	0%{font-size: 20px;}1%{font-size: 20.1px;}2%{font-size: 20.2px;}3%{font-size: 20.3px;}4%{font-size: 20.4px;}5%{font-size: 20.5px;}6%{font-size: 20.6px;}7%{font-size: 20.7px;}8%{font-size: 20.8px;}9%{font-size: 20.9px}
+	10%{font-size: 21px;}11%{font-size: 21.1px;}12%{font-size: 21.2px;}13%{font-size: 21.3px;}14%{font-size: 21.4px;}15%{font-size: 21.5px;}16%{font-size: 21.6px;}17%{font-size: 21.7px;}18%{font-size: 21.8px;}19%{font-size: 21.9px}
+	20%{font-size: 22px;}21%{font-size: 22.1px;}22%{font-size: 22.2px;}23%{font-size: 22.3px;}24%{font-size: 22.4px;}25%{font-size: 22.5px;}26%{font-size: 22.6px;}27%{font-size: 22.7px;}28%{font-size: 22.8px;}29%{font-size: 22.9px}
+	30%{font-size: 23px;}31%{font-size: 23.1px;}32%{font-size: 23.2px;}33%{font-size: 23.3px;}34%{font-size: 23.4px;}35%{font-size: 23.5px;}36%{font-size: 23.6px;}37%{font-size: 23.7px;}38%{font-size: 23.8px;}39%{font-size: 23.9px}
+	40%{font-size: 24px;}41%{font-size: 24.1px;}42%{font-size: 24.2px;}43%{font-size: 24.3px;}44%{font-size: 24.4px;}45%{font-size: 24.5px;}46%{font-size: 24.6px;}47%{font-size: 24.7px;}48%{font-size: 24.8px;}49%{font-size: 24.9px}
+	50%{font-size: 25px;}51%{font-size: 24.9px;}52%{font-size: 24.8px;}53%{font-size: 24.7px;}54%{font-size: 24.6px;}55%{font-size: 24.5px;}56%{font-size: 24.4px;}57%{font-size: 24.3px;}58%{font-size: 24.2px;}59%{font-size: 24.1px}
+    60%{font-size: 24px;}61%{font-size: 23.9px;}62%{font-size: 23.8px;}63%{font-size: 23.7px;}64%{font-size: 23.6px;}65%{font-size: 23.5px;}66%{font-size: 23.4px;}67%{font-size: 23.3px;}68%{font-size: 23.2px;}69%{font-size: 23.1px}
+    70%{font-size: 23px;}71%{font-size: 22.9px;}72%{font-size: 22.8px;}73%{font-size: 22.7px;}74%{font-size: 22.6px;}75%{font-size: 22.5px;}76%{font-size: 22.4px;}77%{font-size: 22.3px;}78%{font-size: 22.2px;}79%{font-size: 22.1px}
+    80%{font-size: 22px;}81%{font-size: 21.9px;}82%{font-size: 21.8px;}83%{font-size: 21.7px;}84%{font-size: 21.6px;}85%{font-size: 21.5px;}86%{font-size: 21.4px;}87%{font-size: 21.3px;}88%{font-size: 21.2px;}89%{font-size: 21.1px}
+    90%{font-size: 21px;}91%{font-size: 20.9px;}92%{font-size: 20.8px;}93%{font-size: 20.7px;}94%{font-size: 20.6px;}95%{font-size: 20.5px;}96%{font-size: 20.4px;}97%{font-size: 20.3px;}98%{font-size: 20.2px;}99%{font-size: 20.1px}
+    100% {font-size: 20px;}
+}
+</style>
+</head>
+<body style="background: linear-gradient(yellow 5%, orange 50%, red); margin: 0px; padding: 0px;">
+		<!-- Try to make the icons not spin 360 again after mouse not hover -->
+<span class="theSpan">
+	<div style="margin-left: 15%">
+	Row Change 
+	<div style="text-align: right; padding: 0 0 0 0px; float: right;">
+		<button style="background-color: transparent; border: 0px" id="theButton">
+			<span class="material-icons" id="rotation" onclick="spanCount ();"> 
+				3d_rotation
+			</span>
+		</button>
+		<button style="background-color: transparent; border: 0px" id="theButton">
+			<span class="material-icons" id="green" onclick="callMe ();"> 
+				phone 
+			</span>
+		</button>
+		<button style="background-color: transparent; border: 0px;" id="theButton">
+			<span class="material-icons" id="blue"> 
+				<a href="https://www.youtube.com/ValchyGaming" class="aLink" target="blank" title="Go like my YouTube Page :D">
+				thumb_up 
+				</a>
+			</span>
+		</button>
+	</div>
+	</div>
+</span> 
+
+<hr style="border: 7px solid black; margin: 20 0 20 0px">
+
+<script type="text/javascript">
+var changeColor = 0;
+var changeHover = 0;
+var changeRow1 = 0;
+var changeRow2 = 0;
+var changeRow3 = 0;
+var changeRow4 = 0;
+var theCount = 0;
+
+function callMe ()
+{
+	document.getElementById ('iPhone').style.cssText = "font-size: 20px; color: green; visibility: visible";
+	document.getElementById ('spanNumber').style.cssText = "font-weight: 900; font-size: 20px; visibility: visible";
+	document.getElementById ('c').style.cssText = "text-align:center;font-weight:900;font-size:30px;visibility:visible";
+}
+
+function spanCount ()
+{
+	theCount = theCount + 1;
+	if (theCount < 2)
+	{
+		document.getElementById ('theSpanDiv').style.cssText = "font-size: 20px; animation-name: spanDiv; animation-duration: 5s; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-timing-function: ease;"
+		document.getElementById ('theSpanDiv').innerHTML = "You span the 360 button: " + theCount + " time!";
+	}
+	else
+	{
+		document.getElementById ('theSpanDiv').innerHTML = "You span the 360 button: " + theCount + " times!";
+	}
+}
+
+function theColorChange ()
+{
+	if (changeColor === 0)
+	{
+		changeColor++;
+		document.getElementById ('theTable').style.cssText = "border: 1px solid black; text-align: center; width: 33%; border-collapse: collapse; background-color: lightgreen; float: left; margin-right: 4px;";
+	}
+	else
+	{
+		changeColor--;
+		document.getElementById ('theTable').style.cssText = "border: 1px solid black; text-align: center; width: 33%; border-collapse: collapse; background-color: white; float: left; margin-right: 4px;";
+	}
+}
+
+function theRowChange (a)
+{
+	if (a === 1)
+	{
+		if (changeRow1 === 0)
+		{
+			changeRow1++;
+			document.getElementById ('theTH').style.cssText = "background-color: #9932CC;";
+		}
+		else
+		{
+			changeRow1--;
+			document.getElementById ('theTH').style.cssText = "background-color: white;";
+		}
+	}
+
+	if (a === 2)
+	{
+		if (changeRow2 === 0)
+		{
+			changeRow2++;
+			document.getElementById ('theTD2').style.cssText = "background-color: #9932CC;";
+		}
+		else
+		{
+			changeRow2--;
+			document.getElementById ('theTD2').style.cssText = "background-color: white;";
+		}
+	}
+
+	if (a === 3)
+	{
+		if (changeRow3 === 0)
+		{
+			changeRow3++;
+			document.getElementById ('theTD3').style.cssText = "background-color: #9932CC;";
+		}
+		else
+		{
+			changeRow3--;
+			document.getElementById ('theTD3').style.cssText = "background-color: white;";
+		}
+	}
+
+	if (a === 4)
+	{
+		if (changeRow4 === 0)
+		{
+			changeRow4++;
+			document.getElementById ('theTD4').style.cssText = "background-color: #9932CC;";
+		}
+		else
+		{
+			changeRow4--;
+			document.getElementById ('theTD4').style.cssText = "background-color: white;";
+		}
+	}
+}
+
+function theHoverChange (k)
+{
+	if (k.className == "trStyle") {
+		k.className = "";
+	}
+	else {
+		k.className = "trStyle";
+	}
+}
+</script>
+
+<div style="float: right; padding: 0 50 0 0px;">
+	<span style="text-align: center; font-weight: 900; font-size: 30px; visibility: hidden;" id="c"> Call Me... <br>
+	</span>
+	<i class="material-icons" style="font-size: 20px; color: green; visibility: hidden;" id="iPhone"> phone 
+	</i>
+	<span style="font-weight: 900; font-size: 20px; visibility: hidden;" id="spanNumber"> 0888555880
+	</span>
+</div>
+
+<div class="theCenterDiv">
+<form>
+	<table class="theTable" onclick="theColorChange ();" id="theTable" style="margin-right: 4px;">
+		<tr>
+			<th>
+				Color Changing Table
+			</th>
+		</tr>
+		<tr>
+			<td>
+				If there are thirty Cows
+			</td>
+		</tr>
+		<tr>
+			<td>
+				and twennty ate Chickens
+			</td>
+		</tr>
+		<tr>
+			<td>
+				How many Didnt?
+			</td>
+		</tr>
+	</table>
+
+	<table class="theTable2" onclick="theHoverChange ();" id="theTableTwo" style="margin-right: 4px;">
+		<tr onclick="theHoverChange (this);">
+			<th id="thColor" colspan="2">
+				Hover Color Changing Table
+			</th>
+		</tr>
+		<tr onclick="theHoverChange (this);">
+			<td id="td1Color">
+				A mother cat has four kittens;
+			</td>
+			<td id="td1Color">
+				A mother cat has four kittens;
+			</td>
+		</tr>
+		<tr onclick="theHoverChange (this);">
+			<td id="td2Color">
+				January, February and March
+			</td>
+			<td id="td2Color">
+				January, February and March
+			</td>
+		</tr>
+		<tr onclick="theHoverChange (this);">
+			<td id="td3Color">
+				What is the mothers name
+			</td>
+			<td id="td3Color">
+				What is the mothers name
+			</td>
+		</tr>
+	</table>
+
+	<!-- Как да не махна hover ефекта -->
+	<table class="theTable3" id="theTable">
+		<tr>
+			<th id="theTH" onclick="theRowChange (1);">
+				Row Color Changing Table
+			</th>
+		</tr>
+		<tr>
+			<td id="theTD2" onclick="theRowChange (2);">
+				If there are thirty Cows
+			</td>
+		</tr>
+		<tr>
+			<td id="theTD3" onclick="theRowChange (3);">
+				and twennty ate Chickens
+			</td>
+		</tr>
+		<tr>
+			<td id="theTD4" onclick="theRowChange (4);">
+				How many Didnt?
+			</td>
+		</tr>
+	</table>
+</form>
+
+	<div id="theSpanDiv" class="theSpanDiv">
+		<p> </p>
+	</div>
+</div>
+</body>
+</html>
+
+<!--
+ да се направи форма в която имаме списък с редове. Нека при преминаване с мишката през всеки ред целия да се маркира в
+ различен цвят(все едно засветва). Като се кликне да си променя цвета на трети вид. При още едно кликане да се връща в
+ първоначлния цвят.
+ -->

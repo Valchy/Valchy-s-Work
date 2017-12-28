@@ -1,0 +1,35 @@
+<html>
+<head>
+<title> CombiningMassives </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: ff0">
+<script>
+function CombiningMassives (a,b)
+{
+	var r = [];
+
+	for (var i = 0; i < 3; i++)
+	{
+		r.push (a [i]);
+		r.push (b [i]);
+	}
+	console.log (r);
+	document.write (r);
+}
+
+CombiningMassives (['a','b','c'], [1,2,3]);
+</script>
+</body>
+</html>
+
+<!--
+Да се напише функция на JavaScript, която има два параметъра - масиви с еднаква дължина . Функцията да връща масив, който да е смесица от двата. Например ако имаме дадени двата масива да са:
+a1 = ['a', 'b', 'c']
+a2 = [1, 2, 3]
+
+то функцията да върне:
+
+r = [a, 1, b, 2, c, 3]
+-->

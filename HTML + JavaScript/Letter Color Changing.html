@@ -1,0 +1,111 @@
+<html>
+<hfill<meta charset="utf-8">
+<title> Letter Color Changing </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color: lightblue;">
+<p style="font-size: 30px; text-align: center;">
+	Creating JavaScript Code to change color of a div Text
+</p>
+
+<script>
+var theValue = "Change my Letters Color";
+var t = 0;
+
+function Everything ()
+{
+	var framesPerSecond = 30;
+	setInterval(function() 
+	{
+
+	}, 1000/framesPerSecond);
+}
+
+function colorChange ()
+{
+	// This is a method for generating whole numbers between the first and the last value (255 in this case is highest and 0 is the lowest number the generator can pick)
+	var R = Math.floor(Math.random () * 255) + 0;
+	var G = Math.floor(Math.random () * 255) + 0;
+	var B = Math.floor(Math.random () * 255) + 0; 
+
+	function rgb (red, green, blue) // Without this function the rgb method would of not worked
+	{
+  		return "rgb("+red+","+green+","+blue+")";
+  	}
+
+	//This method is for changing font size or other looks on a div
+	var divoto = document.getElementById ('theDiv');
+	divoto.innerHTML = 'I am changing COLOR!';
+	divoto.style.color = rgb (R, G, B);
+	divoto.style.fontSize = '20px' // You can also put something like 'large'
+
+	return false; // Once again this makes the actual change stay instead f flash onyl for a seccond
+}
+
+function colorSwitch ()
+{
+	var divine = document.getElementById ('theDiv2');
+	var temp = '';
+
+	for (var i = 0; i < theValue.length; i++)
+	{
+		temp += "<span id='"+i+"'>" + theValue.charAt (i) +"</span>";
+	}
+	return temp;
+}
+
+function theColorChange ()
+{
+	var R = Math.floor(Math.random () * 255) + 0;
+	var G = Math.floor(Math.random () * 255) + 0;
+	var B = Math.floor(Math.random () * 255) + 0; 
+
+	function rgb (red, green, blue) // Without this function the rgb method would of not worked
+	{
+  		return "rgb("+red+","+green+","+blue+")";
+  	}
+
+	var framesPerSecond = 10;
+	setTimeout(function() 
+	{
+		if (t < theValue.length)
+		{
+			document.getElementById (t).style.color = rgb (R, G, B);
+			document.getElementById (t).style.opacity = '0.8'; // Changes the opacity the div in this case
+			document.getElementById (t).style.backgroundColor = 'white';
+			theColorChange ();
+			t++;
+		}
+	}, 1000/framesPerSecond);
+	return false;
+}
+</script>
+
+<form>
+	<div id="theDiv" style="font-size: 20px;">
+		Change my Color
+	</div>
+	<input onclick="return colorChange ();" type="submit" value="Change Color">
+	<br> <br>
+
+	<div id="theDiv2" style="font-size: 20px;">
+		Change my Letters Color
+	</div>
+	<input onclick="return theColorChange ();" type="submit" value="Change Letter Color">
+</form>
+
+<script type="text/javascript">
+	document.getElementById ('theDiv2').innerHTML = colorSwitch ();
+</script>
+</head>
+</html>
+
+<!--
+задача за манипулиране на стринг. 
+Нека имаме един текст във форма, например:
+
+"Смени ми цвета"
+
+под текста да има бутон при натискането, на който една по една да почне да се сменя цвета на текста. Ако преди Това е бил сив, да стане зелен (може и друг ако повече ти харесва :)). 
+-->

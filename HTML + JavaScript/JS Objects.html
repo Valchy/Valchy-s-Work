@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> JS Objects </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<script type="text/javascript"> // This is a construction function
+	function person (name, age, weight, height)
+	{
+		this.name = name;
+		this.age = age;
+		this.weight = weight;
+		this.height = height;
+		this.toText = function ()
+		{
+			var text = '';
+			var x;
+			var razdilitel = '';
+			for (x in this)
+			{
+				if (typeof this [x] !== 'function')
+				{
+					text += razdilitel +  this [x];
+					razdilitel = ' | ';
+				}
+			}
+			return text;
+		}
+	}
+</script>
+</head>
+
+<body>
+<script type="text/javascript"> // Хубаво е да се пише...
+function callingPerson ()
+{
+	var valeri = new person ("Valeri Sabev", 15, '52kg', '180cm'); // This is creating an istance aka an object
+	var text = '';
+	var x;
+	var razdilitel = '';
+
+	for (x in valeri)
+	{
+		text += razdilitel + valeri [x];
+		razdilitel = ' | ';
+	}
+	document.getElementById ('theDiv').innerHTML = valeri.toText ();
+}
+</script>
+
+<button onclick="callingPerson ();">
+	Just Click Me
+</button>
+
+<div id="theDiv">
+</div>	
+</body>
+</html>
+
+<!--
+Да се направи джава скрипт функция която да изброява своиствата на един джава скрипт обект
+-->

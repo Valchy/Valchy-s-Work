@@ -1,0 +1,68 @@
+<html>
+<head>
+<title> WordFunction </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color:lightblue">
+<h2> <center> You will get the number of letters in the specificly chosen Array </center> </h2>
+<script>
+/*var arr = ["Hello","this","is","a","very","interesting","sentence!"];
+function WordFunction (a)
+{
+	var space = "";
+	for (var t = 0; t < a; t++)
+	{
+		document.write (space + arr [t]);
+		var space = " ";
+	}
+}
+
+WordFunction (arr.length); */
+
+var a = "Hello this is a very interesting sentence!"
+var DataArr = [];
+function WordFunction (a)
+{
+	DataArr = a.split (' ');
+	for (var i = 0; i < DataArr.length; i++) 
+	{
+		if (DataArr [i] == 'is')
+		{
+			DataArr [i] = DataArr [i] + " " + "not";
+		}
+		document.write (DataArr [i] + " ");
+	}
+	document.getElementById ("TextBox").placeholder="Type a number between 0 and " + (DataArr.length-1);
+}
+
+document.write ("<br>")
+</script>
+<br> <br>
+
+<input type="text" id="TextBox" placeholder="" style="width:25%" onkeyup="document.getElementById ('divo').innerHTML = DataArr [document.getElementById ('TextBox').value] +' = '+DataArr [document.getElementById ('TextBox').value].length">
+<br>
+
+<button onclick="document.getElementById ('divo').innerHTML = DataArr [document.getElementById ('TextBox').value] +' = '+DataArr [document.getElementById ('TextBox').value].length">
+	Click to get number of Letters of that Array Element!
+</button>
+
+<script type="text/javascript">
+	WordFunction (a);
+</script>
+
+<div id="divo">
+
+</div>
+
+</body>
+</html>
+
+<!--
+- да се напише програма/функция, която да има един входен параметър -стринг . Стрингът да се раздели на думи и всяка дума да се запази в клетка на масив. Като резултат функциата да върне масив с отделните думи в текста. Например ако се подаде следния текст на функцията 
+var data='This is sentence'; 
+
+функцията да върне следния масив с данни :
+
+res_data = ['This', 'is', 'sentence']
+-->

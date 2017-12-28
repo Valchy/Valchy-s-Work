@@ -1,0 +1,215 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Accordion </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style>
+nav {font-family: 'Montserrat'; border: 2px solid black; border-collapse: collapse; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+nav ul {border-collapse: collapse; padding: 0px; background-color: blue;}
+nav li {border-collapse: collapse; border-bottom: 2px solid black; padding: 10px; font-size: 40px; font-weight: 900;}
+nav li:hover {cursor: pointer; background-color: #ab976d;}
+nav li:last-child {border-bottom: 0px solid black; border-collapse: collapse;}
+nav span {color: white; float: right;}
+img {width: 340px; height: 250px;}
+hr {margin: 10px;}
+.navigationBar a {text-decoration: none; color: white; padding-left: 20px;}
+.theSection {display: none;}
+.theSection div {background-color: lightgrey !important;}
+.active {display: block !important;}
+.highlight {background-color: #ab976d;}
+.theLi {color: white; font-size: 30px !important; font-weight: 100 !important; padding: 0px;}
+.theTable {border: 1px solid black; border-collapse: collapse; margin: auto;}
+.theTable tr {padding-bottom: 20px;}
+.theTable td {width: 340; height: 250; border: 16px solid black;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> I made a Accordion: </h1>
+	<nav class="navigationBar">
+		<ul> <!-- onclick="return showSectionOne ();" is on li because otherwise the function works only when i click the words... -->
+			<li onclick="showSectionOne ();" id="lili1">
+				<a href="#theTable1" > Cat Photos </a> <span id="span1"> &#8674; </span>
+				<section class="theSection" id="section11">
+					<div>
+						<ul>
+							<li id="li11" class="theLi">
+								<hr>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</li>
+			<li onclick="showSectionTwo ();" id="lili2">
+				<a href="#theTable2"> Dog Photos </a> <span id="span2"> &#8674; </span>
+				<section class="theSection" id="section22">
+					<div>
+						<ul>
+							<li id="li22" class="theLi">
+								<hr>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</li>
+			<li onclick="showSectionThree ();" id="lili3">
+				<a href="#theTable3"> More Photos </a> <span id="span3"> &#8674; </span>
+				<section class="theSection" id="section33">
+					<div>
+						<ul>
+							<li id="li33" class="theLi">
+								<hr>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var arrayPics = ['cat1.jpeg','cat2.jpeg','cat3.jpeg','cat4.jpeg','cat5.jpeg','cat6.jpeg','dog1.jpeg','dog2.jpeg','dog3.jpeg','dog4.jpeg','dog5.jpeg','dog6.jpeg','rdm1.jpeg','rdm2.jpeg','rdm3.jpeg','rdm4.jpeg','rdm5.jpeg','rdm6.jpeg'];
+var arrayCounter = 0;
+var openCheck = 0;
+
+// Have screen scrolling upon li click?
+$(function () {
+	for (var i = 1; i <=3; i++) {
+		$('#li'+i+i).append($('<table/>', {'id': 'theTable'+i, 'class': 'theTable'}));
+		for (var x = 1; x <= 2; x++) {
+			$('#theTable'+i).append($('<tr/>', {'id': 'tr'+i+x}));
+			for (var y = 1; y <= 3; y++) {
+				$('#tr'+i+x).append($('<td/>').append($('<img/>', {'src': arrayPics[arrayCounter]})));
+				arrayCounter++;
+			}
+		}
+	}
+});
+
+	function showSectionOne () {
+		$(function () {
+			if ($('#section11').hasClass('active')) {
+				$('#section11').removeClass('active');
+				$('#span1').html('&#8674;');
+				$('#li11').removeClass('highlight');
+				$('#lili1').removeClass('highlight');
+				openCheck--;
+			}
+			else {
+				if (openCheck == 1) {
+					$('#section22').removeClass('active');
+					$('#section33').removeClass('active');
+					$('#span2').html('&#8674;');
+					$('#span3').html('&#8674;');
+					$('#section11').addClass('active');
+					$('#li11').addClass('highlight');
+					$('#lili1').addClass('highlight');
+					$('#li22').removeClass('highlight');
+					$('#lili2').removeClass('highlight');
+					$('#li33').removeClass('highlight');
+					$('#lili3').removeClass('highlight');
+					$('#span1').html('&#8675;');
+				}
+				else {
+					$('#section11').addClass('active');
+					$('#li11').addClass('highlight');
+					$('#lili1').addClass('highlight');
+					$('#span1').html('&#8675;');
+					openCheck++;
+				}
+			}
+		})
+	}
+
+	function showSectionTwo () {
+		$(function () {
+			if ($('#section22').hasClass('active')) {
+				$('#section22').removeClass('active');
+				$('#span2').html('&#8674;');
+				$('#li22').removeClass('highlight');
+				$('#lili2').removeClass('highlight');
+				openCheck--;
+			}
+			else {
+				if (openCheck == 1) {
+					$('#section11').removeClass('active');
+					$('#section33').removeClass('active');
+					$('#span1').html('&#8674;');
+					$('#span3').html('&#8674;');
+					$('#section22').addClass('active');
+					$('#li22').addClass('highlight');
+					$('#lili2').addClass('highlight');
+					$('#span2').html('&#8675;');
+					$('#li11').removeClass('highlight');
+					$('#lili1').removeClass('highlight');
+					$('#li33').removeClass('highlight');
+					$('#lili3').removeClass('highlight');
+				}
+				else {
+					$('#section22').addClass('active');
+					$('#li22').addClass('highlight');
+					$('#lili2').addClass('highlight');
+					$('#span2').html('&#8675;');
+					openCheck++;
+				}
+			}
+		})
+	}
+
+	function showSectionThree () {
+		$(function () {
+			if ($('#section33').hasClass('active')) {
+				$('#section33').removeClass('active');
+				$('#span3').html('&#8674;');
+				$('#li33').removeClass('highlight');
+				$('#lili3').removeClass('highlight');
+				openCheck--;
+			}
+			else {
+				if (openCheck == 1) {
+					$('#section11').removeClass('active');
+					$('#section22').removeClass('active');
+					$('#span1').html('&#8674;');
+					$('#span2').html('&#8674;');
+					$('#section33').addClass('active');
+					$('#li33').addClass('highlight');
+					$('#lili3').addClass('highlight');
+					$('#span3').html('&#8675;');
+					$('#li11').removeClass('highlight');
+					$('#lili1').removeClass('highlight');
+					$('#li22').removeClass('highlight');
+					$('#lili2').removeClass('highlight');
+				}
+				else {
+					$('#section33').addClass('active');
+					$('#li33').addClass('highlight');
+					$('#lili3').addClass('highlight');
+					$('#span3').html('&#8675;');
+					openCheck++;
+				}
+			}
+		})
+	}
+</script>
+</body>
+</html>
+
+<!--
+извинявай малко закъснях със задачата. 
+Нека този път направим така наречения  акордион. Той представлява елемент състоящ се от редове, които когато се кликне върху тях се
+разпъват - показват някаква информация -текст картинки . Когато се кликне отново на същия ред реда се прибира . Или ако се кликне на
+друг ред отворения се затваря и отваря новия. Нещо подобно има тук:
+
+https://www.transcard.bg/bg/bitovi-smetki-online/
+  -->

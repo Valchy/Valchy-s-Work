@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Target JavaScript </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+.elements-to-click {display: flex; flex-direction: column; justify-content: center; align-items: center; align-content: center; font-size: 50px; font-family: 'Montserrat-Light'}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1 style="margin-bottom: 0px;"> Click on any element and see how Target works!</h1>
+	<h5 style="text-indent: 30px; margin: 0px;"> - Look at the JavaScript code so you can also learn about nodeName </h5>
+
+	<div class="elements-to-click">
+		<p> This is a 'p' element </p>
+		<div> This is a 'div' element </div> <br>
+		<span> This is a 'span' element </span>
+		<h3> This is a 'h3' element </h1>
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+	function theClick (theElementEvent) {
+		alert(theElementEvent.target.nodeName); 
+		// You can alos use tagName instead of nodeName and it will work the same way
+	}
+
+$('.elements-to-click').on('click', theClick);
+</script>
+</body>
+</html>
+
+<!--
+Make a JavaScript funciton also using jQury in which upon different element clicks the browser alerts which one you hav clicked
+-->

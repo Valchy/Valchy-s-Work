@@ -1,0 +1,188 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Progress Bar </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+.theProgress {width:1000px; height: 30px; background-color: blue;}
+.theProgress[value] {height: 100px; border: 1px solid black;}
+.theProgress:not([value]) {background-color: red;}
+.theProgressDiv {text-align: center;}
+.questionDiv {display: flex; width: 200px; background-color: white; font-size: 50px; font-family: 'Montserrat'; border: 1px solid black; margin-top: 20px; padding-left: 20px;}
+#questionDivFinal {display: flex; width: 1200px; background-color: white; font-size: 50px; font-family: 'Montserrat'; border: 1px solid black; margin-top: 20px; padding-left: 20px;}
+.theText {font-size: 30px; margin: 0px;}
+.theButtonSubmit {width: 100px; background-color: lightgrey; border: 1px solid black;}
+.theButtonSubmit:hover {cursor: pointer;}
+.theSpanerino {font-size: 20px;}
+#tasksDiv {flex-direction: row; display: flex; justify-content: center;}
+#theP1, #theP2, #theP3, #theP4, #theP5, #theP {display: flex; flex-direction: column;}
+.theInput {width: 100px; margin-bottom: 10px; font-size: 20px;}
+.theFinalButton {background: grey; width: 200px; height: 50px; border: 1px solid #333; transition: all 0.40s ease 0s;}
+.theFinalButton:hover {background: lightgrey; cursor: pointer;}
+#divFinalButton {margin-top: 20px;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<div class="theProgressDiv">
+		<h1> Complete the tasks to move the Progress Bar... </h1>
+		<progress value="0" max="100" class="theProgress" id="theProgressBar"> </progress>
+	</div>
+
+	<div id="tasksDiv">
+	</div>
+
+	<div id="divFinalButton">
+	</div>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+//var theRandomNumber;
+var qNumber = 1;
+
+$(function () {
+	for (var i = 1; i <= 5; i++) {
+		randomNumber ();
+		$('#tasksDiv').append($('<div/>', {'id': 'theDiv'+i, 'class': 'questionDiv'}).append($('<p/>', {'id': 'theP'+i})));
+		$('#theDiv'+i).css({display: 'block'});
+		$('#theP'+i).html($('<h6/>', {'class': 'theText', 'html': 'Question '+i+':'}));	
+		$('#theP'+i).append($('<span/>', {'id': 'theSpanerino'+i, 'class': 'theSpanerino', 'html': theRandomNumber+' * '+(theRandomNumber * i)})); // Make it harder
+		$('#theP'+i).append($('<input/>', {'id': 'theInputerino'+i, 'placeholder': 'Answer...', 'class': 'theInput'}));
+		$('#theP'+i).append($('<button/>', {'onclick': 'answerCheck'+i+ ' ();', 'html': 'Submit Answer', 'class': 'theButtonSubmit', 'id': 'theButtonSubmit'+i}));
+	}
+});
+
+function randomNumber () {
+	theRandomNumber = Math.floor(Math.random () * 10) + 0;
+}
+
+function finalScreen () {
+	$(function () {
+		$('#tasksDiv').append($('<div/>', {'id': 'questionDivFinal',}).append($('<p/>', {'id': 'theP', 'html': 'You Won, Congratulations!!!'})));
+		$('#divFinalButton').append($('<button/>', {'class': 'theFinalButton', 'onclick': 'location.reload();', 'html': 'Click to Reload'}));
+	});
+}
+
+function answerCheck1 () {
+	var equation = document.getElementById('theSpanerino1').innerHTML;
+	var result = eval(equation);
+	console.log(equation+' = '+result);
+	if (document.getElementById('theInputerino1').value == result) {
+		document.getElementById('theProgressBar').value += 20;
+		document.getElementById('theButtonSubmit1').disabled = true;
+		document.getElementById('theInputerino1').disabled = true;
+		if (document.getElementById('theProgressBar').value == 100) {
+			$(function () {
+				for (var i = 1; i <= 5; i++) {
+					$('#theDiv'+i).css({display: 'none'})
+				}
+				finalScreen ();
+			})
+		}
+	}
+	else {
+		window.alert('Wrong Answer');
+	}
+}
+function answerCheck2 () {
+	var equation = document.getElementById('theSpanerino2').innerHTML;
+	var result = eval(equation);
+	console.log(equation+' = '+result);
+	if (document.getElementById('theInputerino2').value == result) {
+		document.getElementById('theProgressBar').value += 20;
+		document.getElementById('theButtonSubmit2').disabled = true;
+		document.getElementById('theInputerino2').disabled = true;
+		if (document.getElementById('theProgressBar').value == 100) {
+			$(function () {
+				for (var i = 1; i <= 5; i++) {
+					$('#theDiv'+i).css({display: 'none'})
+				}
+				finalScreen ();
+			})
+		}
+	}
+	else {
+		window.alert('Wrong Answer');
+	}
+}
+function answerCheck3 () {
+	var equation = document.getElementById('theSpanerino3').innerHTML;
+	var result = eval(equation);
+	console.log(equation+' = '+result);
+	if (document.getElementById('theInputerino3').value == result) {
+		document.getElementById('theProgressBar').value += 20;
+		document.getElementById('theButtonSubmit3').disabled = true;
+		document.getElementById('theInputerino3').disabled = true;
+		if (document.getElementById('theProgressBar').value == 100) {
+			$(function () {
+				for (var i = 1; i <= 5; i++) {
+					$('#theDiv'+i).css({display: 'none'})
+				}
+				finalScreen ();
+			})
+		}
+	}
+	else {
+		window.alert('Wrong Answer');
+	}
+}
+function answerCheck4 () {
+	var equation = document.getElementById('theSpanerino4').innerHTML;
+	var result = eval(equation);
+	console.log(equation+' = '+result);
+	if (document.getElementById('theInputerino4').value == result) {
+		document.getElementById('theProgressBar').value += 20;
+		document.getElementById('theButtonSubmit4').disabled = true;
+		document.getElementById('theInputerino4').disabled = true;
+		if (document.getElementById('theProgressBar').value == 100) {
+			$(function () {
+				for (var i = 1; i <= 5; i++) {
+					$('#theDiv'+i).css({display: 'none'})
+				}
+				finalScreen ();
+			})
+		}
+	}
+	else {
+		window.alert('Wrong Answer');
+	}
+}
+function answerCheck5 () {
+	var equation = document.getElementById('theSpanerino5').innerHTML;
+	var result = eval(equation);
+	console.log(equation+' = '+result);
+	if (document.getElementById('theInputerino5').value == result) {
+		document.getElementById('theProgressBar').value += 20;
+		document.getElementById('theButtonSubmit5').disabled = true;
+		document.getElementById('theInputerino5').disabled = true;
+		if (document.getElementById('theProgressBar').value == 100) {
+			$(function () {
+				for (var i = 1; i <= 5; i++) {
+					$('#theDiv'+i).css({display: 'none'})
+				}
+				finalScreen ();
+			});
+		}
+	}
+	else {
+		window.alert('Wrong Answer');
+	}
+}
+</script>
+</body>
+</html>
+
+<!--
+Create a progress bar which moves acordingly. Have few tasks which when each completed makes the progress bar move ;D
+Craete random tasks with maths for example using also random numebrs so it isn't the same question everytime and if the answer is correct then you moev on to the next stage and the progress bar moves up, once 100% it brightens up
+-->

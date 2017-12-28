@@ -1,0 +1,23 @@
+<html>
+<head>
+<title> NewArray </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+
+<body>
+<script>
+var a = [1,2,3,4];
+var b = new Array (5,6,7);
+function NewArray (x,y)
+{
+	var xy = x.concat (y);
+	return xy;
+}
+
+var w = NewArray (a,b);
+document.write (w.join (" || "));
+
+</script>
+</body>
+</html>

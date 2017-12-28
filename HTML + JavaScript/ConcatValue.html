@@ -1,0 +1,64 @@
+<html>
+<head>
+<title> ConcatValue </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<meta charset=utf-8/>
+<style>
+.Inp_Art:focus {outline-color: red;}
+</style>
+</head>
+
+<body style="background-color: ff9">
+<script>
+function ConcatValue ()
+{
+	var x = document.getElementById ('First_Name').value;
+	var y = document.getElementById ('Last_Name').value;
+
+	if (x.length && y.length >= 1)
+	{
+		document.getElementById ('First_Name').className = '';
+		document.getElementById ('Last_Name').className = '';
+		
+		document.getElementById ('Full_Name_Results').innerHTML = "Your Full Name is: " + x + ' ' + y;
+	}
+	else
+	{
+		document.getElementById ('First_Name').className = 'Inp_Art';
+		document.getElementById ('Last_Name').className = 'Inp_Art';
+		window.alert ('Please Enter Data in the Boxes!')
+	}
+}
+</script>
+
+<h2> <center> Doing a Trial Submit Form </center> </h2>
+
+Type in the Information below: <!-- Тук проблем ли е че няма тагове '<' или '>'? -->
+<br>
+<input placeholder="First Name" id="First_Name"> <br>
+<input placeholder="Last Name" id="Last_Name"> <br>
+<button onclick="ConcatValue ()"> Submit </button>
+
+<div id="Full_Name_Results">
+</div>
+</body>
+</html>
+<!--
+
+Аз прецених че искам целия код аз да го напиша вместо да изпозвам дадения от теб в имайла :)
+
+имаш html  форма с две полета за първо име и фамилия. Да се напише функцията "concatValue()" kоято се извиква при натискане на бутона "Submit" ,която да събира данните (двете имена) от двете полета и да ги показва в div  елемента с id  fullname. 
+<!DOCTYPE html>
+<html><head>
+<meta charset=utf-8 />
+<title>Concat first and last name from a form</title>
+</head><body>
+<form id="form_data" onsubmit="concatValue()">
+First name: <input type="text" name="first_name" value="Valeri"><br>
+Last name: <input type="text" name="last_name" value="Sabev"><br>
+<div id="fullname"></div>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+-->

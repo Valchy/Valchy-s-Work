@@ -1,0 +1,49 @@
+<html>
+<head>
+<title> Array </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<script>
+		function ArrayInfo (start,end)
+		{
+			var ArrData = [];
+			for (var x = start; x <= end ; x=x+1)
+			{
+				ArrData.push ([x,x * x,OddOrEven (x * x)]);
+			}
+			return ArrData;
+		}
+
+		function Write (a)
+		{
+			document.write ("<table style='border: 1px solid black; '>")
+			for (var y = 0; y <= a.length ; y=y+1){
+				document.write ("<tr>");
+				document.write ("<td>" + a [y][0] + "</td>");
+				document.write ("<td>" + a [y][1] + "</td>");
+				document.write ("<td>" + a [y][2] + "</td>");
+			}
+			document.write ("</table>")
+		}
+
+		Write (ArrayInfo (1,7));
+
+		function OddOrEven (a)
+			{
+				if ((a % 2) == 0)
+				{
+					return " " + 'True';
+				}
+				return " " + 'False';
+			}
+
+	</script>
+
+</body>
+</html>
+
+<!-- 
+- следва се идеята в задачата от предния път - отпечатването в табличен вид в три колони на зададен интервал от числа start до end .  Първа колона числото, втора колона числото на квадрат и трета колона true/false да ли е четно. Нека се напишат две функции като първата има за параметри интервала от числа start и end и върне като резултат данни  тип масив(в три колони). Да се напише и втора функция, която само печата данните върнати от първата в таблица .
+ -->

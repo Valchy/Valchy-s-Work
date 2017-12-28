@@ -1,0 +1,48 @@
+<html>
+<head>
+<title> Button java </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style>
+.Inp_Art:focus {outline-color: red;}
+</style>
+</head>
+
+<body style="background-color: ff0">
+
+<p style="font-family: 'Ariel Bold'"> 
+Hello my friends, this is a quick javascript function make alerts pop up in different situations! 
+</p>
+
+<script>
+function Button (a)
+{
+	var x = document.getElementById ('the_input').value;
+	if (x.length < 1)
+	{
+		document.getElementById ('Div_Box').innerHTML = a;
+		document.getElementById ('the_input').className = 'Inp_Art';
+		window.alert (a);
+		return false;
+	}
+	else
+	{
+		document.getElementById ('Div_Box').innerHTML = '';
+		document.getElementById ('the_input').className = '';
+	}
+}
+
+</script>
+<input type="text" id="the_input" placeholder="Dont Type Text :D" style="background-color: lightyellow;">
+<button onclick="Button ('Please enter Data')" style="background-color: lightyellow; border:1px solid black;">
+	Click Me!
+</button>
+
+<div id="Div_Box">
+</div>
+
+</body>
+</html>
+
+<!--
+Нека имаме html  страница с едно текстово поле <input type="text"> и бутон . Да се напише javascript функция, която да се извиква при натискане на бутона и да показвая съобщение за грешка текст: "Please enter data" ако полето е празно . Съобщението да се покаже някъде във формата или като alert. 
+-->

@@ -1,0 +1,539 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Date Converter </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<style>
+.theButtonCSS {width: 16%; margin-left: 40%; cursor: pointer;}
+.theInputCSS {width: 13.3%; text-align: center; float: left;}
+.theDivCSS {width: 40%; margin-left: 40%;}
+.theDivotoCSS {width: 60%; float: left; margin-bottom: 0px; padding-bottom: 0px;}
+.theDivv {width: 14%; margin-left: 41%; text-align: center; font-weight: 900;}
+.theInput {width: 40%; float: left; text-align: center;}
+.theH1 {text-align: center; margin-top: 100px; cursor: default; transition: all 0.3s ease 0s; width: 240px; margin-left:41%;}
+.theH1:hover {font-size: 35px; margin-bottom: 18px; color: red;}
+::-webkit-input-placeholder {text-align: center;}
+</style>
+</head>
+
+<body style="background-color: lightgreen;">
+	<h1 class="theH1" title="Click me for Easter Egg!" onmousedown="toNow ();"> 
+		Date Converter
+	</h1>
+
+<script type="text/javascript">
+var leapYears;
+var theFinalMonth;
+var theFinalYears = 0;
+var bonusYears = 0;
+
+function isItLeap (year1, year2, year3, year4)
+{
+	leapYears = 0;
+	if (year1 > 3)
+	{
+		if ((year1 % 4) == 0)
+		{
+			leapYears = 0;
+			leapYears = year1/4*86400000;
+			console.log ('year1 is leap');
+		}
+		else if ((year2 % 4) == 0)
+		{
+			leapYears = 0;
+			leapYears = year2/4*86400000;
+			console.log ('year2 is leap');
+		}
+		else if ((year3 % 4) == 0)
+		{
+			leapYears = 0;
+			leapYears = year3/4*86400000;
+			console.log ('year3 is leap')
+		}
+		else if ((year4 % 4) == 0)
+		{
+			leapYears = 0;
+			leapYears = year4/4*86400000;
+			console.log ('year4 is leap');
+		}
+	}
+}
+
+function whichMonth (theMonth)
+{
+	theFinalMonth = 0;
+	bonusYears = 0;
+
+	if (theMonth > 12)
+	{
+		for (var i = theMonth; i > 12; i=i-12)
+		{
+			theMonth = theMonth - 12;
+			bonusYears++;
+		}
+
+		bonusYears = bonusYears*31536000000;
+		console.log (bonusYears);
+		theMonth = theMonth.toString ();
+
+		if (theMonth !== '' || theMonth !== '0')
+		{
+			if (theMonth === '01') // For Jan
+			{
+				console.log ('hi')
+				theFinalMonth = 31*86400000 + bonusYears;
+			}
+			else if (theMonth === '1')
+			{
+				theFinalMonth = 31*86400000 + bonusYears;
+			}
+			
+			if (theMonth === '02') // For Feb
+			{
+				theFinalMonth = 59*86400000 + bonusYears;
+			}
+			else if (theMonth === '2')
+			{
+				theFinalMonth = 59*86400000 + bonusYears;
+			}
+
+			if (theMonth === '03') // For Mar
+			{
+				theFinalMonth = 90*86400000 + bonusYears;
+			}
+			else if (theMonth === '3')
+			{
+				theFinalMonth = 90*86400000 + bonusYears;
+			}
+
+			if (theMonth === '04') // For Apr
+			{
+				theFinalMonth = 120*86400000 + bonusYears;
+			}
+			else if (theMonth === '4')
+			{
+				theFinalMonth = 120*86400000 + bonusYears;
+			}
+
+			if (theMonth === '05') // For May
+			{
+				theFinalMonth = 151*86400000 + bonusYears;
+			}
+			else if (theMonth === '5')
+			{
+				theFinalMonth = 151*86400000 + bonusYears;
+			}
+
+			if (theMonth === '06') // For June
+			{
+				theFinalMonth = 181*86400000 + bonusYears;
+			}
+			else if (theMonth === '6')
+			{
+				theFinalMonth = 181*86400000 + bonusYears;
+			}
+
+			if (theMonth === '07') // For July
+			{
+				theFinalMonth = 212*86400000 + bonusYears;
+			}
+			else if (theMonth === '7')
+			{
+				theFinalMonth = 212*86400000 + bonusYears;
+			}
+
+			if (theMonth === '08') // For Aug
+			{
+				theFinalMonth = 243*86400000 + bonusYears;
+			}
+			else if (theMonth === '8')
+			{
+				theFinalMonth = 243*86400000 + bonusYears;
+			}
+
+			if (theMonth === '09') // For Sept
+			{
+				theFinalMonth = 273*86400000 + bonusYears;
+			}
+			else if (theMonth === '9')
+			{
+				theFinalMonth = 273*86400000 + bonusYears;
+			}
+
+			if (theMonth === '10') // For Oct
+			{
+				theFinalMonth = 304*86400000 + bonusYears;
+			}
+
+			if (theMonth === '11') // For Nov
+			{
+				theFinalMonth = 334*86400000 + bonusYears;
+			}
+
+			if (theMonth === '12') // For Dec
+			{
+				theFinalMonth = 365*86400000 + bonusYears;
+			}
+		}
+	}
+	else 
+	{
+		theMonth = theMonth.toString ();
+
+		if (theMonth !== '' || theMonth !== '0')
+		{
+			if (theMonth === '01') // For Jan
+			{
+				theFinalMonth = 31*86400000;
+			}
+			else if (theMonth === '1')
+			{
+				theFinalMonth = 31*86400000;
+			}
+			
+			if (theMonth === '02') // For Feb
+			{
+				theFinalMonth = 59*86400000;
+			}
+			else if (theMonth === '2')
+			{
+				theFinalMonth = 59*86400000;
+			}
+
+			if (theMonth === '03') // For Mar
+			{
+				theFinalMonth = 90*86400000;
+			}
+			else if (theMonth === '3')
+			{
+				theFinalMonth = 90*86400000;
+			}
+
+			if (theMonth === '04') // For Apr
+			{
+				theFinalMonth = 120*86400000;
+			}
+			else if (theMonth === '4')
+			{
+				theFinalMonth = 120*86400000;
+			}
+
+			if (theMonth === '05') // For May
+			{
+				theFinalMonth = 151*86400000;
+			}
+			else if (theMonth === '5')
+			{
+				theFinalMonth = 151*86400000;
+			}
+
+			if (theMonth === '06') // For June
+			{
+				theFinalMonth = 181*86400000;
+			}
+			else if (theMonth === '6')
+			{
+				theFinalMonth = 181*86400000;
+			}
+
+			if (theMonth === '07') // For July
+			{
+				theFinalMonth = 212*86400000;
+			}
+			else if (theMonth === '7')
+			{
+				theFinalMonth = 212*86400000;
+			}
+
+			if (theMonth === '08') // For Aug
+			{
+				theFinalMonth = 243*86400000;
+			}
+			else if (theMonth === '8')
+			{
+				theFinalMonth = 243*86400000;
+			}
+
+			if (theMonth === '09') // For Sept
+			{
+				theFinalMonth = 273*86400000;
+			}
+			else if (theMonth === '9')
+			{
+				theFinalMonth = 273*86400000;
+			}
+
+			if (theMonth === '10') // For Oct
+			{
+				theFinalMonth = 304*86400000;
+			}
+
+			if (theMonth === '11') // For Nov
+			{
+				theFinalMonth = 334*86400000;
+			}
+
+			if (theMonth === '12') // For Dec
+			{
+				theFinalMonth = 365*86400000;
+			}
+		}
+	}
+}
+
+function toMil (year, month, day)
+{
+	whichMonth (month);
+	isItLeap (year, year-1, year-2, year-3);
+	var theResult = 0;
+	var theYear = 0;
+	var theDay = 0;
+	theYear = year*31536000000;
+	theDay = day*86400000;
+	theResult = theYear + theDay + theFinalMonth + leapYears;
+	var theFinalResult = theResult.toLocaleString ();
+	document.getElementById ('theDiv').innerHTML = "= " + theFinalResult + " ms";
+}
+
+function toCur (year, month, day)
+{
+	var y = document.getElementById ('theInputOne1').value;
+	var m = document.getElementById ('theInputTwo2').value;
+	var d = document.getElementById ('theInputThree3').value;
+	if (y === '')
+	{
+		if (m === '')
+		{
+			if (d === '')
+			{
+				document.getElementById ('theDivTwo').innerHTML = '= 0 ms';		
+			}
+			else
+			{
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; // January is 0 so we Add 1
+				var yyyy = today.getFullYear();
+				var theResult = 0;
+				whichMonth (mm);
+				isItLeap (yyyy, yyyy-1, yyyy-2, yyyy-3);
+
+				theResult = dd*86400000 + theFinalMonth + yyyy*31536000000 + leapYears;;
+				theResult = theResult - year*31536000000;
+				whichMonth (month);
+				theResult = theResult - theFinalMonth;
+				theResult = theResult - day*86400000;
+				var theFinalResult = theResult.toLocaleString ();
+				document.getElementById ('theDivTwo').innerHTML = '= ' + theFinalResult + ' ms';
+			}
+		}
+		else
+		{
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;
+			var yyyy = today.getFullYear();
+			var theResult = 0;
+			whichMonth (mm);
+			isItLeap (yyyy, yyyy-1, yyyy-2, yyyy-3);
+
+			theResult = dd*86400000 + theFinalMonth + yyyy*31536000000 + leapYears;;
+			theResult = theResult - year*31536000000;
+			whichMonth (month);
+			theResult = theResult - theFinalMonth;
+			theResult = theResult - day*86400000;
+			var theFinalResult = theResult.toLocaleString ();
+			document.getElementById ('theDivTwo').innerHTML = '= ' + theFinalResult + ' ms';
+		}
+	}
+	else
+	{
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1;
+		var yyyy = today.getFullYear();
+		var theResult = 0;
+		whichMonth (mm);
+		isItLeap (yyyy, yyyy-1, yyyy-2, yyyy-3);
+
+		theResult = dd*86400000 + theFinalMonth + yyyy*31536000000 + leapYears;;
+		theResult = theResult - year*31536000000;
+		whichMonth (month);
+		theResult = theResult - theFinalMonth;
+		theResult = theResult - day*86400000;
+		var theFinalResult = theResult.toLocaleString ();
+		document.getElementById ('theDivTwo').innerHTML = '= ' + theFinalResult + ' ms';
+	}
+}
+
+function numToMil (day)
+{
+	var theResult = 0;
+	theResult = day*86400000;
+	var theFinalResult = theResult.toLocaleString();
+	document.getElementById ('theDivThree').innerHTML = '= ' + theFinalResult + ' ms';
+}
+
+function leapYearsToDay (theYear)
+{
+	var theDate = new Date ();
+	var date = theDate.getFullYear ();
+	for (var i = date-theYear; i <= date; i++)
+	{
+		if ((i % 4) == 0)
+		{
+			theFinalYears = theFinalYears + 1;
+		}
+	}
+	theFinalYears = theFinalYears*86400000;
+}
+
+function toDay (a)
+{
+	var y = 0;
+	var m = 0;
+	var d = 0;
+	var result = 0;
+
+	if (a < 1)
+	{
+		document.getElementById ('theDivone').innerHTML = "= 0 ms";
+	}
+
+	result = a/86400000;
+	var theResult = result.toLocaleString();
+	document.getElementById ('theDivone').innerHTML = "= " + theResult + ' Days';
+
+	/*if (result >= 365)
+	{
+		for (var i = result; i >= 365; i=i-365)
+		{
+			result=result-365;
+			y++;
+		}
+		leapYearsToDay (y);
+		result = result - theFinalYears;
+		document.getElementById ('theDivone').innerHTML = "= " + y + ": Year/s "+ m +": Month/s "+ d +": Day/s ";
+	}
+
+	if (result >= 30)
+	{
+		for (var i = result; i >= 30; i=i-30)
+		{
+			result=result-30;
+			m++;
+			document.getElementById ('theDivone').innerHTML = "= " + y + ": Year/s "+ m +": Month/s "+ d +": Day/s ";
+		}
+	}
+
+	if (result >= 1)
+	{
+		for (var i = result; i >= 1; i=i-1)
+		{
+			result=result-1;
+			d++;
+			document.getElementById ('theDivone').innerHTML = "= " + y + ": Year/s "+ m +": Month/s "+ d +": Day/s ";
+		}
+	}
+
+	if (result > 0.5)
+	{
+		result = 0;
+		d++;
+		document.getElementById ('theDivone').innerHTML = "= " + y + ": Year/s "+ m +": Month/s "+ d +": Day/s ";
+	}
+	else
+	{
+		result = 0;
+	}*/
+}
+
+function toNow ()
+{
+	var theDate = new Date ();
+	var theDay = theDate.getDate ();
+	var theMonth = theDate.getMonth ()+1;
+	var theYear = theDate.getFullYear ();
+	whichMonth (theMonth);
+	isItLeap (theYear, theYear-1, theYear-2, theYear-3);
+	var theResult = theYear*31104000000 + leapYears;
+	theResult = theResult + theFinalMonth;
+	theResult = theResult + theDay*86400000;
+
+	var shortcut = document.getElementById ('theDivv');
+	shortcut.style.cssText = 'margin-bottom: 0px;';
+	shortcut.innerHTML = "Todays Date " + theYear + '/' + theMonth + '/' +theDay+ "<br>" + '= ' +theResult+' in ms';
+}
+</script>
+
+<h6 style="margin: 0px; text-align: center;"> 
+	Please type numbers only as words won't (ms stands for milliseconds) 
+</h6>
+
+<!-- First Button Starts here...-->
+<div class="theDivCSS">
+	<input id="theInputOne" placeholder="Years..." class="theInputCSS">
+	<input id="theInputTwo" placeholder="Months..." class="theInputCSS">
+	<input id="theInputThree" placeholder="Days..." class="theInputCSS">
+	<div class="theDivotoCSS" id="theDiv"> = </div>
+</div>
+
+<button onclick="toMil (document.getElementById ('theInputOne').value, 
+						document.getElementById ('theInputTwo').value,
+						document.getElementById ('theInputThree').value);" class="theButtonCSS">
+	Convert to Mil...
+</button>
+<br>
+<br>
+
+<!-- Second Button Starts here...-->
+<div class="theDivCSS">
+	<input id="theInputOne1" placeholder="YYYY" class="theInputCSS">
+	<input id="theInputTwo2" placeholder="MM" class="theInputCSS">
+	<input id="theInputThree3" placeholder="DD" class="theInputCSS">
+	<div class="theDivotoCSS" id="theDivTwo"> = </div>
+</div>
+
+<button class="theButtonCSS" onclick="toCur (document.getElementById ('theInputOne1').value, 
+											document.getElementById ('theInputTwo2').value,
+											document.getElementById ('theInputThree3').value);">
+	Convert Date to Mil...
+</button>
+<br>
+<br>
+
+<!-- Third Button Starts here...-->
+<div class="theDivCSS">
+	<input id="InputOne1" placeholder="Type Number of Days" class="theInput">
+	<div class="theDivotoCSS" id="theDivThree"> = </div>
+</div>
+
+<button class="theButtonCSS" onclick="numToMil (document.getElementById ('InputOne1').value);">
+	Convert Num to Mil...
+</button>
+<br>
+<br>
+
+<!-- Fourth Button Starts here...-->
+<div class="theDivCSS">
+	<input id="theInput" class="theInput" placeholder="Type Amount of Milliseconds">
+	<div class="theDivotoCSS" id="theDivone"> = </div>
+</div>
+
+<button class="theButtonCSS" onclick="toDay (document.getElementById ('theInput').value);">
+	Convert Mil to Days...
+</button>
+<br>
+<br>
+
+<div id="theDivv" class="theDivv">
+</div>
+</body>
+</html>
+
+<!--
+Да се направи 'converter' който да трансформира нормален ден в милисекунди от 1970 т.н и обратното
+
+- One day contains 86,400,000 milliseconds.
+- JavaScript counts months from 0 to 11. January is 0. December is 11.
+-->

@@ -1,0 +1,79 @@
+<html>
+<head>
+<title> KOM </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background-color:lightblue">
+
+<h1> <center> This is a Distance Converter... </center> </h1>
+
+<script>
+/*function KOM (km,miles)
+{
+	document.write ("<h3>" + " Miles to Kilometers:" + "</h3>");
+	for (var ii = 1.60934; ii < miles; ii=ii+1.60934)
+	{
+	}
+	document.write (miles + " Miles are " + ii + " in Kilometers!");
+	document.write ("<br>");
+	document.write ("<h3>" + " Kilometers to Miles:" + "</h3>");
+	for (var i = 0.1; i < km; i=i+0.1)
+	{
+	}
+	document.write (km + " Kilometers are " + i + " in Miles!");
+	return i
+	return ii
+}
+
+KOM (2,10);*/
+
+function KOM (km)
+{
+	var km = document.getElementById ('Input').value;
+	document.getElementById ('AnswerToFunction').innerHTML = km * 1.609344 + " " + "Miles";
+}
+
+function KOM2 (m)
+{
+	var m = document.getElementById ('Input2').value;
+	document.getElementById ('AnswerToFunction2').innerHTML = m * 0.621371192 + " " + "Km";
+}
+
+</script>
+
+<br>
+
+<h4> Kilometers to Miles: </h4>
+
+<input type="text" id="Input" placeholder="Write a Number">
+<br>
+<button onclick="KOM (1)">
+	Click to get the answer:
+</button>
+
+<br>
+<div id="AnswerToFunction" style="border:1px solid black; width:10%;">
+	You will get the answer here...
+</div>
+
+
+<h4> Miles to Kilometers </h4>
+
+<input type="text" id="Input2" placeholder="Write a Number">
+<br>
+<button onclick="KOM2 (1)">
+	Click to get the answer:
+</button>
+
+<br>
+<div id="AnswerToFunction2" style="border:1px solid black; width:10%; ">
+	You will get the answer here...
+</div>
+
+</body>
+</html>
+
+<!--
+- да се напише функция, която преобразува километри в мили. Така че за входен параметър да има параметър - километри. Както е известно 1км= 1,60934 miles
+-->

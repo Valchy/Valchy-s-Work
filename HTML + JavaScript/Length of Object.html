@@ -1,0 +1,190 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Length of Object </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+div.divOne {
+border: 1px solid black; 
+width: 400px;
+height: auto;
+background-color: lightblue;
+box-shadow: 5px 5px 20px black;
+border-radius: 5px;
+}
+header {
+text-align: center;
+font-size: 30px;
+color: white;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+font-family: 'Montserrat';
+}
+input {
+width: 50%;
+padding: 0 10 0 0px;
+text-indent: 10px;
+height: 30px;
+border: 1px solid black;
+}
+.spanObject {
+font-size: 15px;
+font-family: 'Arial Black';
+}
+#spanObject {
+font-size: 15px;
+font-family: 'Arial Black';
+display: none;
+}
+hr.inDiv {
+width: 150px;
+border-color: lightgrey;
+}
+input.smallInput {
+width: 156px;
+padding: 0 10 0 0px;
+text-indent: 10px;
+height: 30px;
+border: 1px solid black;
+}
+button.addPropertie {
+font-family: 'Anton';
+width: 120px;
+height: 30px;
+letter-spacing: 1px;
+text-align: center;
+margin-bottom: 20px;
+border-radius: 20px;
+background-color: #6e8cd4;
+border: 1px solid black;
+transition: all 0.4s ease 0s;
+margin-left: 235;
+}
+button.addPropertie:hover {
+background-color: lightyellow;
+cursor: pointer;
+}
+button.addPropertie:focus {
+	outline: none;
+}
+ul{
+	list-style-type: none;
+	margin: none;
+	padding: none;
+	border: 0px !important;
+}
+#theUlDiv li input {
+	width: 156px;
+	margin: 0 0 15 5px;
+}
+</style>
+</head>
+
+<body>
+<script type="text/javascript">
+function jsObject (favColor, favNumber, favFood)
+{
+	this.favColor = favColor;
+	this.favNumber = favNumber;
+	this.favFood = favFood;
+}
+
+var myObject = new jsObject ("yellow", 8, "sushi");
+
+// Тук ще ми трябва помощ да разбера какво се случва
+Object.objsize = function (Myobj) 
+{
+    var osize = 0, key;
+    for (key in Myobj) 
+    {
+        if (Myobj.hasOwnProperty(key)) osize++;
+    }
+    return osize;
+};
+
+var ValchyGaming = 
+{
+	name: "Valchy",
+	age: 15,
+	favColor: "yellow",
+};
+
+function objectLength ()
+{
+	document.getElementById ('theDiv').innerHTML = "Result = " + myObject.favColor.length;
+	var objsize = Object.objsize(ValchyGaming);
+	window.alert('Size of the current object : '+objsize);
+}
+
+function addOnePropertie () {
+	document.getElementById ('spanObject').style.cssText = "font-size: 15px; font-family: 'Arial Black'; display: list-item;"
+
+	var theUl = document.createElement ("LI");
+	var input = document.createElement ("INPUT");
+	input.placeholder = "Name of Propertie...";
+	var input2 = document.createElement ("INPUT");
+	input2.placeholder = "Value of Propertie...";
+	theUl.appendChild (input);
+	theUl.appendChild (input2);
+	document.getElementById('theUlDiv').appendChild (theUl); 
+}
+</script>
+
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">
+	</ul>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+
+<div class="mainPage">
+<span style="text-align: center; font-weight: 700; float: right; margin: 0 300 0 0px;"> <div>
+The button gives a result of the length and the properties length of a ValchyGaming Object :D 
+</div> </span>
+
+<div style="width: 130px">
+<button onclick="objectLength ();">
+	OnClick
+</button>
+
+<div id="theDiv" style="float: right;">
+</div>
+</div>
+<hr>
+
+<div class="divOne">
+	<header>
+		Sign Up an Object
+	</header>
+
+	<ul>
+		<li> <span class="spanObject"> Name of Object: </span> </li>
+		 <li> <input placeholder="Type any Name..."> </li>
+	</ul>
+		<hr class="inDiv">
+	<ul id="theUlDiv">
+		<li> 
+			<span id="spanObject"> Name plus Value of Propertie One: </span> 
+		</li>
+		<!-- <li> 
+			<input class="smallInput" placeholder="Name of Propertie...">
+			<input class="smallInput" placeholder="Value of Propertie..."> 
+		</li> -->
+	</ul>
+
+	<button class="addPropertie" onclick="addOnePropertie ();">
+		Add a Propertie 
+		<i class="material-icons" style="color: blue; font-size: 15px;"> 
+			note_add 
+		</i>
+	</button>
+</div>
+</body>
+</html>
+
+<!--
+Да се напише джава скрипт функзия която да изчислява дължината на джава скрипт обект
+Bонус: Sign Up an Object Task' - Just make it Work :D
+-->

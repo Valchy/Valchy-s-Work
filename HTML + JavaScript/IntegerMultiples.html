@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Integer Multiples </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+::-webkit-input-placeholder {font-size: 30px !important; text-align: center;} /* Chrome/Opera/Safari */
+::-moz-placeholder {font-size: 30px !important; text-align: center;} /* Firefox 19+ */
+:-ms-input-placeholder {font-size: 30px !important; text-align: center;} /* IE 10+ */
+:-moz-placeholder {font-size: 30px !important; text-align: center;} /* Firefox 18- */
+.the-form {display: flex; flex-direction: column; width: 100%; justify-content: space-around; background-color: #fff;}
+.flex-buttons {display: flex; flex-direction: row; justify-content: space-between !important;}
+.the-input {width: 100%; height: 200px; text-align: center; font-size: 100px; border: 0px;}
+.the-button {width: 400px; height: 100px; font-size: 80px; background-color: lightgreen; border: 0px; border-radius: 0px;}
+.the-button:first-child {border-top-right-radius: 20px;}
+.the-button:last-child {border-top-left-radius: 20px;}
+.the-button:hover {cursor: pointer;}
+.the-form:focus, .the-button:focus, .the-input:focus {outline: none;}
+.the-div {background-color: white; width: 100%; display: flex; align-items: center; font-size: 30px; text-indent: 30px; font-family: 'Montserrat-Thin';}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Click the add button see how only multiples of the given integer show! </h1>
+
+	<div>
+		<form class="the-form">
+			<input type="number" placeholder="Place an integer then click Submit" class="the-input" id="input-id">
+			<div class="flex-buttons">
+				<button type="button" onclick="theMultiple(1);" class="the-button"> + </button>
+				<div class="the-div" id="div-id"> <span style="font-family: 'Montserrat-Thin' !important;"> Answer: </span> </div>
+				<button type="button" onclick="theMultiple(2);" class="the-button"> - </button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var theInteger;
+var multiple = 1;
+var prevNumber;
+
+function theMultiple (a) {
+theInteger = document.getElementById('input-id').value;
+
+	if (a === 1) {
+		if (theInteger == '') return window.alert('Please type a Number before doing anything else!');
+
+		if (prevNumber == theInteger) {
+			multiple++;
+			var temp = theInteger*multiple;
+			document.getElementById('div-id').innerHTML = 'Answer: '+temp+' ('+theInteger+' x '+multiple+')';
+		}
+		else {
+			multiple = 2;
+			var temp = theInteger*multiple;
+			document.getElementById('div-id').innerHTML = 'Answer: '+temp+' ('+theInteger+' x '+multiple+')';
+		}
+
+		prevNumber = theInteger;
+	}
+	else if (a === 2) {
+		if (theInteger == '') return window.alert('Please type a Number before doing anything else!');
+
+		if (prevNumber == theInteger) {
+			multiple--;
+			var temp = theInteger*multiple;
+			document.getElementById('div-id').innerHTML = 'Answer: '+temp+' ('+theInteger+' x '+multiple+')';
+		}
+		else {
+			multiple = 0;
+			var temp = theInteger*multiple;
+			document.getElementById('div-id').innerHTML = 'Answer: '+temp+' ('+theInteger+' x '+multiple+')';
+		}
+
+		prevNumber = theInteger;
+	}
+}
+</script>
+</body>
+</html>
+
+<!--
+Create a algorithum which checks if a integer is a multiple of another number, if yes allow it to do something if not then return
+-->

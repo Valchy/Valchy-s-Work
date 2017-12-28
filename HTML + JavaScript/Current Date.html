@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Current Date </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body style="background: linear-gradient(10deg, rgba(255,0,0,0), rgba(255,255,0,1));">
+<h1 style="text-align: center;"> Click the Buttons Below to find out Different Things </h1>
+<script type="text/javascript">
+function again ()
+{
+	currentDate ();
+}
+
+function currentDate ()
+{
+	document.getElementById ('theResults').innerHTML = "Today's date is " + Date ();
+	setTimeout (again, 10); // Make to 100 if it makes the browser laggy
+}
+</script>
+
+<button onclick="currentDate ();">
+	Click for Today's Date
+</button>
+
+<div id="theResults">
+</div>
+</body>
+</html>
+
+<!--
+Да се напише джава скрипт функция която да дава точната дата и час чрез натискането на бутон
+Write a JavaScript function to get the month name from a particular date.
+Write a JavaScript function to compare dates (i.e. greater than, less than or equal to).
+-->

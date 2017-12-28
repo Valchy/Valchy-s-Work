@@ -1,0 +1,40 @@
+<html>
+<head>
+<title> TableFunction </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+</head>
+
+<body>
+<script>
+function TableMaker (start,end)
+{	
+	if (start < end)
+	{
+		for (var o = start; o <= end; o=o+1)
+		{
+			document.write (o + " ");
+			document.write (o*o);
+			document.write (OddOrEven (o*o));
+			document.write ("<br>")	
+		}
+	}
+	else 
+	{
+		document.write ("ERROR")
+	}
+}
+
+function OddOrEven (a)
+	{
+		if ((a % 2) == 0)
+		{
+			return " " + 'True';
+		}
+		return " " + 'False';
+	}
+
+TableMaker (1,10);
+</script>
+</body>
+</html>
+
