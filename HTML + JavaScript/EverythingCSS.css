@@ -1,4 +1,4 @@
-body {margin: 0px; padding: 0px; background: linear-gradient(#22f0d8, #ff2fd8)} /* #43cea2, #185a9d || #ffaf7b, #d76d77, #3a1c71 || #7b4397, #dc2430 || #b06ab3, #4568dc || #f4e2d8, #ba5370 || #c4e0e5, #4ca1af */
+body {margin: 0px; padding: 0px; background: linear-gradient(#22f0d8, #ff2fd8);} /* #43cea2, #185a9d || #ffaf7b, #d76d77, #3a1c71 || #7b4397, #dc2430 || #b06ab3, #4568dc || #f4e2d8, #ba5370 || #c4e0e5, #4ca1af */
 ul {list-style-type: none; margin: 0px; padding: 10 0 10 20px;}
 li {margin: 0px;}
 a {text-decoration: none; color: black;}
@@ -59,7 +59,7 @@ sub {color: white; font-size: 40px;}
 .bottomUl li span {font-family: 'Montserrat-Regular';}
 .buttonUl li {height: 100px; width: 100px; border: 1px solid red; display: inline-block;}
 .bottomUl span:hover, .bottomBar ul li span a:hover {cursor: pointer; color: #ff2c88; text-shadow: 1.5px 1.5px black;}
-.theUl li {padding: 10 0 10 20px; margin: 0px;}
+.theUl li {padding: 10px 0px 10px 20px; margin: 0px;}
 .theUl {text-decoration: none; padding: 0px;}
 .theSVG {float: right; margin: 10px; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
 #topBarDiv {float: right;}
@@ -172,6 +172,8 @@ sub {color: white; font-size: 40px;}
 .flex-container-extra-buttons {display: flex; flex-direction: row; align-items: center;}
 .thick-line-before-button {display: none; transition: all 0.40s ease 0s; width: 10px; height: 75px; background-color: lightgreen; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
 .UploadImageButton {width: 100px !important;}
+.theWeatherDiv, .theTimeDiv {text-align: right; margin: 20px 50px;}
+.theWeatherDiv:hover {cursor: pointer;}
 
 @media all and (max-width: 300px) {
 	.theSVG {width: 200px !important;}

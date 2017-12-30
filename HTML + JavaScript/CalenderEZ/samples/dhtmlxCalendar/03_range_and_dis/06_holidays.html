@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Holidays </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxcalendar.css"/>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+body, html {
+    height: 100% !important;
+}
+.theUl {overflow-y: scroll;}
+.theUl li {padding: 10px 0px 10px 20px; margin: 0px;}
+.theUl li:first-child {padding: 21px 0px; margin-bottom: 10px;}
+</style>
+</head>
+
+<body style="">
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<!-- The method below is used to make the browser go to the previous page aka -1 the history -->
+	<h1> This is the 'nice' calender: <button onclick="window.history.go(-1); return false;"> My Calender </button></h1>
+
+	<div id="calendarHere" style="position: relative;"></div>
+</div>
+
+<script src="../../../codebase/dhtmlxcalendar.js"></script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var myCalendar;
+
+function doOnLoad() {
+	myCalendar = new dhtmlXCalendarObject("calendarHere");
+	myCalendar.hideTime();
+	myCalendar.show();
+	myCalendar.setDate("2011-06-24");
+	myCalendar.setHolidays("2011-06-23,2011-06-24,2011-06-25,2011-06-26,2011-06-27,2011-06-28,2011-06-29,2011-06-30,2011-07-01,2011-07-02,2011-07-03,2011-07-04");
+}
+
+doOnLoad();
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+body {margin: 0px; padding: 0px; background: linear-gradient(#22f0d8, #ff2fd8)} /* #43cea2, #185a9d || #ffaf7b, #d76d77, #3a1c71 || #7b4397, #dc2430 || #b06ab3, #4568dc || #f4e2d8, #ba5370 || #c4e0e5, #4ca1af */
+ul {list-style-type: none; margin: 0px; padding: 10 0 10 20px;}
+li {margin: 0px;}
+a {text-decoration: none; color: black;}
+sub {color: white; font-size: 40px;}
+::-webkit-input-placeholder {color: black; font-family: 'Montserrat-Light'; font-size: 20px !important;} /* Chrome/Opera/Safari */
+::-moz-placeholder {color: black; font-family: 'Montserrat-Light'; font-size: 20px !important;} /* Firefox 19+ */
+:-ms-input-placeholder {color: black; font-family: 'Montserrat-Light'; font-size: 20px !important;} /* IE 10+ */
+:-moz-placeholder {color: black; font-family: 'Montserrat-Light'; font-size: 20px !important;} /* Firefox 18- */
+.mainBar {display: block; position: fixed; font-family: 'Montserrat-Regular'; width: 18%; z-index: 2; margin-top: 52px; border-right: 2px solid black; background-color: #feffdd; float: left; overflow: auto; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.mainBarActive {display: block; position: fixed; font-family: 'Montserrat-Regular'; width: 260px; z-index: 2; margin-top: 52px; border-right: 2px solid black; background-color: #feffdd; float: left; overflow: auto; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.mainBar li:hover, .mainBarActive li:hover {background-color: #bdff58; cursor: pointer;} /* width 260px fix window size issue */
+.mainBarOthers {position: fixed; font-family: 'Montserrat-Regular'; width: 18%; border-right: 2px solid black; background-color: #feffdd; float: left; overflow: auto; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.mainBarOthers li:hover {background-color: #bdff58; cursor: pointer;} /* change width fix... */
+.liHighlight {background-color: #00ffe4 !important; padding-left: 0px;}
+.topBar {/* position relative after certain px javascript changes to position fixed */width: 100%; z-index: 4; height: 50px; border-bottom: 2px solid black; background-color: #555555; position: fixed; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.topBar ul {padding: 0 0 0 10px; position: absolute; top: 6px; margin: 0px; list-style-type: none;}
+.topBar ul li sub {font-size: 40px;}
+.topBar ul:hover {cursor: default !important;}
+.topBar sub:hover {color: #ff2c88; text-shadow: 4px 0 black; cursor: pointer;}
+.topBar li {margin-right: 10px;}
+.titleSpan {color: white; font-family: 'Montserrat-Bold'; font-size: 40px; padding: 0 20 0 0px; letter-spacing: 0px;}
+.buttonSearch {display: none; padding: 0px; border: 0px; background-color: transparent; width: 40px; height: 40px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-bottom-left-radius: 1px; border-top-right-radius: 1px;}
+.buttonSearch:hover {cursor: pointer;}
+.buttonSearch:hover sub {cursor: pointer; color: #ff2c88; text-shadow: 4px 0 black;}
+.buttonSearch sub {color: white; font-size: 40px !important;}
+.buttonSearch:focus {outline: none; outline-width: 0;}
+.subHighlight:hover {color: red; text-shadow: none;}
+.ulBar {list-style: none; float: left; margin: 0px; padding: 0px;}
+.ulBar li {float: left;}
+.ulBar li sub:hover {cursor: pointer;}
+#dropDownMenuUlDiv {display: none; width: auto; height: auto; margin: 0 0 0 -60px !important; padding: 40 0 0 0px !important;}
+.dropDownMenuUl {border-bottom-right-radius: 10px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; box-shadow: 10px 10px 10px #333; display: grid; height: auto; width: 50%; margin: 38.5 0 0 0px !important; padding: 10px !important; background: linear-gradient(#555555, #666666) !important; border-right: 2px solid black; border-bottom: 2px solid black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.dropDownMenuUl:hover {cursor: default;}
+.dropDownMenuUl li {color: white; padding: 3px; font-family: 'Montserrat-Thin'; font-size: 22px;}
+.dropDownMenuUl li:hover span {color: #ff2c88;}
+.dropDownMenuUl li a {color: white;}
+.dropDownMenuUl li a:hover {cursor: pointer;}
+.dropDownMenuSearch {display: none; border-left: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black; width: 360px; position: fixed; margin-top: 52px; margin-left: 18%; background-color: #555555; z-index: 1; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.dropDownMenuSearch ul:hover {background-color: #555555; cursor: default;}
+.dropDownMenuSearch ul li {color: white; padding: 3px; font-family: 'Montserrat-Thin'; font-size: 16.5px;}
+.dropDownMenuSearch ul li:hover span {color: #ff2c88;}
+.dropDownMenuSearch ul li a {color: white;}
+.dropDownMenuSearch ul li a:hover {cursor: pointer;}
+.theTitle {font-family: 'Montserrat'; letter-spacing: 1px; font-size: 20px; font-weight: 700; text-align: center; padding: 21 0px !important; margin-bottom: 10px !important;}
+.mainPage {padding: 16px; margin-left: 18.0%;}
+.mainPageDiv {padding: 16px; margin-left: 18.0%; width: auto;} /* fix loading problem but still not fixed 'auto' */
+.aboutMeDiv {width: 100%; background: linear-gradient(#ffe259 1%, #fe9300); display: inline-block; margin: 50 0 0 0px; box-shadow: 1px 1px 5px black; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
+.myFutureDiv {width: 100%; background: linear-gradient(#ffe259 1%, #fe9300); margin: 50 0 0 0px; box-shadow: 1px 1px 5px black; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
+.myYouTubeDiv {width: 100%; background: linear-gradient(#ffe259 1%, #fe9300); margin: 50 0 0 0px; box-shadow: 1px 1px 5px black; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
+.aboutMeDiv p, .myFutureDiv p, .myYouTubeDiv p, .buildDocument p {font-family: 'Montserrat-Light'; padding: 10px; margin: 0px; text-align: left; font-size: 18px;}
+.buildDocument {padding: 3 3 3 3px; width: 100%; background-color:rgba(237, 236, 232, 1); display: inline-block; margin: 50 0 0 0px; box-shadow: 1px 1px 5px black; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
+.mainPageTitle {font-family: 'Montserrat-Bold'; margin: 0px; font-size: 35px; letter-spacing: -1.5px; width: 100%; text-align: center !important;}
+.myYouTubeVideo {display: block; margin-left: auto; margin-right: auto;}
+.myYouTubeVideoDiv {width: 100%; background-color: #222; padding: 0px 0px; margin-top: 16px; box-shadow: 1px 1px 5px black; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
+.bottomBar {border-top: 2px solid black; margin-left: 18.0%; height: auto; background-color: #555555; padding: 10px; box-shadow: 0px 1px 10px black; bottom: 0; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.bottomBar ul li span a {text-decoration: none; color: white; font-family: 'Montserrat-Regular';}
+.bottomUl {color: white; list-style-type: none; margin: 0; padding: 10 0 10 0px; display: flex; justify-content: space-around;}
+.bottomUl li span {font-family: 'Montserrat-Regular';}
+.buttonUl li {height: 100px; width: 100px; border: 1px solid red; display: inline-block;}
+.bottomUl span:hover, .bottomBar ul li span a:hover {cursor: pointer; color: #ff2c88; text-shadow: 1.5px 1.5px black;}
+.theUl li {padding: 10 0 10 20px; margin: 0px;}
+.theUl {text-decoration: none; padding: 0px;}
+.theSVG {float: right; margin: 10px; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+#topBarDiv {float: right;}
+.lastList {margin-bottom: 60px !important;}
+.navigationBarHelp {margin: auto; width: 96%; font-family: 'Montserrat'; border: 2px solid black; border-collapse: collapse; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+.navigationBarHelp ul {border-collapse: collapse; padding: 0px; background-color: blue;}
+.navigationBarHelp li {border-collapse: collapse; border-bottom: 2px solid black; padding: 10px; font-size: 40px; font-weight: 900;}
+.navigationBarHelp li:hover {cursor: pointer; background-color: #ab976d;}
+.navigationBarHelp li:last-child {border-bottom: 0px solid black; border-collapse: collapse;}
+.navigationBarHelp span {color: white; float: right;}
+.navigationBarHelp img {width: 330px; height: 250px;}
+.navigationBarHelp hr {margin: 10px;}
+.navigationBarHelp a {text-decoration: none; color: white; padding-left: 20px;}
+.theSectionHelp {display: none;}
+.theSectionHelp div {background-color: lightgrey !important;}
+.activeHelp {display: block !important;}
+.highlightHelp {background-color: #ab976d;}
+.theLiHelp {color: white; font-size: 30px !important; font-weight: 100 !important;}
+.liFirstHelp {padding: 30 10 30 10px !important;}
+.theParentButtonDiv {display: flex; font-family: 'Montserrat-Regular' !important;}
+.previousPageDiv {margin: 16 0 0 0px; width: 30%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center;}
+.nextPageDiv {margin: 16 0 0 0px; width: 30%; display: flex; flex-direction: row; justify-content: flex-end; align-items: center;}
+.theAdvertisementDiv {font-size: 30px; align-items: center; color: white; display: flex; justify-content: center; font-family: 'Montserrat-Bold'; width: 100%; margin: 16 0 0 0px; border: 1px solid black; background-color: rgba(3,3,3,0.5); -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.previousPageButton {font-size: 15px; float: left; width: 180px; height: 60px; box-shadow: 1px 1px 5px black; background-color: #96c93d; border: 1px solid #333; transition: all 0.4s ease 0s; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.nextPageButton {font-size: 15px; float: right; width: 180px; height: 60px; box-shadow: 1px 1px 5px black; background-color: #96c93d; border: 1px solid #333; transition: all 0.4s ease 0s; border-bottom-right-radius: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.nextPageButton:hover, .previousPageButton:hover {cursor: pointer; background-color: #f05053;}
+.nextPageButton:focus, .previousPageButton:focus {outline: none;}
+.buttonSpan:focus {outline: none; outline-width: 0;}
+#loading {display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(#22f0d8, #ff2fd8); z-index: 999999; opacity: 1; overflow: hidden; position: fixed; top: 0%; left: 0%;}
+#loading-img-1, #loading-img-2 {-webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.loading-img-1 {width: 150px; display: flex; order: 1; margin-bottom: 16px;}
+.loading-img-2 {width: 75px; display: flex; order: 2;}
+#loading-img-1:focus, #loading-img-2:focus {outline: none;}
+#everythingDiv {display: none; overflow-y: hidden;}
+#gsc-div {visibility: hidden;}
+.gsc-control-cse {background-color: #555555 !important; width: 330px !important;}
+.gsc-control-cse-en {border: 0px !important; padding: 0px !important; margin: 5px 0 0 0 !important;}
+.gsc-search-button {margin: 0px !important; border: 1px solid black !important; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-bottom-left-radius: 1px; border-top-right-radius: 1px;}
+.gsc-search-button:hover {cursor: pointer !important; background-color: grey !important;}
+.gsc-search-button:focus {outline: none !important; outline-width: 0 !important;}
+.gsc-input {margin: -4px 0 0 0 !important; font-size: 20px !important; background: none !important; text-indent: 0px !important; font-family: 'Montserrat-Light';}
+.gse-input:focus {outline-width: 0 !important;}
+.alertWarning {display: none; width: 100%; height: auto; position: fixed; top: 0%; background-color: #ff7802; z-index: 9999; padding: 4px 20px;}
+.alertCloseButton {transition: all 0.6s ease 0s; margin-right: 40px; font-size: 35px; width: auto; height: auto; float: right; color: white; font-weight: 900;}
+.alertCloseBUtton:hover {cursor: pointer; color: black;}
+.alertText {color: #fff; font-family: 'Montserrat-Light'; font-size: 34px; margin: 0px; padding: 0px;}
+#personal-info-div, #birthday-info-div, #account-info-div, #extra-info-div {display: none; width: 45%; display: flex; flex-direction: column; align-self: flex-start;}
+#processing-div {display: none; width: 45%;}
+.create-an-account-form {margin-bottom: 0px; text-align: center; font-family: 'Montserrat'; padding: 6 6 12 6px; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.create-an-account-form h1 {margin-bottom: 20px; margin-top: 20px;}
+.flex-container {display: flex; flex-direction: row; justify-content: space-between; align-items: center; height: 285px;}
+.flex-container-dates {display: flex; flex-direction: row; justify-content: space-between;}
+.side-info {text-align: left !important; margin: 10 0 10 20px;}
+.create-an-account-input {text-indent: 10px; width: 500px; height: 40px; font-size: 20px; font-family: 'Montserrat-Light'; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-left: 2px solid #d5b89f; border-top: 2px solid #d5b89f;}
+.create-an-account-input-date {text-align: center; width: 153.2px; height: 40px; font-size: 20px; font-family: 'Montserrat-Light'; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-left: 2px solid #d5b89f; border-top: 2px solid #d5b89f;}
+.create-an-account-input-extra {width: 250px; height: 40px; font-size: 20px; font-family: 'Montserrat-Light'; display: flex; flex-direction: column; justify-content: space-between;}
+.create-an-account-button-div {text-align: right; height: 40px;}
+.create-an-account-button-next {transition: all 0.20s ease 0s; border: 0px; width: 76px; height: 40px; background-color: #7bb8fd; font-size: 20px; font-family: 'Montserrat-Bold'; margin-right: 15px;}
+.create-an-account-button-previous {transition: all 0.20s ease 0s; border: 0px; width: 126px; height: 40px; background-color: lightgreen; font-size: 20px; font-family: 'Montserrat-Bold'; margin-right: 8px;}
+.create-an-account-button-next:hover, .create-an-account-button-previous:hover {cursor: pointer; opacity: 0.8; box-shadow: 3px 3px 5px #222;}
+.create-an-account-button-next:focus, .create-an-account-button-previous:focus, .create-an-account-input:focus, .create-another-account-button:focus, .create-an-account-input-date:focus, #copy-email-button:focus, #account-info-div div input:focus {outline: none;}
+.un-completed-tasks-div {text-align: left !important; margin-top: 10px; width: 45%;}
+.un-complted-tasks-div i {font-size: 1px !important;}
+.un-completed-tasks-div i:hover {cursor: pointer; color: #ff2c88;}
+.text-task {font-size: 30px; font-family: 'Montserrat-Thin';}
+.dot {height: 15px; width: 15px; margin: 0 2px; background-color: #bbbbbb; border: none; border-radius: 50%; display: inline-block; opacity: 1;}
+.dot-active {height: 15px; width: 15px; margin: 0 2px; background-color: brown; border: none; border-radius: 50%; display: inline-block; opacity: 0.7;}
+.dot-finish {height: 15px; width: 15px; margin: 0 2px; background-color: #4CAF50; border: none; border-radius: 50%; display: inline-block; opacity: 0.9;}
+.dots-bottom {margin-top: 20px;}
+.create-an-account-middle-line {width: 0px; height: 200px; border-left: 1px solid grey; margin: 0 5%;}
+.account-created-div {display: none; text-align: right;}
+.account-created-div p {text-align: center; font-size: 35px; font-family: 'Montserrat-Regular';}
+.create-another-account-button {display: flex; align-items: flex-end; transition: all 0.20s ease 0s; margin: 10px; border: 0px; width: 280; height: 50px; background-color: #bc86dd; font-size: 20px; font-family: 'Montserrat-Bold'; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
+.create-another-account-button:hover {cursor: pointer; background-color: #cf86dd; box-shadow: 3px 3px 5px #222;}
+.account-created-info {margin: 0px; padding: 0px; text-align: left;}
+.svg-flex-align {display: flex; flex-direction: row; align-items: center;}
+.processing-gif-flex {margin: 0px 350px 0px 150px;}
+.done-processing-img {margin: 0px 350px 0px 150px; display: none;}
+#copy-email-button {margin-top: 6px; margin-right: -5px; float: right; background: #acb4c6; border: 0px; font-family: 'Montserrat-Light'; font-size: 10px;}
+#copy-email-button:hover, .color-picker-profile-picture:hover {cursor: pointer;}
+#fix-something-container {color: red; font-size: 15px; text-align: center; width: 45%; height: 65px; margin-top: 2px;}
+#account-info-div div input[type='checkbox'] {zoom: 2; width: 10px; height: 10px;}
+#account-info-div div input[type='checkbox']:checked {background-color: red;}
+.no-paragraph input[type='radio']:hover, .UploadImageButton:hover {cursor: pointer;}
+#account-info-div div input:hover {cursor: pointer;}
+#requierments-password {visibility: hidden; display: flex; justify-content: center;}
+.requierments-password {visibility: visible !important; width: 100%; font-family: 'Montserrat-Regular'; color: #111;}
+.password-validation-div {background-color: #fff; font-family: 'Montserrat-Regular'; border-bottom-right-radius: 15px; border-top-left-radius: 15px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-left: 2px solid #d5b89f; border-bottom: 2px solid #d5b89f;}
+#password-requierments {display: none;}
+.password-requierments {display: block !important; padding: 2px 50px 5px 30px;}
+.div-table-one {float: left; text-align: left; font-family: 'Montserrat-Light';}
+.div-table-two {float: right; text-align: left; font-family: 'Montserrat-Light';}
+.valid-password-requierment {color: green;}
+.invalid-password-requierment {color: red;}
+.valid-password-requierment:before {content: '✔'; position: relative;}
+.invalid-password-requierment:before {content: '✖'; position: relative;}
+.color-picker-profile-picture {border: 0px; padding: 0px; margin: 0px; height: 30px; width: 50px !important; margin: 0px 0px 0px 20px; background-color: transparent;}
+.color-picker-profile-picture:focus, .button-avatar-menu:focus, .UploadImageButton:focus, .imageUploader:focus {outline: none;}
+.male-female-div {display: flex; flex-direction: row;}
+.no-paragraph {margin: 0px; padding: 0px !important; display: flex; flex-direction: row;}
+.avatar-div {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+.avatar-div img {margin-right: 30px;}
+.flex-container-avatar-color {display: flex; flex-direction: column;}
+.avatar-color-flex {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+.button-for-avatar-div {display: flex; justify-content: center; align-items: center; flex-direction: column;}
+.div-for-avatar {display: none;}
+.button-avatar-menu {transition: all 0.40s ease 0s; font-size: 27px; font-family: 'Montserrat-Regular'; width: 200px; height: 75px; margin: 0px; padding: 0px; background: linear-gradient(#ffaf7b, #d76d77); border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border: 0px;}
+.button-avatar-menu:first-child {margin: 20px 0px;}
+.button-avatar-menu:hover {cursor: pointer; box-shadow: 2px 2px 4px #222; margin-left: 40px; font-size: 30px;}
+.flex-container-extra-buttons {display: flex; flex-direction: row; align-items: center;}
+.thick-line-before-button {display: none; transition: all 0.40s ease 0s; width: 10px; height: 75px; background-color: lightgreen; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
+.UploadImageButton {width: 100px !important;}
+.theWeatherDiv, .theTimeDiv {text-align: right; margin: 20px 50px;}
+.theWeatherDiv:hover {cursor: pointer;}
+
+@media all and (max-width: 300px) {
+	.theSVG {width: 200px !important;}
+}
+@media all and (min-width: 300px) and (max-width: 470px) {
+    .theSVG {width: 320px !important;}
+}
+@media all and (max-width: 600px) {
+	.theAdvertisementDiv {display: none;} /* Make ad go under  NOT DONE*/
+}
+@media all and (min-width: 440px;) and (max-width: 620px) {
+	.theSVG {width: 350px !important;}
+}
+@media all and (min-width: 0px) and (max-width: 1175px) {
+	.mainBar {display: none;}
+	#mainPageDiv, #bottomBar {margin-left: 0px;}
+}
+
+
+
+
+
+

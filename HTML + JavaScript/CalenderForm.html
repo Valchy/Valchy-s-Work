@@ -54,39 +54,43 @@ hr {margin: 0px;}
 </div>
 
 <div class="mainPage">
-	<h1> This is my own made calender: </h1>
+	<h1> This is my own made calender: <button onclick="window.location.href='CalenderEZ/samples/dhtmlxCalendar/03_range_and_dis/06_holidays.html'"> Nice Calender </button></h1>
 
-	<div class="add-event">
-		<div class="add-event-content">
-			<button onclick="addEvent();" class="button-event"> ✖ </button>
-			<h3 style="text-align: center;"> Add Event </h3> <hr>
-			<input type="text" id="theEventInput">
-			<button onclick="addingEvent(document.getElementById('theEventInput'));"> Add Event </button>
+	<div id="theFirstCalender">
+		<div class="add-event">
+			<div class="add-event-content">
+				<button onclick="addEvent();" class="button-event"> ✖ </button>
+				<h3 style="text-align: center;"> Add Event </h3> <hr>
+				<input type="text" id="theEventInput">
+				<button onclick="addingEvent(document.getElementById('theEventInput'));"> Add Event </button>
+			</div>
+		</div>
+		<div class="show-events">
+			<div class="add-event-content">
+				<button onclick="showEvents();" class="button-event"> ✖ </button>
+				<h3 style="text-align: center;"> Events: </h3> <hr>
+				<p class="events-show-p" id="events-show-p"> No Events have been added yet! </p>
+			</div>
+		</div>
+
+		<form id="theFormCalender">
+			<div class="calender"></div>
+		</form>
+
+		<div id="bottom-calender-div">
+			<div id="theButtonClickDiv"> </div>
+			<div id="theButtonClickDivDiv"> 
+				<button onclick="showDiv(); return theCount ();" class="buttonCalender">
+					The <b> BIG </b> Counting...
+				</button>
+				<button onclick="return showEvents();" class="button-events">
+					Show Events!
+				</button>
+			</div>
 		</div>
 	</div>
-	<div class="show-events">
-		<div class="add-event-content">
-			<button onclick="showEvents();" class="button-event"> ✖ </button>
-			<h3 style="text-align: center;"> Events: </h3> <hr>
-			<p class="events-show-p" id="events-show-p"> No Events have been added yet! </p>
-		</div>
-	</div>
 
-	<form id="theFormCalender">
-		<div class="calender"></div>
-	</form>
-
-	<div id="bottom-calender-div">
-		<div id="theButtonClickDiv"> </div>
-		<div id="theButtonClickDivDiv"> 
-			<button onclick="showDiv(); return theCount ();" class="buttonCalender">
-				The <b> BIG </b> Counting...
-			</button>
-			<button onclick="return showEvents();" class="button-events">
-				Show Events!
-			</button>
-		</div>
-	</div>
+	<div id="includedContent"></div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
@@ -309,6 +313,19 @@ var theP = document.getElementById('events-show-p');
 	}
 	else {
 		return;
+	}
+}
+
+function showNiceCalender () {
+var calnder = document.getElementById('theFirstCalender').style.cssText;
+
+	if (calnder == 'display: none') {
+		calnder = 'display: block';
+		// Other div hide
+	}
+	else {
+		calnder = 'display: none';
+		// Other div show
 	}
 }
 

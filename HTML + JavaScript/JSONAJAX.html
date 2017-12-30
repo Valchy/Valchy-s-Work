@@ -58,7 +58,7 @@ function fetchInfo () {
 
 	var infoRequest = new XMLHttpRequest();
 	// Options: HEAD, GET, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT
-	infoRequest.open('DELETE', 'https://learnwebcode.github.io/json-example/animals-'+clickButtonCounter+'.json');
+	infoRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-'+clickButtonCounter+'.json');
 	infoRequest.onload = function () {
 		if (infoRequest.status >= 200 && infoRequest.status < 400) {
 			var ourData = JSON.parse(infoRequest.responseText);
