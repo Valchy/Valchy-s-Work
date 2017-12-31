@@ -110,14 +110,14 @@ function titleChange () {
 
 function loadSVG () {
 	var theLoad = new XMLHttpRequest();
-	theLoad.open('GET', 'https://valchy.github.io/EverythingSVG/male_avatar_default.svg');
+	theLoad.open('GET', 'https://valchy.github.io/EverythingSVG/male_avatar_alien.svg');
 	theLoad.onload = function () {
 		if (theLoad.status >= 200 && theLoad.status < 400) {
 			var info = theLoad.responseText;
 			$('#theSVGdivoto').html(info);
 		}
 		else {
-			$('#theSVGdivoto').html('Server failure, please try again! '+theLoad.status);
+			$('#theSVGdivoto').html('Server failure '+theLoad.status+' , please try again!');
 		}
 	}	
 	theLoad.send();
@@ -441,7 +441,7 @@ function showHideDropDownMenuDiv () {
 
 // Make it so when user clicks out of window the color pannel to hide
 function changeAvatarColor (color) {
-	$('.avatar-glasses').css({fill: color.value});
+	$('.avatar-background').css({fill: color.value});
 }
 
 function isNumberKey (evt) {
