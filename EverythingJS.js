@@ -110,7 +110,7 @@ function titleChange () {
 
 function loadSVG () {
 	var theLoad = new XMLHttpRequest();
-	theLoad.open('GET', 'https://valchy.github.io/male_avatar_default.svg');
+	theLoad.open('GET', 'https://valchy.github.io/EverythingSVG/male_avatar_default.svg');
 	theLoad.onload = function () {
 		if (theLoad.status >= 200 && theLoad.status < 400) {
 			var info = theLoad.responseText;
@@ -292,7 +292,7 @@ function showSectionHelp () {
 
 function contactMe () {
 	// Change this so that it goes to a help center page where is scrolls down on the page and goes exactly on the specific part etc.. create button call me eg.
-	window.alert ('My phone number is: \n +359888555880');
+	window.alert ('My phone number is: \n +359888123456');
 }
 
 // You could make it qith jQuery and add a animation on showing/hiding...
