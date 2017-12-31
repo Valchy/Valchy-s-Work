@@ -110,7 +110,7 @@ function titleChange () {
 
 function loadSVG () {
 	var theLoad = new XMLHttpRequest();
-	theLoad.open('GET', 'https://raw.githubusercontent.com/Valchy/Valchy-s-Work/master/HTML%20%2B%20JavaScript/EverythingSVG/male_avatar_default.svg');
+	theLoad.open('GET', 'https://valchy.github.io/male_avatar_default.svg');
 	theLoad.onload = function () {
 		if (theLoad.status >= 200 && theLoad.status < 400) {
 			var info = theLoad.responseText;
@@ -236,7 +236,7 @@ function addRemoveArrow (a, checkEvent) {
 		a.innerHTML = menuSave;
 	}
 }
-
+// Finish it off make all colors switch normally without bugs
 var colorSwitch = 1;
 function toggleColors () {
 	if (colorSwitch == 1) {
@@ -423,12 +423,6 @@ function stl (a) {
 	}
 }
 
-function myFunction() {
-	var svg = $("#iiifr").getSVG();
-  //use jquery functions to do some thing
-  svg.find("#male-avatar-neck-right").attr('fill', '#ffffff');
-}
-
 function uploadImage () {
 	var x = document.getElementById("theUploadedImage");
   $('#the-avatar-img').attr('src', 'EverythingSVG/'+x.value.substring(12));
@@ -447,7 +441,7 @@ function showHideDropDownMenuDiv () {
 
 // Make it so when user clicks out of window the color pannel to hide
 function changeAvatarColor (color) {
-	$(this).siblings('img').css({ fill: "#ff0000" });
+	$('.avatar-glasses').css({fill: color.value});
 }
 
 function isNumberKey (evt) {
