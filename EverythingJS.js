@@ -110,7 +110,7 @@ function titleChange () {
 
 function loadSVG () {
 	var theLoad = new XMLHttpRequest();
-	theLoad.open('GET', 'https://valchy.github.io/EverythingSVG/male_avatar_alien.svg');
+	theLoad.open('GET', 'https://valchy.github.io/EverythingSVG/female_avatar_default.svg');
 	theLoad.onload = function () {
 		if (theLoad.status >= 200 && theLoad.status < 400) {
 			var info = theLoad.responseText;
