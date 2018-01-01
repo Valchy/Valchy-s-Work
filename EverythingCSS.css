@@ -168,12 +168,13 @@ sub {color: white; font-size: 40px;}
 .div-for-avatar {display: none;}
 .button-avatar-menu {transition: all 0.40s ease 0s; font-size: 27px; font-family: 'Montserrat-Regular'; width: 200px; height: 75px; margin: 0px; padding: 0px; background: linear-gradient(#ffaf7b, #d76d77); border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border: 0px;}
 .button-avatar-menu:first-child {margin: 20px 0px;}
-.button-avatar-menu:hover {cursor: pointer; box-shadow: 2px 2px 4px #222; margin-left: 40px; font-size: 30px;}
+.button-avatar-menu:hover {cursor: pointer; box-shadow: 2px 2px 4px #222; margin-left: 40px; font-size: 29px;}
 .flex-container-extra-buttons {display: flex; flex-direction: row; align-items: center;}
 .thick-line-before-button {display: none; transition: all 0.40s ease 0s; width: 10px; height: 75px; background-color: lightgreen; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
 .UploadImageButton {width: 100px !important;}
 .theWeatherDiv, .theTimeDiv {text-align: right; margin: 20px 50px;}
 .theWeatherDiv:hover {cursor: pointer;}
+.choose-avatar-div {display: none; z-index: 90000; width: 600px; height: 350px; background-color: white; margin-left: 20px;}
 
 @media all and (max-width: 300px) {
 	.theSVG {width: 200px !important;}

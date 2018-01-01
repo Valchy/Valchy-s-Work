@@ -13,15 +13,13 @@ var arrayCounterHelp = 0;
 var openCheckHelp = 0;
 var arrayHelp = ['Press the 5th icon on the top bar going left to right for the color change', 'hello people', 'I am 15 years old xd :D', 'Guys idk', 'last thing'];
 var theArray = [{'name': 'Home', 'url': 'EverythingPrg.html'},{'name': 'Accordion', 'url': 'Accordion.html'},{'name': 'AddOrMinus', 'url': 'AddOrMinus.html'},{'name': 'Added Arrays', 'url': 'Added%20Arrays.html'},{'name': 'ArayOnlyNumbers', 'url': 'ArayOnlyNumbers.html'},{'name': 'Array Drawing', 'url': 'Array%20Drawing.html'},{'name': 'Array Squared', 'url': 'Array%20Squared.html'},{'name': 'Array', 'url': 'Array.html'},{'name': 'ASDF', 'url': 'ASDF.html'},{'name': 'Between 10 - 20', 'url': 'Between%2010%20-%2020.html'},{'name': 'BinaryToDecimal', 'url': 'BinaryToDecimal'},{'name': 'Button Customising', 'url': 'Button%20Customising.html'},{'name': 'Button', 'url': 'Button.html'},{'name': 'Calender Form', 'url': 'CalenderForm.html'},{'name': 'CircleRadius', 'url': 'CircleRadius.html'},{'name': 'Clock', 'url': 'Clock.html'},{'name': 'Cloning Array', 'url': 'Cloning%20Array.html'},{'name': 'CombiningMassives', 'url': 'CombiningMassives.html'},{'name': 'Concat F_A', 'url': 'Concat%20F_A.html'},{'name': 'ConcatValue', 'url': 'ConcatValue'},{'name': 'Console Numbers', 'url': 'Console%20Numbers.html'},{'name': 'Current Date', 'url': 'Current%20Date.html'},{'name': 'Date Converter', 'url': 'Date%20Converter.html'},{'name': 'Drag & Drop', 'url': 'DragDrop.html'},{'name': 'Drawing Circles', 'url': 'Drawing%20Circles.html'},{'name': 'Drawing', 'url': 'Drawing.html'},{'name': 'EditableDiv', 'url': 'EditableDiv.html'},{'name': 'Fill Array', 'url': 'Fill%20Array.html'},{'name': 'Finding Lowest and Highest Array', 'url': 'Finding%20Lowest%20and%20Highest%20Array.html'},{'name': 'FindMinimalNumber', 'url': 'FindMinimalNumner.html'},{'name': 'FirstLetterUp', 'url': 'FirstLetterUp.html'},{'name': 'Form Text', 'url': 'FormText.html'},{'name': 'Form Text Movement', 'url': 'Form%20Text%20Movement.html'},{'name': 'FunctionN', 'url': 'FunctionN.html'},{'name': 'Fun Puzzle', 'url': 'FunPuzzle.html'},{'name': 'GeometricFigures', 'url': 'GeometricFigures.html'},{'name': 'Google Icons', 'url': 'Google%20Icons.html'},{'name': 'Handlebars.js', 'url': 'HandlebarsJS.html'},{'name': 'Hello', 'url': 'Hello.html'},{'name': 'Integer Multiples', 'url': 'IntegerMultiples.html'},{'name': 'JSON & AJAX', 'url': 'JSONAJAX.html'},{'name': 'JS Objects', 'url': 'JS%20Objects.html'},{'name': 'KOM', 'url': 'KOM.html'},{'name': 'Lader', 'url': 'Lader.html'},{'name': 'Length of Object', 'url': 'Length%20of%20Object.html'},{'name': 'Letter Color Changing', 'url': 'Letter%20Color%20Changing.html'},{'name': 'Mac - Processor and Hard Drive', 'url': 'Mac%20-%20Processor%20and%20Hard%20Drive.html'},{'name': 'Multiple-Step Form', 'url': 'MultipleStepForm.html'},{'name': 'Music', 'url': 'Music.html'},{'name': 'Most Common Array', 'url': 'Most%20Common%20Array.html'},{'name': 'NewArray', 'url': 'NewArray.html'},{'name': 'NoSpace', 'url': 'NoSpace.html'},{'name': 'Numbers 1 - 100', 'url': 'Numbers%201%20-%20100.html'},{'name': 'On/Off Switch', 'url': 'OnOffSwitch.html'},{'name': 'Password Validation', 'url': 'PasswordValidation.html'},{'name': 'Picture Coordinates', 'url': 'PictureCoordinates.html'},{'name': 'Progress Bar', 'url': 'ProgressBar.html'},{'name': 'RepeatString', 'url': 'RepeatString.html'},{'name': 'Row Change', 'url': 'Row%20Change.html'},{'name': 'Seconds', 'url': 'Seconds.html'},{'name': 'String Caps', 'url': 'String%20Caps.html'},{'name': 'Sudoku', 'url': 'Sudoku.html'},{'name': 'TableAdding', 'url': 'TableAdding.html'},{'name': 'TableFunction', 'url': 'TableFunction.html'},{'name': 'TableFunction2', 'url': 'TableFunction2.html'},{'name': 'TableFunction3', 'url': 'TableFunction3.html'},{'name': 'Tennis Game', 'url': 'Tennis%20Game.html'},{'name': 'Target JavaScript', 'url': 'TargetJavaScript.html'},{'name': 'Three.js', 'url': 'ThreeJS.html'},{'name': 'Using Google Icons', 'url': 'Using%20Google%20Icons.html'},{'name': 'Weekend & Date Object', 'url': 'Is%20it%20weekend_date%20obj.html'},{'name': 'While Loops', 'url': 'WhileLoops.html'},{'name': 'WordFunction', 'url': 'WordFunction.html'}];
-var arraySVG = [[], ['https://raw.githubusercontent.com/Valchy/Valchy-s-Work/master/female_avatar_beautiful.svg', ]];
+var arraySVG = [[], [{'id': 'SVG4', 'url': 'https://valchy.github.io/EverythingSVG/female_avatar_default.svg', 'changes': ['avatar-background', 'avatar-hair', 'avatar-shirt', 'avatar-top-shirt', 'avatar-neck', 'avatar-face', 'avatar-ears', 'avatar-lips', 'avatar-glasses']}]];
 // Better to have the arrey minified so it doesnt take so much space :D
 
 window.onload = function ()	{
 
 	titleChange ();
 	accountPageChanger ();
-	loadSVG();
-
 
 	if ($('#mainBar').length) {
 		$('body').attr('onresize', 'sideBarWidthHeight (); titleChange ();');
@@ -108,9 +106,9 @@ function titleChange () {
 	}
 }
 
-function loadSVG () {
+function loadSVG (url) {
 	var theLoad = new XMLHttpRequest();
-	theLoad.open('GET', 'https://valchy.github.io/EverythingSVG/female_avatar_default.svg');
+	theLoad.open('GET', url);
 	theLoad.onload = function () {
 		if (theLoad.status >= 200 && theLoad.status < 400) {
 			var info = theLoad.responseText;
@@ -645,7 +643,12 @@ function accountPageChanger () {
 
 function avatarMenu () {
 	$('.button-for-avatar-div').hide();
-	$('.div-for-avatar').show();
+	$('.div-for-avatar').hide();
+	$('.choose-avatar-div').show();
+
+	$(function () {
+		
+	});
 }
 
 function checkAccountInput () {
@@ -802,9 +805,21 @@ function addWeather () {
 	};
 }
 
+function loadAvatarCustomisation () {
 
 
+	loadSVG(arraySVG[1][0].url);
+}
 
+// <div class="avatar-color-flex">
+// <span> Background Color: </span>
+// <input type="color" value="#123123" class="color-picker-profile-picture" oninput="changeAvatarColor (this);">
+//</div>
+
+// <div class="create-an-account-input-extra">
+// <input type="file" accept="image/*" id="theUploadedImage">
+// <button class="UploadImageButton" onclick="uploadImage ();"> Upload Image </button>
+// </div>
 
 
 
