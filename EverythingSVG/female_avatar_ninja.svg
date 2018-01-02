@@ -3,7 +3,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 496.2 496.2" style="enable-background:new 0 0 496.2 496.2;" xml:space="preserve" width="200" height="200">
 <!-- Background color -->
-<path style="fill:#EB9783;" class="avatar-background" d="M248.1,0C111.1,0,0,111.1,0,248.1s111.1,248.1,248.1,248.1s248.1-111.1,248.1-248.1S385.1,0,248.1,0z
+<path style="fill:#fff766;" class="avatar-background" d="M248.1,0C111.1,0,0,111.1,0,248.1s111.1,248.1,248.1,248.1s248.1-111.1,248.1-248.1S385.1,0,248.1,0z
 	"/>
 <!-- Avatar shirt -->
 <g>

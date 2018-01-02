@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.7998 61.7998"><title>Avatar User man</title><g id="Layer_2" data-name="Layer 2"><g id="_ÎÓÈ_1" data-name="—ÎÓÈ 1">
 <!-- Background color -->
-<circle cx="30.8999" cy="30.8999" r="30.8999" fill="#9f82bb" class="avatar-background"/>
+<circle cx="30.8999" cy="30.8999" r="30.8999" fill="#c7ffff" class="avatar-background"/>
 <!-- Neck color -->
 <path class="avatar-neck" fill="#f9dca4" fill-rule="evenodd" d="M23.255 38.68l15.907.121v12.918l-15.907-.121V38.68z"/>
 <!-- Bottom shirt color -->

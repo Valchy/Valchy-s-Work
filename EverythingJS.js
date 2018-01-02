@@ -7,7 +7,7 @@ var OnOffSideBar = 1;
 var OnOffSideBarActive = 1;
 var pageInformation = 1;
 var pageSlider = 1;
-var accountForm = 1;
+var accountForm = 4;
 var invalidInputCounter = 0;
 var arrayCounterHelp = 0;
 var openCheckHelp = 0;
@@ -59,6 +59,7 @@ window.onload = function ()	{
 		}	// The pageSlider is optional depending if you want full 'reload' or not
 		$("#theUl li:first-child").addClass("theTitle").addClass("liHighlight").attr('onclick', 'buttonClick.play(); pageInformation = 1; pageSlider = 1; finishInformationSwitch (); finishPageSwich ();').attr('id', 'home-click');
 		$("#theUl li:last-child").addClass("lastList");
+		$("#theUl li:nth-child(2").css({'padding-top': '20px'});
 	});
 
 	// Have screen scrolling upon li click?
@@ -164,7 +165,6 @@ $(function(){
 
 window.addEventListener('keypress', function (e) {
 	if (e.keyCode == 13 && pageInformation == 2) {
-		console.log('in')
 		checkAccountInput ();
 	}
 	else {
@@ -919,7 +919,7 @@ var tmp = html.innerHTML;
 function loadAvatarCustomisation (specs) {
 	for (var i = 1; i <= specs.length; i++) {
 		$('.flex-container-avatar-color').append($('<div/>', {'class': 'avatar-color-flex', 'id': 'LAC'+i}).append($('<span/>', {'id': 'SpanHTML'+i, 'html': specs[i-1]})));
-		$('#LAC'+i).append($('<input/>', {'type': 'color', 'value': '#ff0000', 'class': 'color-picker-profile-picture', 'oninput': 'changeAvatarColor (this, '+i+');'}))
+		$('#LAC'+i).append($('<input/>', {'type': 'color', 'value': '#ffff00', 'class': 'color-picker-profile-picture', 'oninput': 'changeAvatarColor (this, '+i+');'}))
 	}
 }
 
