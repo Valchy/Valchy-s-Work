@@ -160,7 +160,7 @@ sub {color: white; font-size: 40px;}
 .color-picker-profile-picture:focus, .button-avatar-menu:focus, .UploadImageButton:focus, .imageUploader:focus {outline: none;}
 .male-female-div {display: flex; flex-direction: row;}
 .no-paragraph {margin: 0px; padding: 0px !important; display: flex; flex-direction: row;}
-.avatar-div {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+.avatar-div {display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: 10px 0px 0px 20px;}
 .avatar-div img {margin-right: 30px;}
 .flex-container-avatar-color {display: flex; flex-direction: column;}
 .avatar-color-flex {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
