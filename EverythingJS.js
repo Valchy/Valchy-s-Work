@@ -13,13 +13,14 @@ var arrayCounterHelp = 0;
 var openCheckHelp = 0;
 var arrayHelp = ['Press the 5th icon on the top bar going left to right for the color change', 'hello people', 'I am 15 years old xd :D', 'Guys idk', 'last thing'];
 var theArray = [{'name': 'Home', 'url': 'EverythingPrg.html'},{'name': 'Accordion', 'url': 'Accordion.html'},{'name': 'AddOrMinus', 'url': 'AddOrMinus.html'},{'name': 'Added Arrays', 'url': 'Added%20Arrays.html'},{'name': 'ArayOnlyNumbers', 'url': 'ArayOnlyNumbers.html'},{'name': 'Array Drawing', 'url': 'Array%20Drawing.html'},{'name': 'Array Squared', 'url': 'Array%20Squared.html'},{'name': 'Array', 'url': 'Array.html'},{'name': 'ASDF', 'url': 'ASDF.html'},{'name': 'Between 10 - 20', 'url': 'Between%2010%20-%2020.html'},{'name': 'BinaryToDecimal', 'url': 'BinaryToDecimal'},{'name': 'Button Customising', 'url': 'Button%20Customising.html'},{'name': 'Button', 'url': 'Button.html'},{'name': 'Calender Form', 'url': 'CalenderForm.html'},{'name': 'CircleRadius', 'url': 'CircleRadius.html'},{'name': 'Clock', 'url': 'Clock.html'},{'name': 'Cloning Array', 'url': 'Cloning%20Array.html'},{'name': 'CombiningMassives', 'url': 'CombiningMassives.html'},{'name': 'Concat F_A', 'url': 'Concat%20F_A.html'},{'name': 'ConcatValue', 'url': 'ConcatValue'},{'name': 'Console Numbers', 'url': 'Console%20Numbers.html'},{'name': 'Current Date', 'url': 'Current%20Date.html'},{'name': 'Date Converter', 'url': 'Date%20Converter.html'},{'name': 'Drag & Drop', 'url': 'DragDrop.html'},{'name': 'Drawing Circles', 'url': 'Drawing%20Circles.html'},{'name': 'Drawing', 'url': 'Drawing.html'},{'name': 'EditableDiv', 'url': 'EditableDiv.html'},{'name': 'Fill Array', 'url': 'Fill%20Array.html'},{'name': 'Finding Lowest and Highest Array', 'url': 'Finding%20Lowest%20and%20Highest%20Array.html'},{'name': 'FindMinimalNumber', 'url': 'FindMinimalNumner.html'},{'name': 'FirstLetterUp', 'url': 'FirstLetterUp.html'},{'name': 'Form Text', 'url': 'FormText.html'},{'name': 'Form Text Movement', 'url': 'Form%20Text%20Movement.html'},{'name': 'FunctionN', 'url': 'FunctionN.html'},{'name': 'Fun Puzzle', 'url': 'FunPuzzle.html'},{'name': 'GeometricFigures', 'url': 'GeometricFigures.html'},{'name': 'Google Icons', 'url': 'Google%20Icons.html'},{'name': 'Handlebars.js', 'url': 'HandlebarsJS.html'},{'name': 'Hello', 'url': 'Hello.html'},{'name': 'Integer Multiples', 'url': 'IntegerMultiples.html'},{'name': 'JSON & AJAX', 'url': 'JSONAJAX.html'},{'name': 'JS Objects', 'url': 'JS%20Objects.html'},{'name': 'KOM', 'url': 'KOM.html'},{'name': 'Lader', 'url': 'Lader.html'},{'name': 'Length of Object', 'url': 'Length%20of%20Object.html'},{'name': 'Letter Color Changing', 'url': 'Letter%20Color%20Changing.html'},{'name': 'Mac - Processor and Hard Drive', 'url': 'Mac%20-%20Processor%20and%20Hard%20Drive.html'},{'name': 'Multiple-Step Form', 'url': 'MultipleStepForm.html'},{'name': 'Music', 'url': 'Music.html'},{'name': 'Most Common Array', 'url': 'Most%20Common%20Array.html'},{'name': 'NewArray', 'url': 'NewArray.html'},{'name': 'NoSpace', 'url': 'NoSpace.html'},{'name': 'Numbers 1 - 100', 'url': 'Numbers%201%20-%20100.html'},{'name': 'On/Off Switch', 'url': 'OnOffSwitch.html'},{'name': 'Password Validation', 'url': 'PasswordValidation.html'},{'name': 'Picture Coordinates', 'url': 'PictureCoordinates.html'},{'name': 'Progress Bar', 'url': 'ProgressBar.html'},{'name': 'RepeatString', 'url': 'RepeatString.html'},{'name': 'Row Change', 'url': 'Row%20Change.html'},{'name': 'Seconds', 'url': 'Seconds.html'},{'name': 'String Caps', 'url': 'String%20Caps.html'},{'name': 'Sudoku', 'url': 'Sudoku.html'},{'name': 'TableAdding', 'url': 'TableAdding.html'},{'name': 'TableFunction', 'url': 'TableFunction.html'},{'name': 'TableFunction2', 'url': 'TableFunction2.html'},{'name': 'TableFunction3', 'url': 'TableFunction3.html'},{'name': 'Tennis Game', 'url': 'Tennis%20Game.html'},{'name': 'Target JavaScript', 'url': 'TargetJavaScript.html'},{'name': 'Three.js', 'url': 'ThreeJS.html'},{'name': 'Using Google Icons', 'url': 'Using%20Google%20Icons.html'},{'name': 'Weekend & Date Object', 'url': 'Is%20it%20weekend_date%20obj.html'},{'name': 'While Loops', 'url': 'WhileLoops.html'},{'name': 'WordFunction', 'url': 'WordFunction.html'}];
-var arraySVG = [[], [{'id': 'SVG4', 'url': 'https://valchy.github.io/EverythingSVG/female_avatar_default.svg', 'changes': ['avatar-background', 'avatar-hair', 'avatar-shirt', 'avatar-top-shirt', 'avatar-neck', 'avatar-face', 'avatar-ears', 'avatar-lips', 'avatar-glasses']}]];
+var arraySVG = [[{'url': 'https://valchy.github.io/EverythingSVG/avatar_woman.svg'}, {'url': 'https://valchy.github.io/EverythingSVG/avatar_man.svg'}], [{'url': 'https://valchy.github.io/EverythingSVG/male_avatar_default.svg', 'changes': ['avatar-background', 'avatar-neck', 'avatar-glasses', 'avatar-shirt', 'avatar-face', 'avatar-frame', 'avatar-stripes']}, {'url': 'https://valchy.github.io/EverythingSVG/male_avatar_alien.svg', 'changes': ['avatar-background', 'avatar-shirt', 'avatar-neck', 'avatar-face', 'avatar-ears', 'avatar-mask', 'avatar-horn']}, {'url': 'https://valchy.github.io/EverythingSVG/male_avatar_glasses.svg', 'changes': ['avatar-background', 'avatar-neck', 'avatar-bottom-shirt', 'avatar-top-shirt', 'avatar-face', 'avatar-ears', 'avatar-neckline', 'avatar-hair', 'avatar-frame', 'avatar-buttons', 'avatar-glasses']}], [{'url': 'https://valchy.github.io/EverythingSVG/female_avatar_default.svg', 'changes': ['avatar-background', 'avatar-hair', 'avatar-shirt', 'avatar-top-shirt', 'avatar-neck', 'avatar-face', 'avatar-ears', 'avatar-lips', 'avatar-glasses']}, {'url': 'https://valchy.github.io/EverythingSVG/female_avatar_nurse.svg', 'changes': ['avatar-background', 'avatar-hair', 'avatar-shirt', 'avatar-top-shirt', 'avatar-bottom-shirt', 'avatar-face', 'avatar-lips', 'avatar-neck', 'avatar-hat']}, {'url': 'https://valchy.github.io/EverythingSVG/female_avatar_ninja.svg', 'changes': ['avatar-background', 'avatar-shirt', 'avatar-face', 'avatar-eye', 'avatar-eyelashes']}]];
 // Better to have the arrey minified so it doesnt take so much space :D
 
 window.onload = function ()	{
 
 	titleChange ();
 	accountPageChanger ();
+	loadGenderSVG();
 
 	if ($('#mainBar').length) {
 		$('body').attr('onresize', 'sideBarWidthHeight (); titleChange ();');
@@ -70,6 +71,28 @@ window.onload = function ()	{
 	});
 
 	$(function () {
+		$('.man-avatar-choose').append($('<table/>', {'id': 'CMA'}));
+		for (var i = 1; i <= 3; i++) {
+			$('#CMA').append($('<tr/>', {'id': 'CMA'+i}));
+			for (var t = 1; t <= 3; t++) {
+				var temp = arraySVG[1][i-1].url;
+				temp.toString();
+				$('#CMA'+i).append($('<td/>', {'class': 'CMA'+i+t, 'onclick': 'chosenSVG(this, arraySVG[1]['+i+'-1].changes);', 'html': loadSVG(temp, 2, 'CMA'+i+t)}));
+			}
+		}
+
+		$('.woman-avatar-choose').append($('<table/>', {'id': 'CWA'}));
+		for (var i = 1; i <= 3; i++) {
+			$('#CWA').append($('<tr/>', {'id': 'CWA'+i}));
+			for (var t = 1; t <= 3; t++) {
+				var temp = arraySVG[2][i-1].url;
+				temp.toString();
+				$('#CWA'+i).append($('<td/>', {'class': 'CWA'+i+t, 'onclick': 'chosenSVG(this, arraySVG[2]['+i+'-1].changes);', 'html': loadSVG(temp, 2, 'CWA'+i+t)}));
+			}
+		}
+	});
+
+	$(function () {
 		if ($('#mainBarOthers').length) {
 	 		var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 			document.getElementById ('mainBarOthers').style.cssText = 'height:' + height;
@@ -104,21 +127,6 @@ function titleChange () {
 	if (w < 1130) {
 		$('#topBarSpan').html('');
 	}
-}
-
-function loadSVG (url) {
-	var theLoad = new XMLHttpRequest();
-	theLoad.open('GET', url);
-	theLoad.onload = function () {
-		if (theLoad.status >= 200 && theLoad.status < 400) {
-			var info = theLoad.responseText;
-			$('#theSVGdivoto').html(info);
-		}
-		else {
-			$('#theSVGdivoto').html('Server failure '+theLoad.status+' , please try again!');
-		}
-	}	
-	theLoad.send();
 }
 
 // add event listen reload
@@ -711,10 +719,8 @@ $('#fix-something-div').html('').hide();
 
 		if ($('#acc-input-8').val() == $('#acc-input-7').val()) { // need explenation
 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValidation)) {
-    			console.log('valid email');
   			}
   			else {
-  				console.log('invalid email');
 	  			if ($('#fix-something-div').html() == '') {
 	  				$('#acc-input-7').css({'background-color': '#ffdddd'});
 					$('#fix-something-div').html('• Given email is invalid or miss-typed!').show();
@@ -786,7 +792,6 @@ $('#fix-something-div').html('').hide();
 }
 
 function addWeather () {
-	console.log('hi')
 	var data = new XMLHttpRequest();
 	data.open('GET', 'http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae22');
 	data.onload = function () {
@@ -798,17 +803,116 @@ function addWeather () {
 		else {
 			$('.theWeatherDiv').html('Server failure, please try again!');
 		}
-	data.onerror = function () {
-		$('.theWeatherDiv').html('Connection lost, please fix and try again!');
-	};
+		data.onerror = function () {
+			$('.theWeatherDiv').html('Connection lost, please fix and try again!');
+		};
 	data.send();
 	};
 }
 
-function loadAvatarCustomisation () {
+function loadGenderSVG () {
+	var theLoadMan = new XMLHttpRequest();
+	theLoadMan.open('GET', 'https://valchy.github.io/EverythingSVG/avatar_man.svg');
+	theLoadMan.onload = function () {
+		if (theLoadMan.status >= 200 && theLoadMan.status < 400) {
+			var info = theLoadMan.responseText;
+			$('#div-man-avatar').html(info);
+		}
+		else {
+			$('#insertSVG').html('Server failure '+theLoadMan.status+' , please try again!');
+		}
+	}	
+	theLoadMan.send();
 
+	var theLoadWoman = new XMLHttpRequest();
+	theLoadWoman.open('GET', 'https://valchy.github.io/EverythingSVG/avatar_woman.svg');
+	theLoadWoman.onload = function () {
+		if (theLoadWoman.status >= 200 && theLoadWoman.status < 400) {
+			var info = theLoadWoman.responseText;
+			$('#div-woman-avatar').html(info);
+		}
+		else {
+			$('#insertSVG').html('Server failure '+theLoadWoman.status+' , please try again!');
+		}
+	}	
+	theLoadWoman.send();
+}
 
-	loadSVG(arraySVG[1][0].url);
+function loadSVG (url, pos, id) {
+	if (pos == 1) {
+		var theLoad = new XMLHttpRequest();
+	
+		theLoad.open('GET', url);
+		theLoad.onload = function () {
+			if (theLoad.status >= 200 && theLoad.status < 400) {
+				var info = theLoad.responseText;
+				$('#theSVGdivoto').html(info);
+			}
+			else {
+				$('#theSVGdivoto').html('Server failure '+theLoad.status+' , please try again!');
+			}
+		}	
+		theLoad.send();
+	}
+	else if (pos == 2) {
+		var theLoad = new XMLHttpRequest();
+	
+		theLoad.open('GET', url);
+		theLoad.onload = function () {
+			if (theLoad.status >= 200 && theLoad.status < 400) {
+				var info = theLoad.responseText;
+				$('.'+id).html(info);
+			}
+			else {
+				$('.'+id).html('Server failure '+theLoad.status+' , please try again!');
+			}
+		}	
+		theLoad.send();
+	}
+}
+
+function openAvatarChoose (sex) {
+$('#theSVGdivoto').html('');
+var gender;
+
+	if (sex === 'man') {
+		gender = 1;
+
+		for (var i = 0; i < arraySVG[gender].length; i++) {
+			var temp = arraySVG[gender][i].url;
+			temp.toString();
+			loadSVG(temp, 2);
+			$('#insertSVG, .woman-avatar-choose, .choose-avatar-div').hide();
+			$('#avatar-selection-div, .man-avatar-choose').show();
+		}
+	}
+	else if (sex === 'woman') {
+		gender = 2;
+
+		for (var i = 0; i < arraySVG[gender].length; i++) {
+			var temp = arraySVG[gender][i].url;
+			temp.toString();
+			loadSVG(temp, 2);
+			$('#insertSVG, .man-avatar-choose, .choose-avatar-div').hide();
+			$('#avatar-selection-div, .woman-avatar-choose').show();
+		}
+	}
+}
+
+function chosenSVG (html, ac) {
+var tmp = html.innerHTML;
+
+	loadAvatarCustomisation(ac);
+	$('#theSVGdivoto').html(tmp).show();
+	$('.div-for-avatar').show();
+	$('#avatar-selection-div').hide();
+}
+
+function loadAvatarCustomisation (specs) {
+	for (var i = 1; i <= specs.length; i++) {
+		$('.flex-container-avatar-color').append($('<div/>', {'class': 'avatar-color-flex'}).append($('<span/>')));
+		$('.avatar-color-flex').append($('<input/>', {'type': 'color', 'value': '#123123', 'class': 'color-picker-profile-picture', 'oninput': 'changeAvatarColor (this);'}))
+	}
 }
 
 // <div class="avatar-color-flex">

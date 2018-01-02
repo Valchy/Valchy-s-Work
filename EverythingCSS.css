@@ -175,9 +175,18 @@ sub {color: white; font-size: 40px;}
 .theWeatherDiv, .theTimeDiv {text-align: right; margin: 20px 50px;}
 .theWeatherDiv:hover {cursor: pointer;}
 .choose-avatar-div {display: none; z-index: 90000; width: 600px; height: 350px; background-color: white; margin-left: 20px;}
+.genderTitle {text-align: center; margin: 10px 0px 50px 0px;}
+#insertSVG {display: flex; flex-direction: row; justify-content: space-around;}
+#insertSVG svg:hover {cursor: pointer;}
+.div-line {width: 1px; border-left: 1px solid black; height: 200px;}
+.man-avatar-choose, .woman-avatar-choose {display: none;}
+#CMA, #CWA {margin: -140px 0px 0px -80px; border-collapse: collapse; border: 1px solid black; -webkit-transform:scale(0.5); -moz-transform:scale(0.5); -ms-transform:scale(0.5); transform:scale(0.5);}
+#CMA td, #CWA td {border: 1px solid black;}
+#CMA td:hover, #CWA td:hover {cursor: pointer;}
+#avatar-selection-div {}
 
 @media all and (max-width: 300px) {
-	.theSVG {width: 200px !important;}
+	.theSVG {width: 200px !important;} z
 }
 @media all and (min-width: 300px) and (max-width: 470px) {
     .theSVG {width: 320px !important;}
