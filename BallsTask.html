@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
+canvas {width: 1300; height: 700; margin-left: 20%;}
 </style>
 </head>
 
@@ -24,6 +25,37 @@
 <script type="text/javascript" src="three.js"></script>
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+	var scene = new THREE.Scene();
+	var camera = new THREE.PerspectiveCamera(75, 1300/700, 0.1, 1000);
+
+	var renderer = new THREE.WebGLRenderer();
+	renderer.setSize(1300, 700);
+	// This creates the canvas
+	document.body.appendChild(renderer.domElement);
+
+	//var geometry = new THREE.CylinderGeometry(100, 100, 150, 8, 1, false, 0, Math.PI);
+	//4 13.0696 20.1221 5.0576 0.0 7.94 7.94 7.94 0.0 0.0 0.0 0.0 0.01576 2 1 Phantom 0.0 0.0 0.0 0.0 0.0 0.0 0 0.0 0.0 12615680 none
+	var geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+	var material = new THREE.MeshBasicMaterial({color: 0xffff00});
+	var cylinder = new THREE.Mesh(geometry, material);
+	scene.add(cylinder);
+
+	var update = function () {
+
+	};
+
+	var render = function () {
+		renderer.render(scene, camera);
+	};
+
+	// Try changing the title of var if it works
+	var GameLoop = function () {
+		requestAnimationFrame(GameLoop);
+		update();
+		render();
+	};
+
+	GameLoop();
 </script>
 </body>
 </html>

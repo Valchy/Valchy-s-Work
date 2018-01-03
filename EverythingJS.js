@@ -7,7 +7,7 @@ var OnOffSideBar = 1;
 var OnOffSideBarActive = 1;
 var pageInformation = 1;
 var pageSlider = 1;
-var accountForm = 4;
+var accountForm = 1;
 var invalidInputCounter = 0;
 var arrayCounterHelp = 0;
 var openCheckHelp = 0;
@@ -910,17 +910,28 @@ function changeAvatarColor (color, nb) {
 function chosenSVG (html, ac) {
 var tmp = html.innerHTML;
 
-	loadAvatarCustomisation(ac);
 	$('#theSVGdivoto').html(tmp).show();
 	$('.div-for-avatar').show();
 	$('#avatar-selection-div').hide();
+	loadAvatarCustomisation(ac);
 }
 
 function loadAvatarCustomisation (specs) {
 	for (var i = 1; i <= specs.length; i++) {
 		$('.flex-container-avatar-color').append($('<div/>', {'class': 'avatar-color-flex', 'id': 'LAC'+i}).append($('<span/>', {'id': 'SpanHTML'+i, 'html': specs[i-1]})));
-		$('#LAC'+i).append($('<input/>', {'type': 'color', 'value': '#ffff00', 'class': 'color-picker-profile-picture', 'oninput': 'changeAvatarColor (this, '+i+');'}))
+		var theHTML = document.getElementById('SpanHTML'+i).innerHTML;
+		var RGBvalue = $('.'+theHTML).css('fill');
+		var hex = rgb2hex(RGBvalue);
+		$('#LAC'+i).append($('<input/>', {'type': 'color', 'value': hex, 'class': 'color-picker-profile-picture', 'oninput': 'changeAvatarColor (this, '+i+');'}));
 	}
+}
+
+function rgb2hex (rgb) {
+	rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+	return (rgb && rgb.length === 4) ? "#" +
+	("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+	("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+	("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
 
 // <div class="create-an-account-input-extra">
