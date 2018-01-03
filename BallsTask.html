@@ -3,6 +3,9 @@
 <meta charset="utf-8">
 <title> Balls Task </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="three.min.js"></script>
+<script type="text/javascript" src="three.js"></script>
+<script type="text/javascript" src="OrbitControls.js"></script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
@@ -21,8 +24,7 @@ canvas {width: 1300; height: 700; margin-left: 20%;}
 	<h1> Balls Task (Three.js) </h1>
 </div>
 
-<script type="text/javascript" src="three.min.js"></script>
-<script type="text/javascript" src="three.js"></script>
+<!-- Very important how I place my JavaScript Sources since putting the controls one first for example breaks the code -->
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
 var cameraMovement = 1;
@@ -36,9 +38,16 @@ var cameraMovement = 1;
 	renderer.setSize(1300, 700);
 	// This creates the canvas
 	document.body.appendChild(renderer.domElement);
+	controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 	// 4 13.0696 20.1221 5.0576 0.0 7.94 7.94 7.94 0.0 0.0 0.0 0.0 0.01576 2 1 Phantom 0.0 0.0 0.0 0.0 0.0 0.0 0 0.0 0.0 12615680 none
 	var geometry = new THREE.SphereGeometry(4, 13.0696, 20.1221, 5.0576);
+	// wireframe true/false makes the shape be seen as 3d or not (only outline);
+	var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
+	var sphere = new THREE.Mesh(geometry, material);
+	scene.add(sphere);
+
+	var geometry = new THREE.SphereGeometry(20, 30, 20.1221, 5.0576);
 	// wireframe true/false makes the shape be seen as 3d or not (only outline);
 	var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
 	var sphere = new THREE.Mesh(geometry, material);
