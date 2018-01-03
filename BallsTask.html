@@ -43,7 +43,7 @@ var cameraMovement = 1;
 	// 4 13.0696 20.1221 5.0576 0.0 7.94 7.94 7.94 0.0 0.0 0.0 0.0 0.01576 2 1 Phantom 0.0 0.0 0.0 0.0 0.0 0.0 0 0.0 0.0 12615680 none
 	var geometry = new THREE.SphereGeometry(4, 13.0696, 20.1221, 5.0576);
 	// wireframe true/false makes the shape be seen as 3d or not (only outline);
-	var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
+	var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: false});
 	var sphere = new THREE.Mesh(geometry, material);
 	scene.add(sphere);
 

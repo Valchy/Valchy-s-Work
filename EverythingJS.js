@@ -795,7 +795,7 @@ $('#fix-something-div').html('').hide();
 
 function addWeather () {
 	var data = new XMLHttpRequest();
-	data.open('GET', 'http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b6907d289e10d714a6e88b30761fae22');
+	data.open('GET', 'http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b9f4243fa1e0c75ce5fd6a38ebdd5aa9');
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
 			var info = theLoad.responseText;
