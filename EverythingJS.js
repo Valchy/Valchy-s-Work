@@ -882,7 +882,7 @@ var gender;
 
 		for (var i = 0; i < arraySVG[gender].length; i++) {
 			var temp = arraySVG[gender][i].url;
-			temp.toString();
+			//temp.toString();
 			loadSVG(temp, 2);
 			$('#insertSVG, .woman-avatar-choose, .choose-avatar-div').hide();
 			$('#avatar-selection-div, .man-avatar-choose').show();
@@ -893,7 +893,7 @@ var gender;
 
 		for (var i = 0; i < arraySVG[gender].length; i++) {
 			var temp = arraySVG[gender][i].url;
-			temp.toString();
+			// temp.toString();
 			loadSVG(temp, 2);
 			$('#insertSVG, .man-avatar-choose, .choose-avatar-div').hide();
 			$('#avatar-selection-div, .woman-avatar-choose').show();

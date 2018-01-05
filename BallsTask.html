@@ -24,67 +24,108 @@ canvas {width: 1300; height: 700; margin-left: 20%;}
 	<h1> Balls Task (Three.js) </h1>
 </div>
 
+<div id="OnError"> </div>
+
 <!-- Very important how I place my JavaScript Sources since putting the controls one first for example breaks the code -->
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+var startDrawing = false;
+var sphereCounter = 0;
 var cameraMovement = 1;
+var allowUpdate = false;
+var sphereData = [];
 
-	// I can use eventListener to chnage the width of the canvas on 'resize' (to calculate the aspect ratio do width/height)
-	// Need to knwo methods are: camera.aspect = width / height; && camera.updateProjectionMatrix();
-	var scene = new THREE.Scene();
-	var camera = new THREE.PerspectiveCamera(75, 1300/700, 0.1, 1000);
-
-	var renderer = new THREE.WebGLRenderer();
-	renderer.setSize(1300, 700);
-	// This creates the canvas
-	document.body.appendChild(renderer.domElement);
-	controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-	// 4 13.0696 20.1221 5.0576 0.0 7.94 7.94 7.94 0.0 0.0 0.0 0.0 0.01576 2 1 Phantom 0.0 0.0 0.0 0.0 0.0 0.0 0 0.0 0.0 12615680 none
-	var geometry = new THREE.SphereGeometry(4, 13.0696, 20.1221, 5.0576);
-	// wireframe true/false makes the shape be seen as 3d or not (only outline);
-	var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: false});
-	var sphere = new THREE.Mesh(geometry, material);
-	scene.add(sphere);
-
-	var geometry = new THREE.SphereGeometry(20, 30, 20.1221, 5.0576);
-	// wireframe true/false makes the shape be seen as 3d or not (only outline);
-	var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
-	var sphere = new THREE.Mesh(geometry, material);
-	scene.add(sphere);
-
-	camera.position.z = 25;
-
-	var update = function () {
-		// This makes the cube rotate
-		sphere.rotation.x += 0.01;
-		sphere.rotation.y += 0.008;
-		if (cameraMovement == 1) {
-			camera.position.z += 0.5;
-			if (camera.position.z == 50) {
-				cameraMovement = 2;
+	function pull () {
+		var data = new XMLHttpRequest();
+		data.open('GET', 'https://valchy.github.io/br_accepted_r1.txt');
+		data.onload = function () {
+			if (data.status >= 200 && data.status < 400) {
+				var ourData = data.responseText;
+				sphereData = ourData.split("\n");
+				ThreeJS();
 			}
-		}
-		else {
-			camera.position.z -= 0.5;
-			if (camera.position.z == 9) {
-				cameraMovement = 1;
+			else {
+				$('#OnError').html('Server failure, please try again!');
+				console.log('Server failure, please try again!');
 			}
+		};
+		data.onerror = function () {
+			$('#OnError').html('Connection lost, please fix and try again!');
+			console.log('Connection lost, please fix and try again!');
+		};
+		data.send();
+	}
+
+	function ThreeJS () {
+		var tempInfo;
+
+		// I can use eventListener to chnage the width of the canvas on 'resize' (to calculate the aspect ratio do width/height)
+		// Need to knwo methods are: camera.aspect = width / height; && camera.updateProjectionMatrix();
+		var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera(75, 1300/700, 0.1, 1000);
+
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(1300, 700);
+		// This creates the canvas
+		document.body.appendChild(renderer.domElement);
+		controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+		for (var i = 3; i < sphereData.length; i++) {
+			if (sphereCounter <= sphereData[sphereCounter].length) {
+				tempInfo = sphereData[sphereCounter];
+				sphereCounter++;
+				console.log(tempInfo);
+			}
+			else {
+				allowUpdate = true;
+			}
+			var geometry = new THREE.SphereGeometry(7.94, 32, 16);
+			var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
+			var sphere = new THREE.Mesh(geometry, material);
+			scene.add(sphere);
 		}
-	};
 
-	var render = function () {
-		renderer.render(scene, camera);
-	};
+		// Changes camera position
+		camera.position.z = 45;
 
-	// Try changing the title of var if it works
-	var theLoop = function () {
-		requestAnimationFrame(theLoop);
-		update();
-		render();
-	};
+		var update = function () {
+			if (allowUpdate == true) {
+				// This makes the cube rotate
+				sphere.rotation.x += 0.01;
+				sphere.rotation.y += 0.008;
+				if (cameraMovement == 1) {
+					camera.position.z += 0.5;
+					if (camera.position.z == 50) {
+						cameraMovement = 2;
+					}
+				}
+				else {
+					camera.position.z -= 0.5;
+					if (camera.position.z == 9) {
+						cameraMovement = 1;
+					}
+				}
+			}
+			else {
+				return;
+			}
+		};
 
-	theLoop();
+		var render = function () {
+			renderer.render(scene, camera);
+		};
+
+		// Try changing the title of var if it works
+		var theLoop = function () {
+			requestAnimationFrame(theLoop);
+			update();
+			render();
+		};
+
+		theLoop();
+	}
+
+	pull();
 </script>
 </body>
 </html>
