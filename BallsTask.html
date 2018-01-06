@@ -6,6 +6,7 @@
 <script type="text/javascript" src="three.min.js"></script>
 <script type="text/javascript" src="three.js"></script>
 <script type="text/javascript" src="OrbitControls.js"></script>
+<script type="text/javascript" src="DragControls.js"></script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
@@ -30,14 +31,16 @@ canvas {width: 1300; height: 700; margin-left: 20%;}
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
 var startDrawing = false;
-var sphereCounter = 0;
+var sphereCounter = 1;
 var cameraMovement = 1;
 var allowUpdate = false;
 var sphereData = [];
 
+pull();
+
 	function pull () {
 		var data = new XMLHttpRequest();
-		data.open('GET', 'https://valchy.github.io/br_accepted_r1.txt');
+		data.open('GET', 'https://valchy.github.io/br_accepted_r5.txt');
 		data.onload = function () {
 			if (data.status >= 200 && data.status < 400) {
 				var ourData = data.responseText;
@@ -56,6 +59,12 @@ var sphereData = [];
 		data.send();
 	}
 
+	function decToHex(num) {
+		var hexNum = num.toString(16);
+		console.log(hexNum);
+		return hexNum;
+	}
+
 	function ThreeJS () {
 		var tempInfo;
 
@@ -64,50 +73,61 @@ var sphereData = [];
 		var scene = new THREE.Scene();
 		var camera = new THREE.PerspectiveCamera(75, 1300/700, 0.1, 1000);
 
-		var renderer = new THREE.WebGLRenderer();
+		var renderer = new THREE.WebGLRenderer({alpha: true});
 		renderer.setSize(1300, 700);
 		// This creates the canvas
 		document.body.appendChild(renderer.domElement);
-		controls = new THREE.OrbitControls(camera, renderer.domElement);
+		// Adds a mouse control option
+		var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-		for (var i = 3; i < sphereData.length; i++) {
+		for (var i = 0; i < sphereData.length-1; i++) {
 			if (sphereCounter <= sphereData[sphereCounter].length) {
 				tempInfo = sphereData[sphereCounter];
+				var verytemp = tempInfo.split(" ");
+				var hexString = verytemp[25];
+				decToHex(hexString);
+			}
+
+			if (verytemp[0] == 4) { // Parametars: radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength
+				var geometry = new THREE.SphereGeometry(verytemp[5]);
+				var material = new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: false});
+				var mesh = new THREE.Mesh(geometry, material);
+				scene.add(mesh);
+				mesh.position.set(verytemp[1], verytemp[2], verytemp[3]);
 				sphereCounter++;
-				console.log(tempInfo);
+				if (sphereCounter == 1111111111) {
+					// Fix movement :D
+					allowUpdate = true;
+				}
 			}
-			else {
-				allowUpdate = true;
+			else if (verytemp[0] == 12) {	// false makes the top and bottom bar show or hide
+				var geometry = new THREE.CylinderGeometry(50, 50, 220, 10, 0.1, false, 0, Math.PI);
+				var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
+				var mesh = new THREE.Mesh(geometry, material);
+				scene.add(mesh);
+				mesh.position.set(verytemp[5], verytemp[6], verytemp[1]);
+				sphereCounter++;
 			}
-			var geometry = new THREE.SphereGeometry(7.94, 32, 16);
-			var material = new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true});
-			var sphere = new THREE.Mesh(geometry, material);
-			scene.add(sphere);
 		}
 
 		// Changes camera position
-		camera.position.z = 45;
+		camera.position.z = 200;
+		camera.position.x = 100;
+		camera.rotation.x = 0;
 
 		var update = function () {
-			if (allowUpdate == true) {
-				// This makes the cube rotate
-				sphere.rotation.x += 0.01;
-				sphere.rotation.y += 0.008;
-				if (cameraMovement == 1) {
-					camera.position.z += 0.5;
-					if (camera.position.z == 50) {
-						cameraMovement = 2;
-					}
-				}
-				else {
-					camera.position.z -= 0.5;
-					if (camera.position.z == 9) {
-						cameraMovement = 1;
-					}
+
+			if (cameraMovement == 1) {
+				camera.position.z += 0.5;
+				if (camera.position.z == 250) {
+					cameraMovement = 2;
 				}
 			}
 			else {
-				return;
+				camera.position.z -= 0.5;
+				if (camera.position.z == 209) {
+					cameraMovement = 1;
+				}
 			}
 		};
 
@@ -115,7 +135,6 @@ var sphereData = [];
 			renderer.render(scene, camera);
 		};
 
-		// Try changing the title of var if it works
 		var theLoop = function () {
 			requestAnimationFrame(theLoop);
 			update();
@@ -124,8 +143,6 @@ var sphereData = [];
 
 		theLoop();
 	}
-
-	pull();
 </script>
 </body>
 </html>
