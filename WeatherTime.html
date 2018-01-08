@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
 h3 {text-align: center;}
-#map {width: 100%; height: 400px; background-color: grey;}
+h1 {margin-bottom: 0px; padding-bottom: 0px;}
+#map {width: 100%; height: 400px; background-color: grey; margin-bottom: 20px;}
 </style>
 </head>
 
@@ -21,28 +22,98 @@ h3 {text-align: center;}
 <div class="mainPage">
 	<h1> Using API (AJAX &amp; AJAX) to show local Weather and Time </h1>
 
+	<div id="userCoordinates"> Your Coordinates: </div>
+
 	<h3> My Google Maps Demo </h3>
 	<div id="map"></div>
+
 	<div id="DivID"></div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyIYwMtjGzKPyGYKkqF9sNh1d7AhUZxK4&callback=initMap">
-    </script>
+var coordinatesDiv = document.getElementById('userCoordinates');
+var userLAT;
+var userLON;
+
+function mapsCall () {
+	getLocation().done(pullingInformation ());
+}
+
+var pullingInformation = function () {
+	var data = new XMLHttpRequest();
+	data.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat='+userLAT+'&lon='+userLON+'&appid=ce08873d7abcedcca577c81c3a1d0689');
+
+	data.onload = function () {
+		if (data.status >= 200 && data.status < 400) {
+			var ourData = JSON.parse(data.responseText);
+			$('#DivID').html(ourData);
+		}
+		else {
+			$('#DivID').html('Server failure, please try again!');
+		}
+	};
+
+	data.onerror = function () {
+		$('#DivID').html('Connection error ocurred, please try again!');
+	}
+
+	data.send();
+
+	// play wiht the settings
+	var uluru = {lat: 21, lng: 32};
+    var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: uluru
+    });
+    var marker = new google.maps.Marker({
+    	position: uluru,
+    	map: map
+	});
+}
+
+var getLocation = function () {
+	var r = $.Deferred();
+	if (navigator.geolocation) {
+       userData = navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        coordinatesDiv.innerHTML = "Geolocation is not supported by this browser :(";
+    }
+    return r;
+}
+
+function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    userLON = position.coords.longitude;
+    userLAT = position.coords.latitude;
+
+    if (latlon.length < 1) {
+    	coordinatesDiv.innerHTML += ' Blocked by user';
+    }
+    else {
+    	coordinatesDiv.innerHTML += ' '+position.coords.longitude+' and '+position.coords.latitude;
+    }
+}
+
+// Error Handling
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            coordinatesDiv.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            coordinatesDiv.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            coordinatesDiv.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            coordinatesDiv.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=mapsCall"> </script>
 </body>
 </html>
 
