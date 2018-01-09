@@ -37,10 +37,14 @@ var userLAT;
 var userLON;
 
 function mapsCall () {
-	getLocation().done(pullingInformation ());
+	if (navigator.geolocation) {
+       userData = navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        coordinatesDiv.innerHTML = "Geolocation is not supported by this browser :(";
+    }
 }
 
-var pullingInformation = function () {
+function pullingInformation () {
 	var data = new XMLHttpRequest();
 	data.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat='+userLAT+'&lon='+userLON+'&appid=ce08873d7abcedcca577c81c3a1d0689');
 
@@ -61,7 +65,7 @@ var pullingInformation = function () {
 	data.send();
 
 	// play wiht the settings
-	var uluru = {lat: 21, lng: 32};
+	var uluru = {lat: userLAT, lng: userLONs};
     var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: uluru
@@ -70,16 +74,6 @@ var pullingInformation = function () {
     	position: uluru,
     	map: map
 	});
-}
-
-var getLocation = function () {
-	var r = $.Deferred();
-	if (navigator.geolocation) {
-       userData = navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else { 
-        coordinatesDiv.innerHTML = "Geolocation is not supported by this browser :(";
-    }
-    return r;
 }
 
 function showPosition(position) {
@@ -93,6 +87,8 @@ function showPosition(position) {
     else {
     	coordinatesDiv.innerHTML += ' '+position.coords.longitude+' and '+position.coords.latitude;
     }
+
+    pullingInformation();
 }
 
 // Error Handling
