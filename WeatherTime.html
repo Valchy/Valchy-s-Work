@@ -10,6 +10,7 @@
 h3 {text-align: center;}
 h1 {margin-bottom: 0px; padding-bottom: 0px;}
 #map {width: 100%; height: 400px; background-color: grey; margin-bottom: 20px;}
+#DivID {background-color: white; border-radius: 20px; border: 1px solid black; width: 200px; height: 200px; padding: 10px;}
 </style>
 </head>
 
@@ -35,6 +36,7 @@ h1 {margin-bottom: 0px; padding-bottom: 0px;}
 var coordinatesDiv = document.getElementById('userCoordinates');
 var userLAT;
 var userLON;
+var tempHTML;
 
 function mapsCall () {
 	if (navigator.geolocation) {
@@ -50,8 +52,10 @@ function pullingInformation () {
 
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
+			// Different types of JSON.random(). Examples are: parse() and stringify();
 			var ourData = JSON.parse(data.responseText);
-			$('#DivID').html(ourData);
+			WeatherHTML(ourData);
+			$('#DivID').html(tempHTML);
 		}
 		else {
 			$('#DivID').html('Server failure, please try again!');
@@ -65,13 +69,13 @@ function pullingInformation () {
 	data.send();
 
 	// play wiht the settings
-	var uluru = {lat: userLAT, lng: userLON};
+	var userLatLan = {lat: userLAT, lng: userLON};
     var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: uluru
+    	zoom: 6,
+   		center: userLatLan
     });
-    var marker = new google.maps.Marker({
-    	position: uluru,
+    var marker = new google.maps.Marker ({
+    	position: userLatLan,
     	map: map
 	});
 }
@@ -107,6 +111,13 @@ function showError(error) {
             coordinatesDiv.innerHTML = "An unknown error occurred."
             break;
     }
+}
+
+function WeatherHTML (data) {
+	tempHTML = data;
+	var hi = tempHTML.coord.lon;
+	tempHTML = hi;
+	return tempHTML;
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=mapsCall"> </script>
