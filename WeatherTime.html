@@ -52,7 +52,8 @@ function pullingInformation () {
 
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
-			// Different types of JSON.random(). Examples are: parse() and stringify();
+			// Different types of JSON.random() Examples are: parse() and stringify();
+            // Ask for more information about the topic what exactly does a specific method
 			var ourData = JSON.parse(data.responseText);
 			WeatherHTML(ourData);
 			$('#DivID').html(tempHTML);
@@ -68,7 +69,6 @@ function pullingInformation () {
 
 	data.send();
 
-	// play wiht the settings
 	var userLatLan = {lat: userLAT, lng: userLON};
     var map = new google.maps.Map(document.getElementById('map'), {
     	zoom: 6,
