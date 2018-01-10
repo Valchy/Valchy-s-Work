@@ -10,7 +10,13 @@
 h3 {text-align: center;}
 h1 {margin-bottom: 0px; padding-bottom: 0px;}
 #map {width: 100%; height: 400px; background-color: grey; margin-bottom: 20px;}
-#DivID {background-color: white; border-radius: 20px; border: 1px solid black; width: 200px; height: 200px; padding: 10px;}
+#DivID {border-radius: 20px; border: 5px solid black; width: 1000px; height: 240px; background-color: #fff; margin: 0px; padding: 0px;}
+#WeatherDivOne img {width: 100%; height: 100%; border-radius: 20px; border-right: 2px solid #000;}
+#WeatherDivtwo {padding: 10px; background-color: #efdfdd; border-radius: 20px; display: flex; justify-content: center; width: 300px; margin-left: 10px;}
+#weatherGifs {background-color: #fff; display: flex; flex-direction: row; justify-content: space-around; align-items: center; align-content: center; width: 100%; height: 100%; border-radius: 20px;}
+.mainWeatherIMG {width: 150px; height: 150px; border-radius: 20px;}
+.flex-div {display: none; flex-direction: column; justify-content: space-between; align-items: center; align-content: center;}
+.flex-main {display: flex; justify-content: center;}
 </style>
 </head>
 
@@ -28,15 +34,29 @@ h1 {margin-bottom: 0px; padding-bottom: 0px;}
 	<h3> My Google Maps Demo </h3>
 	<div id="map"></div>
 
-	<div id="DivID"></div>
+	<div class="flex-main">
+		<div id="DivID">
+			<div id="weatherGifs">
+				<img src="sun_loader2.gif" class="mainWeatherIMG">
+				<img src="sun_loader.gif" class="mainWeatherIMG">
+				<img src="sun_loader2.gif" class="mainWeatherIMG">
+			</div>
+
+			<div class="flex-div">	
+				<div id="WeatherDivOne"></div>
+				<div id="WeatherDivTwo"></div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
 var coordinatesDiv = document.getElementById('userCoordinates');
+var jsonDataLabels = new Array('Country: ', 'City: ', 'Sunset: ', 'Sunrise: ', 'Weather: ', 'Temperature: ', 'Min. Temperature: ', 'Max. Temperature: ', 'Wind Speed: ');
+var jsonData = new Array();
 var userLAT;
 var userLON;
-var tempHTML;
 
 function mapsCall () {
 	if (navigator.geolocation) {
@@ -52,19 +72,24 @@ function pullingInformation () {
 
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
-			// Different types of JSON.random() Examples are: parse() and stringify();
-            // Ask for more information about the topic what exactly does a specific method
+			// Different types of JSON.random() Examples are: parse() and stringify(); Ask for more information about the topic what exactly does a specific method
 			var ourData = JSON.parse(data.responseText);
-			WeatherHTML(ourData);
-			$('#DivID').html(tempHTML);
+			var tmp = WeatherHTML(ourData);
+			var wthr = weather(tmp[4]);
+			$('#weatherGifs').fadeOut(1000);
+			$('.flex-div').delay(1000).queue(function (next) {$(this).css({'display': 'flex'}).show(); next()});
+			$('#WeatherDivOne').append($('<img/>', {'src': wthr}));
+			for (var i = 0; i < tmp.length; i++) {
+				document.getElementById('WeatherDivTwo').innerHTML += tmp[i]+"<br>";
+			}
 		}
 		else {
-			$('#DivID').html('Server failure, please try again!');
+			$('.WeatherDivtwo').html('Server failure, please try again!');
 		}
 	};
 
 	data.onerror = function () {
-		$('#DivID').html('Connection error ocurred, please try again!');
+		$('.WeatherDivtwo').html('Connection error ocurred, please try again!');
 	}
 
 	data.send();
@@ -113,11 +138,32 @@ function showError(error) {
     }
 }
 
+function weather (climate) {
+	if (climate === 'Weather: Clouds') {
+		return 'cns.jpg';
+	}
+	else if (climate === 'Weather: Clear') {
+		return 'snc.jpg';
+	}
+	else if (climate === 'Weather: Rain') {
+		return 'rain.jpg';
+	}
+	else if (climate === 'Weather: Mist') {
+		return 'mist.jpg'
+	}
+}
+
 function WeatherHTML (data) {
-	tempHTML = data;
-	var hi = tempHTML.coord.lon;
-	tempHTML = hi;
-	return tempHTML;
+	jsonData.push(jsonDataLabels[0]+data.sys.country);
+	jsonData.push(jsonDataLabels[1]+data.name);
+	jsonData.push(jsonDataLabels[2]+data.sys.sunset);
+	jsonData.push(jsonDataLabels[3]+data.sys.sunrise);
+	jsonData.push(jsonDataLabels[4]+data.weather[0].main);
+	jsonData.push(jsonDataLabels[5]+data.main.temp);
+	jsonData.push(jsonDataLabels[6]+data.main.temp_min);
+	jsonData.push(jsonDataLabels[7]+data.main.temp_max);
+	jsonData.push(jsonDataLabels[8]+data.wind.speed);
+	return jsonData;
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=mapsCall"> </script>
