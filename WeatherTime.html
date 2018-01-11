@@ -16,7 +16,7 @@ h1 {margin-bottom: 0px; padding-bottom: 0px;}
 #weatherGifs {background-color: #fff; display: flex; flex-direction: row; justify-content: space-around; align-items: center; align-content: center; width: 100%; height: 100%; border-radius: 20px;}
 .mainWeatherIMG {width: 150px; height: 150px; border-radius: 20px;}
 .flex-div {display: none; flex-direction: column; justify-content: space-between; align-items: center; align-content: center;}
-.flex-main {display: flex; flex-direction: row justify-content: center;}
+.flex-main {display: flex; flex-direction: row; justify-content: center;}
 </style>
 </head>
 
@@ -48,8 +48,6 @@ h1 {margin-bottom: 0px; padding-bottom: 0px;}
 				<div id="WeatherDivTwo"></div>
 			</div>
 		</div>
-
-		<div id="openweathermap-widget-12"> </div>
 	</div>
 </div>
 
@@ -188,7 +186,6 @@ function WeatherHTML (data) {
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=mapsCall"> </script>
-<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 12,cityid: '726050',appid: 'ce08873d7abcedcca577c81c3a1d0689',units: 'metric',containerid: 'openweathermap-widget-12',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "http://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script></body>
 </html>
 
 <!--
