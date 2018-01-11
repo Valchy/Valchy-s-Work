@@ -81,7 +81,7 @@ function mapsCall () {
 
 function pullingInformation () {
 	var data = new XMLHttpRequest();
-	data.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat='+userLAT+'&lon='+userLON+'&appid=ce08873d7abcedcca577c81c3a1d0689');
+	data.open('GET', 'https://api.openweathermap.org/data/2.5/weather?lat='+userLAT+'&lon='+userLON+'&appid=ce08873d7abcedcca577c81c3a1d0689');
 
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
