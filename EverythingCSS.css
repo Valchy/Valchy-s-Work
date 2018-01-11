@@ -172,7 +172,7 @@ sub {color: white; font-size: 40px;}
 .flex-container-extra-buttons {display: flex; flex-direction: row; align-items: center;}
 .thick-line-before-button {display: none; transition: all 0.40s ease 0s; width: 10px; height: 75px; background-color: lightgreen; border-bottom-right-radius: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px;}
 .UploadImageButton {width: 100px !important;}
-.theWeatherDiv, .theTimeDiv {text-align: right; margin: 20px 50px;}
+.theWeatherDiv, #theTimeDiv {text-align: right; margin: 20px 50px;}
 .theWeatherDiv:hover {cursor: pointer;}
 .choose-avatar-div {display: none; margin-left: 20px;}
 .genderTitle {text-align: center; margin: 10px 0px 50px 0px;}

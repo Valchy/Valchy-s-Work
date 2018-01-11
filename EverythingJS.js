@@ -11,6 +11,8 @@ var accountForm = 1;
 var invalidInputCounter = 0;
 var arrayCounterHelp = 0;
 var openCheckHelp = 0;
+var userLAT;
+var userLON;
 var arrayHelp = ['Press the 5th icon on the top bar going left to right for the color change', 'hello people', 'I am 15 years old xd :D', 'Guys idk', 'last thing'];
 var theArray = [{'name': 'Home', 'url': 'index.html'},{'name': 'Accordion', 'url': 'Accordion.html'},{'name': 'AddOrMinus', 'url': 'AddOrMinus.html'},{'name': 'Added Arrays', 'url': 'Added%20Arrays.html'},{'name': 'ArayOnlyNumbers', 'url': 'ArayOnlyNumbers.html'},{'name': 'Array Drawing', 'url': 'Array%20Drawing.html'},{'name': 'Array Squared', 'url': 'Array%20Squared.html'},{'name': 'Array', 'url': 'Array.html'},{'name': 'ASDF', 'url': 'ASDF.html'},{'name': 'Balls Task', 'url': 'BallsTask.html'},{'name': 'Between 10 - 20', 'url': 'Between%2010%20-%2020.html'},{'name': 'BinaryToDecimal', 'url': 'BinaryToDecimal'},{'name': 'Button Customising', 'url': 'Button%20Customising.html'},{'name': 'Button', 'url': 'Button.html'},{'name': 'Calender Form', 'url': 'CalenderForm.html'},{'name': 'CircleRadius', 'url': 'CircleRadius.html'},{'name': 'Clock', 'url': 'Clock.html'},{'name': 'Cloning Array', 'url': 'Cloning%20Array.html'},{'name': 'CombiningMassives', 'url': 'CombiningMassives.html'},{'name': 'Concat F_A', 'url': 'Concat%20F_A.html'},{'name': 'ConcatValue', 'url': 'ConcatValue'},{'name': 'Console Numbers', 'url': 'Console%20Numbers.html'},{'name': 'Current Date', 'url': 'Current%20Date.html'},{'name': 'Date Converter', 'url': 'Date%20Converter.html'},{'name': 'Drag & Drop', 'url': 'DragDrop.html'},{'name': 'Drawing Circles', 'url': 'Drawing%20Circles.html'},{'name': 'Drawing', 'url': 'Drawing.html'},{'name': 'EditableDiv', 'url': 'EditableDiv.html'},{'name': 'Fill Array', 'url': 'Fill%20Array.html'},{'name': 'Finding Lowest and Highest Array', 'url': 'Finding%20Lowest%20and%20Highest%20Array.html'},{'name': 'FindMinimalNumber', 'url': 'FindMinimalNumner.html'},{'name': 'FirstLetterUp', 'url': 'FirstLetterUp.html'},{'name': 'Form Text', 'url': 'FormText.html'},{'name': 'Form Text Movement', 'url': 'Form%20Text%20Movement.html'},{'name': 'FunctionN', 'url': 'FunctionN.html'},{'name': 'Fun Puzzle', 'url': 'FunPuzzle.html'},{'name': 'GeometricFigures', 'url': 'GeometricFigures.html'},{'name': 'Google Icons', 'url': 'Google%20Icons.html'},{'name': 'Handlebars.js', 'url': 'HandlebarsJS.html'},{'name': 'Hello', 'url': 'Hello.html'},{'name': 'Integer Multiples', 'url': 'IntegerMultiples.html'},{'name': 'JSON & AJAX', 'url': 'JSONAJAX.html'},{'name': 'JS Objects', 'url': 'JS%20Objects.html'},{'name': 'KOM', 'url': 'KOM.html'},{'name': 'Lader', 'url': 'Lader.html'},{'name': 'Length of Object', 'url': 'Length%20of%20Object.html'},{'name': 'Letter Color Changing', 'url': 'Letter%20Color%20Changing.html'},{'name': 'Mac - Processor and Hard Drive', 'url': 'Mac%20-%20Processor%20and%20Hard%20Drive.html'},{'name': 'Multiple-Step Form', 'url': 'MultipleStepForm.html'},{'name': 'Music', 'url': 'Music.html'},{'name': 'Most Common Array', 'url': 'Most%20Common%20Array.html'},{'name': 'NewArray', 'url': 'NewArray.html'},{'name': 'NoSpace', 'url': 'NoSpace.html'},{'name': 'Numbers 1 - 100', 'url': 'Numbers%201%20-%20100.html'},{'name': 'Object Types', 'url': 'ObjectTypes.html'},{'name': 'On/Off Switch', 'url': 'OnOffSwitch.html'},{'name': 'Password Validation', 'url': 'PasswordValidation.html'},{'name': 'Picture Coordinates', 'url': 'PictureCoordinates.html'},{'name': 'Progress Bar', 'url': 'ProgressBar.html'},{'name': 'Regular Expressions', 'url': 'RegExp.html'},{'name': 'RepeatString', 'url': 'RepeatString.html'},{'name': 'Row Change', 'url': 'Row%20Change.html'},{'name': 'Seconds', 'url': 'Seconds.html'},{'name': 'String Caps', 'url': 'String%20Caps.html'},{'name': 'Sudoku', 'url': 'Sudoku.html'},{'name': 'TableAdding', 'url': 'TableAdding.html'},{'name': 'TableFunction', 'url': 'TableFunction.html'},{'name': 'TableFunction2', 'url': 'TableFunction2.html'},{'name': 'TableFunction3', 'url': 'TableFunction3.html'},{'name': 'Tennis Game', 'url': 'Tennis%20Game.html'},{'name': 'Target JavaScript', 'url': 'TargetJavaScript.html'},{'name': 'Three.js', 'url': 'ThreeJS.html'},{'name': 'Using Google Icons', 'url': 'Using%20Google%20Icons.html'},{'name': 'Weather & Time', 'url': 'WeatherTime.html'},{'name': 'Weekend & Date Object', 'url': 'Is%20it%20weekend_date%20obj.html'},{'name': 'While Loops', 'url': 'WhileLoops.html'},{'name': 'WordFunction', 'url': 'WordFunction.html'}];
 var arraySVG = [[{'url': 'https://valchy.github.io/EverythingSVG/avatar_woman.svg'}, {'url': 'https://valchy.github.io/EverythingSVG/avatar_man.svg'}], [{'url': 'https://valchy.github.io/EverythingSVG/male_avatar_default.svg', 'changes': ['avatar-background', 'avatar-neck', 'avatar-glasses', 'avatar-shirt', 'avatar-face', 'avatar-frame', 'avatar-stripes']}, {'url': 'https://valchy.github.io/EverythingSVG/male_avatar_alien.svg', 'changes': ['avatar-background', 'avatar-shirt', 'avatar-neck', 'avatar-face', 'avatar-ears', 'avatar-mask', 'avatar-horn']}, {'url': 'https://valchy.github.io/EverythingSVG/male_avatar_glasses.svg', 'changes': ['avatar-background', 'avatar-neck', 'avatar-bottom-shirt', 'avatar-top-shirt', 'avatar-face', 'avatar-hair', 'avatar-frame', 'avatar-glasses']}], [{'url': 'https://valchy.github.io/EverythingSVG/female_avatar_default.svg', 'changes': ['avatar-background', 'avatar-hair', 'avatar-shirt', 'avatar-top-shirt', 'avatar-neck', 'avatar-face', 'avatar-lips', 'avatar-glasses']}, {'url': 'https://valchy.github.io/EverythingSVG/female_avatar_nurse.svg', 'changes': ['avatar-background', 'avatar-hair', 'avatar-shirt', 'avatar-top-shirt', 'avatar-bottom-shirt', 'avatar-face', 'avatar-lips', 'avatar-neck', 'avatar-hat']}, {'url': 'https://valchy.github.io/EverythingSVG/female_avatar_ninja.svg', 'changes': ['avatar-background', 'avatar-shirt', 'avatar-face', 'avatar-eye', 'avatar-eyelashes']}]];
@@ -35,7 +37,7 @@ window.onload = function ()	{
 		$('#youtube').hide();
 		$('.myYouTubeVideo').hide();
 		$('.myYouTubeVideoDiv').hide();
-		$('.theWeatherDiv, .theTimeDiv').hide().delay(900).fadeToggle(100);
+		$('.theWeatherDiv, #theTimeDiv').hide().delay(900).fadeToggle(100);
 
 		if (pageInformation == 1) {
 			$('#homePageInformation').show();
@@ -793,23 +795,74 @@ $('#fix-something-div').html('').hide();
 	}
 }
 
+function getLocation () {
+	if (navigator.geolocation) {
+       var userData = navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        $('.theWeatherDiv').html("Geolocation is not supported by this browser :(");
+    }
+
+    addWeather();
+}
+
+function showPosition(position) {
+    userLON = position.coords.longitude;
+    userLAT = position.coords.latitude;
+
+    if (userLON.length < 1 || userLAT.length < 1) {
+    	$('.theWeatherDiv').html('Local Coordinates: Blocked by user');
+    }
+    else {
+    	$('.theWeatherDiv').html('Local Coordinates: '+position.coords.longitude+' and '+position.coords.latitude);
+    }
+}
+
+// Error Handling
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            $('.theWeatherDiv').html('User denied the request for Geolocation.');
+            break;
+        case error.POSITION_UNAVAILABLE:
+            $('.theWeatherDiv').html('Location information is unavailable.');
+            break;
+        case error.TIMEOUT:
+            $('.theWeatherDiv').html('The request to get user location timed out.');
+            break;
+        case error.UNKNOWN_ERROR:
+            $('.theWeatherDiv').html('An unknown error occurred.');
+            break;
+    }
+}
+
 function addWeather () {
+	var userLocalTimeHours = new Date().getHours();
+	var userLocalTimeMinutes = new Date().getMinutes();
+
+	if (userLocalTimeHours <= 9) {
+		userLocalTimeHours = '0'+userLocalTimeHours;
+	}
+	else if (userLocalTimeMinutes <= 9) {
+		userLocalTimeMinutes = '0'+userLocalTimeMinutes;
+	}
+	document.getElementById('theTimeDiv').innerHTML += ' '+userLocalTimeHours+':'+userLocalTimeMinutes;
+
 	var data = new XMLHttpRequest();
-	data.open('GET', 'http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b9f4243fa1e0c75ce5fd6a38ebdd5aa9');
+	data.open('GET', 'http://api.openweathermap.org/data/2.5/weather?lat='+userLAT+'&lon='+userLON+'&appid=ce08873d7abcedcca577c81c3a1d0689');
+
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
-			var info = theLoad.responseText;
-			console.log(info);
-			$('.theWeatherDiv').html(info);
+			var ourData = JSON.parse(data.responseText);
+			$('.theWeatherDiv').html();
 		}
 		else {
 			$('.theWeatherDiv').html('Server failure, please try again!');
 		}
-		data.onerror = function () {
-			$('.theWeatherDiv').html('Connection lost, please fix and try again!');
-		};
-	data.send();
 	};
+
+	data.onerror = function () {
+		$('.theWeatherDiv').html('Connection error ocurred, please try again!');
+	}
 }
 
 function loadGenderSVG () {
@@ -933,12 +986,3 @@ function rgb2hex (rgb) {
 	("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
 	("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
-
-// <div class="create-an-account-input-extra">
-// <input type="file" accept="image/*" id="theUploadedImage">
-// <button class="UploadImageButton" onclick="uploadImage ();"> Upload Image </button>
-// </div>
-
-
-
-

@@ -10,9 +10,9 @@
 h3 {text-align: center;}
 h1 {margin-bottom: 0px; padding-bottom: 0px;}
 #map {width: 100%; height: 400px; background-color: grey; margin-bottom: 20px;}
-#DivID {border-radius: 20px; border: 5px solid black; width: 800px; height: 240px; background-color: #fff; margin: 0px; padding: 0px; background-color: #000;}
+#DivID {border-radius: 20px; border: 5px solid black; width: 800px; height: 235px; background-color: #fff; margin: 0px; padding: 0px; background-color: #000;}
 #WeatherDivOne img {width: 100%; height: 100%; border-radius: 20px; border-right: 2px solid #000;}
-#WeatherDivtwo {padding: 10px; background-color: #efdfdd; border-radius: 20px; display: flex; justify-content: center; text-align: center; width: 700px; margin-top: 180px; z-index: 9000; position: absolute;}
+#WeatherDivtwo {padding: 10px; background-color: #efdfdd; border-radius: 20px; display: flex; justify-content: center; text-align: center; width: 700px; margin-top: 170px; z-index: 9000; position: absolute;}
 #weatherGifs {background-color: #fff; display: flex; flex-direction: row; justify-content: space-around; align-items: center; align-content: center; width: 100%; height: 100%; border-radius: 20px;}
 .mainWeatherIMG {width: 150px; height: 150px; border-radius: 20px;}
 .flex-div {display: none; flex-direction: column; justify-content: space-between; align-items: center; align-content: center;}
@@ -30,6 +30,7 @@ h1 {margin-bottom: 0px; padding-bottom: 0px;}
 	<h1> Using API (AJAX &amp; AJAX) to show local Weather and Time </h1>
 
 	<div id="userCoordinates"> Your Coordinates: </div>
+	<div id="userLocalTime"> Your Local Time: </div>
 
 	<h3> My Google Maps Demo </h3>
 	<div id="map"></div>
@@ -57,10 +58,20 @@ h1 {margin-bottom: 0px; padding-bottom: 0px;}
 var coordinatesDiv = document.getElementById('userCoordinates');
 var jsonDataLabels = new Array('Country: ', 'City: ', 'Sunset: ', 'Sunrise: ', 'Weather: ', 'Temperature: ', 'Min. Temperature: ', 'Max. Temperature: ', 'Wind Speed: ');
 var jsonData = new Array();
+var userLocalTimeHours = new Date().getHours();
+var userLocalTimeMinutes = new Date().getMinutes();
 var userLAT;
 var userLON;
 
 function mapsCall () {
+	if (userLocalTimeHours <= 9) {
+		userLocalTimeHours = '0'+userLocalTimeHours;
+	}
+	else if (userLocalTimeMinutes <= 9) {
+		userLocalTimeMinutes = '0'+userLocalTimeMinutes;
+	}
+	document.getElementById('userLocalTime').innerHTML += ' '+userLocalTimeHours+':'+userLocalTimeMinutes;
+
 	if (navigator.geolocation) {
        userData = navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else { 
