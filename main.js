@@ -6,8 +6,7 @@ function init(){
         var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
 		var camPos = new THREE.Vector3(unite.position.x-137,unite.position.y+50,unite.position.z+70);
         camera.position.set(camPos.x,camPos.y,camPos.z);
-        var webGLRenderer = new THREE.WebGLRenderer();
-        webGLRenderer.setClearColor(0xffffff);
+        var webGLRenderer = new THREE.WebGLRenderer({alpha: true});
         webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 		
 		var light = new THREE.PointLight( 0xffffff, 0.9 );
