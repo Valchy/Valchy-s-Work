@@ -2,11 +2,32 @@
 <head>
 <meta charset="utf-8">
 <title> Current Date </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+
 </head>
 
-<body style="background: linear-gradient(10deg, rgba(255,0,0,0), rgba(255,255,0,1));">
-<h1 style="text-align: center;"> Click the Buttons Below to find out Different Things </h1>
+<body>
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Click the Buttons Below to find out Different Things </h1>
+
+	<button onclick="currentDate ();">
+		Click for Today's Date
+	</button>
+
+	<div id="theResults">
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
 function again ()
 {
@@ -19,13 +40,6 @@ function currentDate ()
 	setTimeout (again, 10); // Make to 100 if it makes the browser laggy
 }
 </script>
-
-<button onclick="currentDate ();">
-	Click for Today's Date
-</button>
-
-<div id="theResults">
-</div>
 </body>
 </html>
 

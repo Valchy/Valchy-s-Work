@@ -1,10 +1,27 @@
 <html>
 <head>
 <title> Between 10 - 20 </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
-</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+</style>
+</haed>
 
 <body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Between 10 - 20 </h1>
+
+	<div id="show"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 	<script>
 	function Between10n20 (a)
 	{
@@ -22,7 +39,7 @@
 
 	}
 
-	console.log (Between10n20 (24));
+	document.getElementById('show').innerHTML = Between10n20 (24);
 
 	</script>
 </body>

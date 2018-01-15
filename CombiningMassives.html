@@ -1,10 +1,25 @@
 <html>
 <head>
 <title> CombiningMassives </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color: ff0">
+<body style="background-color: #ff0">
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Combining Massives (arrays) </h1>
+
+	<div id="results"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function CombiningMassives (a,b)
 {
@@ -16,7 +31,7 @@ function CombiningMassives (a,b)
 		r.push (b [i]);
 	}
 	console.log (r);
-	document.write (r);
+	document.getElementById('results').innerHTML = r;
 }
 
 CombiningMassives (['a','b','c'], [1,2,3]);

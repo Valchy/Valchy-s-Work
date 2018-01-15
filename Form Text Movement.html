@@ -2,7 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> Form Text Movement </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
 .theSpanOne {color: white; font-size: 55px; font-weight: 100; text-shadow: 2px 2px 20px #ff0000, -2px -2px 20px #ff0000, 2px -2px 20px #ff0000, -2px 2px 20px #ff0000; cursor: progress;}
 .theSpanTwo {color: white; font-size: 45px; font-weight: 900; text-shadow: 2px 2px black; cursor: not-allowed;}
@@ -38,16 +41,46 @@
 </style>
 </head>
 
-<body style="background-color: #394999;">
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Form Text Movement </h1>
+
 	<div> </div>
-<h1 style="text-align: center; margin-bottom: 10px;"> 
-	<span class="theSpanOne" onclick="window.alert ('Why did you Click me?')"> 
-		A Moving Form!!! -
-	</span>  
-	<span class="theSpantwo"> 
-		Just left click on it :D 
-	</span> 
-</h1> <hr>
+	<h1 style="text-align: center; margin-bottom: 10px;"> 
+		<span class="theSpanOne" onclick="window.alert ('Why did you Click me?')"> 
+			A Moving Form!!! -
+		</span>  
+		<span class="theSpantwo"> 
+			Just left click on it :D 
+		</span> 
+	</h1> <hr>
+	<button class="theButton" id="theButtonOne" onclick="randomMovement ();">
+		Click for <br>
+		Random Movement
+	</button>
+
+	<button class="theButton" style="cursor: not-allowed;" id="theButtonTwo" onclick="stopRandomMovement ();" disabled>
+		Click to stop <br>
+		Random Movement
+	</button>
+
+	<span class="theSpanCSS"> Use 'Enter' or the Arrow Keys to also make the form Move </span>
+
+	<!-- Има ли начин докото се мърда текста да е друг и като отиде на дадената локация да стане пак същия МОЖЕ! --> 
+	<form class="theForm" onclick="moveFormUpDown ();" id="theForm"> 
+		<span style="color: yellow; font-weight: 900; font-size: 50px; letter-spacing: 8px; line-height: 50px;">
+			I am text in a form <br>
+			please click me...
+		</span>
+	</form>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
 var theSwitch = true;
 var switcherino = 1;
@@ -224,27 +257,6 @@ addEventListener ('keypress', function (a)
 	}
 });
 </script>
-
-<button class="theButton" id="theButtonOne" onclick="randomMovement ();">
-	Click for <br>
-	Random Movement
-</button>
-
-<button class="theButton" style="cursor: not-allowed;" id="theButtonTwo" onclick="stopRandomMovement ();" disabled>
-	Click to stop <br>
-	Random Movement
-</button>
-
-<span class="theSpanCSS"> Use 'Enter' or the Arrow Keys to also make the form Move </span>
-
-<!-- Има ли начин докото се мърда текста да е друг и като отиде на дадената локация да стане пак същия МОЖЕ! --> 
-<form class="theForm" onclick="moveFormUpDown ();" id="theForm"> 
-	<span style="color: yellow; font-weight: 900; font-size: 50px; letter-spacing: 8px; line-height: 50px;">
-		I am text in a form <br>
-		please click me...
-	</span>
-</form>
-
 </body>
 </html>
 

@@ -2,7 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> JS Objects </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <script type="text/javascript"> // This is a construction function
 	function person (name, age, weight, height)
 	{
@@ -30,6 +33,23 @@
 </head>
 
 <body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> JS Objects </h1>
+
+	<button onclick="callingPerson ();">
+		Just Click Me
+	</button>
+
+	<div id="theDiv">
+	</div>	
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript"> // Хубаво е да се пише...
 function callingPerson ()
 {
@@ -46,13 +66,6 @@ function callingPerson ()
 	document.getElementById ('theDiv').innerHTML = valeri.toText ();
 }
 </script>
-
-<button onclick="callingPerson ();">
-	Just Click Me
-</button>
-
-<div id="theDiv">
-</div>	
 </body>
 </html>
 

@@ -1,25 +1,42 @@
 <html>
 <head>
+<meta charset="utf-8">
 <title> Array Drawing </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+</style>
 </head>
 
 <body>
-	<script>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
+<div class="mainPage">
+	<h1> Array Drawing </h1>
+
+	<div id="randomID"> </div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script>
 	var arr1 = ["2","5","22","12","-4","6","-7","19"];
-	document.write (arr1 [0] + ":" + arr1 [1] + ":" + arr1 [2] + ":" + arr1 [3] + ":" + arr1 [4] + ":" + arr1 [5] + ":" + arr1 [6] + ":" + arr1 [7])
+	document.getElementById('randomID').innerHTML = (arr1 [0] + ":" + arr1 [1] + ":" + arr1 [2] + ":" + arr1 [3] + ":" + arr1 [4] + ":" + arr1 [5] + ":" + arr1 [6] + ":" + arr1 [7]);
 
-	document.write ("<br>" + "<br>")
+	document.getElementById('randomID').innerHTML += ("<br>" + "<br>")
 
 	var div = '';
 	for (var add = 0; add <= arr1.length-1; add=add+1)
 	{
-		document.write (div + arr1 [add]);
+		document.getElementById('randomID').innerHTML += (div + arr1 [add]);
 		div = ':';
 	}
 
-	</script>
+</script>
 </body>
 </html>
 

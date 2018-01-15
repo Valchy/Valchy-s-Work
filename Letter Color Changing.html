@@ -1,14 +1,40 @@
 <html>
-<hfill<meta charset="utf-8">
+<meta charset="utf-8">
 <title> Letter Color Changing </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color: lightblue;">
-<p style="font-size: 30px; text-align: center;">
-	Creating JavaScript Code to change color of a div Text
-</p>
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
+<div class="mainPage">
+	<h1> Letter Color Changing </h1>
+
+	<p style="font-size: 30px; text-align: left;">
+		Creating JavaScript Code to change color of a div Text
+	</p>
+
+	<form>
+		<div id="theDiv" style="font-size: 20px;">
+			Change my Color
+		</div>
+		<input onclick="return colorChange ();" type="submit" value="Change Color">
+		<br> <br>
+
+		<div id="theDiv2" style="font-size: 20px;">
+			Change my Letters Color
+		</div>
+		<input onclick="return theColorChange ();" type="submit" value="Change Letter Color">
+	</form>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var theValue = "Change my Letters Color";
 var t = 0;
@@ -81,20 +107,6 @@ function theColorChange ()
 	return false;
 }
 </script>
-
-<form>
-	<div id="theDiv" style="font-size: 20px;">
-		Change my Color
-	</div>
-	<input onclick="return colorChange ();" type="submit" value="Change Color">
-	<br> <br>
-
-	<div id="theDiv2" style="font-size: 20px;">
-		Change my Letters Color
-	</div>
-	<input onclick="return theColorChange ();" type="submit" value="Change Letter Color">
-</form>
-
 <script type="text/javascript">
 	document.getElementById ('theDiv2').innerHTML = colorSwitch ();
 </script>

@@ -1,11 +1,30 @@
 <html>
 <head>
 <title> Drawing </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
 <body>
-<canvas id="theCanvas" width="1425" height="700" tabindex='1'> </canvas>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Different Object Types and their methods of showing </h1>
+
+
+	<canvas id="theCanvas" width="1375" height="700" tabindex='1'> </canvas>
+	<br>
+	<button id="theButton" onclick="Everything ();//initEverything с бутон" style="width: 10%; height: 5%; font-size: 20px">
+		Draw Circles!
+	</button>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 
 <!-- Искам да се направя така че топката да следва мишката ми -->
 
@@ -117,12 +136,6 @@ function moveEverything ()
 }
 
 </script>
-
-<br>
-<button id="theButton" onclick="Everything ();//initEverything с бутон" style="width: 10%; height: 5%; font-size: 20px">
-	Draw Circles!
-</button>
-
 </body>
 </html>
 

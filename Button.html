@@ -1,27 +1,48 @@
 <html>
 <head>
+<meta charset="utf-8">
 <title> Button java </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style>
 .Inp_Art:focus {outline-color: red;}
 </style>
 </head>
 
-<body style="background-color: ff0">
+<body style="background-color: #ff0">
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<p style="font-family: 'Ariel Bold'"> 
-Hello my friends, this is a quick javascript function make alerts pop up in different situations! 
-</p>
+<div class="mainPage">
+	<h1> Button Random xD </h1>
 
+	<p style="font-family: 'Ariel Bold'"> 
+	Hello my friends, this is a quick javascript function make alerts pop up in different situations! 
+	</p>
+
+	<input type="text" id="the_input" placeholder="Dont Type Text :D" style="background-color: lightyellow;">
+	<button onclick="Button ()" style="background-color: lightyellow; border:1px solid black;">
+		Click Me!
+	</button>
+
+	<div id="Div_Box">
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
-function Button (a)
+function Button ()
 {
-	var x = document.getElementById ('the_input').value;
-	if (x.length < 1)
+	var x = document.getElementById('the_input').value;
+	if (x.length > 1)
 	{
-		document.getElementById ('Div_Box').innerHTML = a;
+		document.getElementById ('Div_Box').innerHTML = x;
 		document.getElementById ('the_input').className = 'Inp_Art';
-		window.alert (a);
+		window.alert (x);
 		return false;
 	}
 	else
@@ -32,14 +53,6 @@ function Button (a)
 }
 
 </script>
-<input type="text" id="the_input" placeholder="Dont Type Text :D" style="background-color: lightyellow;">
-<button onclick="Button ('Please enter Data')" style="background-color: lightyellow; border:1px solid black;">
-	Click Me!
-</button>
-
-<div id="Div_Box">
-</div>
-
 </body>
 </html>
 

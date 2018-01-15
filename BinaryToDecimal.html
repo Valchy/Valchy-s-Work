@@ -2,7 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> BinaryToDecimal </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style>
 .inputCSS1 {margin: 30px; margin-bottom: 2px; margin-right: 2px; height: 5%;}
 .inputCSS2 {margin: 30px; margin-top: 2px; margin-right: 2px; height: 5%;}
@@ -15,32 +18,39 @@
 </head>
 
 <body style="background-color: lightgrey;">
-<div style="width: 100%; margin: 0px; padding: 0px; border: 0px; float: left; background-color: lightblue;">
-<h1 style="text-align: center;"> Converting Numbers - Binary and Decimals </h1>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
 </div>
 
-<div style="background-color: #fef488; width: 100%; margin: 0px; padding: 0px; border: 0px; float: left; flex-flow: column; height: 100%; align-items: center; display: flex;">
-	<div class="mainDiv">
-		<input id="theInput1" class="inputCSS1" placeholder="Type a Binary Number">
-		<button class="buttonCSS1" onclick="binaryToDecimal ();">
-			Convert Binary to Decimals
-		</button>
-		<span style="margin-left: 10px;"> &#10095; </span>
-		<div class="theDivCSS1" id="div1" title="Result comes here!">
-		</div>
-		<br>
+<div class="mainPage">
+	<div style="width: 100%; margin: 0px; padding: 0px; border: 0px; float: left; background-color: lightblue;">
+	<h1 style="text-align: center;"> Converting Numbers - Binary and Decimals </h1>
+	</div>
 
-		<input id="theInput2" class="inputCSS2" placeholder="Type a Decimal Number">
-		<button class="buttonCSS2" onclick="decimalToBinary ('theInput2', 'div2');">
-			Convert Decimals to Binary
-		</button>
-		<span style="margin-left: 10px"> &#10095; </span>
-		<div class="theDivCSS2" id="div2" title="Result comes here!">
+	<div style="background-color: #fef488; width: 100%; margin: 0px; padding: 0px; border: 0px; float: left; flex-flow: column; height: auto; align-items: center; display: flex;">
+		<div class="mainDiv">
+			<input id="theInput1" class="inputCSS1" placeholder="Type a Binary Number">
+			<button class="buttonCSS1" onclick="binaryToDecimal ();">
+				Convert Binary to Decimals
+			</button>
+			<span style="margin-left: 10px;"> &#10095; </span>
+			<div class="theDivCSS1" id="div1" title="Result comes here!">
+			</div>
+			<br>
+
+			<input id="theInput2" class="inputCSS2" placeholder="Type a Decimal Number">
+			<button class="buttonCSS2" onclick="decimalToBinary ('theInput2', 'div2');">
+				Convert Decimals to Binary
+			</button>
+			<span style="margin-left: 10px"> &#10095; </span>
+			<div class="theDivCSS2" id="div2" title="Result comes here!">
+			</div>
 		</div>
 	</div>
 </div>
 
-
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function binaryToDecimal ()
 {

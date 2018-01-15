@@ -1,10 +1,27 @@
 <html>
 <head>
+<meta charset="utf-8">
 <title> FindMinimalNumner </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color: ff0">
+<body>
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Find Minimal Number in Array </h1>
+
+	<div id="myDiv"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var arr =[-232, 23,-2, 14, 17, -1, -23, 19];
 function FindMinNumber (x)
@@ -18,7 +35,7 @@ function FindMinNumber (x)
 			arr2 = arr [i];
 		}
 	}
-	document.write ("And the Answer is: " + arr2);
+	document.getElementById('myDiv').innerHTML += "And the Answer is: " + arr2;
 }
 
 function SortTopThree (q)
@@ -44,7 +61,7 @@ function SortTopThree (q)
 					// break makes you leave the cycle and continue with the rest fo the function but return stop the entire fucntion and makes you leave the function
 				} 
 	}
-	document.write ("<br>" + t + " :Answer: " + arr [0] + " | " + arr [1] + " | " + arr [2])
+	document.getElementById('myDiv').innerHTML += "<br>" + t + " :Answer: " + arr [0] + " | " + arr [1] + " | " + arr [2];
 }
 
 FindMinNumber (arr);

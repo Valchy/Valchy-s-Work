@@ -1,21 +1,30 @@
 <html>
 	<head>
 	<meta charset="utf-8">
-	<title> HELLO HTML </title>	
-	<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+	<title> HELLO HTML </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 	<script type="text/javascript">
 			function displynum(n1)
 			{console.log(n1);Valeri.txt1.value=Valeri.txt1.value+n1.innerHTML;}
 	</script>
 
-	<link href="css.css" type="text/css" rel="stylesheet">
-
-	<script type="text/javascript" src="jquery-3.2.1.min.js"> 
+	<link href="css.css" type="text/css" rel="stylesheet"> 
 	</script>
 
 	</head>
 
-	<body style="background-color:lightgreen"> <!--style="background-image:url(yellow.jpg);"background-size:cover;background-repeat:no-repeat; -->
+	<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> My Hello World Page </h1>
+
 	<center> 
 	<h1 class="fontsize1"> <img src="cat.png" alt="Cat picture :D" width="50px" title="Cat Picture 1"> Hello and Welcome to My Website <img src="cat.png" alt="Cat picture :D" width="50px" title="Cat Picture 2"> </h1> </center>
 	<hr style="border-color:black"> <br> 
@@ -89,14 +98,7 @@
 		 </table> 
 	 </form>
 
-	<script>
-		function theAlert ()
-		{
-			window.alert ("I just found a Easter Egg!")
-		}
-	</script>
-
-		 <!--  <tr> is for making a row and <td> is for making a colum | the arrows are to make a comment -->
+	 <!--  <tr> is for making a row and <td> is for making a colum | the arrows are to make a comment -->
 		 <br>
 		<table class="HoverEffect">
 		 	<tr>
@@ -197,6 +199,49 @@
 		</div> <br> <br> <hr style="border-color:blue"> <br>
 
 	<div id="clockDisplay" class="ClockStyle"> </div> 
+
+	<br> <br>
+
+	<input id="showtime" type="text" class="c1" style="background-color:red;border:black 1px solid;width:10%;"/>
+	<script type="text/javascript" src="Clock.js"> </script> <hr class="LineColor">
+
+	<div>	
+		<h1 style="font-family:'Comic Sans MS"> <center> Everything is in the Console </center> </h1>
+		<h6> <center> Press F12 or Cmd + Alt + I | To open the Console! </center> </h6>
+	</div>
+	<script type="text/javascript" src="ConsoleNumbers.js"> </script>
+
+	<div id="AnB2">
+	</div>
+	<script type="text/javascript" src="AnB.js"> </script>
+
+	<script type="text/javascript" src="FunctionN.js"> </script>
+	<div>
+	</div>
+	<button onclick="this.innerHTML = 'Try It!   ' + RandomNumber (1,10)"> Try It! </button>
+
+	<script type="text/javascript" src="Numbers 1 - 100.js"> </script>
+
+	<script type="text/javascript" src="Between 10 - 20.js"> </script> <br>
+
+	<script type="text/javascript" src="asdf.js"> </script>
+
+	<hr class="LineColor">
+
+	<table class="LastTable">
+		<script type="text/javascript"> 
+			TableMaker (1,10);
+		</script>
+	</table>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+	<script>
+		function theAlert ()
+		{
+			window.alert ("I just found a Easter Egg!")
+		}
+	</script>
 	<script type="text/javascript">
 	function RenderTime2 ()
 	{
@@ -234,35 +279,6 @@
 	}
 	RenderTime2 ();
 	</script>
-
-	<br> <br>
-
-	<input id="showtime" type="text" class="c1" style="background-color:red;border:black 1px solid;width:10%;"/>
-	<script type="text/javascript" src="Clock.js"> </script> <hr class="LineColor">
-
-	<div>	
-		<h1 style="font-family:'Comic Sans MS"> <center> Everything is in the Console </center> </h1>
-		<h6> <center> Press F12 or Cmd + Alt + I | To open the Console! </center> </h6>
-	</div>
-	<script type="text/javascript" src="ConsoleNumbers.js"> </script>
-
-	<div id="AnB2">
-	</div>
-	<script type="text/javascript" src="AnB.js"> </script>
-
-	<script type="text/javascript" src="FunctionN.js"> </script>
-	<div>
-	</div>
-	<button onclick="this.innerHTML = 'Try It!   ' + RandomNumber (1,10)"> Try It! </button>
-
-	<script type="text/javascript" src="Numbers 1 - 100.js"> </script>
-
-	<script type="text/javascript" src="Between 10 - 20.js"> </script> <br>
-
-	<script type="text/javascript" src="asdf.js"> </script>
-
-	<hr class="LineColor">
-
 	<script>
 		function TableMaker (start,end)
 		{	
@@ -292,12 +308,6 @@
 				return " " + 'False';
 			}
 	</script>
-
-	<table class="LastTable">
-		<script type="text/javascript"> 
-			TableMaker (1,10);
-		</script>
-	</table>
 	</body>
 </html>
 

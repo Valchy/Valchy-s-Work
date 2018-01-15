@@ -1,7 +1,12 @@
 <html>
 <head>
+<meta charset="utf-8">
 <title> Console Numbers </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+
 </head>
 
 <style style="text/css">
@@ -9,12 +14,20 @@
 </style>
 
 <body>
-<div id="Margin">	
-  <h1> <center> Everything is in the Console </center> </h1>
-  <h6> <center> Press F12 or Cmd + Alt + I </center> </h6>
-  <h6> <center> To open the Console! </center> </h6>
+<div id="mainBarOthers" class="mainBarOthers">
+  <ul class="theUl" id="theUl"> 
+  </ul>
 </div>
 
+<div class="mainPage">
+  <div id="Margin"> 
+    <h1> <center> Everything is in the Console </center> </h1>
+    <h6> <center> Press F12 or Cmd + Alt + I </center> </h6>
+    <h6> <center> To open the Console! </center> </h6>
+  </div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var year = new Date ();
 console.log (year.getFullYear());

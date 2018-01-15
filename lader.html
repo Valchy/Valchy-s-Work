@@ -1,11 +1,25 @@
 <html>
 <head>
 <title> Lader </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
 <body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
+<div class="mainPage">
+	<h1> Lader </h1>
+
+	<div id="laderDiv"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function Lader (x)
 {
@@ -14,14 +28,14 @@ function Lader (x)
 		var line = "";
 		for (var c = 1; c <= i; c=c+1)
 			line = line + '#';
-	  	document.write (line + "<br>");	
+	  	document.getElementById('laderDiv').innerHTML += line + "<br>";	
 	}
 
 }
 
 Lader (4);
 // &lt; _____ &gt; to make < and > so document.write doens't make the commend show as HTML
-document.write ("<hr>");
+document.getElementById('laderDiv').innerHTML += "<hr>";
 
 function BackwardsLader (y,p)
 {
@@ -30,7 +44,7 @@ function BackwardsLader (y,p)
 		var space = "";
 		for (var q = t; q >= 1; q=q-1)
 			space = space + p;
-	  	document.write (space + "<br>");	
+	  	document.getElementById('laderDiv').innerHTML += space + "<br>";	
 	}
 }
 BackwardsLader (4,"*");
@@ -58,7 +72,6 @@ BackwardsLader (10,"@");
 	}*/
 
 </script>
-
 </body>
 </html>
 

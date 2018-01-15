@@ -1,7 +1,25 @@
 <html>
+<head>
+<title> Tennis Game </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+</head>
 
-<canvas id="gameCanvas" width="800" height="600"></canvas>
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
+<div class="mainPage">
+	<h1> Different Object Types and their methods of showing </h1>
+
+	<canvas id="gameCanvas" width="800" height="600"></canvas>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var canvas;
 var canvasContext;
@@ -17,6 +35,7 @@ var paddle1Y = 250;
 var paddle2Y = 250;
 const PADDLE_THICKNESS = 10;
 const PADDLE_HEIGHT = 100;
+onLoad();
 
 function calculateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect();
@@ -29,7 +48,7 @@ function calculateMousePos(evt) {
 	};
 }
 
-window.onload = function() {
+function onLoad () {
 	canvas = document.getElementById('gameCanvas');
 	canvasContext = canvas.getContext('2d');
 
@@ -121,7 +140,5 @@ function colorRect(leftX,topY, width,height, drawColor) {
 	canvasContext.fillStyle = drawColor;
 	canvasContext.fillRect(leftX,topY, width,height);
 }
-
 </script>
-
 </html>

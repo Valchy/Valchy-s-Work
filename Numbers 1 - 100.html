@@ -1,16 +1,32 @@
 <html>
 <head>
 <title> Numbers 1 - 100 </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <head>
 
 	<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Different Object Types and their methods of showing </h1>
+
+	<div id="justI"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 	<script>
 
 	function AddingNumbers (a)
 	{
 		for (var i = 1; i <= a; i=i+3)
 		{
+			document.getElementById('justI').innerHTML = i;
 			console.log (i);
 //			document.write (i + "<br>");
 		}

@@ -2,7 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> Is It Weekend|Date obj </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style>
 .buttonCSS {width: 15%; height: 4%; border-radius: 20px; border: 1px solid black; margin-bottom: 10px; background-color: green; transition: all 0.5s ease 0s; color: white; font-size: 10px;}
 .buttonCSS:hover {cursor: pointer; background-color: lightgreen; color: black; font-size: 12px; height: 45px;}
@@ -35,20 +38,41 @@
 </head>
 
 <body style="background-color: lightblue;">
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<div style="display: flex; width: 12%;">
-	<button id="changeToCircle" onclick="changeCircle ();">
-		Change the Circle (do it)
-	</button>
+<div class="mainPage">
+	<h1> Is it weekend | Date Object </h1>
+
+	<div style="display: flex; width: 12%;">
+		<button id="changeToCircle" onclick="changeCircle ();">
+			Change the Circle (do it)
+		</button>
+	</div>
+	<div style="display: flex; width: 12%;">
+		<button id="destroyText" onclick="destroyTheText ();">
+			Destroy the Text (do it)
+		</button>
+	</div>
+	<p style="text-align: center; font-size: 30px; font-weight: 900; " onclick="window.alert ('You found an Easter Egg in the document :D')" class="pStyle" id="theTitleText"> 
+		Checking whether a certain date is weekend or not as well as <br> checking whether a specific object is a date object or not!
+	</p>
 </div>
-<div style="display: flex; width: 12%;">
-	<button id="destroyText" onclick="destroyTheText ();">
-		Destroy the Text (do it)
-	</button>
-</div>
-<p style="text-align: center; font-size: 30px; font-weight: 900; " onclick="window.alert ('You found an Easter Egg in the document :D')" class="pStyle" id="theTitleText"> 
-	Checking whether a certain date is weekend or not as well as <br> checking whether a specific object is a date object or not!
-</p>
+
+<div class="btn-wrapper">
+		<div id="theDiv"> 
+			<button onclick="weekendCheck ();" class="buttonCSS">
+				Click for a Random Date
+			</button>
+
+			<div id="theDivoto">
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script src="circletype.min.js"> </script>
 <script type="text/javascript">
 var randomYear;
@@ -116,18 +140,6 @@ function randomNum ()
 	randomNumber = Math.floor (Math.random () * 1200) + 0;
 }
 </script>
-
-<div class="btn-wrapper">
-	<div id="theDiv"> 
-		<button onclick="weekendCheck ();" class="buttonCSS">
-			Click for a Random Date
-		</button>
-
-		<div id="theDivoto">
-		</div>
-	</div>
-</div>
-
 </body>
 </html>
 

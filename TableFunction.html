@@ -1,9 +1,24 @@
 <html>
 <head>
 <title> TableFunction </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Table Function </h1>
+
+	<div id="myDiv"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <body>
 <script>
 function TableMaker (start,end)
@@ -12,15 +27,15 @@ function TableMaker (start,end)
 	{
 		for (var o = start; o <= end; o=o+1)
 		{
-			document.write (o + " ");
-			document.write (o*o);
-			document.write (OddOrEven (o*o));
-			document.write ("<br>")	
+			document.getElementById('myDiv').innerHTML += o + " ";
+			document.getElementById('myDiv').innerHTML += o*o;
+			document.getElementById('myDiv').innerHTML += OddOrEven (o*o);
+			document.getElementById('myDiv').innerHTML += "<br>";	
 		}
 	}
 	else 
 	{
-		document.write ("ERROR")
+		document.getElementById('myDiv').innerHTML += "ERROR"
 	}
 }
 

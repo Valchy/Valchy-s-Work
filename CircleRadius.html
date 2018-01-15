@@ -1,35 +1,54 @@
 <html>
 <head>
+<meta charset="utf-8">
 <title> CircleRadius </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
 <body style="background-color: pink">
-<h1> <center> Circle Radius </center> </h1>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<div style="float:none;">
-	<canvas id="theCanvas" width="800" height="600" style="float:left"> </canvas>
-	<!-- display: inline-block makes the element like semi-text semi-block -->
-	<div style="background-color: white; width: 200px;border: 1px solid black; float:left; height: 598px; width: 300px; display: flex; align-items:center;justify-content: center; font-size: 30px; padding: 0 50px; text-align: center;" id="divResults">
+<div class="mainPage">
+	<h1> <center> Circle Radius </center> </h1>
+
+	<div style="float:none;">
+		<canvas id="theCanvas" width="800" height="600" style="float:left"> </canvas>
+		<!-- display: inline-block makes the element like semi-text semi-block -->
+		<div style="background-color: white; width: 200px;border: 1px solid black; float:left; height: 598px; width: 300px; display: flex; align-items:center;justify-content: center; font-size: 30px; padding: 0 50px; text-align: center;" id="divResults">
+		</div>
 	</div>
+	<!-- This makes the rest of the buttons etc not to float upwards as well :D -->
+	<div style="float:none;clear:both;"> </div>
+
+	<br>
+
+	<h3 style="margin: 0px"> Type Radius of Circle </h3>
+	<form id="theForm" onsubmit="return calculateRadius ()">
+	<input id="theInput" placeholder="Radius of Circle...">
+	<input type="submit" value="Submit">
+
+	<div id="theDiv">
+	</div>
+	</form>
 </div>
-<!-- This makes the rest of the buttons etc not to float upwards as well :D -->
-<div style="float:none;clear:both;"> </div>
 
-<br>
-
-<h3 style="margin: 0px"> Type Radius of Circle </h3>
-<form id="theForm" onsubmit="return calculateRadius ()">
-<input id="theInput" placeholder="Radius of Circle...">
-<input type="submit" value="Submit">
-
-<div id="theDiv">
-</div>
-</form>
-
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var canvas = document.getElementById ('theCanvas');
 var context = canvas.getContext ('2d');
+
+onLoad();
+
+function onLoad () {
+	context.fillStyle = 'black';
+	context.fillRect (0,0, canvas.width, canvas.height);
+}
 
 function calculateRadius ()
 {
@@ -50,13 +69,6 @@ function calculateRadius ()
     document.getElementById ('divResults').innerHTML = info + "<br>" + "	Is the Surface Area of" + "<br>" + "the Circle in Pixels Sqaured";
     return false; // This is neccessary because of the submit form etc. method I am using :D
 }
-
-window.onload = function ()
-{
-	context.fillStyle = 'black';
-	context.fillRect (0,0, canvas.width, canvas.height);
-}
-
 </script>
 </body>
 </html>

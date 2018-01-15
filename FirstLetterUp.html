@@ -1,10 +1,35 @@
 <html>
 <head>
 <title> FirstLetterUp </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color: brown">
+<body>
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> First Letter Up </h1>
+
+	<input id="theId"/>
+
+	<button id="theButton" onclick="WordUpperCase (document.getElementById ('theId').value)">
+		Capitalize Sentence
+	</button>
+
+	<p>
+
+	<div id="theResults" style="text-transform: capitalize; font-family: 'Chalkduster'">
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function WordUpperCase (r)
 {
@@ -13,17 +38,6 @@ function WordUpperCase (r)
 }
 
 </script>
-
-<input id="theId"/>
-
-<button id="theButton" onclick="WordUpperCase (document.getElementById ('theId').value)">
-	Capitalize Sentence
-</button>
-
-<p>
-
-<div id="theResults" style="text-transform: capitalize; font-family: 'Chalkduster'">
-</div>
 </body>
 </html>
 

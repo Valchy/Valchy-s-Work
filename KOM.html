@@ -1,13 +1,52 @@
 <html>
 <head>
 <title> KOM </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color:lightblue">
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<h1> <center> This is a Distance Converter... </center> </h1>
+<div class="mainPage">
+	<h1> This is a Distance Converter... </h1>
 
+	<br>
+
+	<h4> Kilometers to Miles: </h4>
+
+	<input type="text" id="Input" placeholder="Write a Number">
+	<br>
+	<button onclick="KOM (1)">
+		Click to get the answer:
+	</button>
+
+	<br>
+	<div id="AnswerToFunction" style="border:1px solid black; width:10%;">
+		You will get the answer here...
+	</div>
+
+
+	<h4> Miles to Kilometers </h4>
+
+	<input type="text" id="Input2" placeholder="Write a Number">
+	<br>
+	<button onclick="KOM2 (1)">
+		Click to get the answer:
+	</button>
+
+	<br>
+	<div id="AnswerToFunction2" style="border:1px solid black; width:10%; ">
+		You will get the answer here...
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 /*function KOM (km,miles)
 {
@@ -41,36 +80,6 @@ function KOM2 (m)
 }
 
 </script>
-
-<br>
-
-<h4> Kilometers to Miles: </h4>
-
-<input type="text" id="Input" placeholder="Write a Number">
-<br>
-<button onclick="KOM (1)">
-	Click to get the answer:
-</button>
-
-<br>
-<div id="AnswerToFunction" style="border:1px solid black; width:10%;">
-	You will get the answer here...
-</div>
-
-
-<h4> Miles to Kilometers </h4>
-
-<input type="text" id="Input2" placeholder="Write a Number">
-<br>
-<button onclick="KOM2 (1)">
-	Click to get the answer:
-</button>
-
-<br>
-<div id="AnswerToFunction2" style="border:1px solid black; width:10%; ">
-	You will get the answer here...
-</div>
-
 </body>
 </html>
 

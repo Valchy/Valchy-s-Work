@@ -1,15 +1,30 @@
 <html>
 <head>
 <title> Most Common Array </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
 <body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Most Common Array </h1>
+
+	<div id="div"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 	<script>
 
 	var arr2 = ['3','v','s','e','2','2','2','2','1','a','3','s','2','4','9','3','v','v'];
 
-	document.write ('<h1>'+ "There are" + " " + arr2.length + "/" + arr2.length + " " + "arrays in the Array :D" +'</h1>');
+	document.getElementById('div').innerHTML += '<h1>'+ "There are" + " " + arr2.length + "/" + arr2.length + " " + "arrays in the Array :D" +'</h1>';
 
 	var mostpopuler = "";
 	var cnt = 0;
@@ -31,7 +46,7 @@
 		}
 	}
 
-	document.write ("Out of " + arr2.length + " Arrays " + '"' + mostpopuler + '"' + " is the most populer and it appears" + " " + cnt + " times.");
+	document.getElementById('div').innerHTML += "Out of " + arr2.length + " Arrays " + '"' + mostpopuler + '"' + " is the most populer and it appears" + " " + cnt + " times.";
 
 	</script>
 </body>

@@ -1,19 +1,38 @@
 <html>
 <head>
 <title> GeometricFigures </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color: lightgrey">
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<canvas id="GeometricCanvas" width="1250" height="600"> </canvas>
+<div class="mainPage">
+	<h1> Different Object Types and their methods of showing </h1>
 
+	<canvas id="GeometricCanvas" width="1250" height="600"> </canvas>
+	<p> 
+		What I was able to make: <br>
+			1. One blue square in the middle of the canvas <br>
+			2. One big green circle in bottom left cornor (незнам защо ама кръкчето нестава, защо е така, също така премахва другите фигури) <br>
+			3. A yellow triangle in bottom right cornor <br>
+			4. Letters... <br>
+	</p>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var canvasContext;
+onLoad();
 
 // Function making everything load at the same time :D
-window.onload = function () 
-{
+function onLoad () {
 	canvas = document.getElementById ('GeometricCanvas');
 	canvasContext = canvas.getContext ('2d');
 
@@ -138,15 +157,6 @@ function drawEverything ()
 		// The ':'
 }
 </script>
-
-<p> 
-	What I was able to make: <br>
-		1. One blue square in the middle of the canvas <br>
-		2. One big green circle in bottom left cornor (незнам защо ама кръкчето нестава, защо е така, също така премахва другите фигури) <br>
-		3. A yellow triangle in bottom right cornor <br>
-		4. Letters... <br>
-</p>
-
 </body>
 </html>
 

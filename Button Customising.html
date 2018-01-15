@@ -2,7 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> Button Customising </title>
-<link rel="shortcut icon" href="hi.png" type="image/x-icon"> <!-- cursor in style changes the cursor look -->
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style>
 .theButton {width: 20%; height: 10%; text-align: center; font-size: 20px; font-family: 'Arial Black'; background-color: blue; border: 2px solid grey; position: absolute; top: 20%; left: 40%; border-radius: 20px; transition: all 0.6s ease 0s;}
 .theButton:focus {outline:0;}
@@ -12,24 +15,31 @@
 </head>
 
 <body style="background-color: lightgrey;">
-<h1 style="text-align: center;"> Creating a Stylish Buttton </h1>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<button class="theButton" onclick="buttonClickCounter ()">
-	View
-</button>
+<div class="mainPage">
+	<h1> Creating a Stylish Buttton </h1>
 
+	<button class="theButton" onclick="buttonClickCounter ()">
+		View
+	</button>
+
+	<div id="theDiv" class="theDiv"> </div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var counter = 0;
 
 function buttonClickCounter ()
 {
 	counter++;
-	document.getElementById ('theDiv').innerHTML = "You Have Clicked " + counter + " times!";
+	document.getElementById('theDiv').innerHTML = "You Have Clicked " + counter + " times!";
 }
 </script>
-
-<div id="theDiv" class="theDiv">
-</div>
 </body>
 </html>
 

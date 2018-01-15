@@ -2,7 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> Cloning Array </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style>
 .i1 {width: 12.5%; border: 1px solid black; margin: 10px; margin-right: 10px; height: 20px;}
 .i2 {width: 12.5%; border: 1px solid black; margin: 10px; margin-left: 0px; height: 20px;}
@@ -12,10 +15,29 @@
 </head>
 
 <body style="background-color: lightgreen;">
-<p> All of the Inputs under should be written with different values which will be transformed to Array, <br> 
-	as well as that I changed the CSS of the placeholder of the Inputs (only works on chrome) :D
-</p>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
+<div class="mainPage">
+	<h1> Cloning Array </h1>
+
+	<p> All of the Inputs under should be written with different values which will be transformed to Array, <br> 
+		as well as that I changed the CSS of the placeholder of the Inputs (only works on chrome) :D
+	</p>
+
+	<form>
+		<input type="input" id="theInputOne" placeholder="Type Array One" class="i1">
+		<input type="input" id="theInputTwo" placeholder="Type Array Two" class="i2"> <br>
+		<input type="submit" id="theSubmit" class="s3" onclick="return cloningArray ()">
+
+	<div id="theResult">
+	</div>
+	</form>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function cloningArray ()
 {
@@ -32,15 +54,6 @@ function cloningArray ()
 }
 
 </script>
-
-<form>
-	<input type="input" id="theInputOne" placeholder="Type Array One" class="i1">
-	<input type="input" id="theInputTwo" placeholder="Type Array Two" class="i2"> <br>
-	<input type="submit" id="theSubmit" class="s3" onclick="return cloningArray ()">
-
-<div id="theResult">
-</div>
-</form>
 </body>
 </html>
 

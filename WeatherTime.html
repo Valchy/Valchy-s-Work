@@ -128,12 +128,14 @@ function showPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
     userLON = position.coords.longitude;
     userLAT = position.coords.latitude;
+    var roundLON = userLON.toFixed(5);
+    var roundLAT = userLAT.toFixed(5);
 
     if (latlon.length < 1) {
     	coordinatesDiv.innerHTML += ' Blocked by user';
     }
     else {
-    	coordinatesDiv.innerHTML += ' '+position.coords.longitude+' and '+position.coords.latitude;
+    	coordinatesDiv.innerHTML += ' '+roundLAT+' & '+roundLON;
     }
 
     pullingInformation();
@@ -170,6 +172,9 @@ function weather (climate) {
 	else if (climate === 'Weather: Mist' || climate === 'Weather: Fog') {
 		return 'mist.jpg'
 	}
+	else if (climate !== 'Weather: Clouds' || climate !== 'Weather: Clear' || climate === 'Weather: Rain' || climate === 'Weather: Drizzle' || climate === 'Weather: Mist' || climate === 'Weather: Fog') {
+		return 'weather.jpg';
+	}
 }
 
 function WeatherHTML (data) {
@@ -178,10 +183,19 @@ function WeatherHTML (data) {
 	jsonData.push(jsonDataLabels[2]+data.sys.sunset);
 	jsonData.push(jsonDataLabels[3]+data.sys.sunrise);
 	jsonData.push(jsonDataLabels[4]+data.weather[0].main);
-	jsonData.push(jsonDataLabels[5]+data.main.temp);
-	jsonData.push(jsonDataLabels[6]+data.main.temp_min);
-	jsonData.push(jsonDataLabels[7]+data.main.temp_max);
-	jsonData.push(jsonDataLabels[8]+data.wind.speed);
+	var temperature = data.main.temp;
+	temperature = temperature -273.15;
+	var tmp1 = temperature.toFixed(1);
+	jsonData.push(jsonDataLabels[5]+tmp1+' °C');
+	var minTemperature = data.main.temp_min;
+	minTemperature = minTemperature -273.15;
+	var tmp2 = minTemperature.toFixed(1);
+	jsonData.push(jsonDataLabels[6]+tmp2+' °C');
+	var maxTemperature = data.main.temp_max;
+	maxTemperature = maxTemperature -273.15;
+	var tmp3 = maxTemperature.toFixed(1);
+	jsonData.push(jsonDataLabels[7]+tmp3+' °C');
+	jsonData.push(jsonDataLabels[8]+data.wind.speed+'m/s');
 	return jsonData;
 }
 </script>

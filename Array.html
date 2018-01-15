@@ -1,34 +1,52 @@
 <html>
 <head>
 <title> Array </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+</style>
 </head>
 
 <body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Array :P </h1>
+
+	<div id="myDiv"></div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
+var div = document.getElementById('myDiv').innerHTML;
+Write (ArrayInfo (1,7));
+
 		function ArrayInfo (start,end)
 		{
 			var ArrData = [];
 			for (var x = start; x <= end ; x=x+1)
 			{
-				ArrData.push ([x,x * x,OddOrEven (x * x)]);
+				ArrData.push ([x, x * x, OddOrEven (x * x)]);
 			}
 			return ArrData;
 		}
 
 		function Write (a)
 		{
-			document.write ("<table style='border: 1px solid black; '>")
-			for (var y = 0; y <= a.length ; y=y+1){
-				document.write ("<tr>");
-				document.write ("<td>" + a [y][0] + "</td>");
-				document.write ("<td>" + a [y][1] + "</td>");
-				document.write ("<td>" + a [y][2] + "</td>");
+			div += "<table style='border: 1px solid black'>";
+			for (var y = 0; y < a.length ; y=y+1){
+				div += "<tr>";
+				div += "<td>" + a [y][1] + "</td>";
+				div += "<td>" + a [y][1] + "</td>";
+				div += "<td>" + a [y][2] + "</td>";
 			}
-			document.write ("</table>")
+			div += "</table>"
 		}
-
-		Write (ArrayInfo (1,7));
 
 		function OddOrEven (a)
 			{

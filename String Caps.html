@@ -1,16 +1,34 @@
 <html>
 <head>
 <title> String Caps </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style>
 .DivStyle {font-family: 'Arial Black';}
 </style>
 </head>
 
-<body style="background-color: lightgrey">
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<input id="theId"/>
+<div class="mainPage">
+	<h1> String Caps </h1>
 
+	<input id="theId"/>
+	<button id="theButton" onclick="UpperToLowerCase ()"> 
+		Transform Sentence...
+	</button>
+
+	<div id="theResults" class="DivStyle">
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function UpperToLowerCase ()
 {
@@ -43,14 +61,6 @@ function UpperToLowerCase ()
 	}
 }
 </script>
-
-<button id="theButton" onclick="UpperToLowerCase ()"> 
-	Transform Sentence...
-</button>
-
-<div id="theResults" class="DivStyle">
-</div>
-
 </body>
 </html>
 

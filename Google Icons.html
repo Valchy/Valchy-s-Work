@@ -2,8 +2,10 @@
 <head>
 <meta charset="utf-8">
 <title> Google Icons </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <!-- The link above allows you to use the google icons, as well as that all I have to do to get a google icon and have the ability to style it up and actually use it, I have to add: 'material-icons' to an element as a class. Example: <div class="material-icons"> home </div> -->
 <style type="text/css">
 #theHomeOne {color: yellow; font-size: 50px;}
@@ -12,13 +14,23 @@
 </style>
 </head>
 
-<body style="background: linear-gradient(-8deg, lightblue, blue)"> 
-<!-- FOCUS ON ALSO USING ANIMATIONS IN THIS MINI HOME PAGE SITE THING :D -->
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
-<div class="material-icons" id="theHomeOne"> cloud </div>
-<div class="material-icons" id="theHomeTwo"> cloud </div>
-<div class="material-icons" id="theHomeThree"> cloud </div>
+<div class="mainPage">
+	<h1> Google Icons </h1>
 
+	<!-- FOCUS ON ALSO USING ANIMATIONS IN THIS MINI HOME PAGE SITE THING :D -->
+
+	<div class="material-icons" id="theHomeOne"> cloud </div>
+	<div class="material-icons" id="theHomeTwo"> cloud </div>
+	<div class="material-icons" id="theHomeThree"> cloud </div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script> 
 </body>
 </html>
 

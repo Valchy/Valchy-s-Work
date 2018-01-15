@@ -1,14 +1,36 @@
 <html>
 <head>
 <title> ConcatValue </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <meta charset=utf-8/>
 <style>
 .Inp_Art:focus {outline-color: red;}
 </style>
 </head>
 
-<body style="background-color: ff9">
+<body style="background-color: #ff9">
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1>  Doing a Trial Submit Form </h1>
+
+	Type in the Information below: <!-- Тук проблем ли е че няма тагове '<' или '>'? -->
+	<br>
+	<input placeholder="First Name" id="First_Name"> <br>
+	<input placeholder="Last Name" id="Last_Name"> <br>
+	<button onclick="ConcatValue ()"> Submit </button>
+
+	<div id="Full_Name_Results">
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 function ConcatValue ()
 {
@@ -30,17 +52,6 @@ function ConcatValue ()
 	}
 }
 </script>
-
-<h2> <center> Doing a Trial Submit Form </center> </h2>
-
-Type in the Information below: <!-- Тук проблем ли е че няма тагове '<' или '>'? -->
-<br>
-<input placeholder="First Name" id="First_Name"> <br>
-<input placeholder="Last Name" id="Last_Name"> <br>
-<button onclick="ConcatValue ()"> Submit </button>
-
-<div id="Full_Name_Results">
-</div>
 </body>
 </html>
 <!--

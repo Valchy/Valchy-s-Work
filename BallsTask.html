@@ -39,7 +39,7 @@ pull();
 
 	function pull () {
 		var data = new XMLHttpRequest();
-		data.open('GET', 'https://valchy.github.io/br_accepted_r1.txt');
+		data.open('GET', 'https://valchy.github.io/br_accepted_r3.txt');
 		data.onload = function () {
 			if (data.status >= 200 && data.status < 400) {
 				var ourData = data.responseText;
@@ -61,45 +61,51 @@ pull();
 	function ThreeJS () {
 		var tempInfo;
 		var verytemp;
-		var hexString;
 
 		// I can use eventListener to chnage the width of the canvas on 'resize' (to calculate the aspect ratio do width/height)
 		// Need to knwo methods are: camera.aspect = width / height; && camera.updateProjectionMatrix();
 		// var scene is pretty much the canvas (creating the canvas)
 		var scene = new THREE.Scene();
-		var camera = new THREE.PerspectiveCamera(75, 1300/700, 0.1, 1000);
+		var camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 2500);
+        camera.position.set(-137, 50, 70);
 		var colorValue = new THREE.Color();
 
-		// Makes background transperant
+		// {alpha: true} Makes background transperant
 		var renderer = new THREE.WebGLRenderer({alpha: true});
 		renderer.setSize(1300, 700);
-		// This creates the canvas
+
+		// This appends the canvas created above to the domElement (to created HTML Canvas)
 		document.body.appendChild(renderer.domElement);
+
 		// Adds a mouse control option
 		var controls = new THREE.OrbitControls(camera, renderer.domElement);
-		var dragcontrols = new THREE.DragControls(geometry, camera, renderer.domElement);
-		var ambientlight = new THREE.AmbientLight(0xffffff, 0.8);
-		scene.add(ambientlight);
+		controls.addEventListener('change', render);
+
+		// Add light to scene and camera (important to actually add to both)
+		var light = new THREE.PointLight(0xffffff, 0.9);
+		camera.add(light);
+		scene.add(camera);
 
 		for (var i = 0; i < sphereData.length-1; i++) {
 			if (sphereCounter <= sphereData[sphereCounter].length) {
 				tempInfo = sphereData[sphereCounter];
 				verytemp = tempInfo.split(" ");
-				hexString = verytemp[25];
 			}
 
-			// colorValue.set(hexString);
-			// colorValue.getHexString();
-
+			var number = Number(verytemp[25]);
+			var tempColor = new THREE.Color(); // create once and reuse
+			tempColor.set(number); // Makes string into number
+			tempColor.getHexString(); // "c08000"
+			var sphereColor = new THREE.Color(tempColor);
 			if (verytemp[0] == 4) { // Parametars: radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength
 				var geometry = new THREE.SphereGeometry(verytemp[5], 50, 50);
-				var material = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe: false});
+				var material = new THREE.MeshLambertMaterial({color: sphereColor, wireframe: false, side: THREE.DoubleSide});
 				var mesh = new THREE.Mesh(geometry, material);
 				scene.add(mesh);
 				mesh.position.set(verytemp[1], verytemp[2], verytemp[3]);
 				sphereCounter++;
 			}
-			else if (verytemp[0] == 12) {	// false makes the top and bottom bar show or hide
+			else if (verytemp[0] == 12) { // false makes the top and bottom bar show or hide
 				var geometry = new THREE.CylinderGeometry(verytemp[5], verytemp[5], verytemp[6], 16, verytemp[12], false, 0, Math.PI);
 				var material = new THREE.MeshLambertMaterial({color: 0x000000, wireframe: true});
 				var mesh = new THREE.Mesh(geometry, material);
@@ -110,17 +116,12 @@ pull();
 			}
 		}
 
-		// Changes camera position
-		camera.position.z = 230;
-		camera.position.x = 0;
-		camera.position.y = 0;
-		// Change light position
-		ambientlight.position.z = 300;
-		ambientlight.position.x = 200;
-		ambientlight.position.x = 10;
+		function sphereColor () {
 
+		}
+
+		// Каква е разликата междо това и нормална функция?
 		var update = function () {
-
 			// if (cameraMovement == 1) {
 			// 	camera.position.z += 0.5;
 			// 	if (camera.position.z == 250) {

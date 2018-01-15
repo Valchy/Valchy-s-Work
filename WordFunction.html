@@ -1,60 +1,51 @@
 <html>
 <head>
 <title> WordFunction </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
 <body style="background-color:lightblue">
-<h2> <center> You will get the number of letters in the specificly chosen Array </center> </h2>
-<script>
-/*var arr = ["Hello","this","is","a","very","interesting","sentence!"];
-function WordFunction (a)
-{
-	var space = "";
-	for (var t = 0; t < a; t++)
-	{
-		document.write (space + arr [t]);
-		var space = " ";
-	}
-}
-
-WordFunction (arr.length); */
-
-var a = "Hello this is a very interesting sentence!"
-var DataArr = [];
-function WordFunction (a)
-{
-	DataArr = a.split (' ');
-	for (var i = 0; i < DataArr.length; i++) 
-	{
-		if (DataArr [i] == 'is')
-		{
-			DataArr [i] = DataArr [i] + " " + "not";
-		}
-		document.write (DataArr [i] + " ");
-	}
-	document.getElementById ("TextBox").placeholder="Type a number between 0 and " + (DataArr.length-1);
-}
-
-document.write ("<br>")
-</script>
-<br> <br>
-
-<input type="text" id="TextBox" placeholder="" style="width:25%" onkeyup="document.getElementById ('divo').innerHTML = DataArr [document.getElementById ('TextBox').value] +' = '+DataArr [document.getElementById ('TextBox').value].length">
-<br>
-
-<button onclick="document.getElementById ('divo').innerHTML = DataArr [document.getElementById ('TextBox').value] +' = '+DataArr [document.getElementById ('TextBox').value].length">
-	Click to get number of Letters of that Array Element!
-</button>
-
-<script type="text/javascript">
-	WordFunction (a);
-</script>
-
-<div id="divo">
-
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
 </div>
 
+<div class="mainPage">
+	<h1> You will get the number of letters in the specificly chosen Array </h1>
+
+	<input type="text" id="TextBox" placeholder="" style="width:25%" onkeyup="document.getElementById ('divo').innerHTML = dataArr [document.getElementById ('TextBox').value] +' = '+dataArr [document.getElementById ('TextBox').value].length">
+	<br>
+
+	<button onclick="document.getElementById ('divo').innerHTML = dataArr [document.getElementById ('TextBox').value] +' = '+dataArr [document.getElementById ('TextBox').value].length">
+		Click to get number of Letters of that Array Element!
+	</button>
+
+	<div id="divo">
+
+	</div>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script>
+var dataArr = [];
+WordFunction ("Hello this is a very interesting sentence!");
+
+function WordFunction (a)
+{
+	dataArr = a.split (' ');
+	for (var i = 0; i < dataArr.length; i++) 
+	{
+		if (dataArr [i] == 'is')
+		{
+			dataArr [i] = dataArr [i] + " " + "not";
+		}
+	}
+	document.getElementById ("TextBox").placeholder="Type a number between 0 and " + (dataArr.length-1);
+}
+</script>
 </body>
 </html>
 

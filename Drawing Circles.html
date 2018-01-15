@@ -1,12 +1,36 @@
 <html>
 <head>
 <title> Drawing Circles </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 </head>
 
-<body style="background-color: lightgrey">
-<canvas id="theCanvas" width="600" height="500"> </canvas>
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
 
+<div class="mainPage">
+	<h1> Drawing Circles </h1>
+
+	<canvas id="theCanvas" width="600" height="500"> </canvas>
+	<br>
+
+	<input id="theInput" placeholder="Speed..."/>
+	<br>
+
+	<input id="theInput2" placeholder="Number of Circles..."/>
+	<br>
+
+	<button id="theButton" onmousedown="init (); circleNumbers (); drawCircles ();">
+		Click Me!
+	</button>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
 <script>
 var canvas = document.getElementById('theCanvas');
 var context = canvas.getContext('2d');
@@ -50,18 +74,6 @@ function drawCircles ()
 	}
 }
 </script>
-<br>
-
-<input id="theInput" placeholder="Speed..."/>
-<br>
-
-<input id="theInput2" placeholder="Number of Circles..."/>
-<br>
-
-<button id="theButton" onmousedown="init (); circleNumbers (); drawCircles ();">
-	Click Me!
-</button>
-
 </body>
 </html>
 
