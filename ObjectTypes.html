@@ -17,11 +17,33 @@
 </div>
 
 <div class="mainPage">
-	<h1> Different Object Types and their methods of showing </h1>
+	<h1 style="margin-bottom: 0px;"> Different Object Types and their methods of showing </h1>
+	<h6 style="margin-top: 0px;"> (Look at source for more explenation) </h6>
+
+	<div id="objectResults">
+		<b> Types: </b>
+	</div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+var sentence = '';
+var count = 0;
+var results = ['var objectOne = new Object("myName");', 'var objectTwo = Object.create(null);', 'var objectThree = {"name": "myName"};', 'var objectFour = function (name) {'+'<br> <span style="margin-left: 60px;">'+'this.name = "myName";'+'<br> <span style="margin-left: 35px;">'+'}'];
+	
+	var objectOne = new Object('myName');
+	var objectTwo = Object.create(null);
+	var objectThree = {'name': 'myName'};
+	var objectFour = function (name) {
+		return this.name = name;
+	}
+
+	while (count < results.length) {
+		sentence += '<br> <span style="margin-left: 20px;">'+(count+1)+'. '+results[count]+'<br>';
+		count++;
+	}
+
+	document.getElementById('objectResults').innerHTML += sentence + '<br> <b> What are the differences? </b>'+'<br> 1. '+objectOne+"<br> 2. null (can't show)"+'<br> 3. '+objectThree.name+'<br> 4. '+objectFour('myName'); // Това последното правилно ли е? Ако има повече параметри какво ще стане?
 </script>
 </body>
 </html>
