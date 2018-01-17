@@ -180,8 +180,16 @@ function weather (climate) {
 function WeatherHTML (data) {
 	jsonData.push(jsonDataLabels[0]+data.sys.country);
 	jsonData.push(jsonDataLabels[1]+data.name);
-	jsonData.push(jsonDataLabels[2]+data.sys.sunset);
-	jsonData.push(jsonDataLabels[3]+data.sys.sunrise);
+	var tempSunset = new Date(data.sys.sunset*1000);
+	if (tempSunset.getHours()+1 <= 9) {var theSunset = tempSunset.getHours()+1; theSunset = '0'+theSunset}else {var theSunset = tempSunset.getHours()+1;}
+	if (tempSunset.getMinutes() <= 9) {theSunset += ':0'+tempSunset.getMinutes();}else {theSunset += ':'+tempSunset.getMinutes();}
+	if (tempSunset.getSeconds() <= 9) {theSunset += ':0'+tempSunset.getSeconds();}else {theSunset += ':'+tempSunset.getSeconds();}
+	jsonData.push(jsonDataLabels[2]+theSunset);
+	var tempSunrise = new Date(data.sys.sunrise*1000);
+	if (tempSunrise.getHours()+1 <= 9) {var theSunrise = tempSunrise.getHours()+1; theSunrise = '0'+theSunrise}else {var theSunrise = tempSunrise.getHours()+1;}
+	if (tempSunrise.getMinutes() <= 9) {theSunrise += ':0'+tempSunrise.getMinutes();}else {theSunrise += ':'+tempSunrise.getMinutes();}
+	if (tempSunrise.getSeconds() <= 9) {theSunrise += ':0'+tempSunrise.getSeconds();}else {theSunrise += ':'+tempSunrise.getSeconds();}
+	jsonData.push(jsonDataLabels[3]+theSunrise);
 	jsonData.push(jsonDataLabels[4]+data.weather[0].main);
 	var temperature = data.main.temp;
 	temperature = temperature -273.15;
