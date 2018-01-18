@@ -1,12 +1,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0">
 <title> Google API Extra Features </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
+button:hover {cursor: pointer;}
+::-webkit-input-placeholder {font-size: 10px !important;} /* Chrome/Opera/Safari */
+::-moz-placeholder {font-size: 10px !important;} /* Firefox 19+ */
+:-ms-input-placeholder {font-size: 10px !important;} /* IE 10+ */
+:-moz-placeholder {font-size: 10px !important;} /* Firefox 18- */
+#customMap {height: 80%; width: 100%;}
+.chooseCoordinates {float: left; margin-bottom: 20px;}
+.myGeolocation {float: right; margin-bottom: 20px; display: flex; flex-direction: row;}
+#myGeolocationResults {margin-right: 20px}
 </style>
 </head>
 
@@ -18,11 +28,166 @@
 
 <div class="mainPage">
 	<h1> Google API - Custom Extra Maps Features </h1>
+
+	<div class="chooseCoordinates">
+		<input type="numbers" id="inputCoordinatesLat" placeholder="Latitude Coordinates - 90 & -90">
+		<input type="numbers" id="inputCoordinatesLon" placeholder="Longitude Coordinates - 180 & -180">
+		<button onclick="takeCoordinates();"> Show map with coordinates </button>
+	</div>
+
+	<div class="myGeolocation">
+		<div id="myGeolocationResults"></div>
+		<button onclick="findMyGeolocation();"> Find my Coordinates </button>
+	</div>
+
+    <div id="customMap"></div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+var jsonDataLabels = new Array('Country: ', 'City: ', 'Sunset: ', 'Sunrise: ', 'Weather: ', 'Temperature: ', 'Wind Speed: ');
+var geolocationResults = document.getElementById('myGeolocationResults');
+var content = document.getElementById('customMap');
+var customMap, userLAT, userLON, infowindow;
+var chosenLat = 42.6977;
+var chosenLon = 23.3219;
+var theString = 'No Information';
+
+function weatherInformation () {
+	if (chosenLat === '') {chosenLat = 0}
+	if (chosenLon === '') {chosenLon = 0}
+	var data = new XMLHttpRequest();
+	data.open('GET', 'https://api.openweathermap.org/data/2.5/weather?lat='+chosenLat+'&lon='+chosenLon+'&appid=ce08873d7abcedcca577c81c3a1d0689');
+
+	data.onload = function () {
+		if (data.status >= 200 && data.status < 400) {
+			var ourData = JSON.parse(data.responseText);
+			weatherHTML(ourData);
+			initMap();
+		}
+		else {
+			theString = 'Server failure, please try again!';
+		}
+	};
+
+	data.onerror = function () {
+		theString = 'Connection error ocurred, please try again!';
+	}
+
+	data.send();
+}
+
+function weatherHTML (info) {
+	theString = '';
+	if (info.sys.country !== undefined) {theString += (jsonDataLabels[0]+info.sys.country+'<br>');}
+	if (info.name === 'Earth') {theString += (jsonDataLabels[0]+info.name+'<br>');}else {theString += jsonDataLabels[1]+info.name+'<br>'}
+	var tempSunrise = new Date(info.sys.sunrise*1000);
+	if (tempSunrise.getHours()+1 <= 9) {var theSunrise = tempSunrise.getHours()+1; theSunrise = '0'+theSunrise}else {var theSunrise = tempSunrise.getHours()+1;}
+	if (tempSunrise.getMinutes() <= 9) {theSunrise += ':0'+tempSunrise.getMinutes();}else {theSunrise += ':'+tempSunrise.getMinutes();}
+	if (tempSunrise.getSeconds() <= 9) {theSunrise += ':0'+tempSunrise.getSeconds();}else {theSunrise += ':'+tempSunrise.getSeconds();}
+	theString += (jsonDataLabels[3]+theSunrise+'<br>');
+	var tempSunset = new Date(info.sys.sunset*1000);
+	if (tempSunset.getHours()+1 <= 9) {var theSunset = tempSunset.getHours()+1; theSunset = '0'+theSunset}else {var theSunset = tempSunset.getHours()+1;}
+	if (tempSunset.getMinutes() <= 9) {theSunset += ':0'+tempSunset.getMinutes();}else {theSunset += ':'+tempSunset.getMinutes();}
+	if (tempSunset.getSeconds() <= 9) {theSunset += ':0'+tempSunset.getSeconds();}else {theSunset += ':'+tempSunset.getSeconds();}
+	theString += (jsonDataLabels[2]+theSunset+'<br>');
+	theString += (jsonDataLabels[4]+info.weather[0].main+'<br>');
+	var temperature = info.main.temp;
+	temperature = temperature -273.15;
+	var tmp1 = temperature.toFixed(1);
+	theString += (jsonDataLabels[5]+tmp1+' °C <br>');
+	theString += (jsonDataLabels[6]+info.wind.speed+'m/s');
+}
+
+function findMyGeolocation () {
+	if (navigator.geolocation) {
+       userData = navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        geolocationResults.innerHTML = "Geolocation is not supported by this browser :(";
+    }
+}
+
+// To actually show position
+function showPosition (position) {
+    userLON = position.coords.longitude;
+    userLAT = position.coords.latitude;
+    var roundLON = userLON.toFixed(5);
+    var roundLAT = userLAT.toFixed(5);
+
+    if (userLAT < 1 || userLON < 1) {
+    	geolocationResults.innerHTML += ' Blocked by user';
+    }
+    else {
+    	geolocationResults.innerHTML = ' '+roundLAT+' & '+roundLON;
+    }
+}
+
+// Error Handling
+function showError (error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            geolocationResults.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            geolocationResults.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            geolocationResults.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            geolocationResults.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+
+function takeCoordinates () {
+	chosenLat = document.getElementById('inputCoordinatesLat').value;
+	chosenLon = document.getElementById('inputCoordinatesLon').value;
+
+	weatherInformation();
+}
+
+// Cant have atributes on this funcion since it's being called from the script with google API key etc.
+function initMap () {
+	// This sets the parameters for the google maps
+	var options = {
+    	center: new google.maps.LatLng(chosenLat, chosenLon),
+    	zoom: 4
+	};
+
+	customMap = new google.maps.Map(document.getElementById('customMap'), options);
+	// This makes a new window with text
+	infowindow = new google.maps.InfoWindow({
+		content: theString
+	});
+	var toNumberLat = Number(chosenLat);
+	var toNumberLon = Number(chosenLon);
+	var marker = new google.maps.Marker({
+		position: {lat: toNumberLat, lng: toNumberLon},
+		map: customMap,
+		title: 'Chosen Destination with Weather and Local Time'
+	});
+	marker.addListener('click', function () {
+		infowindow.open(customMap, marker);
+	});
+}
+
+window.addEventListener("click", function (event) {
+	var target = event.target;
+	while (target.parentNode && target !== content) {
+		target = target.parentNode;
+	}
+
+	if (target !== content) {
+		infowindow.close();
+	} 
+});
 </script>
+<!-- The defer attribute is only for external scripts (should only be used if the src attribute is present).
+If async is present: The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
+If async is not present and defer is present: The script is executed when the page has finished parsing
+If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=weatherInformation&libraries=places"></script>
 </body>
 </html>
 
