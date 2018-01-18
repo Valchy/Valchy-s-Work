@@ -31,7 +31,7 @@ var sentence = '';
 var count = 0;
 var results = ['var objectOne = new Object("myName");', 'var objectTwo = Object.create(null);', 'var objectThree = {"name": "myName"};', 'var objectFour = function (name) {'+'<br> <span style="margin-left: 60px;">'+'this.name = "myName";'+'<br> <span style="margin-left: 35px;">'+'}'];
 	
-	var objectOne = new Object('myName');
+	var objectOne = new Object('myName', 'ji');
 	var objectTwo = Object.create(null);
 	var objectThree = {'name': 'myName'};
 	var objectFour = function (name) {
@@ -43,7 +43,10 @@ var results = ['var objectOne = new Object("myName");', 'var objectTwo = Object.
 		count++;
 	}
 
-	document.getElementById('objectResults').innerHTML += sentence + '<br> <b> What are the differences? </b>'+'<br> 1. '+objectOne+"<br> 2. null (can't show)"+'<br> 3. '+objectThree.name+'<br> 4. '+objectFour('myName'); // Това последното правилно ли е? Ако има повече параметри какво ще стане?
+	document.getElementById('objectResults').innerHTML += sentence + 
+	'<br> <b> What are the differences? </b>'+'<br> 1. '+objectOne+
+	"<br> 2. null (can't show)"+'<br> 3. '
+	+objectThree.name+'<br> 4. '+objectFour('myName'); // Това последното правилно ли е? Ако има повече параметри какво ще стане?
 </script>
 </body>
 </html>
