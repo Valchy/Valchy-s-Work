@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class HelloJavaWorld {
 	public static void main (String [] args) {
 		System.out.println("Hello Java World");
-		String stringVariable = "My name is Valeri";
+		String stringVariable = "My name is Valeri and my favourite number is ";
 		int integerVariable = 3;
-		double decimalPointsVariable = 4.342;
+		double decimalPointsVariable = 8.88;
 		float floatVariable = 4.5f;
 		char singleQuotesVariable = '!'; // or A
+		System.out.println(stringVariable+decimalPointsVariable+singleQuotesVariable);
 
 		// This will return true or false
 		int randomInteger = 8;
@@ -35,19 +36,21 @@ public class HelloJavaWorld {
 		int max = 10;
 		int storeResult = ((int) (Math.random() * ((max - min) +1))) + min; // returns a number between 1 - 5;
 		System.out.println("Random generated number = " + storeResult);
-
 		// Name of Scanner variable is input
 		Scanner input = new Scanner(System.in);
 		int userNumber = 0;
 		userNumber = input.nextInt();
 		if (userNumber == storeResult) {
 			System.out.println("User Number and Random Number are the same!");
+			input.close();
 		}
 		else if (userNumber == (storeResult+1) || userNumber == (storeResult-1)) {
 			System.out.println("User number is 1 more or less than the random number");
+			input.close();
 		}
 		else {
 			System.out.println("Numbers to not match, try again :D");
+			input.close();
 		}
 	}
 }
