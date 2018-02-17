@@ -13,18 +13,23 @@
 
 <body>
 <div id="mainBarOthers" class="mainBarOthers">
-	<ul class="theUl" id="theUl">	
+	<ul class="theUl" id="theUl">
 	</ul>
 </div>
 
 <div class="mainPage">
 	<h1> Custom Search Bar (try typing something) </h1>
 
-	<input type="text" class="theSearchBar" id="saerchBar">
+	<input type="text" class="theSearchBar" id="saerchBar" oninput="onInput();">
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+var possibility = ['zdr', 'kpr'];
+
+function onInput () {
+	regExp();
+}
 </script>
 </body>
 </html>

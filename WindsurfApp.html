@@ -3,10 +3,21 @@
 <meta charset="utf-8">
 <title> Windsurfing App </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="jquery-ui.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
+.iPhoneScreen {width: 375px; height: 667px; border: 1px solid black; background-color: #90C9F6; padding: 10px; z-index: 1;}
+.titleText {text-align: center; color: #FF0000; text-shadow: -7px 4px 5px black; font-size: 40px; margin: 0px; width: auto; -webkit-text-stroke: 1px black; font-family: 'Montserrat';}
+.menuIcon {width: 30px; height: 30px; margin: 10px; float: left;}
+.menuIcon:hover {cursor: pointer;}
+.sideBar {background-color: white; display: none; padding: 10px; position: fixed; z-index: 999999; width: 80%; height: 100%;}
+.topSideBar {display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+.topSideBarText {display: flex; flex-direction: column; text-align: center;}
+.topSideBarText span {margin: 5px;}
+.lineDiv {height: 100px; width: 0px; border-left: 1px solid black;}
+.profilePicture {border-radius: 50%; border: 1px solid black; width: 100px; height: 100px; background-image: url('avatar background.jpg'); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;}
 </style>
 </head>
 
@@ -17,11 +28,32 @@
 </div>
 
 <div class="mainPage">
-	<h1> Windsurfin App </h1>
+	<h1> Windsurfing App </h1>
+
+	<div class="iPhoneScreen">
+		<div class="sideBar">
+			<div class="topSideBar">
+				<div class="profilePicture"></div>
+				<div class="lineDiv"></div>
+				<div class="topSideBarText">
+					<span> ValchyGaming </span> <span> Advanced </span> <span> 2 years Premium </span>
+				</div>
+			</div>
+		</div>
+
+		<div class="homePage">
+			<img src="menu.png" class="menuIcon" id="sideBar">
+			<h2 class="titleText"> Windsurf It </h2>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+$('#sideBar').on('click', function () {
+	$('.iPhoneScreen').css({padding: '0px'})
+	$('.sideBar').show('slide', {direction: 'left'}, 900);
+});
 </script>
 </body>
 </html>

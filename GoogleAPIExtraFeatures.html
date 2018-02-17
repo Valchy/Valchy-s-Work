@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
+body {overflow-y: hidden;}
 button:hover {cursor: pointer;}
 ::-webkit-input-placeholder {font-size: 10px !important;} /* Chrome/Opera/Safari */
 ::-moz-placeholder {font-size: 10px !important;} /* Firefox 19+ */
@@ -25,10 +26,11 @@ button:hover {cursor: pointer;}
 #pac-container {padding-bottom: 12px; margin-right: 12px;}
 .pac-controls {display: inline-block; padding: 5px 11px;}
 .pac-controls label { font-family: Roboto; font-size: 13px; font-weight: 300;}
-#pac-input {background-color: #fff; font-family: Roboto; font-size: 15px; font-weight: 300; margin: 14px 0px 0px 12px; padding: 0px 11px 0px 13px; text-overflow: ellipsis; width: 400px;}
+#pac-input {display: none; background-color: #fff; font-family: Roboto; font-size: 15px; font-weight: 300; margin: 14px 14px 0px 12px; padding: 0px 11px 0px 13px; text-overflow: ellipsis; width: 400px;}
 #pac-input:focus {border-color: #4d90fe;}
 #title {color: #fff; background-color: #4d90fe; font-size: 25px; font-weight: 500; padding: 6px 12px;}
 #target {width: 345px;}
+#markerButtonTwo {margin-left: 50px;}
 </style>
 </head>
 
@@ -45,6 +47,9 @@ button:hover {cursor: pointer;}
 		<input type="numbers" id="inputCoordinatesLat" placeholder="Latitude Coordinates - 90 & -90">
 		<input type="numbers" id="inputCoordinatesLon" placeholder="Longitude Coordinates - 180 & -180">
 		<button onclick="takeCoordinates();"> Show map with coordinates </button>
+		<button id="markerButtonTwo"> Show Markers </button>
+		<button id="markerButton"> Hide Markers </button>
+		<button id="markerButtonThree"> Delete Markers </button>
 	</div>
 
 	<div class="myGeolocation">
@@ -52,8 +57,9 @@ button:hover {cursor: pointer;}
 		<button onclick="findMyGeolocation();"> Find my Coordinates </button>
 	</div>
 
-	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	<input id="pac-input" class="controls" type="text" placeholder="Search for a location...">
     <div id="customMap"></div>
+    <div id="mouseCoordinates"></div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
@@ -62,12 +68,17 @@ var jsonDataLabels = new Array('Country: ', 'City: ', 'Sunset: ', 'Sunrise: ', '
 var geolocationResults = document.getElementById('myGeolocationResults');
 var content = document.getElementById('customMap');
 var customMap, userLAT, userLON, infowindow, searchInfowindow;
+var marker = [];
 var chosenLat = 42.6977;
 var chosenLon = 23.3219;
 var theString = 'No Information';
 var searchString = '<center> Weather information <br> not avaliable yet... </center>';
+var pageLoad = false;
+var active = true;
 
+// Data pulling
 function weatherInformation () {
+	active = false;
 	if (chosenLat === '') {chosenLat = 0}
 	if (chosenLon === '') {chosenLon = 0}
 	var data = new XMLHttpRequest();
@@ -77,11 +88,19 @@ function weatherInformation () {
 		if (data.status >= 200 && data.status < 400) {
 			var ourData = JSON.parse(data.responseText);
 			weatherHTML(ourData);
-			initMap();
+			if (pageLoad === false) {
+				initMap();
+				pageLoad = true;
+			}
+			else {
+				moveMarker();
+			}
 		}
 		else {
 			theString = 'Server failure, please try again!';
 		}
+
+		active = true;
 	};
 
 	data.onerror = function () {
@@ -91,6 +110,7 @@ function weatherInformation () {
 	data.send();
 }
 
+// Makes an organised HTML string with information 
 function weatherHTML (info) {
 	theString = '';
 	if (info.sys.country !== undefined) {theString += (jsonDataLabels[0]+info.sys.country+'<br>');}
@@ -179,19 +199,21 @@ function initMap () {
 	});
 	var toNumberLat = Number(chosenLat);
 	var toNumberLon = Number(chosenLon);
-	var marker = new google.maps.Marker({
+	var markerInfo = new google.maps.Marker({
 		position: {lat: toNumberLat, lng: toNumberLon},
 		map: customMap,
 		title: 'Chosen Destination with Weather and Local Time'
 	});
-	marker.addListener('click', function () {
-		infowindow.open(customMap, marker);
+	markerInfo.addListener('click', function () {
+		infowindow.open(customMap, markerInfo);
 	});
+
+	marker.push(markerInfo);
 
 	// Create the search box and link it to the UI element.
 	var input = document.getElementById('pac-input');
 	var searchBox = new google.maps.places.SearchBox(input);
-	customMap.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	customMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
     // Bias the SearchBox results towards current map's viewport.
 	customMap.addListener('bounds_changed', function () {
@@ -214,23 +236,26 @@ function initMap () {
 		return;
 	}
 
-	// Customise with my own img
+	// Customise with own img
 	var icon = {
-		url: place.icon,
-		size: new google.maps.Size(71, 71),
-		origin: new google.maps.Point(0, 0),
+		url: 'googleMapsIcon.png',
+		origin: new google.maps.Point(-3, 0),
 		anchor: new google.maps.Point(17, 34),
-		scaledSize: new google.maps.Size(25, 25)
+		scaledSize: new google.maps.Size(25, 30)
 	};
 
 	// Create a marker for the place.
 	var searchMarker = new google.maps.Marker({
-		// Find method to delete other markers before
 		map: customMap,
 		title: place.name,
-		position: place.geometry.location
+		position: place.geometry.location,
+		icon: icon
 	});
+
 	searchMarker.addListener('click', function () {
+		for (let i = 0; i < marker.length; i++) {
+			marker[i].setMap(null);
+		}
 		searchInfowindow.open(customMap, searchMarker);
 	});
 
@@ -244,9 +269,101 @@ function initMap () {
 	});
 		customMap.fitBounds(bounds);
 	});
+
+	// This is my method to add an event listener to google maps
+	google.maps.event.addListener(customMap, 'mousemove', function (event) {
+	    document.getElementById('mouseCoordinates').innerHTML = event.latLng;  // in event.latLng are the coordinates (latLng specific method to get coordinates)
+		var objectCoordinates = event.latLng;
+		chosenLat = objectCoordinates.lat();
+		chosenLon = objectCoordinates.lng();
+	});
+
+	google.maps.event.addListener(customMap, 'click', function () {
+		if (active === true) {
+			weatherInformation();
+		}
+		else {
+			return;
+		}
+	});
+	
+	// Creates drawing menu
+	var drawingManager = new google.maps.drawing.DrawingManager({
+		drawingMode: google.maps.drawing.OverlayType.MARKER,
+		drawingControl: true,
+		drawingControlOptions: {
+			// Position of the drawing menu
+			position: google.maps.ControlPosition.BOTTOM_CENTER,
+			// These are the options which show on the drawing menu (can remove some eg add back 'maker')
+			drawingModes: ['circle', 'polygon', 'polyline', 'rectangle']
+		},
+		// Custom icon for the drawing menu
+		markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+		// Circle options for the circle in the menu
+		circleOptions: {
+			fillColor: '#000000',
+			fillOpacity: 0.3,
+			strokeWeight: 5,
+			clickable: false,
+			editable: true,
+			zIndex: 1
+		}
+	});
+
+	// Set the drawingManager to 'null' to remove from map
+	drawingManager.setMap(customMap);
+	// Makes search bar show after google maps has loaded
+	$('#pac-input').fadeToggle(500);
+
+	// Event listener which fires after a shape is created to calculate the area of the
+	google.maps.event.addListener(drawingManager, 'overlaycomplete', function () {
+
+	});
 }
 
-window.addEventListener("click", function (event) {
+function moveMarker () {
+	//marker.setMap(null);
+	infowindow = new google.maps.InfoWindow({
+		content: theString
+	});
+	var toNumberLat = Number(chosenLat);
+	var toNumberLon = Number(chosenLon);
+	var markerDetails = new google.maps.Marker({
+		position: new google.maps.LatLng(toNumberLat, toNumberLon),
+		map: customMap,
+		title: 'Chosen Destination with Weather and Local Time'
+	});
+	markerDetails.addListener('click', function () {
+		infowindow.open(customMap, markerDetails);
+	});
+
+	marker.push(markerDetails);
+}
+
+// Hides all markers
+$('#markerButton').on('click', function () {
+	for (let i = 0; i < marker.length; i++) {
+		marker[i].setMap(null);
+	}
+});
+
+// Shows all markers
+$('#markerButtonTwo').on('click', function () {
+	for (let i = 0; i < marker.length; i++) {
+		marker[i].setMap(customMap);
+	}
+});
+
+// Deletes all markers
+$('#markerButtonThree').on('click', function () {
+	for (let i = 0; i < marker.length; i++) {
+		marker[i].setMap(null);
+	}
+	marker = [];
+});
+
+// Closes the weather info box when clicked outside google maps
+window.addEventListener('click', function (event) {
 	var target = event.target;
 	while (target.parentNode && target !== content) {
 		target = target.parentNode;
@@ -260,8 +377,9 @@ window.addEventListener("click", function (event) {
 <!-- The defer attribute is only for external scripts (should only be used if the src attribute is present).
 If async is present: The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
 If async is not present and defer is present: The script is executed when the page has finished parsing
-If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=weatherInformation&libraries=places"></script>
+If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page 
+Seperate libraries wiht a ',' (can add as many as I like) -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-pRxQlYylkY06uuriuxmMPBuoaOnlD-Y&callback=weatherInformation&libraries=places,drawing"></script>
 </body>
 </html>
 
