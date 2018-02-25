@@ -15,7 +15,7 @@ button:hover {cursor: pointer;}
 :-ms-input-placeholder {font-size: 10px !important;} /* IE 10+ */
 :-moz-placeholder {font-size: 10px !important;} /* Firefox 18- */
 #customMap {height: 80%; width: 100%;}
-.chooseCoordinates {float: left; margin-bottom: 20px;}
+.chooseCoordinates {float: left; margin-bottom: 20px; display: flex; flex-direction: row;}
 .myGeolocation {float: right; margin-bottom: 20px; display: flex; flex-direction: row;}
 #myGeolocationResults {margin-right: 20px}
 #description { font-family: Roboto; font-size: 15px; font-weight: 300;}
@@ -30,7 +30,11 @@ button:hover {cursor: pointer;}
 #pac-input:focus {border-color: #4d90fe;}
 #title {color: #fff; background-color: #4d90fe; font-size: 25px; font-weight: 500; padding: 6px 12px;}
 #target {width: 345px;}
-#markerButtonTwo {margin-left: 50px;}
+#markerButtonTwo {margin-left: 60px;}
+#areaButton {margin: 0px 20px 0px 60px;}
+.rowDiv {display: flex; flex-direction: row;}
+#resultAreaDiv {float: right;}
+#mouseCoordinates {float: left;}
 </style>
 </head>
 
@@ -50,6 +54,10 @@ button:hover {cursor: pointer;}
 		<button id="markerButtonTwo"> Show Markers </button>
 		<button id="markerButton"> Hide Markers </button>
 		<button id="markerButtonThree"> Delete Markers </button>
+
+		<button id="areaButton" onclick="calcArea();"> Calculate Area </button>
+		<button onclick="deleteSelectedShape();"> Delete Shape </button>
+	
 	</div>
 
 	<div class="myGeolocation">
@@ -60,6 +68,7 @@ button:hover {cursor: pointer;}
 	<input id="pac-input" class="controls" type="text" placeholder="Search for a location...">
     <div id="customMap"></div>
     <div id="mouseCoordinates"></div>
+    <div id="resultAreaDiv"> Results... </div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
@@ -67,7 +76,7 @@ button:hover {cursor: pointer;}
 var jsonDataLabels = new Array('Country: ', 'City: ', 'Sunset: ', 'Sunrise: ', 'Weather: ', 'Temperature: ', 'Wind Speed: ');
 var geolocationResults = document.getElementById('myGeolocationResults');
 var content = document.getElementById('customMap');
-var customMap, userLAT, userLON, infowindow, searchInfowindow;
+var customMap, userLAT, userLON, infowindow, searchInfowindow, tmpLAT, tmpLON;
 var marker = [];
 var chosenLat = 42.6977;
 var chosenLon = 23.3219;
@@ -82,7 +91,9 @@ function weatherInformation () {
 	if (chosenLat === '') {chosenLat = 0}
 	if (chosenLon === '') {chosenLon = 0}
 	var data = new XMLHttpRequest();
-	data.open('GET', 'https://api.openweathermap.org/data/2.5/weather?lat='+chosenLat+'&lon='+chosenLon+'&appid=ce08873d7abcedcca577c81c3a1d0689');
+	tmpLAT = chosenLat;
+	tmpLON = chosenLon;
+	data.open('GET', 'https://api.openweathermap.org/data/2.5/weather?lat='+tmpLAT+'&lon='+tmpLON+'&appid=ce08873d7abcedcca577c81c3a1d0689');
 
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
@@ -186,7 +197,7 @@ function initMap () {
 	// This sets the parameters for the google maps
 	var options = {
     	center: new google.maps.LatLng(chosenLat, chosenLon),
-    	zoom: 4
+    	zoom: 4,
 	};
 
 	customMap = new google.maps.Map(document.getElementById('customMap'), options);
@@ -287,27 +298,45 @@ function initMap () {
 		}
 	});
 	
+
 	// Creates drawing menu
 	var drawingManager = new google.maps.drawing.DrawingManager({
-		drawingMode: google.maps.drawing.OverlayType.MARKER,
+		// drawingMode: google.maps.drawing.OverlayType.CIRCLE, || This is for the mode of the drawing e.g instead of CIRCLE to have MARKER
 		drawingControl: true,
 		drawingControlOptions: {
 			// Position of the drawing menu
 			position: google.maps.ControlPosition.BOTTOM_CENTER,
-			// These are the options which show on the drawing menu (can remove some eg add back 'maker')
-			drawingModes: ['circle', 'polygon', 'polyline', 'rectangle']
+			// These are the options which show on the drawing menu (can remove some eg add back 'maker' and 'polyline')
+			drawingModes: ['circle', 'polygon', 'rectangle']
 		},
-		// Custom icon for the drawing menu
-		markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
 		// Circle options for the circle in the menu
 		circleOptions: {
 			fillColor: '#000000',
 			fillOpacity: 0.3,
-			strokeWeight: 5,
+			strokeWeight: 3,
+			strokeColor: '#000000',
 			clickable: false,
 			editable: true,
 			zIndex: 1
-		}
+		},
+		polygonOptions: {
+            fillColor: '#000000',
+            fillOpacity: 0.3,
+            strokeWeight: 3,
+			strokeColor: '#000000',
+            clickable: false,
+            editable: true,
+            zIndex: 1
+        },
+        rectangleOptions: {
+            fillColor: '#000000',
+            fillOpacity: 0.3,
+            strokeWeight: 3,
+            strokeColor: '#000000',
+            clickable: false,
+            editable: true,
+            zIndex: 1
+        }
 	});
 
 	// Set the drawingManager to 'null' to remove from map
@@ -317,8 +346,23 @@ function initMap () {
 
 	// Event listener which fires after a shape is created to calculate the area of the
 	google.maps.event.addListener(drawingManager, 'overlaycomplete', function () {
-
+		// This makes so that after a shape is created it goes to not drawing mode
+		drawingManager.setDrawingMode(null);
 	});
+}
+
+// Should calculaite area upon function call
+function calcArea () {
+	var area = google.maps.geometry.spherical.computeArea(selectedShape.getPath());
+    document.getElementById("resultAreaDiv").innerHTML = "Area =" + area;
+}
+
+// Deletes selected shape upon function call
+function deleteSelectedShape() {
+	// Notice how it will automatically do the function if selectedShape is true (there is no '=== true')
+	if (selectedShape)  {
+		selectedShape.setMap(null);
+	}
 }
 
 function moveMarker () {
@@ -326,10 +370,8 @@ function moveMarker () {
 	infowindow = new google.maps.InfoWindow({
 		content: theString
 	});
-	var toNumberLat = Number(chosenLat);
-	var toNumberLon = Number(chosenLon);
 	var markerDetails = new google.maps.Marker({
-		position: new google.maps.LatLng(toNumberLat, toNumberLon),
+		position: new google.maps.LatLng(tmpLAT, tmpLON),
 		map: customMap,
 		title: 'Chosen Destination with Weather and Local Time'
 	});

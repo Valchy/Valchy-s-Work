@@ -7,7 +7,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
-.theSearchBar {width: 50%;}
+::-webkit-input-placeholder {font-size: 12px !important;} /* Chrome/Opera/Safari */
+::-moz-placeholder {font-size: 12px !important;} /* Firefox 19+ */
+:-ms-input-placeholder {font-size: 12px !important;} /* IE 10+ */
+:-moz-placeholder {font-size: 12px !important;} /* Firefox 18- */
+button:hover {cursor: pointer;}
+.theSearchBar {width: 500px; text-indent: 10px; margin-right: 10px;}
+.listDiv {display: none; width: 468px; height: 100px; padding: 8px 15px 15px 15px; border: 1px solid black; border-top: 0px; background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
+.motherDiv {display: flex; flex-direction: row;}
+.childDiv {display: flex; flex-direction: column; align-items: center;}
+#wordAlertDiv {display: none; font-size: 30px; font-family: 'Cooper Black'; margin: 5px 0px 0px -5px;} /* make it so it slowly moves upwords :D*/
+#theList {list-style-type: none; margin: 0px; padding: 0px;}
+#addButton {margin-right: 20px;}
+#theList {height: 40px; border: 1px solid black;}
 </style>
 </head>
 
@@ -20,16 +32,84 @@
 <div class="mainPage">
 	<h1> Custom Search Bar (try typing something) </h1>
 
-	<input type="text" class="theSearchBar" id="saerchBar" oninput="onInput();">
+	<div class="motherDiv">
+		<div class="childDiv">
+			<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="onInput();">
+			<div class="listDiv" id="listDiv"> <ul id="theList"></ul></div>
+			<div id="wordAlertDiv"></div>
+		</div>
+		<div>
+			<button onclick="addingSomething();" id="addButton"> Add something </button>
+			<button onclick="showPossibilities();"> Show Possibilities </button>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
-var possibility = ['zdr', 'kpr'];
+var possibility = ['zdr', 'kpr','zdr', 'kpr', 'zdr', 'kpr', 'zdr', 'kpr', 'zdr', 'kpr','zdr', 'kpr',]; // Направи го с scroll
+var addOrCancel = false;
+
+$(function () {
+	// This worls even though the $ is not colored red
+	for (var i in possibility) {
+		$('#theList').append($('<li/>', {'html': possibility[i]}));
+	}
+});
+
+function showPossibilities () {
+	alert("The possibilities are: <br>" + possibility)
+}
+
+function addingSomething () {
+	if (addOrCancel === false) {
+		document.getElementById('addButton').innerHTML = 'Cancel';
+		document.getElementById('searchBar').value = '';
+		document.getElementById('searchBar').placeholder = 'Press Enter to add word or phrase';
+		addOrCancel = true;
+	}
+	else {
+		document.getElementById('addButton').innerHTML = 'Add something';
+		document.getElementById('searchBar').value = '';
+		document.getElementById('searchBar').placeholder = 'Search for something';
+		addOrCancel = false;
+	}
+}
 
 function onInput () {
-	regExp();
+	var tempValue = document.getElementById('searchBar').value;
 }
+
+function alertWordAdd () {
+	$('#wordAlertDiv').fadeToggle(300).delay(1000).fadeToggle(500);
+}
+
+// Can you simply .focus or just 'focus' and it will still work
+$('#searchBar').on('focusin', function () {
+	if (addOrCancel === false) {
+		$('.listDiv').show();
+	}
+	else {
+		$('.listDiv').hide();
+	}
+});
+
+$('#searchBar').on('focusout', function () {
+	$('.listDiv').hide();
+});
+
+window.addEventListener('keypress', function (event) {
+	var theEvent = event.which;
+
+	if (theEvent === 13 && addOrCancel === true) {
+		var tempValue = document.getElementById('searchBar').value;
+		if (tempValue == '') return; // make it so if it something stupid it doesnt get added
+		possibility.push(tempValue);
+		document.getElementById('searchBar').value = '';
+		document.getElementById('wordAlertDiv').innerHTML = tempValue;
+		alertWordAdd();
+	}
+});
 </script>
 </body>
 </html>
