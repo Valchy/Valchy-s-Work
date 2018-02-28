@@ -13,13 +13,14 @@
 :-moz-placeholder {font-size: 12px !important;} /* Firefox 18- */
 button:hover {cursor: pointer;}
 .theSearchBar {width: 500px; text-indent: 10px; margin-right: 10px;}
-.listDiv {display: none; width: 468px; height: 100px; padding: 8px 15px 15px 15px; border: 1px solid black; border-top: 0px; background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
+.listDiv {display: none; width: 498px; margin-top: 1px; height: 148px; border: 1px solid black; border-top: 0px; background-color: lightgrey; box-shadow: 4px 4px 20px black; align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
 .motherDiv {display: flex; flex-direction: row;}
 .childDiv {display: flex; flex-direction: column; align-items: center;}
 #wordAlertDiv {display: none; font-size: 30px; font-family: 'Cooper Black'; margin: 5px 0px 0px -5px;} /* make it so it slowly moves upwords :D*/
-#theList {list-style-type: none; margin: 0px; padding: 0px;}
+#theList {height: 140px; list-style-type: none; margin: 0px; padding: 0px; overflow: auto;} /* typing scroll instead fo auto will makes the scroll also horizontal */
 #addButton {margin-right: 20px;}
-#theList {height: 40px; border: 1px solid black;}
+#theList li {padding: 4px 8px;}
+#theList li:hover {background-color: grey; cursor: pointer;}
 </style>
 </head>
 
@@ -34,8 +35,8 @@ button:hover {cursor: pointer;}
 
 	<div class="motherDiv">
 		<div class="childDiv">
-			<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="onInput();">
-			<div class="listDiv" id="listDiv"> <ul id="theList"></ul></div>
+			<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="onInput(); regExp(this);">
+			<div class="listDiv" id="listDiv"> <ul id="theList" onmouseover="onFocus = true;" onmouseout="onFocus = false;"></ul> </div>
 			<div id="wordAlertDiv"></div>
 		</div>
 		<div>
@@ -47,22 +48,66 @@ button:hover {cursor: pointer;}
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
-var possibility = ['zdr', 'kpr','zdr', 'kpr', 'zdr', 'kpr', 'zdr', 'kpr', 'zdr', 'kpr','zdr', 'kpr',]; // Направи го с scroll
+var theList = document.getElementById('theList');
+var possibility = [];
 var addOrCancel = false;
+var onFocus = false;
+onLoad();
 
-$(function () {
-	// This worls even though the $ is not colored red
+function onLoad () {
+	$(function () { // Как мога да го направя да се изпълни цикъла след като всички данни са готови
+		$.getJSON('http://www.filltext.com/?pretty=true&rows=10&fname={firstName}&city={city}', function (data) {
+			$.each(data, function (i, text) {
+				possibility.push(text.fname+' who lives in '+text.city);
+				$('#theList').html('');
+				for (var i in possibility) {
+					$('#theList').append($('<li/>', {'html': possibility[i], 'onclick': 'theClick(this)'}));
+				}
+			});
+		});
+	});
+};
+
+function regExp (theHTML) {
+	var check = theHTML.value;
+	var tempArray = [];
+	$('#theList').html('');	
+
 	for (var i in possibility) {
-		$('#theList').append($('<li/>', {'html': possibility[i]}));
+		var tmp = possibility[i];
+		var theMatch = tmp.match(check);
+		if (theMatch != '' && theMatch != null) {
+			tempArray.push(possibility[i]);
+			$('#theList').html('');
+				for (var i in tempArray) {
+				$('#theList').append($('<li/>', {'html': tempArray[i], 'onclick': 'theClick(this)'}));
+			}
+		}
+		else if (theHTML.value === '') {
+			$('#theList').html('');
+				for (var i in possibility) {
+				$('#theList').append($('<li/>', {'html': possibility[i], 'onclick': 'theClick(this)'}));
+			}
+		}
 	}
-});
+	if (tempArray.length < 1 && theHTML.value != '') {
+		$('#theList').html('');
+		$('#theList').append($('<li/>', {'html': 'No match found'}));
+	}
+}
 
 function showPossibilities () {
-	alert("The possibilities are: <br>" + possibility)
+var theOutcome = '';
+
+	for (var i in possibility) {
+		theOutcome += '   ★ '+possibility[i] + '\n';
+	}
+	alert('The possibilities are: \n' + theOutcome);
 }
 
 function addingSomething () {
 	if (addOrCancel === false) {
+		$('.listDiv').hide();
 		document.getElementById('addButton').innerHTML = 'Cancel';
 		document.getElementById('searchBar').value = '';
 		document.getElementById('searchBar').placeholder = 'Press Enter to add word or phrase';
@@ -74,6 +119,11 @@ function addingSomething () {
 		document.getElementById('searchBar').placeholder = 'Search for something';
 		addOrCancel = false;
 	}
+}
+
+function theClick (theHTML) {
+	var tmpHTML = 'You just clicked "' + theHTML.innerHTML + '"';
+	window.alert(tmpHTML)
 }
 
 function onInput () {
@@ -95,7 +145,12 @@ $('#searchBar').on('focusin', function () {
 });
 
 $('#searchBar').on('focusout', function () {
-	$('.listDiv').hide();
+	if (onFocus === false) {
+		$('.listDiv').hide();
+	}
+	else {
+		$('.listDiv').show();
+	}
 });
 
 window.addEventListener('keypress', function (event) {
@@ -108,6 +163,7 @@ window.addEventListener('keypress', function (event) {
 		document.getElementById('searchBar').value = '';
 		document.getElementById('wordAlertDiv').innerHTML = tempValue;
 		alertWordAdd();
+		onLoad();
 	}
 });
 </script>

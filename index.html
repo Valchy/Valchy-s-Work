@@ -36,9 +36,7 @@ Things to get done by Today:
 	3. on mouse click out close (saerch box)
 	4. shopping page finish
 	5. alerts in page... (success bar showing Ui hidden etc. (also congrats , warning and attention signs on actions))
-_______________________
-	Homework...
-Jquery :D
+	6. Make everything addaptive with different screens
  -->
 <body>
 <div id="loading">
@@ -98,20 +96,10 @@ Jquery :D
 				</sub> 
 			</li>
 			<li>
-			<!-- <div id="gsc-div"> SLOW INTERNET PUT BACK!
-				<script>
-	  				(function() {
-	   				var cx = '009518811010199813808:heeuwy0mmie';
-	    			var gcse = document.createElement('script');
-	    			gcse.type = 'text/javascript';
-	    			gcse.async = true;
-	    			gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-	    			var s = document.getElementsByTagName('script')[0];
-	    			s.parentNode.insertBefore(gcse, s);
-	  				})();
-				</script>
-				<gcse:search> </gcse:search>
-			</div> -->
+				<div class="childDiv">
+					<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="onInput(); regExp(this);">
+					<div class="listDiv" id="listDiv"> <ul id="theList" onmouseover="onFocus = true;" onmouseout="onFocus = false;"></ul> </div>
+				</div>
 			</li>
 			<li>
 				<button class="buttonSearch" title="Close Search Box" onclick="showHideSearch ();">
@@ -143,7 +131,7 @@ Jquery :D
 				<img src="me.svg" width="420" class="theSVG" id="theSVG">
 				<h1 class="mainPageTitle"> About Me </h1>
 				<p>
-					Hello, my name is Valeri and I am 15 years of age. I recently got really interested into programming. I am very interested in the topic and can't wait to learn more and more. My hobies apart from gaming (obviously because who doesn't game xD) is playing tennis, windsurfing and in general sports. I am very sporty and love having comptetion. Everything that happens to get in my hands becomes a pation and I always try to master it and become the very best at it. Other then that, I also have a YouTube channel with over 2K (two thousand) subscribers but we will get later into that part in a seperate part of this (if I can call it) autobiography. So what else do I really like othet than sport, well computers :P I mean you probably figured it out by now but anything got to the with technology is something I am interested and good at. Ofcourse I am not saying I know everything otherwise my life woudn't be the way it is at the moment but I am deffinatly trying my best to learn as much as I can about the things I am going to need in life. My finacial dream is to just live my life the way I want. What do I mean by this? Well, I don't want to compromise things because of money, I want to be free to do whatever I want without any boudaries whenever I want. Yes, this may sound as if I want to become the next Bill Gates but that's not what I want neither what I meant, so let me explain. My dream is to be able to live my life, be able to support my family and don't worry about the next month, about saving money for food or anything but simply be able to support my self and the people I love. I don't want 5 million dollar yachts (although I would'nt mind them) but instead be able to still go on vacations and have fun, experiancing new things which life and man kind allow us to. Well this is the beginning of my carrier and path, I hope you got interested and will continue reading on :D
+					Hello, my name is Valeri and I am 16 years of age. I recently got really interested into programming. I am very interested in the topic and can't wait to learn more and more. My hobies apart from gaming (obviously because who doesn't game xD) is playing tennis, windsurfing and in general sports. I am very sporty and love having comptetion. Everything that happens to get in my hands becomes a pation and I always try to master it and become the very best at it. Other then that, I also have a YouTube channel with over 2K (two thousand) subscribers but we will get later into that part in a seperate part of this (if I can call it) autobiography. So what else do I really like othet than sport, well computers :P I mean you probably figured it out by now but anything got to the with technology is something I am interested and good at. Ofcourse I am not saying I know everything otherwise my life woudn't be the way it is at the moment but I am deffinatly trying my best to learn as much as I can about the things I am going to need in life. My finacial dream is to just live my life the way I want. What do I mean by this? Well, I don't want to compromise things because of money, I want to be free to do whatever I want without any boudaries whenever I want. Yes, this may sound as if I want to become the next Bill Gates but that's not what I want neither what I meant, so let me explain. My dream is to be able to live my life, be able to support my family and don't worry about the next month, about saving money for food or anything but simply be able to support my self and the people I love. I don't want 5 million dollar yachts (although I would'nt mind them) but instead be able to still go on vacations and have fun, experiancing new things which life and man kind allow us to. Well this is the beginning of my carrier and path, I hope you got interested and will continue reading on :D
 				</p>
 			</div>
 

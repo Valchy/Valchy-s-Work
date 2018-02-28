@@ -76,7 +76,7 @@ button:hover {cursor: pointer;}
 var jsonDataLabels = new Array('Country: ', 'City: ', 'Sunset: ', 'Sunrise: ', 'Weather: ', 'Temperature: ', 'Wind Speed: ');
 var geolocationResults = document.getElementById('myGeolocationResults');
 var content = document.getElementById('customMap');
-var customMap, userLAT, userLON, infowindow, searchInfowindow, tmpLAT, tmpLON;
+var customMap, userLAT, userLON, infowindow, searchInfowindow, tmpLAT, tmpLON, selectedShape;
 var marker = [];
 var chosenLat = 42.6977;
 var chosenLon = 23.3219;
@@ -345,10 +345,35 @@ function initMap () {
 	$('#pac-input').fadeToggle(500);
 
 	// Event listener which fires after a shape is created to calculate the area of the
-	google.maps.event.addListener(drawingManager, 'overlaycomplete', function () {
+	google.maps.event.addListener(drawingManager, 'overlaycomplete', function (e) {
 		// This makes so that after a shape is created it goes to not drawing mode
 		drawingManager.setDrawingMode(null);
+
+		var newShape = e.overlay;
+		newShape.type = e.type;
+		google.maps.event.addListener(newShape, 'click', function() {
+			setSelection(newShape);
+		});
+
+		var area = google.maps.geometry.spherical.computeArea(newShape.getPath());
+		document.getElementById("resultAreaDiv").innerHTML = 'Area =' + area;
+		setSelection(newShape);
 	});
+}
+
+function clearSelection() {
+  if (selectedShape) {
+    selectedShape.setEditable(false);
+    selectedShape = null;
+  }
+}
+
+function setSelection(shape) {
+  clearSelection();
+  selectedShape = shape;
+  shape.setEditable(true);
+  google.maps.event.addListener(shape.getPath(), 'set_at', calcArea);
+  google.maps.event.addListener(shape.getPath(), 'insert_at', calcArea);
 }
 
 // Should calculaite area upon function call

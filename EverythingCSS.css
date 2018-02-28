@@ -7,6 +7,10 @@ sub {color: white; font-size: 40px;}
 ::-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 19+ */
 :-ms-input-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* IE 10+ */
 :-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 18- */
+.theSearchBar::-webkit-input-placeholder {font-size: 12px !important;}
+.theSearchBar::-moz-placeholder {font-size: 12px !important;}
+.theSearchBar:-ms-input-placeholder {font-size: 12px !important;}
+.theSearchBar:-moz-placeholder {font-size: 12px !important;}
 .mainBar {display: block; position: fixed; font-family: 'Montserrat-Regular', sans-serif; width: 18%; z-index: 2; margin-top: 52px; border-right: 2px solid black; background-color: #feffdd; float: left; overflow: auto; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
 .mainBarActive {display: block; position: fixed; font-family: 'Montserrat-Regular', sans-serif; width: 260px; z-index: 2; margin-top: 52px; border-right: 2px solid black; background-color: #feffdd; float: left; overflow: auto; box-shadow: 0px 1px 10px black; -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Safari */ -khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */}
 .mainBar li:hover, .mainBarActive li:hover {background-color: #bdff58; cursor: pointer;} /* width 260px fix window size issue */
@@ -183,6 +187,11 @@ sub {color: white; font-size: 40px;}
 #CMA, #CWA {margin: -160px 0px 0px -160px; -webkit-transform: scale(0.5); -moz-transform: scale(0.5); -ms-transform: scale(0.5); transform: scale(0.5);}
 #CMA td, #CWA td {padding: 15px 50px;}
 #CMA td svg:hover, #CWA td svg:hover {cursor: pointer;}
+#theList li {padding: 4px 8px;}
+#theList li:hover {background-color: grey; cursor: pointer;}
+#theList {height: 140px; list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
+.childDiv {display: flex; flex-direction: column; align-items: center;}
+.listDiv {display: none; width: 498px; margin-top: 1px; height: 148px; border: 1px solid black; border-top: 0px; background-color: lightgrey; box-shadow: 4px 4px 20px black; align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
 
 @media all and (max-width: 300px) {
 	.theSVG {width: 200px !important;} z
