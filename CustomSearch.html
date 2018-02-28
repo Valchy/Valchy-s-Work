@@ -12,15 +12,15 @@
 :-ms-input-placeholder {font-size: 12px !important;} /* IE 10+ */
 :-moz-placeholder {font-size: 12px !important;} /* Firefox 18- */
 button:hover {cursor: pointer;}
-.theSearchBar {width: 500px; text-indent: 10px; margin-right: 10px;}
-.listDiv {display: none; width: 498px; margin-top: 1px; height: 148px; border: 1px solid black; border-top: 0px; background-color: lightgrey; box-shadow: 4px 4px 20px black; align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
+.theSB {width: 500px; text-indent: 10px; margin-right: 10px;}
+.theListDiv {display: none; width: 498px; margin-top: 1px; height: 148px; border: 1px solid black; border-top: 0px; background-color: lightgrey; box-shadow: 4px 4px 20px black; align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
 .motherDiv {display: flex; flex-direction: row;}
-.childDiv {display: flex; flex-direction: column; align-items: center;}
+.theChildDiv {display: flex; flex-direction: column; align-items: center;}
 #wordAlertDiv {display: none; font-size: 30px; font-family: 'Cooper Black'; margin: 5px 0px 0px -5px;} /* make it so it slowly moves upwords :D*/
-#theList {height: 140px; list-style-type: none; margin: 0px; padding: 0px; overflow: auto;} /* typing scroll instead fo auto will makes the scroll also horizontal */
+#daList {height: 140px; list-style-type: none; margin: 0px; padding: 0px; overflow: auto;} /* typing scroll instead fo auto will makes the scroll also horizontal */
 #addButton {margin-right: 20px;}
-#theList li {padding: 4px 8px;}
-#theList li:hover {background-color: grey; cursor: pointer;}
+#daList li {padding: 4px 8px;}
+#daList li:hover {background-color: grey; cursor: pointer;}
 </style>
 </head>
 
@@ -34,9 +34,9 @@ button:hover {cursor: pointer;}
 	<h1> Custom Search Bar (try typing something) </h1>
 
 	<div class="motherDiv">
-		<div class="childDiv">
-			<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="onInput(); regExp(this);">
-			<div class="listDiv" id="listDiv"> <ul id="theList" onmouseover="onFocus = true;" onmouseout="onFocus = false;"></ul> </div>
+		<div class="theChildDiv">
+			<input type="text" class="theSB" placeholder="Search for something" id="searchBar" oninput="onInput(); regExp(this);">
+			<div class="theListDiv" id="theListDiv"> <ul id="daList" onmouseover="onFocus = true;" onmouseout="onFocus = false;"></ul> </div>
 			<div id="wordAlertDiv"></div>
 		</div>
 		<div>
@@ -48,7 +48,7 @@ button:hover {cursor: pointer;}
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
-var theList = document.getElementById('theList');
+var theList = document.getElementById('daList');
 var possibility = [];
 var addOrCancel = false;
 var onFocus = false;
@@ -59,9 +59,9 @@ function onLoad () {
 		$.getJSON('http://www.filltext.com/?pretty=true&rows=10&fname={firstName}&city={city}', function (data) {
 			$.each(data, function (i, text) {
 				possibility.push(text.fname+' who lives in '+text.city);
-				$('#theList').html('');
+				$('#daList').html('');
 				for (var i in possibility) {
-					$('#theList').append($('<li/>', {'html': possibility[i], 'onclick': 'theClick(this)'}));
+					$('#daList').append($('<li/>', {'html': possibility[i], 'onclick': 'theClick(this)'}));
 				}
 			});
 		});
@@ -71,28 +71,28 @@ function onLoad () {
 function regExp (theHTML) {
 	var check = theHTML.value;
 	var tempArray = [];
-	$('#theList').html('');	
+	$('#daList').html('');	
 
 	for (var i in possibility) {
 		var tmp = possibility[i];
 		var theMatch = tmp.match(check);
 		if (theMatch != '' && theMatch != null) {
 			tempArray.push(possibility[i]);
-			$('#theList').html('');
+			$('#daList').html('');
 				for (var i in tempArray) {
-				$('#theList').append($('<li/>', {'html': tempArray[i], 'onclick': 'theClick(this)'}));
+				$('#daList').append($('<li/>', {'html': tempArray[i], 'onclick': 'theClick(this)'}));
 			}
 		}
 		else if (theHTML.value === '') {
-			$('#theList').html('');
+			$('#daList').html('');
 				for (var i in possibility) {
-				$('#theList').append($('<li/>', {'html': possibility[i], 'onclick': 'theClick(this)'}));
+				$('#daList').append($('<li/>', {'html': possibility[i], 'onclick': 'theClick(this)'}));
 			}
 		}
 	}
 	if (tempArray.length < 1 && theHTML.value != '') {
-		$('#theList').html('');
-		$('#theList').append($('<li/>', {'html': 'No match found'}));
+		$('#daList').html('');
+		$('#daList').append($('<li/>', {'html': 'No match found'}));
 	}
 }
 
@@ -107,7 +107,7 @@ var theOutcome = '';
 
 function addingSomething () {
 	if (addOrCancel === false) {
-		$('.listDiv').hide();
+		$('.theListDiv').hide();
 		document.getElementById('addButton').innerHTML = 'Cancel';
 		document.getElementById('searchBar').value = '';
 		document.getElementById('searchBar').placeholder = 'Press Enter to add word or phrase';
@@ -137,19 +137,19 @@ function alertWordAdd () {
 // Can you simply .focus or just 'focus' and it will still work
 $('#searchBar').on('focusin', function () {
 	if (addOrCancel === false) {
-		$('.listDiv').show();
+		$('.theListDiv').show();
 	}
 	else {
-		$('.listDiv').hide();
+		$('.theListDiv').hide();
 	}
 });
 
 $('#searchBar').on('focusout', function () {
 	if (onFocus === false) {
-		$('.listDiv').hide();
+		$('.theListDiv').hide();
 	}
 	else {
-		$('.listDiv').show();
+		$('.theListDiv').show();
 	}
 });
 

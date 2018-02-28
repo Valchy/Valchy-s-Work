@@ -193,7 +193,7 @@ function regExp (theHTML) {
 			tempArray.push(theArray[i].name);
 			tmpArray.push(theArray[i].url);
 			$('#theList').html('');
-			for (var t in tempArray) {
+			for (var i in tempArray) {
 				$('#theList').append($('<li/>', {'html': tempArray[i], 'onclick': 'location.href="'+tmpArray[i]+'"'}));
 			}
 		}
