@@ -165,6 +165,10 @@ $(function(){
 	$('#help-center-click, #build-click, #shop-click').click(function () {
 		finishInformationSwitch ();
 	});
+
+	for (var i in theArray) {
+		$('#theList').append($('<li/>', {'html': theArray[i].name, 'onclick': 'location.href="'+theArray[i].url+'"'}));
+	}
 });
 
 window.addEventListener('keypress', function (e) {
@@ -183,20 +187,20 @@ function regExp (theHTML) {
 	$('#theList').html('');
 
 	for (var i in theArray) {
-		var tmp = theArray[i];
+		var tmp = theArray[i].name;
 		var theMatch = tmp.match(check);
 		if (theMatch != '' && theMatch != null) {
 			tempArray.push(theArray[i].name);
-			tmpArray.push(theArray[i].url)
+			tmpArray.push(theArray[i].url);
 			$('#theList').html('');
-				for (var i in tempArray) {
-				$('#theList').append($('<li/>', {'html': tempArray[i].name, 'onclick': 'location.href="'+tmpArray[i].url+'"'}));
+			for (var t in tempArray) {
+				$('#theList').append($('<li/>', {'html': tempArray[i], 'onclick': 'location.href="'+tmpArray[i]+'"'}));
 			}
 		}
 		else if (theHTML.value === '') {
 			$('#theList').html('');
-				for (var i in possibility) {
-				$('#theList').append($('<li/>', {'html': theArray[i].name, 'onclick': 'location.href="'+tmpArray[i].url+'"'}));
+			for (var i in theArray) {
+				$('#theList').append($('<li/>', {'html': theArray[i].name, 'onclick': 'location.href="'+theArray[i].url+'"'}));
 			}
 		}
 	}

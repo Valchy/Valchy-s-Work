@@ -187,11 +187,12 @@ sub {color: white; font-size: 40px;}
 #CMA, #CWA {margin: -160px 0px 0px -160px; -webkit-transform: scale(0.5); -moz-transform: scale(0.5); -ms-transform: scale(0.5); transform: scale(0.5);}
 #CMA td, #CWA td {padding: 15px 50px;}
 #CMA td svg:hover, #CWA td svg:hover {cursor: pointer;}
-#theList li {padding: 4px 8px;}
+#theList li {padding: 4px 8px; width: 100%;}
 #theList li:hover {background-color: grey; cursor: pointer;}
-#theList {height: 140px; list-style-type: none; margin: 0px; padding: 0px; overflow: auto;}
-.childDiv {display: flex; flex-direction: column; align-items: center;}
-.listDiv {display: none; width: 498px; margin-top: 1px; height: 148px; border: 1px solid black; border-top: 0px; background-color: lightgrey; box-shadow: 4px 4px 20px black; align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
+#theList {display: flex; flex-direction: column; height: 135px; width: 250px; list-style-type: none; margin: 22px 0px 0px 0px; padding: 0px; overflow: auto; overflow-x: hidden;}
+.childDiv {display: flex; flex-direction: column;}
+.listDiv {display: none; width: 250px; margin-top: 1px; margin-left: 38px; height: 148px; border: 1px solid black; border-top: 0px; background-color: lightgrey; box-shadow: 4px 4px 20px black; align-self: flex-start; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;}
+.theSearchBar {width: 250px; text-indent: 10px; margin: 8px 0px 0px 40px;}
 
 @media all and (max-width: 300px) {
 	.theSVG {width: 200px !important;} z

@@ -96,17 +96,17 @@ Things to get done by Today:
 				</sub> 
 			</li>
 			<li>
-				<div class="childDiv">
-					<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="onInput(); regExp(this);">
-					<div class="listDiv" id="listDiv"> <ul id="theList" onmouseover="onFocus = true;" onmouseout="onFocus = false;"></ul> </div>
-				</div>
-			</li>
-			<li>
 				<button class="buttonSearch" title="Close Search Box" onclick="showHideSearch ();">
 					<sub class="material-icons" class="subHighlight">
 						close
 					</sub>
 				</button>
+			</li>
+			<li>
+				<div class="childDiv">
+					<input type="text" class="theSearchBar" placeholder="Search for something" id="searchBar" oninput="regExp(this);">
+					<div class="listDiv" id="listDiv"> <ul id="theList" onmouseover="onFocus = true;" onmouseout="onFocus = false;"></ul> </div>
+				</div>
 			</li>
 		</ul>
 	</div>
