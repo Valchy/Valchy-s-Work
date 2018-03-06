@@ -75,7 +75,7 @@ function regExp (theHTML) {
 
 	for (var i in possibility) {
 		var tmp = possibility[i];
-		var theMatch = tmp.match(check);
+		var theMatch = tmp.match(new RegExp(check, 'i'));
 		if (theMatch != '' && theMatch != null) {
 			tempArray.push(possibility[i]);
 			$('#daList').html('');
