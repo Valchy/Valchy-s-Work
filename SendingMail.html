@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title> RegExp </title>
+<title> Sending Mail </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -17,7 +17,13 @@
 </div>
 
 <div class="mainPage">
-	<h1> Sending E-mail Form </h1>
+	<h1> Sending an E-mail Form </h1>
+
+	<form method="POST" action="https://formspree.io/valerithekiller@gmail.com">
+		<input type="email" name="_replyto" placeholder="Your email">
+		<textarea name="message" placeholder="Your message"> </textarea>
+		<button type="submit"> Send </button>
+	</form>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
