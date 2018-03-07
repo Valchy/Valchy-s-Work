@@ -39,12 +39,13 @@ $(function () {
 		// name.value === "" is the same as !name.value
 		if (!name.value || !email.value || !message.value) {
 			alertify.error('Please check your entries!');
+			return false;
 		}
 		else {
 			$.ajax({
 				method: 'POST',
 				url: 'https://formspree.io/valchygaming@gmail.com',
-				data: $('#theEmailForm').serialize(),
+				data: $(this).serialize(),
 				datatype: 'json'
 			});
 			e.preventDefault();
