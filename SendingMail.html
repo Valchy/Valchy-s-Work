@@ -37,9 +37,9 @@ var email = document.getElementById('theFormEmail'),
 $(function () {
 	$('#theEmailForm').submit(function (e) {
 		// name.value === "" is the same as !name.value
-		if (!name.value || !email.value || !message.value) {
+		if (!email.value || !message.value) {
+			e.preventDefault();
 			alertify.error('Please check your entries!');
-			return false;
 		}
 		else {
 			$.ajax({
