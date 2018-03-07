@@ -3,9 +3,12 @@
 <meta charset="utf-8">
 <title> Sending Mail </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="AlertifyJS/alertify.js"></script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<link rel="stylesheet" href="AlertifyJS/css/alertify.css" type="text/css">
+<link rel="stylesheet" href="AlertifyJS/css/themes/default.css" type="text/css">
 <style type="text/css">
 </style>
 </head>
@@ -19,19 +22,41 @@
 <div class="mainPage">
 	<h1> Sending an E-mail Form </h1>
 
-	<form method="POST" action="https://formspree.io/valerithekiller@gmail.com">
-		<input type="email" name="_replyto" placeholder="Your email">
-		<textarea name="message" placeholder="Your message"> </textarea>
+	<form id="theEmailForm">
+		<input type="email" placeholder="Your email" id="theFormEmail">
+		<textarea placeholder="Your message" id="theFormMessage"> </textarea>
 		<button type="submit"> Send </button>
 	</form>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+var email = document.getElementById('theFormEmail'),
+	message = document.getElementById('theFormMessage');
+
+$(function () {
+	$('#theEmailForm').submit(function (e) {
+		// name.value === "" is the same as !name.value
+		if (!name.value || !email.value || !message.value) {
+			alertify.error('Please check your entries!');
+		}
+		else {
+			$.ajax({
+				method: 'POST',
+				url: 'https://formspree.io/valchygaming@gmail.com',
+				data: $('#theEmailForm').serialize(),
+				datatype: 'json'
+			});
+			e.preventDefault();
+			$(this).get(0).reset();
+			alertify.success('Message Sent!')
+		}
+	});
+})
 </script>
 </body>
 </html>
 
 <!-- 
-Make a form which sends an E-mail to a certain given mail using valerithekiller@gmail.com as the sender (or create a new one)
+Make a form which sends an E-mail to a certain given mail using valchygaming@gmail.com as the sender (or create a new one)
 -->

@@ -75,27 +75,29 @@ window.onload = function ()	{
 		}
 	});
 
-	$(function () {
-		$('.man-avatar-choose').append($('<table/>', {'id': 'CMA'}));
-		for (var i = 1; i <= 3; i++) {
-			$('#CMA').append($('<tr/>', {'id': 'CMA'+i}));
-			for (var t = 1; t <= 3; t++) {
-				var temp = arraySVG[1][i-1].url;
-				temp.toString();
-				$('#CMA'+i).append($('<td/>', {'class': 'CMA'+i+t, 'onclick': 'chosenSVG(this, arraySVG[1]['+i+'-1].changes);', 'html': loadSVG(temp, 2, 'CMA'+i+t)}));
+	if ($('#mainBar').length) {
+		$(function () {
+			$('.man-avatar-choose').append($('<table/>', {'id': 'CMA'}));
+			for (var i = 1; i <= 3; i++) {
+				$('#CMA').append($('<tr/>', {'id': 'CMA'+i}));
+				for (var t = 1; t <= 3; t++) {
+					var temp = arraySVG[1][i-1].url;
+					temp.toString();
+					$('#CMA'+i).append($('<td/>', {'class': 'CMA'+i+t, 'onclick': 'chosenSVG(this, arraySVG[1]['+i+'-1].changes);', 'html': loadSVG(temp, 2, 'CMA'+i+t)}));
+				}
 			}
-		}
 
-		$('.woman-avatar-choose').append($('<table/>', {'id': 'CWA'}));
-		for (var i = 1; i <= 3; i++) {
-			$('#CWA').append($('<tr/>', {'id': 'CWA'+i}));
-			for (var t = 1; t <= 3; t++) {
-				var temp = arraySVG[2][i-1].url;
-				temp.toString();
-				$('#CWA'+i).append($('<td/>', {'class': 'CWA'+i+t, 'onclick': 'chosenSVG(this, arraySVG[2]['+i+'-1].changes);', 'html': loadSVG(temp, 2, 'CWA'+i+t)}));
+			$('.woman-avatar-choose').append($('<table/>', {'id': 'CWA'}));
+			for (var i = 1; i <= 3; i++) {
+				$('#CWA').append($('<tr/>', {'id': 'CWA'+i}));
+				for (var t = 1; t <= 3; t++) {
+					var temp = arraySVG[2][i-1].url;
+					temp.toString();
+					$('#CWA'+i).append($('<td/>', {'class': 'CWA'+i+t, 'onclick': 'chosenSVG(this, arraySVG[2]['+i+'-1].changes);', 'html': loadSVG(temp, 2, 'CWA'+i+t)}));
+				}
 			}
-		}
-	});
+		});
+	}
 
 	$(function () {
 		if ($('#mainBarOthers').length) {
