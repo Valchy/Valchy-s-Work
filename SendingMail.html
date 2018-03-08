@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="AlertifyJS/css/alertify.css" type="text/css">
 <link rel="stylesheet" href="AlertifyJS/css/themes/default.css" type="text/css">
 <style type="text/css">
+#theFormMessage {resize: none; width: 500px; height: 200px;}
+#theEmailForm {display: flex; flex-direction: column; justify-content: flex-start;}
+#theFormEmail, #theFormButton {width: 500px;}
 </style>
 </head>
 
@@ -23,9 +26,10 @@
 	<h1> Sending an E-mail Form </h1>
 
 	<form id="theEmailForm">
-		<input type="email" placeholder="Your email" id="theFormEmail">
-		<textarea placeholder="Your message" id="theFormMessage"> </textarea>
-		<button type="submit"> Send </button>
+		<input type="email" placeholder="Your email:" id="theFormEmail" name="email">
+		<textarea placeholder="Your message:" id="theFormMessage" name="message"></textarea> <!-- Having a space after the tags makes a space in the text area -->
+		<input type="text" name="_gotcha" style="display: none;">
+		<button type="submit" id="theFormButton" value="Send"> Send </button>
 	</form>
 </div>
 

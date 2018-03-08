@@ -3,10 +3,10 @@ ul {list-style-type: none; margin: 0px; padding: 10 0 10 20px;}
 li {margin: 0px;}
 a {text-decoration: none; color: black;}
 sub {color: white; font-size: 40px;}
-::-webkit-input-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Chrome/Opera/Safari */
-::-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 19+ */
-:-ms-input-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* IE 10+ */
-:-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 18- */
+/*::-webkit-input-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Chrome/Opera/Safari */
+/*::-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 19+ */
+/*:-ms-input-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* IE 10+ */
+/*:-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 18- */
 .theSearchBar::-webkit-input-placeholder {font-size: 12px !important;}
 .theSearchBar::-moz-placeholder {font-size: 12px !important;}
 .theSearchBar:-ms-input-placeholder {font-size: 12px !important;}
