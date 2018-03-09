@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Alertify </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="AlertifyJS/alertify.js"></script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<link rel="stylesheet" href="AlertifyJS/css/alertify.css" type="text/css">
+<link rel="stylesheet" href="AlertifyJS/css/themes/default.css" type="text/css">
+<style type="text/css">
+button:hover {cursor: pointer;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Alertify is soo Cool </h1>
+
+	<button id="alertOne"> Alert One </button>
+	<button id="alertTwo"> Alert Two </button>
+	<button id="alertThree"> Alert Three </button>
+	<button id="alertFour"> Alert Four </button>
+	<button id="alertFive"> Alert Five </button>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+$('#alertOne').on('click', theClickOne);
+$('#alertTwo').on('click', theClickTwo);
+$('#alertThree').on('click', theClickThree);
+$('#alertFour').on('click', theClickFour);
+$('#alertFive').on('click', theClickFive);
+
+function theClickOne () {
+	alertify.success('This is a success message :D');
+}
+
+function theClickTwo () {
+	alertify.error('This is an error message :(');
+}
+
+function theClickThree () {
+	alertify.alert('This is a normal Alert');
+}
+
+function theClickFour () {
+	alertify.confirm('This is a confirm message', function() {
+        alertify.success('Accepted');
+    },
+	function () {
+		alertify.error('Declined');
+	}).set({labels:{ok:'Accept', cancel: 'Decline'}, padding: false});
+}
+
+function theClickFive () {
+	alertify.prompt('This is a prompt message');
+}
+</script>
+</body>
+</html>
+
+<!--
+Show of some skills with AlertifyJS :D
+-->

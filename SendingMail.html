@@ -13,6 +13,8 @@
 #theFormMessage {resize: none; width: 500px; height: 200px;}
 #theEmailForm {display: flex; flex-direction: column; justify-content: flex-start;}
 #theFormEmail, #theFormButton {width: 500px;}
+.mailMe {border: 1px solid black; border-radius: 25%; background-color: white; padding: 5px; transition: all 0.4s ease 0s;}
+.mailMe:hover {background-color: orange; padding: 9px;}
 </style>
 </head>
 
@@ -31,6 +33,9 @@
 		<input type="text" name="_gotcha" style="display: none;">
 		<button type="submit" id="theFormButton" value="Send"> Send </button>
 	</form>
+
+	<br>
+	<a class="mailMe" href="mailto:valchygaming@gmail.com"> Get in touch with me </a>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
