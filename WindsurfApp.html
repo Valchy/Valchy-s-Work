@@ -57,6 +57,8 @@
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+onLoad();
+
 $('.menuIconDiv').on('click', function () {
 	$('.sideBar').show('slide', {direction: 'left'}, 900);
 	$('.homePage').hide();
@@ -66,6 +68,27 @@ $('.theHomeButton').on('click', function () {
 	$('.sideBar').hide('slide', {direction: 'left'}, 900);
 	$('.homePage').delay(900).show();
 });
+
+function onLoad () {
+	var data = new XMLHttpRequest();
+	data.open('GET', '/locations/v1/cities/geoposition/search?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&q=42.19%2C28.84&language=en-us&details=false&toplevel=false HTTP/1.1');
+
+	data.onload = function () {
+		if (data.status >= 200 && data.status < 400) {
+			var ourData = JSON.parse(data.responseText);
+			console.log('in');
+		}
+		else {
+			console.log('out');
+		}
+	};
+
+	data.onerror = function () {
+		console.log('error');
+	}
+
+	data.send();
+}
 </script>
 </body>
 </html>
