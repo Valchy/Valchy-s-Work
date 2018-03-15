@@ -117,7 +117,7 @@ function placeSearch () {
 
 function getLocationKey (coords) {
 	var thePlace = new XMLHttpRequest();
-	thePlace.open('GET', 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&q='+coords.lat+'%2C'+coords.lng+'&language=en-us&details=false&toplevel=false');
+	thePlace.open('GET', 'https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&q='+coords.lat+'%2C'+coords.lng+'&language=en-us&details=false&toplevel=false');
 
 	thePlace.onload = function () {
 		if (thePlace.status >= 200 && thePlace.status < 400) {
@@ -138,7 +138,7 @@ function getLocationKey (coords) {
 
 function getForecast (key) {
 	var theForecast = new XMLHttpRequest();
-	theForecast.open('GET', 'http://dataservice.accuweather.com/forecasts/v1/daily/15day/'+key+'?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&language=en-us&details=false&metric=true');
+	theForecast.open('GET', 'https://dataservice.accuweather.com/forecasts/v1/daily/15day/'+key+'?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&language=en-us&details=false&metric=true');
 
 	theForecast.onload = function () {
 		if (theForecast.status >= 200 && theForecast.status < 400) {
