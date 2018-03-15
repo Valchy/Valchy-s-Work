@@ -22,6 +22,8 @@
 .searchPage {display: none;}
 .top-div-search-bar {display: flex; justify-content: center; background-color: yellow; padding: 10px;}
 .top-div-seach-bar input:focus {outline: none; outline-color: red;} /* needs fixing */
+.ms-value {margin: 7px 0px;}
+.wind-information-div {display: flex; flex-direction: row; justify-content: flex-start;}
 </style>
 </head>
 
@@ -64,15 +66,24 @@
 				<input type="text" name="placeSearch" id="searchInputPlace" placeholder="Search!...">
 				<button onclick="placeSearch();"> Search </button>
 			</div>
+			<div id="forecastResults"></div>
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
-var theAddress, theCoordinates;
+var theAddress, theCoordinates, placeName;
 onLoad();
 
+$('#searchInputPlace').on('focus', function (e) {
+	if (e.keyCode === 13) {
+		console.log('in')
+		placeSearch();
+	} 
+});
+
+// All jQuery below is for really simple but good looking effects upon page switching
 $('.menuIconDiv').on('click', function () {
 	$('.sideBar').show('slide', {direction: 'left'}, 900);
 	$('.homePage').hide();
@@ -89,10 +100,27 @@ $('.theSearchButton').on('click', function () {
 });
 
 function onLoad () {
-	//placeSearch();
+	var dataRandom = new XMLHttpRequest();
+	dataRandom.open('GET', 'https://api.darksky.net/forecast/9ac981fd179afea90f5d7bdcfb340f0a/12.2019,68.2624');
+
+	dataRandom.onload = function () {
+		if (dataRandom.status >= 200 && dataRandom.status < 400) {
+			var ourData = JSON.parse(dataRandom.responseText);
+			console.log(ourData);
+		}
+		else {
+			console.log('server error');
+		}
+	};
+
+	dataRandom.onerror = function () {
+		console.log('connection error');
+	}
+
+	dataRandom.send();
 }
 
-function placeSearch () {
+function placeSearch () { // Returns the coordinates of the searched location
 	theAddress = document.getElementById('searchInputPlace').value;
 	var data = new XMLHttpRequest();
 	data.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?address='+theAddress+'&key=AIzaSyDiFE9UorPlqCnUF_clKDE_grGfVLded1o');
@@ -100,6 +128,7 @@ function placeSearch () {
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
 			var ourData = JSON.parse(data.responseText);
+			console.log(ourData)
 			theCoordinates = ourData.results[0].geometry.location;
 			getLocationKey(theCoordinates);
 		}
@@ -115,14 +144,16 @@ function placeSearch () {
 	data.send();
 }
 
-function getLocationKey (coords) {
+function getLocationKey (coords) { // Converts coordinates into a location key in order to get forecast
 	var thePlace = new XMLHttpRequest();
-	thePlace.open('GET', 'https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&q='+coords.lat+'%2C'+coords.lng+'&language=en-us&details=false&toplevel=false');
+	thePlace.open('GET', 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&q='+coords.lat+'%2C'+coords.lng+'&language=en-us&details=false&toplevel=false');
 
 	thePlace.onload = function () {
 		if (thePlace.status >= 200 && thePlace.status < 400) {
 			var theJSON = JSON.parse(thePlace.responseText);
+			console.log(theJSON)
 			getForecast(theJSON.Key);
+			placeName = theJSON.Country.EnglishName;
 		}
 		else {
 			console.log('server error');
@@ -136,14 +167,14 @@ function getLocationKey (coords) {
 	thePlace.send();
 }
 
-function getForecast (key) {
+function getForecast (key) { // Gets all forecast information
 	var theForecast = new XMLHttpRequest();
-	theForecast.open('GET', 'https://dataservice.accuweather.com/forecasts/v1/daily/15day/'+key+'?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&language=en-us&details=false&metric=true');
+	theForecast.open('GET', 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/'+key+'?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&language=en-us&details=true&metric=true');
 
 	theForecast.onload = function () {
 		if (theForecast.status >= 200 && theForecast.status < 400) {
 			var theData = JSON.parse(theForecast.responseText);
-			console.log(theData);
+			sortForecastData(theData);
 		}
 		else {
 			console.log('server error');
@@ -155,6 +186,22 @@ function getForecast (key) {
 	}
 
 	theForecast.send();
+}
+
+function sortForecastData (data) {
+	console.log(data)
+	$('#forecastResults').html('').append($('<h1/>', {'html': placeName})); // Earses previous data
+
+	for (var i = 0; i < data.length; i++) { // Use isDayLight for later design etc.
+		var kmInMs = data[i].Wind.Speed.Value*5/18; // Get wind speed from km/h into m/s
+		var mps = kmInMs.toFixed(0); // Rounding up to the nearest digit
+		var windGust = data[i].WindGust.Speed.Value*5/18; // Get wind gust from km/h into m/s
+		var wg = windGust.toFixed(); // Notice how there is no 0 here since the default value is 0
+		var windDirection = data[i].Wind.Direction.English;
+		$('#forecastResults').append($('<div/>', {'class': 'wind-information-div', 'id': 'wind-information-div'+i}));
+		$('#wind-information-div'+i).append($('<img/>', {'src': 'WindsurfItArrow.png'}));
+		$('#wind-information-div'+i).append($('<h4/>', {'html': windDirection+' '+mps+'m/s Max: '+wg, 'class': 'ms-value'})); // Put them in a table instead
+	}
 }
 </script>
 </body>

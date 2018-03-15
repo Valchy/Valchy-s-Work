@@ -7,6 +7,10 @@ sub {color: white; font-size: 40px;}
 /*::-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 19+ */
 /*:-ms-input-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* IE 10+ */
 /*:-moz-placeholder {color: black; font-family: 'Montserrat-Light', sans-serif; font-size: 20px !important;} /* Firefox 18- */
+::-webkit-scrollbar {width: 5px;} /* width */
+::-webkit-scrollbar-track {background: #ffff00;} /* Track */
+::-webkit-scrollbar-thumb {background: #ff0000;} /* Handle */
+::-webkit-scrollbar-thumb:hover {cursor: pointer; background: #ff0000;} /* Handle on hover */
 .theSearchBar::-webkit-input-placeholder {font-size: 12px !important;}
 .theSearchBar::-moz-placeholder {font-size: 12px !important;}
 .theSearchBar:-ms-input-placeholder {font-size: 12px !important;}
