@@ -105,6 +105,25 @@ $('.theSearchButton').on('click', function () {
 
 function onLoad () {
 tryCatchThrowFinally();
+
+	var dataRandom = new XMLHttpRequest();
+	dataRandom.open('GET', 'http://crossorigin.me/https://api.darksky.net/forecast/40ed7206c490196fa2056dccb448bfc0/43.12,28.34');
+
+	dataRandom.onload = function () {
+		if (dataRandom.status >= 200 && dataRandom.status < 400) {
+			var ourData = JSON.parse(dataRandom.responseText);
+			console.log(ourData);
+		}
+		else {
+			console.log('server error');
+		}
+	};
+
+	dataRandom.onerror = function () {
+		console.log('connection error');
+	}
+
+	dataRandom.send();
 }
 
 function placeSearch () { // Returns the coordinates of the searched location
