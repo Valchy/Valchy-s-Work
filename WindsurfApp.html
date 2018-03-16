@@ -59,6 +59,10 @@
 				<svg fill="#000000" id="svgMenu" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
 			</div>
 			<h2 class="titleText"> Windsurf It </h2>
+			<p>
+				Currently working on all features and other aspects of this programm.
+			</p>
+			<a href="http://magicseaweed.com"><img src="https://im-1-uk.msw.ms/msw_powered_by.png"></a>
 		</div>
 
 		<div class="searchPage">
@@ -100,30 +104,23 @@ $('.theSearchButton').on('click', function () {
 });
 
 function onLoad () {
-	var dataRandom = new XMLHttpRequest();
-	dataRandom.open('GET', 'https://api.darksky.net/forecast/9ac981fd179afea90f5d7bdcfb340f0a/12.2019,68.2624');
-
-	dataRandom.onload = function () {
-		if (dataRandom.status >= 200 && dataRandom.status < 400) {
-			var ourData = JSON.parse(dataRandom.responseText);
-			console.log(ourData);
-		}
-		else {
-			console.log('server error');
-		}
-	};
-
-	dataRandom.onerror = function () {
-		console.log('connection error');
-	}
-
-	dataRandom.send();
+tryCatchThrowFinally();
 }
 
 function placeSearch () { // Returns the coordinates of the searched location
 	theAddress = document.getElementById('searchInputPlace').value;
 	var data = new XMLHttpRequest();
 	data.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?address='+theAddress+'&key=AIzaSyDiFE9UorPlqCnUF_clKDE_grGfVLded1o');
+
+	data.onprogress = function () {
+		//console.log('hi');
+		// show image
+	}
+
+	data.onloadend = function () {
+		// on load aither success or failure
+		// hide image
+	}
 
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
@@ -139,6 +136,10 @@ function placeSearch () { // Returns the coordinates of the searched location
 
 	data.onerror = function () {
 		console.log('connection error');
+	}
+
+	data.ontimeout = function () {
+		// hide image on timeout
 	}
 
 	data.send();
@@ -201,6 +202,24 @@ function sortForecastData (data) {
 		$('#forecastResults').append($('<div/>', {'class': 'wind-information-div', 'id': 'wind-information-div'+i}));
 		$('#wind-information-div'+i).append($('<img/>', {'src': 'WindsurfItArrow.png'}));
 		$('#wind-information-div'+i).append($('<h4/>', {'html': windDirection+' '+mps+'m/s Max: '+wg, 'class': 'ms-value'})); // Put them in a table instead
+	}
+}
+
+function tryCatchThrowFinally () {
+	try { // This is where a block of code is tested
+		wrongVariable = 8;
+		//eval("alert('Hello)") // Missing one ' on perpose to return name error
+		throw 'Random message which is passed to catch if the code fails';
+	}
+
+	catch (error) { // Executes if the try block has an error
+		console.log(error); // Console logs the throw message from try
+		console.log(error.message); // Console logs the actual problem in the code which in this case is undefined since the variable is not defined
+		//console.log(error.name); // Console logs the name error which in this case is a missing ' in the alert
+	}
+
+	finally { // Here everything will get executed no matter what
+		console.log('This will get executed no matter what'); // Some test code
 	}
 }
 </script>
