@@ -8,12 +8,33 @@ var url = require('url');
 var express = require('express');
 var app = express();
 var httpApp = require('http').Server(app).listen(1888);
+var upload = require('express-fileupload');
+app.use(upload());
 var adress = 'https://api.darksky.net/forecast/40ed7206c490196fa2056dccb448bfc0/12.33,23.55?lang=bg&exclude=hourly,daily&units=si';
 var result = url.parse(adress, true);
 console.log(result.query);
 
+// What does the '/' actually do?
 app.get('/', function (req, res) {
-	res.sendFile(__dirname+'ProxyForm.html');
+	// This opens a file in the same directory (__dirname is a default method)
+	res.sendFile(__dirname+'/ProxyForm.html');
+});
+app.post('/', function (req, res) {
+	if (req.files) {
+		var file = req.files.filename,
+			filename = file.name;
+		// Notice the ./FOLDERNAME/ and the backslash again at the end
+		file.mv('./NodeJSUploadFolder/'+filename, function (err) {
+			if (err) {
+				console.log(err);
+				res.send('Error occured');
+			}
+			else {
+				console.log('Successful Upload!');
+				res.send('Done!');
+			}
+		});
+	}
 });
 
 // Creates event Handler
