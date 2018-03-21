@@ -24,6 +24,7 @@
 .top-div-seach-bar input:focus {outline: none; outline-color: red;} /* needs fixing */
 .ms-value {margin: 7px 0px;}
 .wind-information-div {display: flex; flex-direction: row; justify-content: flex-start;}
+.poweredbyIMG {width: 200px;}
 </style>
 </head>
 
@@ -52,6 +53,9 @@
 			<div class="theSearchButton">
 				<svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 			</div>
+			<div class="theSettingsButton">
+				<img src="WindsurfItSettingsIcon.png">
+			</div>
 		</div>
 
 		<div class="homePage">
@@ -62,7 +66,7 @@
 			<p>
 				Currently working on all features and other aspects of this programm.
 			</p>
-			<a href="http://magicseaweed.com"><img src="https://im-1-uk.msw.ms/msw_powered_by.png"></a>
+			<a href="https://darksky.net"><img src="poweredby.jpg" class="poweredbyIMG"></a>
 		</div>
 
 		<div class="searchPage">
@@ -104,26 +108,11 @@ $('.theSearchButton').on('click', function () {
 });
 
 function onLoad () {
-tryCatchThrowFinally();
+	tryCatchThrowFinally();
+}
 
-	var dataRandom = new XMLHttpRequest();
-	dataRandom.open('GET', 'http://crossorigin.me/https://api.darksky.net/forecast/40ed7206c490196fa2056dccb448bfc0/43.12,28.34');
-
-	dataRandom.onload = function () {
-		if (dataRandom.status >= 200 && dataRandom.status < 400) {
-			var ourData = JSON.parse(dataRandom.responseText);
-			console.log(ourData);
-		}
-		else {
-			console.log('server error');
-		}
-	};
-
-	dataRandom.onerror = function () {
-		console.log('connection error');
-	}
-
-	dataRandom.send();
+function data (hi) {
+	console.log(hi);
 }
 
 function placeSearch () { // Returns the coordinates of the searched location
@@ -144,7 +133,6 @@ function placeSearch () { // Returns the coordinates of the searched location
 	data.onload = function () {
 		if (data.status >= 200 && data.status < 400) {
 			var ourData = JSON.parse(data.responseText);
-			console.log(ourData)
 			theCoordinates = ourData.results[0].geometry.location;
 			getLocationKey(theCoordinates);
 		}
@@ -165,63 +153,61 @@ function placeSearch () { // Returns the coordinates of the searched location
 }
 
 function getLocationKey (coords) { // Converts coordinates into a location key in order to get forecast
-	var thePlace = new XMLHttpRequest();
-	thePlace.open('GET', 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&q='+coords.lat+'%2C'+coords.lng+'&language=en-us&details=false&toplevel=false');
+	var dataRandom = new XMLHttpRequest();
+	dataRandom.open('GET', 'http://crossorigin.me/https://api.darksky.net/forecast/40ed7206c490196fa2056dccb448bfc0/'+coords.lat+','+coords.lng+'?lang=bg&exclude=hourly,daily&units=si');
 
-	thePlace.onload = function () {
-		if (thePlace.status >= 200 && thePlace.status < 400) {
-			var theJSON = JSON.parse(thePlace.responseText);
-			console.log(theJSON)
-			getForecast(theJSON.Key);
-			placeName = theJSON.Country.EnglishName;
+	dataRandom.onload = function () {
+		if (dataRandom.status >= 200 && dataRandom.status < 400) {
+			var ourData = JSON.parse(dataRandom.responseText);
+			sortForecastData(ourData);
 		}
 		else {
 			console.log('server error');
 		}
 	};
 
-	thePlace.onerror = function () {
+	dataRandom.onerror = function () {
 		console.log('connection error');
 	}
 
-	thePlace.send();
-}
-
-function getForecast (key) { // Gets all forecast information
-	var theForecast = new XMLHttpRequest();
-	theForecast.open('GET', 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/'+key+'?apikey=jCtpB1xGGrd41uitWUvyPQ1vM3E0RQ0J&language=en-us&details=true&metric=true');
-
-	theForecast.onload = function () {
-		if (theForecast.status >= 200 && theForecast.status < 400) {
-			var theData = JSON.parse(theForecast.responseText);
-			sortForecastData(theData);
-		}
-		else {
-			console.log('server error');
-		}
-	};
-
-	theForecast.onerror = function () {
-		console.log('connection error');
-	}
-
-	theForecast.send();
+	dataRandom.send();
 }
 
 function sortForecastData (data) {
-	console.log(data)
+	console.log(data);
 	$('#forecastResults').html('').append($('<h1/>', {'html': placeName})); // Earses previous data
 
-	for (var i = 0; i < data.length; i++) { // Use isDayLight for later design etc.
-		var kmInMs = data[i].Wind.Speed.Value*5/18; // Get wind speed from km/h into m/s
+	for (var i = 0; i < 1; i++) { // Use isDayLight for later design etc.
+		var kmInMs = data.currently.windSpeed; // Get wind speed from km/h into m/s
 		var mps = kmInMs.toFixed(0); // Rounding up to the nearest digit
-		var windGust = data[i].WindGust.Speed.Value*5/18; // Get wind gust from km/h into m/s
+		var windGust = data.currently.windGust; // Get wind gust from km/h into m/s
 		var wg = windGust.toFixed(); // Notice how there is no 0 here since the default value is 0
-		var windDirection = data[i].Wind.Direction.English;
+		var windDegrees = data.currently.windBearing;
+		var windDirection = getWindDirection(windDegrees);
+		console.log(windDegrees);
 		$('#forecastResults').append($('<div/>', {'class': 'wind-information-div', 'id': 'wind-information-div'+i}));
-		$('#wind-information-div'+i).append($('<img/>', {'src': 'WindsurfItArrow.png'}));
-		$('#wind-information-div'+i).append($('<h4/>', {'html': windDirection+' '+mps+'m/s Max: '+wg, 'class': 'ms-value'})); // Put them in a table instead
+		$('#wind-information-div'+i).append($('<img/>', {'src': 'WindsurfItArrow.png', 'style': 'transform: rotate('+windDegrees+'deg)'}));
+		$('#wind-information-div'+i).append($('<h4/>', {'html': ' '+windDirection+' '+mps+'m/s Max: '+wg, 'class': 'ms-value'})); // Put them in a table instead
 	}
+}
+
+function getWindDirection (degree) {
+	if (degree <= 11.25 && degree >= 348.76) return 'N';
+	if (degree <= 33.75 && degree >= 11.26) return 'NNE';
+	if (degree <= 56.25 && degree >= 33.76) return 'NE';
+	if (degree <= 78.75 && degree >= 56.26) return 'NEE';
+	if (degree <= 101.25 && degree >= 78.76) return 'E';
+	if (degree <= 123.75 && degree >= 101.26) return 'SEE';
+	if (degree <= 146.25 && degree >= 123.76) return 'SE';
+	if (degree <= 168.75 && degree >= 146.26) return 'SSE';
+	if (degree <= 191.25 && degree >= 168.76) return 'S';
+	if (degree <= 213.75 && degree >= 191.26) return 'SSW';
+	if (degree <= 236.25 && degree >= 213.76) return 'SW';
+	if (degree <= 258.75 && degree >= 236.26) return 'SWW';
+	if (degree <= 281.25 && degree >= 258.76) return 'W';
+	if (degree <= 303.75 && degree >= 281.26) return 'NWW';
+	if (degree <= 326.25 && degree >= 303.76) return 'NW';
+	if (degree <= 348.75 && degree >= 326.26) return 'NNW';
 }
 
 function tryCatchThrowFinally () {
