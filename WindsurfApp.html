@@ -117,7 +117,7 @@ function data (hi) {
 
 function placeSearch () { // Returns the coordinates of the searched location
 	theAddress = document.getElementById('searchInputPlace').value;
-	var data = new XMLHttpRequest();
+	var data = new XMLHttpRequest(); // get best parameters for url: https://developers.google.com/maps/documentation/geocoding/intro
 	data.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?address='+theAddress+'&key=AIzaSyDiFE9UorPlqCnUF_clKDE_grGfVLded1o');
 
 	data.onprogress = function () {
@@ -181,7 +181,7 @@ function sortForecastData (data) {
 		var kmInMs = data.currently.windSpeed; // Get wind speed from km/h into m/s
 		var mps = kmInMs.toFixed(0); // Rounding up to the nearest digit
 		var windGust = data.currently.windGust; // Get wind gust from km/h into m/s
-		var wg = windGust.toFixed(); // Notice how there is no 0 here since the default value is 0
+		var wg = windGust; // Notice how there is no 0 here since the default value is 0
 		var windDegrees = data.currently.windBearing;
 		var windDirection = getWindDirection(windDegrees);
 		console.log(windDegrees);

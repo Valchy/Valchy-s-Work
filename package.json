@@ -1,0 +1,18 @@
+{
+  "name": "valeri",
+  "version": "1.0.0",
+  "description": "My programming work :)",
+  "main": "ProxyServer.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

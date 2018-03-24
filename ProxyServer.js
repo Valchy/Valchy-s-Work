@@ -52,7 +52,7 @@ theEvent.emit('RandomName');
 http.createServer(function (request, response) { // The parameters names don't matter but the order does, first one is always the request and second one always the response
 	// the: , {'Content-Type': 'text/html'} makes the text from all javascript be default to HTML :D
 	response.writeHead(200, {'Content-Type': 'text/html'}); // 200 is the status code which. 200 means 'OK' in other words no probelm (e.g status code could be 404 - Not found)
-	response.write('Hello, my name is Valeri and this is my first node.js server! <br>' + anyVar.customModule + '<br>'); // Responses body writes a message to client
+	response.write('Hello, my name is Valeri and this is my first node.js server! <br>' + anyVar.customModule() + '<br>'); // Responses body writes a message to client
 	response.write('The request url: '+request.url); // If you write a '/somethingTotalyRandom' it will display aka displays the url after the port
 	response.end(); // Ends the server response
 }).listen(1288); // Makes the server listen to a specific port
