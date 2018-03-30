@@ -6,6 +6,7 @@ var theDB = 'randomNodeDatabase';
 var dbData = [{name: 'Valeri', address: 'Varna, Bulgaria'}, {name: 'Arham', address: 'Islamabad, Pakistan'}, {name: 'Max', address: 'Vienna, Austria'}, {name: 'Hussain', address: 'Doha, Qatar'}, {name: 'Giovanni', address: 'Rome, Italy'}, {name: 'Connor', address: 'Vienna, Austria'}, {name: 'Jeremiah', address: 'Manila, Philippines'}, {name: 'Dodo', address: 'Varna, Bulgaria'}, {name: 'Dimitri', address: 'Moscow, Russia'}, {name: 'Luis', address: 'Berlin, Germany'}];
 var sqlQuery = ['SELECT name, address FROM customers ORDER BY name', 'SELECT address FROM customers WHERE id BETWEEN 1 AND 3336 ORDER BY address DESC', 'SELECT name FROM customers WHERE (address = "Varna, Bulgaria") OR (address = "Vienna, Austria")', 'SELECT * FROM customers WHERE address LIKE "%e%"', 'SELECT * FROM customers WHERE (name LIKE "d%") OR (name LIKE "%d")', 'UPDATE customers SET address = "Sofia, Bulgaria" WHERE address = "Varna, Bulgaria"', 'DELETE FROM customers', 'TRUNCATE TABLE customers', 'DROP TABLE IF EXISTS customers']
 var theFinalResponse = [];
+var pageLoad = true;
 
 var connection = mysql.createConnection({
 	host: 'localhost',
@@ -45,7 +46,7 @@ var sql = '';
 			if (error) console.log(error);
 		});
 
-		if (i < dbData.length+1) {
+		if (i === dbData.length-1) {
 			// result.affectedRows returns number of rows added to database from the insert
 			console.log('Data inserted...');
 		}
@@ -53,7 +54,14 @@ var sql = '';
 
 	// Creates a form with button on server port 4112
 	app.get('/', function (request, response) { // The '/' is the default route (no route changes required)
-		response.send('<form action="/" method="post" enctype="multipart/form-data"> <button type="submit"> Click Me </button> </form>');
+		if (pageLoad) { // This is set to true when assigned
+			response.send('<form action="/" method="post" enctype="multipart/form-data"> <button type="submit"> Click Me </button> </form>');
+			pageLoad = false;
+		}
+		else {
+			// With this I make sure there is no error by having the button send another request after the connection is eneded :D
+			response.send('Sorry you can not submit twice!');
+		}
 	});
 
 	// Does a lot of fancy stuff after the button click
