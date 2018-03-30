@@ -228,6 +228,23 @@ function tryCatchThrowFinally () {
 	}
 }
 </script>
+<script type="text/javascript">
+	var data = new XMLHttpRequest();
+	data.open('GET', 'http://localhost:4112');
+
+	data.onload = function () {
+		if (data.status >= 200 && data.status < 400) {
+			console.log('data sent:');
+			console.log(data.responseText);
+		}
+	}
+
+	data.onerror = () => {
+		console.log('error');
+	}
+
+	data.send();
+</script>
 </body>
 </html>
 

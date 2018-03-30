@@ -4,6 +4,8 @@ const app = express();
 const http = require('http').Server(app).listen(4112);
 var theDB = 'randomNodeDatabase';
 var dbData = [{name: 'Valeri', address: 'Varna, Bulgaria'}, {name: 'Arham', address: 'Islamabad, Pakistan'}, {name: 'Max', address: 'Vienna, Austria'}, {name: 'Hussain', address: 'Doha, Qatar'}, {name: 'Giovanni', address: 'Rome, Italy'}, {name: 'Connor', address: 'Vienna, Austria'}, {name: 'Jeremiah', address: 'Manila, Philippines'}, {name: 'Dodo', address: 'Varna, Bulgaria'}, {name: 'Dimitri', address: 'Moscow, Russia'}, {name: 'Luis', address: 'Berlin, Germany'}];
+var sqlQuery = ['SELECT name, address FROM customers ORDER BY name', 'SELECT address FROM customers WHERE id BETWEEN 1 AND 3336 ORDER BY address DESC', 'SELECT name FROM customers WHERE (address = "Varna, Bulgaria") OR (address = "Vienna, Austria")', 'SELECT * FROM customers WHERE address LIKE "%e%"', 'SELECT * FROM customers WHERE (name LIKE "d%") OR (name LIKE "%d")', 'UPDATE customers SET address = "Sofia, Bulgaria" WHERE address = "Varna, Bulgaria"', 'DELETE FROM customers', 'TRUNCATE TABLE customers', 'DROP TABLE IF EXISTS customers']
+var theFinalResponse = [];
 
 var connection = mysql.createConnection({
 	host: 'localhost',
@@ -41,9 +43,12 @@ var sql = '';
 	for (var i = 0; i < dbData.length; i++) {
 		connection.query('INSERT INTO customers (id, name, address) VALUES (NULL, "'+dbData[i].name+'", "'+dbData[i].address+'")', (error, result) => {
 			if (error) console.log(error);
-			// result.affectedRows returns number of rows added to database from the insert
-			console.log('Data inserted: ' + result.affectedRows);
 		});
+
+		if (i < dbData.length+1) {
+			// result.affectedRows returns number of rows added to database from the insert
+			console.log('Data inserted...');
+		}
 	}
 
 	// Creates a form with button on server port 4112
@@ -54,59 +59,22 @@ var sql = '';
 	// Does a lot of fancy stuff after the button click
 	app.post('/', function (request, response) {
 		// Selects all data from table and adds it in results
-		connection.query("SELECT * FROM customers", function (error, results) {
-			if (error) throw error; // Similar method to console.log(error)
-			response.json(results); // I use .json() instead of .send so I can actually get into the JSON data eg. results[0].address
-		});
+		var whileCounter = 0;
+		var sqlResponseCount = 0;
+		while (whileCounter < sqlQuery.length) {
+			connection.query(sqlQuery[whileCounter], function (error, results) {
+				if (error) throw error; // Similar method to console.log(error)
+				theFinalResponse.push(results);
+				sqlResponseCount++;
+				if (sqlResponseCount === sqlQuery.length-1) {
+					response.json(theFinalResponse); // I use .json() instead of .send so I can actually get into the JSON data eg. results[0].address
+				}
+			});
 
-		// // Finds a specifc data match (eg. first user with id 1)
-	 //  	connection.query("SELECT * FROM customers WHERE id = '1'", function (err, result) {
-	 //    if (err) throw err;
-	 //    console.log(result);
-	 //  	});
+			whileCounter++;
+		}
 
-
-	 //  	// Sorts the db data (could also be name DESC not just name when name is any variable can also be pass for example)
-	 //  	connection.query("SELECT * FROM customers ORDER BY name", function (err, result) {
-	 //    if (err) throw err;
-	 //    console.log(result);
-	 //  });
-
-	 //  	// the limit method is so u select specifci data (the 2 is for where the data starts from and the 5 is for how many users it will return [this eg returns 3,4,5,6,7])
-	 //  	sql = "SELECT * FROM customers LIMIT 2, 5";
-	 //  connection.query(sql, function (err, result) {
-	 //    if (err) throw err;
-	 //    console.log(result);
-	 //  });
-
-
-	 //  	// Deletes db data
-	 //  	sql = "DELETE * FROM customers";
-	 //  connection.query(sql, function (err, result) {
-	 //    if (err) throw err;
-	 //    console.log("Number of records deleted: " + result.affectedRows);
-	 //  });
-
-	 // Makes table ready for reuse (faster delete method)
-	 // connection.query("TRUNCATE TABLE customers", function (error, results) {
-		// 	if (error) throw error;
-		// 	console.log('Table ready for use')
-		// });
-
-	 //  // Updates informatio in tables
-	 //  sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Varna, Bulgaria'";
-	 //  connection.query(sql, function (err, result) {
-	 //    if (err) throw err;
-	 //    console.log(result.affectedRows + " record(s) updated");
-	 //  });
-
-	 //  // Deletes table only if exits
-	 //  sql = "DROP TABLE IF EXISTS customers";
-	 //  connection.query(sql, function (err, result) {
-	 //    if (err) throw err;
-	 //    console.log(result);
-	 //  });
-
+	 	connection.end();
 		console.log('All tables were updated and then deleted...');
 	});
 }
