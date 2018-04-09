@@ -3,10 +3,12 @@
 <meta charset="utf-8">
 <title> Personal ThreeJS Project </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="three.js"></script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
+canvas {width: 800px; height: 500px;}
 </style>
 </head>
 
@@ -18,17 +20,50 @@
 
 <div class="mainPage">
 	<h1> Personal ThreeJS Project :D </h1>
+
+	<canvas id="myCanvas"></canvas>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
 <script type="text/javascript">
+	var myCanvas = document.getElementById('myCanvas');
+
+	// Creates a WebGL renderer
+	var renderer = new THREE.WebGLRenderer({canvas: myCanvas, antialias: true}); // Antialias makes renderer look cleaner
+	renderer.setClearColor(0x4286f4); // Sets the canvas color
+	renderer.setPixelRatio(window.devicePixelRatio); // Sets pixel ratio (good to always use)
+
+	// Creates a perspective camera
+	var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000); // filed of view | canvas width devided by canvas height | near | far (things to close/far doesnt render)
+	camera.position.set(0, 0, 1000); // Sets camera position
+	var scene = new THREE.Scene(); // Creates a scene
+
+	// Light creation
+	var light = new THREE.AmbientLight(0xffffff, 0.5); // white color and 0.5 intensity (how hard light effects surface)
+	var pointLight = new THREE.PointLight(0xffffff, 0.5);
+
+	// This method adds a variable (in this case light) to the scene to be rendered
+	scene.add(light, pointLight);
+
+	var geometry = new THREE.TorusKnotGeometry(100, 30, 100, 100); // Creates a cube with x, y and z properties
+	var material = new THREE.MeshLambertMaterial({wireframe: false, color: 0x9e223d}); // Creates a material for shape && wireframe makes only the wires show
+	var mesh = new THREE.Mesh(geometry, material); // A mesh is a mixture of the geometry (shape) and the material (color and texture);
+
+	// This method adds a variable (in this case light) to the scene to be rendered
+	scene.add(mesh);
+
+	requestAnimationFrame(render);
+
+	function render () {
+		rotation();
+		renderer.render(scene, camera);
+		requestAnimationFrame(render);
+	}
+
+	function rotation () {
+		mesh.rotation.x += 0.01;
+		mesh.rotation.y += 0.01;
+	}
 </script>
 </body>
 </html>
-
-<!--
-Ceate an awesome three.js project :D
-	* Cube game experiment :D
-	Have random cubes pop up and you have to jump to them
-	Maybe later on add a timer before cube disappears and you die etc.
--->
