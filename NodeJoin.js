@@ -1,7 +1,10 @@
 var coords = [{lat: 13.454, lng: 10.345}, {lat: 45.129, lng: 56.324}, {lat: 57.528, lng: 12.998}, {lat: 34.519, lng: 32.564}, {lat: 25.565, lng: 35.532}];
 var addresses = ['Zinder Region, Niger', 'Beyneu District, Kazakhstan', 'Sexdrega, Sweden', 'Cyprus, Greece', 'Marsa Alam, Egypt'];
 const mysql = require('mysql');
-const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const http = require('http').Server(app).listen(4321);
 const https = require('https');
 var information = 'Loading, please wait...';
 var queryCounter = 0,
@@ -10,11 +13,23 @@ var queryCounter = 0,
 	tfWindspeed = false,
 	tfLocation = false;
 
-http.createServer(function (request, response) {
-	response.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
-	response.write(information);
-	response.end();
-}).listen(4321);
+// EXTRA NOTE: Images may not show, fix: have full url to the image
+// This is just a simpler and a better way to display a HTML, CSS and JS files on my server
+app.use(express.static('C:/Users/Valeri/Desktop/HTML + JavaScript')); // Notice that I am expressing a static and then folder (always opens the index)
+app.use(bodyParser.urlencode({extended: false}));
+app.use(bodyParser.json());
+app.post('/', function (request, response) {
+	console.log('Something is submited'+request.chosenAnimal);
+	response.send('id: ' + request.chosenAnimal);
+
+	// This is in order to have seperate things happen upon different form submitions
+	// if (chosenAnimal) {
+
+	// }
+	// else if (searchCriteria) {
+
+	// }
+});
 
 var connection = mysql.createConnection({ // needed parameters: host, user, pass, database
 	host: 'localhost',
@@ -55,7 +70,6 @@ connection.query('TRUNCATE TABLE windspeed', (error, results) => {
 				data += chunk; // += is because there is a chance that the response is slip into different parts
 			});
 
-			// The whole response has been received. Print out the result.
 			response.on('end', () => {
 				dataCounter++;
 				var theData = JSON.parse(data);
@@ -98,11 +112,12 @@ connection.query('TRUNCATE TABLE location', (error, results) => {
 });
 
 function theJoin (windspeed, location) {
-	if (windspeed && location) {
+	if (windspeed && location) { // Ще ми трябва малко помощ тук
+		// Try out different joins (eg left join, inner join and so on)
 		connection.query('SELECT windspeed.windspeed AS windspeed, location.address AS address FROM windspeed JOIN location ON windspeed.id = location.id', (error, results) => {
 			if (error) console.log('In join function error: '+error);
 			console.log(results);
-			connection.query('ALTER TABLE windspeed ADD FOREIGN KEY (id) REFERENCES location(id)', (error, results) => { // Needs fixing
+			connection.query('ALTER TABLE windspeed ADD FOREIGN KEY (id) REFERENCES location(id)', (error, results) => {
 				if (error) console.log(error);
 				connection.end();
 				console.log('Connection has been ended');
@@ -112,4 +127,4 @@ function theJoin (windspeed, location) {
 }
 
 console.log('Server listening on port 4321...');
-// Expand this by having an input with which you can search for places or windspeed and have database data returned
+// Expand this by having both selects somehow mixed together into one big select

@@ -22,20 +22,40 @@ button:hover {cursor: pointer;}
 <div class="mainPage">
 	<h1> Select Drop Down Menu </h1>
 
-	<span> What is your favourite animal? </span> <br>
-	<select>
-		<optgroup label="Animal:">
-			<option selected="selected" disabled="true"> Choose... </option>
-			<option> Cats </option>
-			<option> Dogs </option>
-		</optgroup>
-		<optgroup label="Different">
-			<option> An insect </option>
-			<option> Other </option>
-		</optgroup>
-	</select>
+	<form method="POST" action="/" onsubmit="verify();">
+		<!-- <span> What is your favourite animal? </span> <br>
+		<select required="true" name="chosenAnimal">
+			<optgroup label="Animal:">
+				<option selected="selected" disabled="true"> Choose... </option>
+				<option> Cats </option>
+				<option> Dogs </option>
+			</optgroup>
+			<optgroup label="Different">
+				<option value="this.innerHTML"> An insect </option>
+				<option value="this.innerHTML"> Other </option>
+			</optgroup>
+		</select> -->
+		<input type="text" name="chosenAnimal" value="zdr">
+		<input type="submit" value="Verify!">
+	</form>
 
-	<button onclick="verify();"> Verify! </button>
+	<hr>
+
+	<form method="POST" action="/">
+		<select required="true" name="searchCriteria" onselect="submit">
+			<optgroup label="Criteria">
+				<option selected="selected" disabled="true"> Search for: </option>
+				<option> Address </option>
+				<option> Coordinates </option>
+				<option> Windspeed </option>
+				<option> Wind Direction </option>
+			</optgroup>
+		</select>
+	</form>
+
+	<select>
+		<option> No options yet </option>
+	</select>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
