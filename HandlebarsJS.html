@@ -3,10 +3,30 @@
 <meta charset="utf-8">
 <title> Handlebars.js </title>
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="handlebarsJS.js"></script>
 <link rel="shortcut icon" href="hi.png" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="EverythingCSS.css" type="text/css">
 <style type="text/css">
+img {max-width: 100%;}
+h1 {margin-top: 0; font-size: 2.4em; font-weight: normal;}
+p {font-size:1.2rem;line-height:1.6}
+.buttons button { background-color: #046380; color: #FFF; border: none; padding: 10px 15px; font-size: 15px; border-radius: 4px; cursor: pointer; outline: none; box-shadow: 2px 2px 0 #034154; margin-right: 5px; transition: opacity .4s ease-out, transform .4s ease-out, visibility .4s ease-out; position: relative; top: -10px;}
+.buttons button:hover {background-color: #034F66;}
+.buttons button:active {background-color: #034154; box-shadow: none; position: relative; top: -8px; left: 2px;}
+.buttons {position: relative; z-index: 10}
+.pet {background-color: #FFF; padding: 20px; margin-bottom: 20px; overflow: hidden}
+.pet h2 {font-weight: 400; margin: 0; font-size: 2.5rem}
+.pet h2 .species {font-size: 1.45rem; color: #999}
+.headline-bar {margin: 0; background-color: #CCC; padding: 8px 15px}
+.favorite-foods {background-color: #EFEFEF; padding: 0; margin: 0}
+.favorite-foods li {list-style: none; border-bottom: 1px dotted #999; padding: 8px 15px; font-size: .85rem}
+.photo-column {width: 35%; float: left}
+.info-column {width: 65%; box-sizing: border-box; padding-left: 20px; float: left}
+@media (max-width: 760px) {
+		.info-column, .photo-column{width: auto; float: none; padding:0
+	}
+}
 </style>
 </head>
 
@@ -18,10 +38,85 @@
 
 <div class="mainPage">
 	<h1> Handlebars.js (example | tutorial) </h1>
+
+	<div id="thePetContainer"></div>
 </div>
 
 <script type="text/javascript" src="EverythingJS.js"> </script>
+
+<script id="petsTemplate" type="text/x-handlebars-template">
+	{{#each pets}}
+		<div class="pet">
+			<div class="photo-column">
+				<img src="{{photo}}">
+			</div>
+			<div class="info-column">
+				<h2> {{name}} <span class="species"> ({{species}}) </span> </h2>
+
+				<p> Age: {{calculateAge birthYear}}</p>
+
+				<h4 class="headline-bar"> Favourite Food </h4>
+				{{#if favFoods}}
+					<ul class="favorite-foods">
+						{{#each favFoods}}
+							<li>
+								{{{this}}}
+							</li>
+						{{/each}}
+					</ul>
+				{{/if}}
+
+				{{#unless favFoods}}
+					<ul class="favorite-foods">
+						<li>
+							Has no favourite food!
+						</li>
+					</ul>
+				{{/unless}}
+			</div>
+		</div>
+	{{/each}}
+</script>
+
 <script type="text/javascript">
+	var ourRequest = new XMLHttpRequest();
+	ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/pets-data.json');
+
+	ourRequest.onload = function () {
+		if (ourRequest.status >= 200 && ourRequest.status < 400) {
+			var data = JSON.parse(ourRequest.responseText);
+			createHTML(data);
+		}
+		else {
+			console.log('Server error...');
+		}
+	}
+
+	ourRequest.onerror = function () {
+		console.log('Something went wrong...');
+	}
+
+	ourRequest.send();
+
+	Handlebars.registerHelper('calculateAge', function (birthYear) {
+		var age = new Date().getFullYear() - birthYear;
+
+		if (age < 1) {
+			return 'Less than a year old';
+		}
+		else {
+			return age;
+		}
+	});
+
+	function createHTML (petsData) {
+		var rawTemplate = document.getElementById('petsTemplate').innerHTML;
+		var compiledTemplate = Handlebars.compile(rawTemplate);
+		var ourGeneratedHTML = compiledTemplate(petsData);
+
+		var petsContainer = document.getElementById('thePetContainer');
+		petsContainer.innerHTML = ourGeneratedHTML;
+	}
 </script>
 </body>
 </html>

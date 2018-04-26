@@ -1,0 +1,45 @@
+<% include header.ejs %>
+
+<% if (errors) { %>
+	<h5 style="margin-bottom: 5px;"> The errors: </h5>
+	<ul style="margin-top: 0px;">
+		<% errors.forEach(function (item, index) { %>
+			<li> <%= item.msg %> </li>
+		<% }) %>
+	</ul>
+	<form method="POST" action="/">
+		<input type="submit" value="Go Back!">
+	</form>
+<% } else { %>
+	<h1> <%= header %> </h1>
+
+	<ul>
+		<% users.forEach(function (item, index) { %>
+			<li> <span style="font-weight: 900;"> Person <%= index+1 %>: </span> is called <%= item.name %> and is <%= item.age %> years old! </li>
+			<p style="margin-top: 0px; padding-top: 0px;"> Plays video games = <strong> <%= item.playsGames %> </strong> </p>
+		<% }) %>
+	</ul>
+
+	<h1 style="margin-bottom: 10px; margin-top: 50px;"> Create an Account </h1>
+	<form method="POST" action="/user/add">
+		<label> First Name </label> <br>
+		<input type="text" name="first_name">
+		<br>
+		<label> Last Name </label> <br>
+		<input type="text" name="last_name">
+		<br>
+		<label> Email </label> <br> 
+		<input type="email" name="email">
+		<br><br>
+		<input type="submit" value="Submit Form">
+	</form>
+
+	<h1 style="margin-bottom: 10px;"> So far created accounts </h1>
+	<ul style="list-style-type:square;">
+		<% account.forEach(function (item, index) { %>
+			<li> <%= item.email %> </li>
+		<% }) %>
+	</ul>
+<% } %>
+
+<% include footer.ejs %>

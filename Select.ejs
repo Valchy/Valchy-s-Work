@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Select Menu </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="three.js"></script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+select {width: 150px;}
+button:hover {cursor: pointer;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Select Drop Down Menu </h1>
+
+	<form method="POST" action="/chosenAnimal" onsubmit="verify();">
+		<span> What is your favourite animal? </span> <br>
+		<select required="true" name="chosenAnimal">
+			<optgroup label="Animal:">
+				<option selected="selected" disabled="true"> Choose... </option>
+				<option> Cats </option>
+				<option> Dogs </option>
+			</optgroup>
+			<optgroup label="Different">
+				<option value="this.innerHTML"> An insect </option>
+				<option value="this.innerHTML"> Other </option>
+			</optgroup>
+		</select>
+		<input type="submit" value="Verify!">
+	</form>
+
+	<hr>
+
+	<form method="POST" action="/chosenCriteria" onsubmit="chosenThing();">
+		<select required="true" name="searchCriteria" onselect="submit">
+			<optgroup label="Criteria">
+				<option selected="selected" disabled="true"> Search for: </option>
+				<option> Address </option>
+				<option> Coordinates </option>
+				<option> Windspeed </option>
+				<option> Wind Direction </option>
+			</optgroup>
+		</select>
+
+		<input type="submit" name="theSubmit">
+	</form>
+
+	<select>
+		<% data.forEach(function (item, index) { %>
+			<option> <%= item %> </option>
+		<% }) %>
+	</select>
+</div>
+
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var theValue;
+
+	$('select').change(function () {
+		theValue = $(this).find('option:selected').text(); // theValue is the value of the selected item
+	});
+
+	function verify () {
+		window.alert('Your favourite animal is:'+theValue);
+	}
+
+	function chosenThing () {
+		window.alert('Chosen criteria: '+theValue);
+	}
+</script>
+</body>
+</html>
+
+<!--
+Make a cool select drop down menu with a functionality for later usage in a node / javascript file
+-->

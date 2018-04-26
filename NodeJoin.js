@@ -11,25 +11,9 @@ var queryCounter = 0,
 	dataCounter = -1,
 	dataCounterTwo = -1,
 	tfWindspeed = false,
-	tfLocation = false;
-
-// EXTRA NOTE: Images may not show, fix: have full url to the image
-// This is just a simpler and a better way to display a HTML, CSS and JS files on my server
-app.use(express.static('C:/Users/Valeri/Desktop/HTML + JavaScript')); // Notice that I am expressing a static and then folder (always opens the index)
-app.use(bodyParser.urlencode({extended: false}));
-app.use(bodyParser.json());
-app.post('/', function (request, response) {
-	console.log('Something is submited'+request.chosenAnimal);
-	response.send('id: ' + request.chosenAnimal);
-
-	// This is in order to have seperate things happen upon different form submitions
-	// if (chosenAnimal) {
-
-	// }
-	// else if (searchCriteria) {
-
-	// }
-});
+	tfLocation = false,
+	chosenCriteriaObject = [],
+	chosenSearchCriteria = '';
 
 var connection = mysql.createConnection({ // needed parameters: host, user, pass, database
 	host: 'localhost',
@@ -38,23 +22,73 @@ var connection = mysql.createConnection({ // needed parameters: host, user, pass
 	database: 'thejoin'
 });
 
-connection.connect((error) => {
+// View Template Engine
+app.set('view engine', 'ejs'); // Sets ejs as the method of using templated JavaScript if that makes sence xD
+app.set('views', '');
+
+// EXTRA NOTE: Images may not show, fix: have full url to the image
+// This is just a simpler and a better way to display a HTML, CSS and JS files on my server
+app.use(express.static('C:/Users/Valeri/Desktop/HTML + JavaScript')); // Notice that I am expressing a static and then folder (always opens the index)
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.post('/chosenAnimal', function (request, response) { // Very important the order of everything, notice how this is the last thing (the route)
+	// I made it work by having request.body.chosenAnimal instead of just request.chosenAnimal
+	response.send('Animal: ' + request.body.chosenAnimal);
+});
+
+// Try having one post function with some if statement
+app.post('/chosenCriteria', function (request, response) { // Very important the order of everything, notice how this is the last thing (the route)
+	if (request.body.searchCriteria === 'Address' || request.body.searchCriteria === 'Coordinates') {
+		chosenSearchCriteria = 'location';
+	}
+	else if (request.body.searchCriteria === 'Windspeed' || request.body.searchCriteria === 'Wind Direction') {
+		chosenSearchCriteria = 'windspeed';
+	}
+
+	connection.query('SELECT * FROM '+chosenSearchCriteria, (error, results) => {
+		if (error) console.log(error);
+
+		chosenCriteriaObject = [];
+		if (request.body.searchCriteria === 'Address') {
+			for (var i = 0; i < results.length; i++) {
+				chosenCriteriaObject.push(results[i].address);
+			}
+		}
+		else if (request.body.searchCriteria === 'Coordinates') {
+			for (var i = 0; i < results.length; i++) {
+				chosenCriteriaObject.push(results[i].id);
+			}
+		}
+		else if (request.body.searchCriteria === 'Windspeed') {
+			for (var i = 0; i < results.length; i++) {
+				chosenCriteriaObject.push(results[i].windspeed);
+			}
+		}
+		else if (request.body.searchCriteria === 'Wind Direction') {
+			for (var i = 0; i < results.length; i++) {
+				chosenCriteriaObject.push(results[i].winddirection);
+			}
+		}
+		
+		response.render('Select.ejs', {
+			'data': chosenCriteriaObject
+		});
+	});
+});
+
 var queries = ['CREATE TABLE IF NOT EXISTS windspeed (id VARCHAR(255), windspeed VARCHAR(255), winddirection VARCHAR(255), PRIMARY KEY (id))', 'CREATE TABLE IF NOT EXISTS location (id VARCHAR(255), address VARCHAR(255), PRIMARY KEY (id))',];
 var counter = 0;
 
-	if (error) console.log(error);
-	else {
-		for (var i = 0; i < queries.length; i++) {
-			connection.query(queries[i], (error, result) => {
-				if (error) console.log(error);
-				counter = counter + 1;
-				if (counter >= queries.length) {
-					console.log('Databases created!');
-				}
-			});
+for (var i = 0; i < queries.length; i++) {
+	connection.query(queries[i], (error, result) => {
+		if (error) console.log(error);
+		counter = counter + 1;
+		if (counter >= queries.length) {
+			console.log('Databases created!');
 		}
-	}
-});
+	});
+}
 
 connection.query('TRUNCATE TABLE windspeed', (error, results) => {
 	if (error) console.log('Truncate error: '+error);
@@ -119,8 +153,6 @@ function theJoin (windspeed, location) {
 			console.log(results);
 			connection.query('ALTER TABLE windspeed ADD FOREIGN KEY (id) REFERENCES location(id)', (error, results) => {
 				if (error) console.log(error);
-				connection.end();
-				console.log('Connection has been ended');
 			});
 		});
 	}

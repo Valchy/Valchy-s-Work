@@ -22,8 +22,8 @@ button:hover {cursor: pointer;}
 <div class="mainPage">
 	<h1> Select Drop Down Menu </h1>
 
-	<form method="POST" action="/" onsubmit="verify();">
-		<!-- <span> What is your favourite animal? </span> <br>
+	<form method="POST" action="/chosenAnimal" onsubmit="verify();">
+		<span> What is your favourite animal? </span> <br>
 		<select required="true" name="chosenAnimal">
 			<optgroup label="Animal:">
 				<option selected="selected" disabled="true"> Choose... </option>
@@ -34,14 +34,13 @@ button:hover {cursor: pointer;}
 				<option value="this.innerHTML"> An insect </option>
 				<option value="this.innerHTML"> Other </option>
 			</optgroup>
-		</select> -->
-		<input type="text" name="chosenAnimal" value="zdr">
+		</select>
 		<input type="submit" value="Verify!">
 	</form>
 
 	<hr>
 
-	<form method="POST" action="/">
+	<form method="POST" action="/chosenCriteria" onsubmit="chosenThing();">
 		<select required="true" name="searchCriteria" onselect="submit">
 			<optgroup label="Criteria">
 				<option selected="selected" disabled="true"> Search for: </option>
@@ -51,6 +50,8 @@ button:hover {cursor: pointer;}
 				<option> Wind Direction </option>
 			</optgroup>
 		</select>
+
+		<input type="submit" name="theSubmit">
 	</form>
 
 	<select>
@@ -68,6 +69,10 @@ var theValue;
 
 	function verify () {
 		window.alert('Your favourite animal is:'+theValue);
+	}
+
+	function chosenThing () {
+		window.alert('Chosen criteria: '+theValue);
 	}
 </script>
 </body>
