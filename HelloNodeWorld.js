@@ -17,7 +17,7 @@ console.log(result.query);
 // The '/' stands for the default route
 app.get('/', function (req, res) {
 	// This opens a file in the same directory (__dirname is a default method)
-	res.sendFile(__dirname+'/HelloNodeForm.html');
+	res.sendFile(__dirname+'/HelloNodeForm.html'); // Send file is the method with which the response sends back a file to the client
 });
 app.post('/', function (req, res) {
 	if (req.files) {
