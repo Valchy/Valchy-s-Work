@@ -15,29 +15,21 @@
 			line-height: 1.7;
 			color: #777;
 		}
-		.header {
-			height: 95vh; /* vh stands for view height so this means that the height will be 95% of the screen the elemnt is being viewed from */
-			background-image: url('Hero.jpg'); /* How to import images in css */
-			background-size: cover; /* Makes elemnt (photo) adapt well to the view port */
-			background-position: top;
-		}
 	</style>
 </head>
 
 <body>
-	<header class="header">
-		<h1> Hello Handlebars </h1>
-		{{#if published}}
-			{{content}}
-		{{/if}}
+	<h1> Hello Handlebars </h1>
+	{{#if published}}
+		{{content}}
+	{{/if}}
 
-		<ul>
-			{{#each people}}
-				<li> {{this}} </li>
-			{{/each}}
-		</ul>
+	<ul>
+		{{#each people}}
+			<li> {{this}} </li>
+		{{/each}}
+	</ul>
 
-		<h4> {{person}} ...showed only because you are under the /person/PERSON'S NAME route </h4>
-	</header>
+	<h4> {{person}} ...showed only because you are under the /person/{{person}} route </h4>
 </body>
 </html>

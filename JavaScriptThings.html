@@ -1,0 +1,170 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> JavaScript Things </title>
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="jquery-ui.js"> </script>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Just JavaScript Things... </h1>
+
+    <label> Try picking a color and then getting hex value of only Red, Green or Blue </label>
+
+    <form action="/submited" method="POST">
+        <input type="color" name="theColor" value="<%= defaultValue %>">
+        <button type="submit"> Submit </button>
+    </form>
+
+    <% if (!homePage) { %>
+        <div>
+            <h2> Your Result: </h2>
+            <span> <%= result %> </span>
+        </div>
+    <% } %>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+var age = 15; // Random Variable
+var randomObject = {age}; // No need to write age: age when they have the same name
+randomObject.name = 'Valeri'; // Way of adding properties to the object
+console.log(randomObject);
+
+// Normal way of solving problem
+if (age >= 18) {
+	console.log("You are an adult!");
+} else {
+	console.log("You are a kid");
+}
+
+// New different way of solving problem
+console.log((age >= 18) ? "You are an adult!" : "You are a kid.");
+
+var stop;
+// More Complex Ternary Operation
+age > 18 ? (
+    console.log("OK, you can go."),
+    stop = false
+) : (
+    console.log("Sorry, you are much too young!"),
+    stop = true
+);
+
+var firstCheck = false,
+    secondCheck = false,
+    access = firstCheck ? "Access denied" : secondCheck ? "Access denied" : "Access granted";
+
+console.log(access); // Will eventually return "Access granted"
+console.log(typeof access, typeof stop, typeof age); // returns the type of a variable or a value (typeof <value> or <variable>)
+
+//JavaScript Bitwise Operators - AND &, OR |, XOR ^, NOT ~, Shift Left <<, Shift Right >>
+var a = 10;  // 1010
+var b = 6;  // 110
+console.log(a.toString(2), b.toString(2)); // toString() actually takes a parameter and returns if number in base param
+
+// & Operator (and) if both have 1
+// 1010
+// 0110
+// 0010 (2 in binary)
+console.log("AND &", a & b); // This returns 2
+
+// | Operator (or) if either have 1
+// 1010
+// 0110
+// 1110 (14 in binary)
+console.log("OR |", a | b); // This returns 14
+
+// ^ Operator (xor) if only one is a 1
+// 1010
+// 0110
+// 1100 (12 in binary)
+console.log("^ XOR", a ^ b); // This returns 12
+
+// ~ Operator (not) switches bits
+// ~ 1010
+// 0101
+// x = -(x+1)
+console.log("NOT ~", ~ a); // Returns -11
+
+// Persmissions (eg. read, write, delete) instead of having three booleans you can represent all of them with a single number
+var myPerm = 11;
+
+var allowedToComment = (myPerm & 8) ? true : false;
+var allowedToRead = (myPerm & 4) ? true : false;
+var allowedToWrite = (myPerm & 2) ? true : false;
+var allowedToDelete = (myPerm & 1) ? true : false;
+
+// 0110  6
+// 0100  & 4
+// 0100  4 (true)
+
+// 0110  6
+// 0001  & 1
+// 0000  0 (false)
+
+/* ********
+Possible Options
+0     0   2^0
+1     1   2^1
+2    10
+3    11
+4   100   2^2
+5   101
+6   110
+7   111
+8  1000   2^3
+9  1001
+10 1010
+11 1011
+12 1100
+13 1101
+14 1110
+15 1111
+******** */
+
+// <> Operators (shifts)
+// 101010 >> 4 = 10 (2 in binary)
+// 111 >> 1 = 11 (3 in binary)
+console.log("SHIFT RIGHT", 7 >> 1); // This returns 3
+
+// 111 << 1 = 1110 (14 in binary) tip: its number x 2 eg. 111 (7) x 2 = 14
+// 1000 << 1 = 10000 (16 in binary)
+console.log("SHIFT LEFT", 7 << 1); // This returns 14
+
+// Getting Colors from Hex
+// 00FF00 - 24bit values	8bits Red, 8bits Green, 8bits Blue
+// Want GREEN - Shift 8 >>, & (AND) 11111111 (255)
+// 000000001111111100000000 >> 8 = 0000000011111111
+// 0000000011111111
+// 0000000011111111 (DOING & OPERATION)
+//         11111111 = 255 (hex number green for FF)
+
+var color = 0x00FF00;
+var noBlue = color >> 8;
+var green = noBlue & 255;
+console.log("GREEN: ", green, green.toString(16));
+
+color = 0xFF0000;
+var noBlueGreen = color >> 16;
+var red = noBlueGreen & 255;
+console.log("RED: ", red, red.toString(16));
+
+color = 0x0000FF;
+var blue = color & 255;
+console.log("BLUE: ", blue, blue.toString(16));
+</script>
+</body>
+</html>

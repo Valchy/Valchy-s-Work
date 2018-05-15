@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title> RESTful API and Routes </title>
+	<style type="text/css">
+		h1, ul {
+			margin-bottom: 0px;
+			margin-top: 0px;
+		}
+	</style>
+</head>
+<body>
+	<% if (homePage) { %>
+		<h1> Welcome to the Home page </h1>
+		<span> 
+			Possible routes:
+			<ul>
+				<li> /search/optionalFlower </li>
+				<li> /add/info/value </li>
+			</ul>
+		</span>
+	<% } else { %>
+		<h1> Try searching for something </h1>
+
+		<form method="POST" action="/searchfor/all">
+			<input type="submit" value="Search for everything!">
+		</form>
+	<% } %>
+</body>
+</html>
+
+<!-- I want to be able to search for whatever I am interested in through the form aka the form submiting the route needed -->

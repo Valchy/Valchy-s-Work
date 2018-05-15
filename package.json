@@ -2,7 +2,7 @@
   "name": "valeri",
   "version": "1.0.0",
   "description": "My programming work :)",
-  "main": "NodeJoin.js",
+  "main": "JavaScriptThings.js",
   "dependencies": {
     "body-parser": "^1.18.2",
     "ejs": "^2.5.9",
@@ -10,6 +10,7 @@
     "express-fileupload": "^0.4.0",
     "express-handlebars": "^3.0.0",
     "express-validator": "^5.1.2",
+    "fs": "0.0.1-security",
     "handlebars": "^4.0.11",
     "handlebars-loader": "^1.7.0",
     "mysql": "^2.15.0",

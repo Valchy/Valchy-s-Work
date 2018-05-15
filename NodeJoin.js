@@ -159,4 +159,4 @@ function theJoin (windspeed, location) {
 }
 
 console.log('Server listening on port 4321...');
-// Expand this by having both selects somehow mixed together into one big select
+// Expand this by having both selects some how mixed together into one big select

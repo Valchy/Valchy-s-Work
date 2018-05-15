@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> SQL Injection Login </title>
+	<style type="text/css">
+		::-webkit-input-placeholder {text-align: center;}
+		::-moz-placeholder {text-align: center;}
+		::-ms-input-placeholder {text-align: center;}
+		::-moz-placeholder {text-align: center;}
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		body {
+			background: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8));
+			margin: 0;
+			background-attachment: fixed;
+		}
+		input {
+			text-align: center;
+		}
+		h3 {
+			margin: 5px 0px 10px 0px;
+		}
+		button:hover {
+			cursor: pointer;
+		}
+		.formDiv {
+			width: 15vw;
+			padding: 5px;
+		}
+		.theForm {
+		}
+		.page-wrapper {
+			background-color: #fff;
+			width: auto;
+			height: auto;
+			margin: 2% 25%;
+			padding: 10px;
+			border: 1px dotted black;
+			box-shadow: 1px 1px 20px;
+			display: flex;
+			justify-content: center;
+		}
+		.after-login-div {
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
+</head>
+<body>
+	<div class="page-wrapper">
+		<% if (loggedin) { %>
+			<div class="after-login-div">
+				<h2> You are now logged in as: </h2>
+				<ul>
+					<li> Username: <%= userName %> </li>
+					<li> Password: <%= password %> </li>
+					<li> Special Token: <%= token %> </li>
+				</ul>
+			</div>
+		<% } else { %>
+			<div class="formDiv">
+				<h3> Login: </h3>
+				<form method="POST" action="/login" class="theForm">
+					<input type="text" name="userName" placeholder="Your User Name">
+					<input type="password" name="password" placeholder="Your Password">
+					<input type="password" name="specialToken" placeholder="Generated Special Token"> <br>
+					<input type="submit" value="Login">
+				</form> <br>
+				<span> Random Generated Token: <strong> <%= token %> </strong> </span>
+				<div class="g-recaptcha" data-sitekey="6Lez3VcUAAAAAIy-5AogL4I5eTSJl4PRs-AdTsCq"></div>
+			</div>
+			<% if (alert) { %>
+				<script type="text/javascript">
+					window.onload = function () {
+						window.alert('False Login');
+					}
+				</script>
+			<% } %>
+		<% } %>
+	</div>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</body>
+</html>
