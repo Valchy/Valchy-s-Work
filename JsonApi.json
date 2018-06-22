@@ -1,6 +1,7 @@
 {
-	"name": "Valeri",
-	"age": 16,
-	"birthday": "11/02/2002",
-	"favAnimal": "Cat"
+  "name": "Valeri",
+  "age": 16,
+  "birthday": "11/02/2002",
+  "favAnimal": "Cat",
+  "valchy": "gaming"
 }

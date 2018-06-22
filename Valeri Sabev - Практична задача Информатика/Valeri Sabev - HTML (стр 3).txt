@@ -1,0 +1,45 @@
+<!--
+Валери Митков Събев
+Практична Задача Информатика - Страница 3
+07/03/2018
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Практична Задача Информатика </title>
+</head>
+
+<body>
+	<div>
+		<h1> <center> The Galaxy S9+ <center> </h1>
+		
+		<table>
+			<tr>
+				<td> <img src="Galaxy9.png" height="410" width="410" alt="Galaxy S9+ picture"/> </td>
+				<td> 
+					<div
+						<p> Released Date: March 2018 </p>
+						<p> Weight & Thickness: 189g and 8.5mm </p>
+						<p> Operating System: Android 8.0 </p>
+						<p> Storage: 64GB, 128GB or 256GB </p>
+						<p> Display Size: 1440x2960 pixels </p>
+						<p> Camera: 12MP</p>
+						<p> CPU and RAM: Exynos 9810 Octa and 6GB</p>
+						<p> Battery Life: 3500 mAh </p>
+					</div>
+				</td>
+			</tr>
+		</table>
+	
+		
+		<br>
+		<button title="Click, to go to the previous page!"> <a href="page2.html"> Previous Page </a> </button>
+		<button title="Click, to go to the next page!"> <a href="page4.html"> Next Page </a> </button>
+	</div>
+</body>
+</html>
+
+<!--
+Практически Изпит - Информатика
+Вариант №3
+-->

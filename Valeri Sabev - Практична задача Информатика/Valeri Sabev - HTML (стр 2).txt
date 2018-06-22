@@ -1,0 +1,45 @@
+<!--
+Валери Митков Събев
+Практична Задача Информатика - Страница 2
+07/03/2018
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Практична Задача Информатика </title>
+</head>
+
+<body>
+	<div>
+		<h1> <center> The iPhone X <center> </h1>
+		
+		<table>
+			<tr>
+				<td> <img src="iPhoneX.png" height="450" width="450" alt="iPhone X picture"/> </td>
+				<td> 
+					<div
+						<p> Released Date: October 2017 </p>
+						<p> Weight & Thickness: 174g and 7.7mm </p>
+						<p> Operating System: iOS 11.1.1 and up</p>
+						<p> Storage: 64GB or 256GB </p>
+						<p> Display Size: 1125x2436 pixels </p>
+						<p> Camera: 12MP</p>
+						<p> CPU and RAM: Apple A11 Bionic and 3GB</p>
+						<p> Battery Life: 2716 mAh </p>
+					</div>
+				</td>
+			</tr>
+		</table>
+	
+		
+		<br>
+		<button title="Click, to go to the previous page!"> <a href="index.html"> Previous Page </a> </button>
+		<button title="Click, to go to the next page!"> <a href="page3.html"> Next Page </a> </button>
+	</div>
+</body>
+</html>
+
+<!--
+Практически Изпит - Информатика
+Вариант №3
+-->

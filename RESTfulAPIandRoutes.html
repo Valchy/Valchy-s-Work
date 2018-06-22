@@ -14,14 +14,16 @@
 		<span> 
 			Possible routes:
 			<ul>
-				<li> /search/optionalFlower </li>
-				<li> /add/info/value </li>
+				<li> /choose/<strong>optionalFlower</strong> </li>
+				<li> /add/<strong>info</strong>/<strong>value</strong> </li>
+				<li> /searchfor/<strong>value</strong></li>
+				<li> /searchall </li>
 			</ul>
 		</span>
 	<% } else { %>
 		<h1> Try searching for something </h1>
 
-		<form method="POST" action="/searchfor/all">
+		<form method="POST" action="/searchall">
 			<input type="submit" value="Search for everything!">
 		</form>
 	<% } %>
