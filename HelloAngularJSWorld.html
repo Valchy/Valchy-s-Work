@@ -1,1 +1,187 @@
-Angular Basics
+<html ng-app="app" ng-init="person = {Fname: 'Valeri', Lname: 'Sabev', age: 16}; friends = [{name: 'Patra', age: 16}, {name: 'Luis', age: 17}];">
+<head>
+<meta charset="utf-8">
+<title> Hello AngularJS world </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style> 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {display: none !important;} /* other way of fixing brackets showing on load */
+h6, h5 {margin: 3px 0px;}
+button:hover {cursor: pointer;}
+button:disabled {cursor: default;}
+.bluetext {color: blue;}
+.boldtext {font-weight: bold;}
+.stripedblue {color: #007fff; background-color: #dbe9f4}
+.stripedbeige {color: #cc0000; background-color: #f5f5dc}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Angular JS </h1>
+
+	<div ng-controller="controller" class="ng-cloak">
+		<span> Values: </span>
+		<input type="text" ng-model="first">
+		<input type="text" ng-model="second">
+
+		<button ng-click="updateValue()"> Sum </button>
+		{{calculation}}
+
+		<p> 5 + 5 = {{5+5}} </p>
+		<p> Your first value is {{first}} </p>
+		<p> Your second value is <span data-ng-bind="second"></span></p>
+		<p> {{person.Fname+' '+person.Lname}} you entered {{first+' and '+second}} </p>
+
+		<ul>
+			<li style="list-style-type: upper-roman;" ng-repeat="anyValue in friends"> {{'Friends name: '+anyValue.name+', age: '+anyValue.age}} </li>
+		</ul>
+
+		<p>
+			I have <strong> {{friends.length}} </strong> friends
+			<span> Second friend: {{friends[1].name}}</span>
+		</p>
+	</div>
+
+	<h5 ng-controller="numGen" ng-init="randomNum();" class="ng-cloak"> Random number: {{num}} </h5>
+	<h6 ng-controller="numGen" ng-init="randomNum();" class="ng-cloak"> Random feeling: {{feeling}} </h6>
+
+	<br>
+	<div ng-controller="eventController">
+		<!-- all possible ng events with angular -->
+		<input type="text" 
+		ng-blur="blur = blur + 1" 
+		ng-click="click = click + 1" 
+		ng-dblclick="dblclick = dblclick + 1" 
+		ng-copy="copy = copy + 1" 
+		ng-paste="paste = paste + 1" 
+		ng-cut="cut = cut + 1" 
+		ng-focus="focus = focus + 1" 
+		ng-model="confirmed" 
+		ng-change="change = change + 1" 
+		ng-keydown="keydown($event)" 
+		ng-mouseenter="mouseenter = mouseenter + 1" 
+		ng-mouseleave="mouseleave = mouseleave + 1">
+
+		<h5> Blur events: {{blur}} </h4>
+		<h5> Click events: {{click}} </h4>
+		<h5> Dbclick events: {{dblclick}} </h4>
+		<h5> Copy events: {{copy}} </h4>
+		<h5> Paste events: {{paste}} </h4>
+		<h5> Cut events: {{cut}} </h4>
+		<h5> Focus events: {{focus}} </h4>
+		<h5> Model events: {{confirmed}} </h4>
+		<h5> Change events: {{change}} </h4>
+		<h5> Keydown events: {{kdkey}} </h4>
+		<h5> Mouse Enter events: {{mouseenter}} </h4>
+		<h5> Mouse Leave events: {{mouseleave}} </h4>
+	</div>
+
+	<br>
+	<button ng-disabled="disableButton"> Don't push me XD </button>
+	<input type="checkbox" ng-model="disableButton"> Disable Button
+	<br> <br>
+
+	<p style="margin: 1px 0px;">
+		<input type="checkbox" ng-model="dayTimeButton"> Morning
+	</p>
+
+	<p ng-hide="!dayTimeButton" style="margin: 1px 0px;"> Good Morning </p>
+	<p ng-hide="dayTimeButton" style="margin: 1px 0px;"> Good Evening </p>
+
+	<p style="margin-bottom: 0px;">
+		<select ng-model="styling">
+			<option value=""> Nothing </option>
+			<option value="bluetext"> Blue Text </option>
+			<option value="boldtext"> Bold Text </option>
+		</select>
+	</p>
+
+	<p ng-class="styling" style="margin-top: 0px;">
+		Hello my name is Valeri and I will become one of the best programmers out there! <br>
+		I love my life I will always do!
+	</p>
+
+	<p ng-controller="eventController">
+		<table>
+			<tr ng-repeat="name in capitals" ng-class-even="'stripedblue'" ng-class-odd="'stripedbeige'">
+				<td> {{name.City}} </td>
+				<td> {{name.State}} </td>
+			</tr>
+		</table>
+	</p>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="angularjs/angular.min.js"> </script> <!-- can also fix brackets showing by moving this in head section on load -->
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+	var app = angular.module('app', []);
+	app.controller('controller', function ($scope) {
+		$scope.first = 1;
+		$scope.second = 2;
+
+		$scope.updateValue = function () {
+			$scope.calculation = $scope.first+' + '+$scope.second+' = '+(+$scope.first + +$scope.second);
+		}		
+	});
+
+	app.controller('numGen', function ($scope) {
+		$scope.randomNum = function () {
+			// How to generate a random number between 8 and 80 (first number is posible results, second number is start number)
+			$scope.num = Math.floor((Math.random() * 72) + 8);
+
+			// Generate random feeling from array
+			var feelings = ['happy', 'depressed', 'angry', 'joyfull', 'just nahh'];
+			$scope.feeling = feelings[Math.floor((Math.random() * 4) + 1)]; // 1 to 4
+		}
+	});
+
+	app.controller('eventController', function ($scope) {
+		$scope.blur = 0;
+		$scope.click = 0;
+		$scope.dblclick = 0;
+		$scope.copy = 0;
+		$scope.paste = 0;
+		$scope.cut = 0;
+		$scope.focus = 0;
+		$scope.confirmed = 'Hi';
+		$scope.change = 0;
+		$scope.mouseenter = 0;
+		$scope.mouseleave = 0;
+		$scope.keydown = function (e) {
+			$scope.kdkey = String.fromCharCode(e.keyCode);
+		};
+
+		// Disabling Buttons
+		$scope.disableButton = false;
+
+		// Day time I/O
+		$scope.dayTimeButton = true;
+		$scope.capitals = [
+			{'City': 'Montgomery', 'State': 'Alabama'},
+			{'City': 'Juneau', 'State': 'Alaska'},
+			{'City': 'Phoenix', 'State': 'Arizona'},
+			{'City': 'Little Rock', 'State': 'Arkansas'}
+		];
+	});
+</script>
+</body>
+</html>
+
+<!-- 
+	Complete some angular js tutorials to get started afterwords with native script
+
+	Angular JS Jargon:
+		> Modules - Represent components used in application. Makes code easier to re-use in other applications or other parts of site
+		> Directives - Allows binding data directly to HTML elemnts
+		> Scope - JavaScript objects represented as scope. Also means data for application. Scope = think of 'data'
+		> Expressions - Allows use of expressions directly linked to the scope. Benefit, page gets updated dynamicly
+		> Services - Ajax techniques for dynamic data pull
+-->

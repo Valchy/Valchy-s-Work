@@ -67,8 +67,6 @@ connection.connect(function (error) {
 
 // Routes
 app.get('/', function (req, res) {
-	console.log('The loaded chat: '+theChat);
-
 	res.render(indexFile, {
 		chat: theChat,
 		status: false,
@@ -79,21 +77,32 @@ app.get('/', function (req, res) {
 
 app.post('/logging', function (req, res) {
 	var theUser = req.body.userName;
+	var theCaptchaResponse = req.body.captchaCheck;
 
-	// if (req.body.captcha === undefined || req.body.captcha === '' || req.body.captcha === null) {
-	// 	res.send({'msg': 'Please click recaptcha!'});
-	// 	return;
-	// } else {
-	// 	const secreyKey = '6LdDEmAUAAAAANw9C9ipvEyvPBLEhhN6WqTFhyeJ';
+	if (theCaptchaResponse === undefined || theCaptchaResponse === '' || theCaptchaResponse === null) {
+		res.send({'msg': 'Please click captcha!'});
+		return console.log('Captcha was not clicked!');
+	} else {
+		// Secret Key
+		const secreyKey = '6LeYUHAUAAAAAJ7VPGgitCkxjuhwe0S_bfq4AgMy';
 
-	// 	// Verify Url (защо `` и ${})
-	// 	const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secreyKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
+		// Verify Url (защо `` и ${}) - ``
+		const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secreyKey}&response=${theCaptchaResponse}&remoteip=${req.connection.remoteAddress}`
 
-	// 	// Make request to verify url
-	// 	request(verifyUrl, function (err, response, body) {
-	// 		body = JSON.parse(body);
-	// 	});
-	// }
+		// Make request to verify url
+		request(verifyUrl, function (err, response, body) {
+			body = JSON.parse(body);
+
+			// If not successful
+			if (body.success !== undefined && !body.success) {
+				res.send({'msg': 'Failed captcha verification!'});
+				return console.log('Captcha did not pass verification!');
+			}
+
+			// If successful
+			console.log('Captcha was successful');
+		});
+	}
 
 	connection.query('SELECT * FROM users WHERE name = "'+theUser+'"', function (err, data) {
 		if (err) return err;
