@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="http://ijailbreak.org/wp-content/uploads/2016/12/favicon-apple.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=K2D:200i,400,600" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+<title> Node RSS </title>
+<style>
+* {font-family: 'K2D', sans-serif;}
+body {background-color: lightgrey;}
+button:hover {cursor: pointer;}
+img {border: 1px solid black; width: 160px; height: 160px; pointer-events: none;}
+select {width: 150px; text-align-last:center;}
+.loading-gif {width: 100%; height: 100%; z-index: 9999999; position: fixed; background-color: white; display: flex; justify-content: center; align-items: center;}
+.noSelect:focus {outline: none}
+.parent-flex-search {display: flex; flex-direction: column; align-content: center; align-items: center;}
+.products-div {display: flex; width: 100%; justify-content: center;}
+.first-flex {display: flex; flex-direction: row; margin-left: 16px;}
+.second-flex {display: flex; flex-direction: column; justify-content: center; margin-left: 10px; box-shadow: 1px 1px 1px; width: 70%;}
+.odd {background-color: #ffefd5;}
+.even {background-color: #fff8dc;}
+.odd span, .even span {margin: 4px 0px 4px 10px;}
+.odd a, .even a {margin: 0px 0px 4px 10px;}
+.odd a:link, .even a:link {text-decoration: none; color: lightblue;}
+.odd a:visited, .even a:visited {text-decoration: none; color: lightblue;}
+.titleSpan {font-size: 16px; font-weight: 600;}
+.extraTitle {font-weight: 200;}
+.publishedSpan {font-size: 12px;}
+#products-html {width: 40%; height: 65%; overflow: auto; border: 2px solid black; border-top-left-radius: 20px; border-bottom-left-radius: 20px; background-color: #fff;}
+#products-html::-webkit-scrollbar {width: 10px;}
+#products-html::-webkit-scrollbar-track {background: #f1f1f1;}
+#products-html::-webkit-scrollbar-thumb {background: #888;}
+#products-html::-webkit-scrollbar-thumb:hover {background: #555;}
+</style>
+</head>
+
+<body>
+	<div class="loading-gif">
+		<img alt="Loading..." src="https://ubisafe.org/images/google-transparent-loader-gif-6.gif" style="border: none !important; width: 150px; height: 150px;">
+	</div>
+
+	<center> <h1> Newest Products out there! </h1> </center>
+
+	<div class="products-div">
+		<div id="products-html"></div>
+	</div>
+
+	<input type="text" name="theId" id="socketId" style="display: none;">
+	<p>
+		<div class="parent-flex-search">
+			<label> Search for a Category: </label>
+			<select id="theSelect" name="theCategory" class="ng-cloak"></select>
+
+			<button type="button" id="sendButton" class="noSelect"> Reload News </button>
+		</div>
+	</p>
+
+	<script type="text/javascript">
+		// Shwowing loading gif...
+		window.onload = function () {
+			$('.loading-gif').show();
+		}
+
+		// Make connection - connects to my localhost server in this example
+		var socket = io.connect('http://localhost:2987');
+
+		// Event for sending new data request to server
+		document.getElementById('sendButton').addEventListener('click', function () {
+			$('#products-html').html('').css({'background-image': 'url("https://ubisafe.org/images/google-transparent-loader-gif-6.gif")', 'background-repeat': 'no-repeat', 'background-position': 'center', 'background-size': '160px 160px'});
+			socket.emit('newData', document.getElementById('theSelect').value);
+		});
+
+		// Event listener, triggers upon connection with server in this case
+		socket.on('madeConnection', function (data, topics) {
+			var myProductdata = JSON.parse(data);
+
+			// Creating the HTML
+			for (x in myProductdata) {
+				console.log(myProductdata.img);
+				var newTitle = myProductdata[x].title;
+				var parts = newTitle.split(' — ', 2);
+				newTitle = parts[0]+'<br> <i class="extraTitle">'+parts[1]+'</i>';
+
+				if ((x % 2) == 1) {
+					$('#products-html').append($('<p/>').append($('<div/>', {'class': 'first-flex'}).append($('<img/>', {'src': myProductdata[x].img})).append($('<div/>', {'class': 'second-flex even', 'id': 'theId'+x}).append($('<span/>', {'html': newTitle, 'class': 'titleSpan'})).append($('<span/>', {'html': 'Author: '+myProductdata[x].author})).append($('<span/>', {'html': 'Published: '+myProductdata[x].published, 'class': 'publishedSpan'})).append($('<a/>', {'href': myProductdata[x].link, 'target': '_blank', 'html': 'Link to Site'})))));
+				} else {
+					$('#products-html').append($('<p/>').append($('<div/>', {'class': 'first-flex'}).append($('<img/>', {'src': myProductdata[x].img})).append($('<div/>', {'class': 'second-flex odd', 'id': 'theId'+x}).append($('<span/>', {'html': newTitle, 'class': 'titleSpan'})).append($('<span/>', {'html': 'Author: '+myProductdata[x].author})).append($('<span/>', {'html': 'Published: '+myProductdata[x].published, 'class': 'publishedSpan'})).append($('<a/>', {'href': myProductdata[x].link, 'target': '_blank', 'html': 'Link to Site'})))));
+				}
+			}
+
+			// Topics loop & HTML
+			if (topics != null) { // Checking if topics html already exists (is it okay to check for null?)
+				topics.sort(); // Sorting topics alphabetically
+				for (y in topics) {
+					if (y == 0) {
+						$('#theSelect').append($('<option/>', {'value': 'undefined', 'html': 'Top Products'}));
+					} else {
+						var option = topics[y].charAt(0).toUpperCase()+topics[y].substr(1);;
+						$('#theSelect').append($('<option/>', {'value': topics[y], 'html': option}));
+					}
+				}
+			} 
+
+			if ($('.loading-gif').css('display') != 'none') {
+				$('.loading-gif').fadeToggle(600);
+			} else {
+				$('#products-html').css('background-image', 'none');
+			}
+		});
+	</script>
+</body>
+</html>

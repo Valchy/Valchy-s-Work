@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Bytes and Bits </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style type="text/css">
+button:hover {cursor: pointer;}
+.myConverter {display: flex; flex-direction: column; width: 300px;}
+.fromTo {display: flex; flex-direction: row; justify-content: space-between;}
+.fromTo button {flex-grow: 1;}
+.choose {display: flex; flex-direction: column; align-content: center; width: 80px;}
+.choose span {text-align: center; background-color: #fff;}
+.choose select {border: none;}
+.output {background-color: #fff; display: flex; flex-direction: row; justify-content: center; height: 20px; padding: 11px 0px;}
+.input {text-align: center; height: 20px; padding: 11px 0px;}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Bytes and Bites </h1>
+
+	<div class="myConverter">
+		<div class="fromTo">
+			<div class="choose">
+				<span> From </span>
+				<select onchange="changePlaceholder(this, true);" id="from">
+					<option disabled selected value style="display: none"></option>
+					<option value="bit"> Bits </option>
+					<option value="nibble"> Nibbles </option>
+					<option value="byte"> Bytes </option>
+					<option value="kilobit"> Kilobit </option>
+					<option value="kilobyte"> Kilobytes </option>
+					<option value="megabit"> Megabit </option>
+					<option value="megabyte"> Megabytes </option>
+					<option value="gigabit"> Gigabit </option>
+					<option value="gigabyte"> Gigabytes </option>
+					<option value="terabit"> Terabit </option>
+					<option value="terabyte"> Terabytes </option>
+					<option value="petabit"> Petabit </option>
+					<option value="petabyte"> Petabytes </option>
+				</select>
+			</div>
+			<button onclick="calc();">
+				Convert
+			</button>
+			<div class="choose">
+				<span> To </span>
+				<select onchange="changePlaceholder(this, false);" id="to">
+					<option disabled selected value style="display: none"></option>
+					<option value="bit"> Bits </option>
+					<option value="nibble"> Nibbles </option>
+					<option value="byte"> Bytes </option>
+					<option value="kilobit"> Kilobit </option>
+					<option value="kilobyte"> Kilobytes </option>
+					<option value="megabit"> Megabit </option>
+					<option value="megabyte"> Megabytes </option>
+					<option value="gigabit"> Gigabit </option>
+					<option value="gigabyte"> Gigabytes </option>
+					<option value="terabit"> Terabit </option>
+					<option value="terabyte"> Terabytes </option>
+					<option value="petabit"> Petabit </option>
+					<option value="petabyte"> Petabytes </option>
+				</select>
+			</div>
+		</div>
+
+		<input type="text" class="input" placeholder="Number of...">
+		<div class="output">
+			<span> Output<span id="theOutput">:</span> <span id="theResult"></span></span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+	function changePlaceholder (elm, theIf) {
+		if (theIf) {
+			$('.input').attr('placeholder', 'Number of ' + $(elm).val() + 's');
+		} else if (!theIf) {
+			$('#theOutput').html(' in ' + $(elm).val() + 's:');
+		}
+	}
+
+	function calc () {
+		var from = $('#from').val();
+		var to = $('#to').val();
+
+		// Transforming into bits
+		if (from === 'bits' && to === 'bytes') {
+
+		}
+
+		var result = 8*8;
+		$('#theResult').html(result);
+	}
+</script>
+</body>
+</html>

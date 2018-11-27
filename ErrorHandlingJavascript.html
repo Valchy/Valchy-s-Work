@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Error Handling Javascript </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+</head>
+
+<body>
+</script>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Error Handling in Javascript - try, catch, throw &amp; finally! </h1>
+
+	<p>
+		So using these four keywords we can test code and get <b> run time</b> errors not <b> parse time </b> errors which occur when code gets parsed e.g '{' (open bracket) with no '}' (closing bracket).
+		<br>(Check the code for the example)<br> <br>
+
+		Try - is used to try piece of code <br> <br>
+
+		Catch - is used to catch the error <br> <br>
+
+		Throw - is then used to throw a custom error message or whatever <br> <br>
+
+		Finally - is piece of code which gets executed after all of this no matter what <br>
+	</p>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+	// try, catch, finally example with no throw
+	try {
+		console.log('Start of my testing block for errors');
+		notInitialisedVariableWillGiveError;
+		console.log('Some text which we shoudn'+"'"+'t get to because of the error')
+	} catch (error) {
+		console.log('An error occurred: '+error.stack); // .stack also adds to the log on what line and file path the error is at
+	} finally {
+		console.log('This message will show no matter what because it is in a finally!');
+	}
+
+	// Example with throw
+	var object = {'age': '30'};
+	try {
+		var user = JSON.parse(object);
+		if (!user.name) {
+			throw new AnyNameOfError(); // Correct?
+			throw new SyntaxError();
+		}
+
+		// Code will not do this since after throw its like a return
+		console.log(user);
+	} catch (error) {
+		console.log(error);
+	}
+</script>
+</body>
+</html>

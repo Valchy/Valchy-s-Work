@@ -68,7 +68,22 @@ app.get('/freecodecampscrape', (req, res) => {
 			}
 
 			process.stdout.write('loading \n'); // Its like console log but doesnt put the message on a new line everytime
-			getChallangedCompletedAndPushToUserArray();
+			for (i = 0; i < userData.length; i++) {
+				var diffOptions = {
+					url: `https://www.freecodecamp.org/`+userData[i].name,
+					transform: body => cheerio.load(body)
+				}
+
+				requestPromise(diffOptions)
+					.then(function ($) {
+						process.stdout.write(`.`);
+						const fccAccount = $('h1.landing-heading').length == 0;
+						const challangePassed = fccAccount ? $('tbody tr').length : 'unknown';
+						theTable.push([userData[i].name, userData[i].likes, challangePassed]);
+					});
+			}
+			// Creates table in terminal
+			console.log(theTable.toString());
 		})
 		.catch((err) => {
 			if (err) {
@@ -76,25 +91,6 @@ app.get('/freecodecampscrape', (req, res) => {
 			}
 		});
 });
-
-function getChallangedCompletedAndPushToUserArray () {
-	for (i = 0; i < userData.length; i++) {
-		var diffOptions = {
-			url: `https://www.freecodecamp.org/`+userData[i].name,
-			transform: body => cheerio.load(body)
-		}
-
-		requestPromise(diffOptions)
-			.then(function ($) {
-				process.stdout.write(`.`);
-				const fccAccount = $('h1.landing-heading').length == 0;
-				const challangePassed = fccAccount ? $('tbody tr').length : 'unknown';
-				theTable.push([userData[i].name, userData[i].likes, challangePassed]);
-			});
-	}
-
-	console.log(theTable.toString());
-}
 
 // Getting specific data of a sites HTML
 request('https://www.producthunt.com/', function (error, response, body) { // Body is pretty much the html page (with all elements etc)

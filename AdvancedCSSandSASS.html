@@ -4,31 +4,31 @@
 	<link rel="shortcut icon" href="hi.png" type="image/x-icon">
 	<title> Advanced CSS &amp; SASS </title>
 	<style type="text/css">
-		* {
-			margin: 0px;
-			padding: 0px;
-			box-sizing: border-box;
-		}
-		body { /* The css here is really good to be used on any site */
-			/* If the first font doesn't exist or sint avaliable to the user the one after the comma is taken */
-			font-family: 'Lato', 'Arial Black', 'Comic Sans';
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 1.7;
-			color: #777;
-			padding: 30px; /* 3.5vh looks the same and might be better for easier adaptation */
-		}
-		.header {
-			height: 95vh; /* vh stands for view height so this means that the height will be 95% of the screen the elemnt is being viewed from */
-			/* To specify background gradients and / or overlays always use background-image (the ',' is for the order of which the things to display) */
-			background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)), url('Hero.jpg'); /* How to import images in css */
-			background-size: cover; /* Makes elemnt (photo) adapt well to the view port */
-			background-position: center; /* Specifies which part of the image not to get croped upon resize (other properties are top, bottom, left and right) */
-			/* https://www.youtube.com/watch?v=fn88PkKo9gQ for more info on clip-path && https://bennettfeely.com/clippy/ for easy to check image clip paths site*/
-			clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%); /* This creates the disappearing (clip-out) of the image aka the header which has the image inside */
-			-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%); /* This just helps so that all browsers understand how to clip path */
-		}
-	</style>
+	* {
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+	}
+	body { /* The css here is really good to be used on any site */
+		/* If the first font doesn't exist or sint avaliable to the user the one after the comma is taken */
+		font-family: 'Lato', 'Arial Black', 'Comic Sans';
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 1.7;
+		color: #777;
+		padding: 30px; /* 3.5vh looks the same and might be better for easier adaptation */
+	}
+	.header {
+		height: 95vh; /* vh stands for view height so this means that the height will be 95% of the screen the elemnt is being viewed from */
+		/* To specify background gradients and / or overlays always use background-image (the ',' is for the order of which the things to display) */
+		background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)), url('Hero.jpg'); /* How to import images in css */
+		background-size: cover; /* Makes elemnt (photo) adapt well to the view port */
+		background-position: center; /* Specifies which part of the image not to get croped upon resize (other properties are top, bottom, left and right) */
+		/* https://www.youtube.com/watch?v=fn88PkKo9gQ for more info on clip-path && https://bennettfeely.com/clippy/ for easy to check image clip paths site*/
+		clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%); /* This creates the disappearing (clip-out) of the image aka the header which has the image inside */
+		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0% 100%); /* This just helps so that all browsers understand how to clip path */
+	}
+</style>
 </head>
 
 <body>

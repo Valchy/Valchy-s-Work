@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="http://ijailbreak.org/wp-content/uploads/2016/12/favicon-apple.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=K2D:200i,400,600" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+<title> Node Web &amp; Mic </title>
+<style type="text/css">
+* {font-family: 'K2D', sans-serif;}
+.parent-flex {display: flex; flex-direction: row; justify-content: space-around;}
+.child-flex {display: flex; flex-direction: column;}
+#theText {width: 640px; height: 480px; overflow: auto;}
+</style>
+</head>
+
+<body>
+	<div class="parent-flex">
+		<div class="child-flex">
+			<h1> Streaming users video and audio to browser. </h1>
+			<video id="videoElement" autoplay="true"></video>
+		</div>
+
+		<div class="child-flex">
+			<center><h1> Text which loads over time... </h1></center>
+			<div id="theText"></div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	// Establishes connection between client and server
+	var socket = io.connect('http://localhost:4222');
+
+	socket.on('text', function (data) {
+		document.getElementById('theText').innerHTML += data;
+	});
+
+	var video = document.getElementById('videoElement'); // Getting video element
+	var vendorUrl = window.URL || window.webkitURL;
+
+	// Getting the users media (webcam and microphone)
+	navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+	// Capturing video and audio
+	navigator.getMedia({
+		video: true,
+		audio: true
+	}, function (stream) {
+		video.src = vendorUrl.createObjectURL(stream);
+	}, function (error) {
+		if (error) {
+			console.log('Error: '+error);
+		}
+	});
+</script>
+</body>
+</html>

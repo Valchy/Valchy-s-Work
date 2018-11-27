@@ -53,7 +53,7 @@ io.on('connection', function (theSocket) { // theSocket has all the information 
 	});
 
 	theSocket.on('typing', function (data) {
-		theSocket.broadcast.emit('typing', data); // Sends data to all sockets expect the user who send it himself
+		theSocket.broadcast.emit('typing', data); // Sends data to all sockets except the user who send it himself
 	});
 });
 
