@@ -1,0 +1,277 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title> Object Orianted Programming in JS </title>
+<link rel="shortcut icon" href="hi.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="EverythingCSS.css" type="text/css">
+<style>
+.tiltedTitle {
+	transform: rotate(20deg);
+	margin: 350px 0px 0px 250px;
+	font-size: 50px;
+}
+</style>
+</head>
+
+<body>
+<div id="mainBarOthers" class="mainBarOthers">
+	<ul class="theUl" id="theUl">	
+	</ul>
+</div>
+
+<div class="mainPage">
+	<h1> Object Orianted Programming in JS </h1>
+
+	<h3 class="tiltedTitle"> Everything is in the console! </h3>
+</div>
+
+<script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript">
+	// !! No need for capital letter to make a funciton a constructer but its best practise to do so, because it makes it more clear for other, so please do!
+	// after all let x = {}; means let x = new Object(); as well as that let x = '' || ""; means let x = new String(); Nevertheless there is new Boolean(); new Number();
+
+	// This is a factory function
+	function normalCircle(radius) {
+		console.log('The this in a normal function:', this); // refers to the 'this' of the window object
+		return {
+			radius,
+			draw: function() {
+				console.log('draw normal function');
+			}
+		};
+	}
+	// Calling the function
+	const circle = normalCircle(1);
+
+	// This is a constructer function
+	function ConstructerCircle(radius) {
+		console.log('The this in a constructor function:', this); // refers to the 'this' of the function
+		this.radius = radius;
+		this.draw = function() {
+			console.log('draw constructor function');
+		}
+
+		// Getters and setter - Different ways of having private values in an object
+		// Very important using let instead of always this.something if we dont want it being able to be changed from the outside
+		// WAY #1
+		let defaultLocation = {x: 0, y: 0};
+		this.getDefaultLocation = function() {
+			return defaultLocation;
+		}
+
+		// WAY #2
+		Object.defineProperty(this, 'theDefaultLocation', { // Object.defineProperty or Properties allows me to use getters and setters
+			get: function() { // This allows me to call the 'newCircle'.theDefaultLocation and get my result
+				return defaultLocation;
+			}, // setters must have the value perameter
+			set: function(value) { // While the setter allows me to do something if someone tries to do 'newCircle'.theDefaultLocation = something
+				if (!value.x || !value.y) {
+					throw new Error('Custom error :D'); // Create a custom error for the console
+				}
+
+				defaultLocation = value; // This will now make the value change
+			}
+		});
+
+		/* For:
+			object.defineProperty(
+				theObject,
+				PropertyName,
+				{
+					Object with value pairs e.g use get and set
+				}
+			);
+
+			object.defineProperties(
+				theObject,
+				{
+					// here we have an object for the property name objects
+					property1: {
+						Object with value pairs e.g use get and set
+					},
+					property2: {
+						Object with value pairs e.g use get and set
+					},
+					property3: {
+						Object with value pairs e.g use get and set
+					}
+				});
+		*/
+	}
+
+	// Constructing the cirle
+	const newCircle = new ConstructerCircle(1); // the new keyword creates an object like {} and the 'this' in the constructer is where it gets its parameters from
+	console.log('Here I get a obj propery value without being able to change it from thr outside scope\n', newCircle.getDefaultLocation());
+	console.log('The other way aka #way2 is with the define property method\n', newCircle.theDefaultLocation);
+
+	// Something small I figured out
+	var obj = {};
+	ConstructerCircle.call(obj, 10);
+	console.log('Ill need explenation for myself what did I do?', obj);
+
+	console.log('--- VERY INTERESTING ---');
+	let x = 10;
+	let y = x;
+	x = 20;
+	console.log('Here the two variables are completely indenpendent:\nX value: '+x+'\nY value: '+y);
+
+	let t = {value: 10};
+	let u = t;
+	t.value = 20;
+	console.log('Something very interesting happens here, now "u" will change when t.value changes\nT value: '+t.value+'\nU value: '+u.value);
+
+	let number = 10;
+	function notIncrease(number) {
+		number++;
+	}
+
+	notIncrease(number);
+	console.log(number); // Outputs 10 as expected
+
+	let object = {value: 10};
+	function willIncrease(object) {
+		object.value++;
+	}
+
+	willIncrease(object);
+	console.log(object); // Here the output will be 11
+
+	console.log('This is because now u doesnt just get a static value but instead points to the t object in memory\n --- END ---');
+
+	// Different ways of adding a location value pair in an object
+	// myObj.location or myObj['location']
+	// This allows me to do something like:
+	let propertyName = 'location' || 'something-dash' || 'something space'; // imagine this is a variable that could change depending on the situation
+	// This allows me to do:
+	// myObj[propertyName];
+	// Deleting a value pair works like this:
+	// delete myObj.location OR delete myObj['location'];
+
+	// Every object has a 'key' parameter for example
+	let theObj = {
+		'name': 'valeri',
+		'exec': function() {
+			console.log('I did it');
+		}
+	}
+	console.log(Object.keys(theObj));
+
+	// As we know we can use 'in' in a for loop but did you know you can do this
+	if ('name' in theObj) {
+		console.log(theObj['name']);
+	}
+
+
+	// MY EXCERSISE (completed :D - another way of completing this would of been to use new Date() and just take the start time out of end time and gets the secconds)
+	function StopWatch() {
+		let addSeconds;
+		let time = 0;
+		let theSwitch = false;
+
+		this.start = function() {
+			if (theSwitch) throw new Error('Timer already started');
+			theSwitch = true;
+			addSeconds = setInterval(function () {
+				time = (time + 0.01) * 100;
+				time = Math.round(time);
+				time = time / 100;
+			}, 10);
+		}
+
+		this.stop = function() {
+			if (!theSwitch) throw new Error('Timer is already stopped');
+			theSwitch = false;
+			clearInterval(addSeconds);
+		}
+
+		this.reset = function() {
+			time = 0;
+		}
+
+		this.duration = function() {
+			return time;
+		}
+		
+		// why doesnt this.duration = time work??
+		// Object.defineProperty(this, 'duration', {
+		// 	get: function() {
+		// 		return time;
+		// 	}
+		// });
+	}
+
+	const sw = new StopWatch();
+
+	// Something interesting not really object orianted
+	let firstArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	let secondArray = firstArray.map(function(number, index, arr) {
+		return number * 2 + index;
+		// aka 1 * 2 + 0 = 2 (correct)
+	});
+
+	console.log(firstArray, secondArray);
+
+	// Using .filtr to make a new array with numbers that only pass a test
+	let ages = [32, 33, 16, 40];
+	let adults = ages.filter(checkAdult);
+
+	function checkAdult(age) {
+		return age >= 18;
+	}
+
+	// Using .reduce to get total number from array
+	let numbers = [65, 44, 12, 4];
+	let everything = numbers.reduce(getSum);
+
+	function getSum(total, num) {
+		console.log(total, num);
+		return total + num;
+	}
+
+	// Something insane I found out
+	// same way I can do (something to check) ? if true : if false
+	// I can do (something to check) && if true do it else if its false nothing happens
+	let a = true;
+	a == true && console.log('a is true');
+	a = false;
+	a == true && console.log('a is true (shoudnt show up)');
+	// but I can also do this (since now a is false)
+	a == true || console.log('a is false :D');
+
+	const someFunc = function(name, age) {
+		console.log(`My name is ${name} and I am ${age} years old!`);
+	}
+
+	let info = ['Valeri', '16', 'soon 17'];
+	console.log(...info);
+	let rndmArr = [...info];
+	someFunc.apply(null, rndmArr); // able to display only the first 2 things of the array
+	someFunc(...info); // Works like the one above
+</script>
+</body>
+</html>
+
+<!-- What is Object Orianted Programming
+	A programming paradigm centered around objects rather than functions.
+	OOP (Object Orianted Programming) is still around because its not a languege or a tool but a style of programming.
+	Primitives (value types) are copied by their value (let z = 2);
+	Objects (reference types) are copied by their reference (let z = {val: 1});
+
+	Four core concepts of object orianted programming + benefits:
+	1. Encapsulation - By using encapsulation we reduce complexity and increase the reusability
+	2. Abstraction - Abstraction allows us again to reduce complexity as well as isolates impact of changes
+	3. Inheritance - Eliminate redundant code (code which is useless or repeated for example)
+	4. Polymorphism - Refractor ugly switch / case statements (again makes things simpler and efficenter)
+
+	---------------------------------
+	| Value Types | Reference Types |
+	| Number      | Object          |
+	| String      | Function        |
+	| Boolean     | Array           |
+	| Symbol      |                 |
+	| undefined   |                 |
+	| null        |                 |
+	---------------------------------
+-->

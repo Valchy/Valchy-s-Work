@@ -1,0 +1,134 @@
+Protocol - a defined set of standards that computers must follow in order to communicate properly
+Computer Networking - the name we've given to the full scope of how computers communicate with each other
+The Ethernet standarts also define a protocol responsible for getting data to nodes on the same network or link
+Internetwork - A collection of networks connected together through routers, the most famous of these being the Internet
+IP (Internet Protocol) is the heart of the Internet and most smaller networks around the world
+Cables - Connect different devices to each other, allowing data to be transmitted over them (they can either be copper or fiber)
+The most common forms of copper twsited-pair cables used in networking are Cat5, Cat5e and cat6 (Cat short for category)
+Crosstalk - When an electrical pulse on one wire is accidentally detected on another wire
+Fiber Cables - Contain individual optical fibers, which are tiny tubes made out of glass about the width of a human hair
+Hub - A physical layer device that allows for connections from many computers at once (is a layer 1 device)
+Collision Domain - A network segment where only one device can communicate at a time
+(Network) Switch - (is a layer 2, data link device)
+hubs and Switches - the primary devices used to connect computers on a single network, usually, reffered to as LAN (Local Area Network)
+Router - a device that knows how to forward data between independent networks
+router - a device that forwards traffic depending on the destination address of the traffic
+Routing protocols fall into two main categories: interior gateway protocols (Link state routing or distance-vector protocols) and exterior gateway protocols
+Interior Gateway Protocols - Used by routers to share information within single autonomous system
+Autonomous System - a collection of networks that all fall under the control of a single network operetor
+Border Gateway Protocol (BGP) - Routers share data between each other via this protocol, which lets them learn about the most optimal paths to forward traffic
+Duplex Communication - the concept that information can flow in both directions across the cable
+Simples Communication - this process is unidirectional
+Full Duples allows communication in two directions at the same time; half duplex means that only one side is communication at a time
+MAC Address - A globally unique identifier attached to an individual network interface
+Data Packet - An all-encompassing term that represents any single set of binary data being sent across a network link
+Ethernet frame - a highly structured collection of information presented in a specific order
+In most cases static IP addresses are reserved for servers and network devices while dynamic IP addresses are reserved for clients
+IP Datagram - highly structured series of fields that are stricly defined
+REWATCH VIDEO ALL PARTS OF DATAGRAM - WEEK 2 - THE NETWORK LAYER - VID 3
+ARP (Address Resolution Protocol) - a protocol used to discover the hardware address of a node with a certain IP address
+ARP Table - a list of IP addresses and MAC addresses associated with them
+Subnetting - the process of taking a large network and splitting it up into many individual and smaller subnetworks or subnets
+Subnet Mask - 32 bit numbers that are normally written as four octets in decimal (IP addresses as well as many other things are also written like this, each part is 8 bits)
+Subnet Masks are also a way for a computer to use AND operetors to determine if an IP address exists on the same network
+CIDR (Classless inter-domain routing) - CIDR is an even more flexible approach to describing blocks of IP addresses.
+Demarcation point - to describe where one network or system ends and another one begins
+In computer science a list is known as a vector
+Internet Assigned Numbers Authority - (IANA) a non-profit organization that helps manage things like IP address alocation, and is also responsible for ASN
+Autonomous System Number (ASN) - Numbers assigned to individual autonomous systems
+Port - 16 bit number thats used to direct traffic to specific services running on a networked computer
+TCP Segment - made up of a TCP header and a data section
+Handshake - a way for two devices to ensure that they are speaking the same protocol and will be able to understand each other
+Firewall - adevice that blocks traffic that meets a certain criteria
+Open System Interconnection (OSI) Model - has 2 more layers between the transport and the application model. Session and then Presentation
+Session Layer - Facilitating the communication between actual applications and the transport layer
+Presentation - Responsible for making sure that the unencapsulated application layer data is able to be understood by the application in the question
+In TCP/IP and UDP networks, a port is an endpoint to a logical connection and the way a client program specifies a specific server program on a computer in a network. The port number identifies what type of port it is. For example, port 80 is used for HTTP traffic.
+Time to live (TTL) or hop limit is a mechanism that limits the lifespan or lifetime of data in a computer or network. TTL may be implemented as a counter or timestamp attached to or embedded in the data.
+Also a value in seconds that can be configured by the ownder of a domain name for how long a name server is allowed to cache an entry before it shouold discard it and perform a full resolution again
+A routing table is a set of rules, often viewed in table format, that is used to determine where data packets traveling over an Internet Protocol (IP) network will be directed. All IP-enabled devices, including routers and switches, use routing tables.
+DNS (Domain Name System) - A global and highly distributed network service that resolves strings of letters into IP addresses for you
+Domain Name - The term we use for something that can be resolved by DNS
+Anycast - a technique that is used to route traffic to different destinations depending on factors like location, congestion or link health
+There are 13 root servers as well as that TLD is short for Top Level Domain
+The difference between TcP and UDP is that UDP is connectionless (as well as less security and a higher chance a packet gets lost before reaching its destination)
+Video streaming is good for UDP because you dont need every frame to get to the client etc.
+A CNAME record is used to redirect traffic from one domain name to another
+Fully Qualified Domain Name (FQDN) - When you combine the sub domain (host) also the domain name and the TLD you gets whats known as a FQDN
+DNS Zones - Allow for easier control over multiple levels of a domain
+Zone Files - simple configuration files that declare all resource records for a particular zone
+Start Of Authority (SOA) - Declares the zone and the name of the name server that is authoritative for it
+NS Records - Indicate other name servers that might also be responsible for this zone
+Reverse lookup zone files - These let DNS resolvers ask for an IP and get the FQDN associated with it returned
+PTR (Pointer resource record) - resolves an IP to a name
+MX means mail exchange
+Dynamic Host Configuration Protocol (DHCP) - An application layer protocol that automates the configuration process of hosts on a network
+Dynamic Allocation - a range of IP addresses is set aside for client devices and one of these IPs is issued to these devices when they request one
+Automatic Allocation - a range if IP addresses is set aside for assignment purpose
+Fixed Allocation - requires a manually specified list of MAC Addresses and their corresponding IPs
+NTP (Network Time Protocol) - Used to keep all computers on a network synchronised in time
+DHCP Discovery - the process by which a client configured to use DHCP attempts to get network configuration information
+NAT (Network Address Translation) - A technology that allowes a gateway usually a router or a firewall to re-write the source IP of an outgoing
+IP datagram while retaining the original IP in order to re-write it into an response. Taking an IP address and translating it into another.
+IP masquerading - pretty much hidding the IP address in order to have better security
+Port Preservation - a technique where the source port chosen by a client is the same port used by the router
+Port Forwarding - a technique where specific destination ports can be configured to always be delivered to specific nodes
+VPM (Virtual Private Network) - a technology that allows for the extension of a private or a local network to hosts that might not be on that local network
+Proxy Service - A server that acts on behalf of a client in order to access another service
+Reverse Proxy - is a service that might appear to be a single server to external clients but actually represents many servers living behind it
+Baud Rate - A measurement of how many bits can be passed across a phone line in a seccond
+Broadbadn (in terms of inernet connectivity) - any connectivity technology that isn't dial-up internet
+T-carrier Technologies - Originally invented by AT&T in order to transmit multiple phone calls over a single link
+WAN (Wide Area Network) - Acts like a single network, but spans across multiple physical locations
+Frequency Band - A certain section of the radio spectrum that's been agreed upon to be used for certain communications
+Channels - Individual, smaller sections of the overall frequency band used by a wireless network
+Wired Equivalent Privacy (WEP) - An encryption technology that provides a very low level of privacy
+WiFi Protected Access (WPA) - better encryption but same job as WEP. WPA2 is even a better one using 256bit key to encrypt its data
+Checksum - a digit representing the sum of the correct digits in a piece of stored or transmitted digital data, against which later comparisons can be made to detect errors in the data.
+MAC Filtering - you configure your access points to only allow for connections from a specific set of MAC Addresses belonging to devices you trust
+ICMP (Internet Control Message Protocol) - mainly used by the router or the host to communicate errors. A ICMP has a header as well as a data section which is used to fidure out
+which transmissions generated the error. First field is the type field, 8bits long and specifies type of message being delivered. Then is the code fiel also 8bits long.
+After this there is a 16bit checksum. Next up, 32bit without a name (the rest of the header) After that is the data payload of the packet.
+Ping (a program from command line) - lets you send a special type of ICMP message called Echo Request (if everything works it will send an Echo Reply message back) 
+Traceroute - a utility that lets you discover the path between two nodes and give you information about each hop along the way
+Registrar - an organisation responsible for assigning individual domain names to other organisations or individuals (checks possible domain name)
+PaaS (Platform as a service) - a subset of clous computing where a platform is provided for customers to run their services
+SaaS (Softwear as a Service) - a way of licensing the use of softwear to others while keeping that softwear centrally hosted and managed
+
+Example Site = www.valchygaming.com ('www' is a sub domain also known as a host domain, valchygaming' is the domain name and '.com' is the tld or the top level domain)
+Example IP = 9.100.100.100 and its mask is 255.255.255.0. This can also be represented as 9.100.100.100/24 (24 is the number of 1s before the first 0)
+
+Super Interesting commands:
+------------ Network Layer Commands ------------
+1. tracert + IP address or website name e.g tracert google.com || 8.8.8.8 (shows hops how my request gets to google.com)
+2. ping + IP address or website name e.g ping google.com || 8.8.8.8 (shows data loss etc if there is a network problem)
+3. pathping + IP address or website name e.g pathping google.com || 8.8.8.8 (more datailed path show SUPER COOL)
+4. nslookup + IP address or website name e.g nslookup google.com || 8.8.8.8 (just typing nslookup and then set debug will give you more info)
+------------ Transport Layer Commands ------------
+1. netcat (for linux/mac) and Test-NetConnection (for windows)
+
+Five Layer Model:
+1. Physical Layer - Represents the physical devices that interconnect computers (cables etc)
+2. Data Link Layer - Responsible for defining a common way of interpreting these signals so network devices can communicate
+3. Network Layer - Allows different networks to communicate with each other through devices known as routers
+4. Transport - Sorts out which client and server programs are supposed to get the data (allows traffic to be directed to a specific network application)
+5. Application - allows these applications to communicate in a way they understand
+
+Basic Routing:
+1. Recieve data packet
+2. Examines destination IP
+3. Looks up IP destination network in routing table
+4. Forwards traffic to destination
+
+There are five primary types of DNS Servers
+1. Caching Name Servers - purpose is to store known domain name lookups for a certain amount of time
+2. Recursive Name Servers - Perform full DNS resolution requests
+3. Root Name Servers 
+4. TLD Name Servers
+5. Authoritative Name Servers
+
+Four Things every single computer connected to a network has to have configured
+1. IP Address
+2. Subnet Mask
+3. Gatway
+4. Name server

@@ -1,0 +1,45 @@
+IT Infrastructure - encompasses the softwear, hardwear, network, an services required for an organisation to operate in an enterprise IT environment.
+Server - Softwear or a machine that provides services to other softwear or machines
+Data Center - afacility that stores hundrets if not thousands of servers
+FTP (File Transport Protocol) - has no encryption but has authnetication for sending. Protocol for sending data
+SFTP (Secure File Transport Protocol) - unlike FTP SFTP encrypts the data and is like SSH. Protocol for sending data
+TFTP (Trivial File Transfer Protocol) - like FTP but also has no authentication
+NTP (Network Time Protocol) - keeps clocks on machines syncronised (so the time everywhere is the same xd)
+Intranet - An internal network inside a company; accessible if you are on a company's network
+Proxy Server - Acts as a bridge between a company's network and the internet
+NFS (Network File System) - a protocol that enables files to be shared over a network
+Load Balancer - Ensures that each VM recieves a balanced number of queries
+Autoscalinig - It allows the service to increase or reduce capacity as needed while the server owner only pays for the cast of the machines that are in use at any given time
+Directory Server - Contains a lookup service that provides mapping between network resources and their network addresses
+Replication - the stored directory data can be copied and distributed across a number of physically distributed servers but still appear as one unified datastore for querying and administrating
+Directory Services - Useful for organising data and making it searchable for an organisation
+Centralised Management - A central service that provides instructions to all of the different parts of my IT infrastructure
+LDAP (Lightweight Directory Acess Protocol [Newer version of DAP pretty much] - Used to access information in directory services like over a network
+Kerberos - a network authentication protocol thats used to authenticate user identity secure the transfer of user credentials and more
+Active Directory (AD) - The native directory service for microsoft windows
+Post-mortem - a way for you to document any problems you discovered along the way and most importantly the ways you fixed them so you make sure they dont happen again
+Rsync - a file transfer utility that's designed to efficently transfer and synchronise files between locations or computers
+Compessing the data to eb backed up is good in a way that now it requires less space but at the same time the down side is that it takes more time to get decompressed afterwords
+RAID (Redundant Array of Independent Disks) - a method of taking multiple physical disks and combining them into one large virtual disk
+GPO (Group Policy Object) - A set of policies and preferences that can be applied to a group of objects in the directory
+Windows Registry - A hierarchical database of settings that Windows and many Windows applicaations use for storing configuration data
+
+File Transfer Protocols:
+--------------------------------------
+| Name | Encryption | Authentication |
+| FTP  |      ✘		|       ✔  	 |
+| SFTP |     ✔ 	|  	    ✔ 		 |
+| TFTP |      ✘ 	|        ✘   	 |
+--------------------------------------
+
+Computer Life Cycle:
+1. Procurement
+2. Deployment
+3. Maintenance
+4. Retirement
+
+Types of Backups:
+* Defferential Backup - Back ups only files and data that has changed since the last backup. Advantage is there isn't duplicated data being backed up
+* Full Backup - Back ups everything (safest but also most space consuming option)
+* Incremental Backup - only the data that's changed in files since the last incremental backup is backed up
+* Partial Backups - Back ups specfic parts and so eliminates of backing up all the unneccessary pictures of cats lets say

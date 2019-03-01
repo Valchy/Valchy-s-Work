@@ -1,0 +1,124 @@
+CIA (Confidentiality, Integrity, Avaliability) Triad
+Confidentiality - Keeping things hidden
+Integrity - Keeping our data accrurate and untampered with
+Avaliability - The information we have is readily accessible to those people that should have it
+Risk - the possibility of suffering a loss in the event of an attack in the system
+Vulnerability - a flaw in the system that could be exploited to compromise the system
+0-day Vulnerability (zero day) - A vulnerability that is not known to the software developer or vendor but is known to the attacker
+Exploit - Software that is used to take advantage of a security bug or vulnerability
+Threat - the possibility of danger that could exploit a vulnerability
+Hacker - Someone who attempts to break into or exploit a system
+Attack - An actual attempt at causing harm to a system
+Botnets - Designed to utelise the power of the internet-connected machines to perform some distributed function
+Backdoor - A way to get into a system if the other methods to get in the system aren't allowed
+Rootkit - A collection of software or tools that an Admin would use
+Logic Bomb - a type of malware that's intentionally installed
+Rogue AP - An access point that is installed on the network without the network administrator's knowledge	
+Deniel-of-service (DOS) Attack - An attack that tries to prevent access to a service to legitimate users by overwhelming the network or server
+Distributed Denial-of-service (DDOS) Attack - A DOS attack using multiple systems
+Cross-site Scripting Attacks (XSS attack) - A type of injection attack where the attacker can insert malicious code and target the user of the service
+Password attack - Utilise software like password-crackers that try and guess your password
+Social Engineering Attack - An attack method that relies heavily on interactions with humans instead of computers
+Spoofing - A source masquerading around as something else
+Tailgating - Gaining acces into restricted area or building by following a real employee in
+Encryption - The act of taking a message called plaintext and applying an operation to it calle a cipher so that you are recieving a garbled,
+unreadable message as the output called ciphertext
+Encryption Algorithm - The underlying logic of process that's used to convert the plaintext into ciphertext
+Cryptosystem - A collection of algorithms for key generation and ecryption and descryption operations that comprise a cryptographic service should remain secure,
+even if everything about the system is known except the key
+Frequency Analysis - The practise of studying the frequency with which letters appear in ciphertext
+Steganography - The practise of hiding information from observers but not encoding it
+Substitution Cipher - An encryption mechanism that replaces parts of your plaintext with cyphertext
+Stream Cipher - Takes a stream on input and encrypts the stream one character or one digit at a time outputting one encrypted character or digit at a time
+Block Ciphers - The cipher takes data in, places it into a bucket or block of data that'sa  fixed size, then encodes that entire block as one unit
+FIPS - Federal Information Processing Standart
+RC4 (Rivest Cipher 4) - A symmetric stream cipher that gained widespread adoption because of its simplicity and speed
+MAC (NOT MAC addresses) - A bit of information that allows authentication of a recieved message ensuring that the message came from the alleged sender and not a third party
+HMAC - Keyed-hash message authentication code
+CMACs - Cipher-Based Message Authentication Codes
+CBC-MAC - Cipher Block Chaining message authentication codes
+Elliptic Curve Cryptography (ECC) - A public-key encryption system that uses the algebraic structure of elliptic curves over finite fields to generate secure keys
+Hashing (or a hash function) - A type of function or operation that takes in an arbitrary data input and maps it to an output of fixed size called a hash or digest
+Hash Collisions - Two different inputs mapping to the same output
+Password Salt - Additional randomised data that's added into the hashing function to generate a hash that's unique to the password and salt combination
+HTTPS - The secure version of HTTP, the Hyper Text Transport Protocol
+SSH (Secure Shell) - A secure network protocol that uses encryption to allow access to a network service over unsecured networks
+PGP (Pretty Good Privacy) - An encryption applicaiton that allows authentication of data, along with privacy from third parties relying upon asymmetric encryption to achieve this
+Identification - the idea of describing an entity uniquly
+Multifactor authentication - A system where users are authenticated by presenting multiple pieces of information or objects
+Biometric Authentication - The process of using unique physiological charactaristics of an individual to indentify them
+Certificate Revocation Lisr (CRL) - A signed list published by the CA which defines certificates that have been explicity revoked
+Remote Authentication Dial-In User Service (RADIUS) - A protocol that provides AAA services for users on a network
+Kerberos - A network authentication protocol that uses 'tickets' to allow entities to prove their identity over potentially insecure channels to provice mutual authentication
+TACACS+ (Terminal Access Controller Access-Control System Plus) - Primarily used for device administration, authentication, autherization and accounting
+Single sign-on (SSO) - An authentication concept that allows users to authenticate once to be granted access to a lot of different services and applications
+Authorization - Pertains to describing what the user account has access to or doesn't have access to
+OAuth - An open standart that allows users to grant third-party websites and applications to access their information without sharing account credentials
+Access Control List (ACL) - A way of defining permissions or authorizations for objects
+Accounting - Keeping records of what resources and services your users accessed or what they did when they were using your systems
+Network Hardening - The process of securing a network by reducing its potential vulnerabilities through configuration changes and taking specific steps
+Implicit Deny - A network security concept where anything not explicitly permitted or allowed should be denied
+Analyzing Logs - The practise of collecting logs from different network and sometimes client devices on your network then performing an automated analysis on them
+Correlation Analysis - The process of taking log data from different systems and matching events across systems
+Flood Guards - Provide protection against DOS or Denial of Service Attacks
+EAP-TLS - An authentication type supported by EAP that uses TLS to provide mutual authentication of both the client and the authenticating server
+Packet Sniffing (packet capture) - The process of intercepting network packets in their entirety for analysis
+Promiscuous Mode - A type of computer networking operational mode in which all network data packets can be accessed and viewed by all network adapters operating in this mode
+Port Mirroring - Allows the switch to take all packets from a specified port, port range, or entire VLAN and mirror the packets to a specified switch port
+Monitor Mode - Allows us to scan across channels to see all wireless traffic being sent by APs and clients
+Tcpdump - A super popular, lightweight, command-line based utility that you can use to capture and analyze packets
+Intrusion Detection and Prevention Systems (IDS/IPS) - IDS or IPS systems operate by monitoring network traffic and analyzing it
+Network Intrusion Detection System (NIDS) - The detection system would be deployed somewhere on a network where it can monitor traffic for a network segment or subnet
+Defense in Depth - The concep of having multiple, overlapping systems of defense to protect IT systems
+Attack Surface - The sum of all the different attacks vectors in a given system
+Host-based Firewalls - Protect individual hosts from being compromised when they're used in untrusted, potentially malicious environments
+Full-disk Encryption (FDE) - Works by automatically converting data on a hard drive into a form that cannot be understood by anyone who doesn't have the key to 'undo' the conversation
+Key Escrow - Allows the encryption key to be securely stored for later retrieval by an authorised party
+Attack Surface - describes the ways that an attacker could interact with your systems
+Vulnerability Scanner - A computer program designed to assess computers, computer systems, networks or application for weaknesses (e.g Nessus, OpenVAS or Qualys)
+Penetration Testing - The practise of attemting to break into a system or network to verify the systems in place
+Data exfiltration - The unauthorised transfer of data from a computer
+Recoverability - How complicated and time-consuming the recovery effort will be
+Sandboxing - Each tab in a chrome browser - as well as each of the system services - runs in a seperate process completely independent of the others
+TPM (Trusted Platform Module) - A cryptographic device that can be used by the operating system to ensure the integrity of the system and to store cryptographic keys so attackers cant access them
+
+Types of Malicious Software:
+Malware - A type of malicious software that can be used to obtain your sensitive information or delete / modify files
+Adware - Software that displays advertisements and collects data
+Virus - attaches itself to some sort of executable code like a program. When the program is running, it touches many files,
+each of which is now susceptible to being infected with the virus. So, the virus replicates itself on these files, does the malicious work it's intended to do,
+and repeats this over and over until it spreads as far as it can.
+Worm - Worms are similar to viruses except that instead of having to attach themselves onto something to spread,
+worms can live on their own and spread through channels like the network.
+Trojan - Malware that disguises itself as one thing but does something else
+Spyware - Type of malware that's meant to spy on you
+Keylogger - A common type of spyware that's used to record every keystroke you make
+Ransomeware - A type of attack that hold your data or system hostage until you pay some sort of ransom
+
+Network Attack:
+* Man-in-the-middle attack
+* DNS Cache Poisoning attack
+* DDOS attack or DOS attack
+* Evil Twin attack
+
+Client Side Attacks:
+* Injection attack
+* Cross-site Scripting (XSS) attack
+* SQL Injection attack
+* PAssword attack
+* Force Attack
+* Dictionary Attack
+* Social Engineering attack (Phishing attack)
+* Spoofing
+* Baiting
+* Tailgating
+
+What does TLS grants us:
+1) A secure communication line which means data beign transmitted is protected from potential eavesdroppers
+2) The ability to authenticate both parties communicating, thorugh typically only the server is authenticated by the client
+3) The integrity of communications, meaning there are checks to ensure that messages aren't lost or altered in transit
+
+Three A's of Security:
+1. Authentication
+2. Autherization
+3. Accounting

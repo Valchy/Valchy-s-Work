@@ -14,6 +14,10 @@ app.engine('handlebars', expressHandlebars({ // Configures routes of the layouts
 }));
 app.set('view engine', 'handlebars');
 
+app.listen(6116, () => {
+	console.log('Server running on port 6116...');
+});
+
 app.get('/', (req, res) => {
 	res.render('main.handlebars', {
 		content: 'This is come epic content',
@@ -28,7 +32,3 @@ app.get('/person/:name', (req, res) => {
 		person: req.params.name
 	});
 });
-
-app.listen(6116, () => {
-	console.log('Server running on port 6116...');
-})

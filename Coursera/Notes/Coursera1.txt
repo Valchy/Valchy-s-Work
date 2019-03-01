@@ -1,0 +1,44 @@
+Character Encoding - Assigns our binary values to characters so that we as humans can read them.
+Oldest character encoding standart is ASCII. => first character in ASCII is a which = to '01100001'
+Eventually we required more than the 256 values ASCII allowed us to jave (or 1 byte) so UTF-8 was created.
+UTF-8 allows characters such as emojis to be stored in more than 1 byte
+Programs - Instructions that tell the computer what to do.
+Ram (Random Access Memory) - Computers short term memory which allows, so to call, 'quick search' to instructions since a computer can perform tasks faster than firstly understanding them, so RAM speeds up this process.
+External Data Bus (EDB) - row of wires that interconnect the parts of our computer. It also comes in different sizes like 8, 16, 32 or even 64bit. Can send one line of data at a time.
+Registers - they let us store data that our CPU works with.
+Memory Controller Chip (MCC) - Since RAM doesn't send the  data through the EDB since it can recieve only one line of data at a time the MCC is a bridge between the CPU and the RAM, the MCC can talk to the EDB
+Address Bus - it connects the CPU to the MCC and sends the location of the data but not the data itself. The MCC would then take the address, look for the data and send it through the EDB
+CPU's Cache - It's used to store recently or frequently used data (it is also faster than RAM). There are 3 different levels of cache; L1, L2, L3 (L1 is the smallest and fastest cache).
+Clock Wire - CPU has an internal clock that keeps operators in sync. That's the clock wire. When data is send or recieved it sends a voltage (a tick or one cycle) to let the CPU know it can perform the next instruction
+The CPU's GHz is the number of clock cycles it can perform in one second. E.g 3.4GHz is 3.4 billion cycles per second.
+Overclocking - exceeding the number of clock cycles your CPU can normally perform.
+RAM !important! - To run a program we need to make a copy of it in RAM so our CPU can process it. RAM clears its data when powered off.
+Motherboard - has chipset (Northbridge; interconnects stuff like RAM and GPUs. Southbridge; maintains the I/O or input output controllers e.g a keybaord)
+Peripherals - are the external devices we connect to our computer.
+Difference between Hard Drive and SSD; Hard drives have moving parts while SSDs (Solid State Drive) don't. Data on a SSDs also travel a lot faster than on a Hard drive.
+Drivers - a mouse click without the help of drivers would mean nothing to the CPU. Drivers are like translators for the computer sending it the correct instructions.
+BIOS (Basic Input Output Services) - helps initialize the hardware and gets our operating system up and running. UEFI is the current BIOS.
+ROM (Read Only Memory) Chip - Unlike the RAM, ROM is non-volatile (doesn't erase its data if the computers loses power). Also where the BIOS is stored.
+POST (Power On Self-Test) - this is a power on self test. It figures out what hardware is on the computer's memory. It happens before the BIOS initializes the computer's hardware
+CMOS Chip - stores base information (like data and time) - about booting your computer.
+Operating System - the whole package that manages our computer's resources and let's us interact with it. There are two main parts of the OS the Kernal and the User Space.
+Kernal - main core OS. Talks directly to hardware and manages OS (we don't interact with the kernal directly instead we interact with the user space). (Process, Memory, Filre and I/O Manager).
+User Space - (applications) things we interact directly like UI, applications and programs.
+PC - Personal Computer; OSs: Windows, MAC OS, Linux e.g Ubuntu, Debian, RedHat, and also the new popular Chrome OS
+Block Storage - Improves faster handling of data because the data isn't stored as one long piece and can be accessed quicker.
+Metadata - contains information about a file in a File System. Keeps track of file owner, permissions, file size, date modified/createed and tells us everything we need to know about our file in general
+Virtual Memory - The combination of hard disk space and RAM that acts like memory that our processes can use.
+Swap Space - Handles processes of taking pages of data and swapping thhem between RAM and virtual memory.
+Logs - Files that record system events on our computer.
+Bootloader - small program that loads the operating system.
+Network - this is the interconnections of computers around the world which pretty much is what the internet is.
+Internet - the physical connection of computers and wires around the world.
+The Web - the information on the internet
+In order to recieve data through a netowrk you need to have both the IP and MAC address.
+MAC Addresses - generally pernament and hard-coded onto a device.
+Packets - method, how data is sent through a network. They are small bits of information (in 1's and 0's).
+Router - Connects lots of different devices together and helps route network traffic.
+Switches and hubs - Device that help data travel.
+TCP/IP - Transmission Control Protocol / Internet Protocol.
+URL (Uniform Resources Locator) - is a web address
+DNS - Domain Name System

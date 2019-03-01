@@ -1,0 +1,507 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title> Hello React World </title>
+<link rel="shortcut icon" type="image/x-icon" href="/js/hi.png">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+body {
+	padding: 0px;
+	margin: 0px;
+	background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)), url('https://www.azernews.az/media/pictures/o-GROCERY-SHOPPING-TIP-VEGETABLE-VEGETABLES-HEALTHY-facebook.jpg');
+	background-size: cover;
+	background-position: center;
+}
+header {
+	height: 10vh;
+	padding: 20px 20px 0px 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+header input:last-child {
+	margin-top: 5px;
+}
+button:hover, #click:hover {
+	cursor: pointer;
+}
+input {
+	text-indent: 5px;
+}
+h1 {
+	margin: 0px;
+	display: inline-block;
+	background-color: #fa0;
+	padding: 25px 35px 10px 10px;
+}
+hr {
+	margin: 0px;
+	height: 1px;
+	background-color: #fff;
+	border: none;
+}
+label {
+	font-weight: 900;
+	font-size: 16px;
+}
+.title {
+	font-size: 80px;
+	font-family: 'Brush Script MT';
+	text-shadow: 1px 1px 5px #fff;
+}
+.login {
+	display: flex;
+	flex-direction: row;
+	width: 13vw;
+}
+.account-settings {
+	display: none;
+	width: 13vw;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 8px 0px 8px 8px;
+	margin-right: -8px;
+	border-radius: 4px;
+}
+.account-settings span {
+	font-size: 22px;
+}
+.shopping {
+	margin-top: 10px;
+	margin-left: 21%;
+	width: 60vw;
+	height: 80vh;
+	background-color: #f5f5dc;
+	box-shadow: 10px 10px 1px #000;
+	border: 1px dotted #0f0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.settings {
+	margin: 20px;
+	display: none;
+	float: right;
+}
+.settings span {
+	width: 100%;
+	color: #fff;
+	text-align: right;
+}
+.actual-settings {
+	display: none;
+	background-color: #444;
+	color: #fff;
+	padding: 10px;
+}
+.actual-settings container {
+	display: flex;
+	flex-direction: row;
+}
+.actual-settings label {
+	display: inline-block;
+}
+.actual-settings input {
+	border: none;
+	background-color: #444;
+	color: #fff;
+	width: 200px;
+}
+.actual-settings input:focus {
+	background-color: #444;
+	outline: none;
+}
+#click {
+	background-color: #444;
+	border-radius: 8%;
+	padding: 10px;
+}
+.overlay {
+	width: 120px;
+	height: 300px;
+	z-index: 9999;
+	position: fixed;
+	background-color: #fff;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.someCSS {
+	color: #666;
+}
+.otherCSS {
+	font-weight: 900;
+}
+.shop-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: flex-start;
+	width: 100%;
+	float: left;
+}
+.theItem {
+	width: 200px;
+	height: 200px;
+	border: 1px solid #000;
+	margin: 10px;
+	background-color: #fff;
+	display: inline-block;
+}
+.foodImg {
+	width: 100%;
+	height: 150px;
+}
+.someFlex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.toCartButton {
+	border: 1px solid black;
+	background-color: #eee;
+}
+.toCartButton:hover {
+	cursor: pointer;
+}
+.toCartButton[disabled]:hover {
+	cursor: not-allowed;
+}
+.toCartButton:focus {
+	outline: none;
+}
+.memeGenerator {
+	background-size: 400px 400px;
+	background-position: center;
+	width: 450px;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+}
+.memeTitle span {
+	font-size: 2.5em;
+	color: #fff;
+	text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000, 2px 2px 5px #000;;
+	text-transform: uppercase;
+	font-family: 'impact';
+	letter-spacing: 1px;
+}
+#root {
+	display: flex;
+	flex-direction: row;
+}
+</style>
+</head>
+
+<body>
+	<div class="overlay">
+		<img src="https://i.imgur.com/seuaOqf.gif?1">
+	</div>
+	<header>
+		<div><h1> At Valchy's Store. </h1></div>
+		<span class="title"> Online Shop </span>
+		<div class="login">
+			<div>
+				<input type="text" id="theUser" placeholder="Username :)"> <br>
+				<input type="password" id="thePass" placeholder="your_deepest_secret">
+			</div>
+			<button onclick="socket.emit('login', {user: $('#theUser').val(), pass: $('#thePass').val()});"> Login </button>
+		</div>
+		<div class="account-settings">
+			<span> Welcome back, <b><i id="wcb"> </i></b> </span> <br>
+		</div>
+	</header>
+	<hr>
+	<div class="settings">
+		<span id="click"> Settings &#11015; </span> <br> <br>
+		<div class="actual-settings">
+			<container> <label> Name: </label><input type="text" id="name"> </container> <br>
+			<container> <label> Email: </label><input type="text" id="email"> </container>
+		</div>
+	</div>
+
+	<div class="shopping">
+		<div id="root"></div>
+	</div>
+
+<script type="text/javascript">
+window.onload = function () {
+	let cookie = document.cookie.split('|||');
+	socket.emit('checkCookie', cookie[0]);
+}
+
+// Make connection - connects to my localhost server in this example
+var socket = io.connect('http://localhost:7111');
+
+socket.on('afterCheck', (result) => {
+	if (result.check) {
+		openAccount(result.user, result.email, result.name);
+		document.cookie = result.token+'|||'+result.exp;
+	} else {
+		window.alert('User name or password is invalid!');
+	}
+});
+
+socket.on('emailConf', function(answer) {
+	window.alert(answer);
+});
+
+socket.on('checkedCookie', (permissions) => {
+	if (permissions.check) {
+		openAccount(permissions.user, permissions.email, permissions.name);
+	}
+	$('.overlay').fadeOut(400);
+});
+
+// Simulating button click if enter is pressed
+$('.login input').on('keypress', function (e) {
+	if (e.which == 13 || e.keyCode == 13) {
+		$('.login button').click();
+    }
+});
+
+$('.actual-settings input').on('keypress', function (e) {
+	if (e.which == 13 || e.keyCode == 13) {
+		$(this).blur();
+    }
+});
+
+$('.actual-settings input').on('focusout', function () {
+	socket.emit('settings', $('#name').val(), $('#email').val());
+});
+
+$('#click').on('click', function () {
+	if ($('.actual-settings').css('display') == 'none') {
+		$('.actual-settings').show(200);
+	} else {
+		$('.actual-settings').hide(200);
+	}
+});
+
+function openAccount(user, email, name) {
+	$('.login').hide();
+	$('.account-settings, .settings').show();
+	$('#wcb').html(user);
+	$('#email').val(email);
+	$('#name').val(name);
+}
+
+function checkLogin() {
+	let cookie = document.cookie.split('|||');
+	return (cookie[1] - new Date().getTime() > 0)
+}
+
+function shop(totalItems, theCost, theItems) {
+	let go = checkLogin();
+	if (!go) {
+		let result = confirm('Please login to access the shop!');
+		if (result) {
+			let pass, user = prompt('Please enter your username!');
+			if (user != null) pass = prompt('Now enter your passowrd!');
+			return socket.emit('login', {user, pass});
+		} else return
+	}
+
+	let buy = window.confirm('Are you sure you want buy for '+theCost+' BGN the '+totalItems+' item/s;');
+	if (buy) {
+		var myPurchase = [];
+		for (let k in theItems) {
+			myPurchase.push('<br>'+theItems[k].count+' '+(theItems[k].count == 1 ? 'stock' : 'stocks')+' of '+k+' for '+theItems[k].tcost+' BGN <br> <img width="100" height="75" src="'+theItems[k].url+'"/>');
+		}
+
+		socket.emit('email', $('#email').val(), $('#name').val(), '<b> You Just bought... </b> <hr width="100px" style="margin: 0px">'+myPurchase+'<br> <br> <b> Total Cost: '+theCost+' BGN </b>');
+	}
+}
+
+const counterData = [
+	{
+		id: 1,
+		label: 'Banana',
+		price: 0.8,
+		imgUrl: 'https://img.purch.com/h/1000/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA2NS8xNDkvb3JpZ2luYWwvYmFuYW5hcy5qcGc=',
+		inStock: {
+			quantity: 12,
+			stock: true
+		}
+	},
+	{
+		id: 2,
+		label: 'Rice',
+		price: 1.22,
+		imgUrl: 'https://cms.splendidtable.org/sites/default/files/styles/w2000/public/463782257.jpg?itok=3qGPeIys',
+		inStock: {
+			quantity: 100,
+			stock: true
+		}
+	},
+	{
+		id: 3,
+		label: 'Chocolate',
+		price: 3,
+		imgUrl: 'https://target.scene7.com/is/image/Target/GUEST_0db0ceec-280b-40fc-b620-a9e4af4fbb5f?wid=488&hei=488&fmt=pjpeg',
+		inStock: {
+			quantity: 3,
+			stock: true
+		}
+	},
+	{
+		id: 4,
+		label: 'Cucumber',
+		price: 0.5,
+		imgUrl: 'https://img.purch.com/rc/300x200/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA3Ni8yMTkvb3JpZ2luYWwvY3VjdW1iZXJzLmpwZw==',
+		inStock: {
+			quantity: 0,
+			stock: false
+		}
+	},
+	{
+		id: 5,
+		label: 'Water Bottle',
+		price: 1.33,
+		imgUrl: 'https://target.scene7.com/is/image/Target/GUEST_7fc0cb08-5552-41ce-94c7-ab075a048a03?wid=488&hei=488&fmt=pjpeg',
+		inStock: {
+			quantity: 10,
+			stock: true
+		}
+	},
+	{
+		id: 6,
+		label: 'Orange',
+		price: 0.69,
+		imgUrl: 'http://soappotions.com/wp-content/uploads/2017/10/orange.jpg',
+		inStock: {
+			quantity: 0,
+			stock: false
+		}
+	},
+	{
+		id: 7,
+		label: 'Spaghetti',
+		price: 5,
+		imgUrl: 'https://www.prestigebuyonline.com/assets/images/carmiano_spaghetti_chitarra.jpg',
+		inStock: {
+			quantity: 2,
+			stock: true
+		}
+	},
+	{
+		id: 8,
+		label: 'Jogurt',
+		price: 2.20,
+		imgUrl: 'https://www.konzum.hr/klik/images/products/023/02331159_1l.jpg?1452966043',
+		inStock: {
+			quantity: 25,
+			stock: true
+		}
+	},
+	{
+		id: 9,
+		label: 'Beef',
+		price: 29.99,
+		imgUrl: 'https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto,w_300,h_216,c_fit,fl_strip_profile/https://s3.amazonaws.com/pixtruder/original_images/256bcd631df0a49d24b03a30cad403298c93f6f0',
+		inStock: {
+			quantity: 5,
+			stock: true
+		}
+	},
+	{
+		id: 10,
+		label: 'Salami',
+		price: 3.30,
+		imgUrl: 'https://target.scene7.com/is/image/Target/GUEST_bc970f82-1c5c-4a61-97c9-66f87924f745?wid=488&hei=488&fmt=pjpeg',
+		inStock: {
+			quantity: 12,
+			stock: true
+		}
+	},
+	{
+		id: 11,
+		label: 'Butter',
+		price: 2.99,
+		imgUrl: 'https://www.meggle.de/fileadmin/data_de/products/images/alpenbutter/meggle_PRODUKTE-BUTTER_0000_Alpenbutter_01.png',
+		inStock: {
+			quantity: 0,
+			stock: false
+		}
+	},
+	{
+		id: 12,
+		label: 'Bread',
+		price: 0.77,
+		imgUrl: 'https://cdn.shopify.com/s/files/1/1205/7170/products/tinywhite_7bbbee20-b41f-477e-97d5-9103704c9975_530x.png?v=1489000542',
+		inStock: {
+			quantity: 18,
+			stock: true
+		}
+	}
+];
+</script>
+<script type="text/babel" src="/js/ReactComponents/myApp.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/MemeGenerator.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/Forms.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/APICall.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/ConditionalRendering.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/LifecycleMethods.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/EventHandling.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/Shop.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/MyJokes.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/TodoListReactApp.jsx"></script>
+<script type="text/babel" src="/js/ReactComponents/MyInfo.jsx"></script>
+<script type="text/babel" src="/js/myReactApp.jsx"></script>
+</body>
+</html>
+
+<!-- EXTRA INFORMATION
+	Components - a piece of the UI <x> ... </x>
+	Every React app has at least one component (the root) in which there are usualy child components which are also reusable
+	Uses a virtual DOM instead of the standart one (improves speeds)
+	Difference between framework and library: framework more bounded to rules (you have to follow certain things etc) library (you have more freedom etc)
+	With React you use JSX which is JavaScript XML
+	in order to use JSX syntax you need to use Babel to compile it into normal js (this simply saves time and its way easier to read)
+	JSX Expressions must have only one parent element, we can use <React.Fragment> </React.Fragment> to fix this (also check syntax)
+	Escaping normal JS in <element> tags is done with {}
+	Wnywhere there is a dash for css instead of background-color we can do backgroundColor or 'background-color'
+	Important to note I cant do this this.state.something = 'newVal';
+	this.setState({}); allows me to recreate the obj
+	In a conditional using null will return no html component
+	export default means what function will get exported by default and when its simply export you have to say what to export in the {myFunc}
+
+	Lifecycle Hooks (showing what gets called in order):
+	1. Mount =>
+		a) constructor - we specify things life super() and state in here
+		b) render - what gets rendered
+		c) componentDidMount - code executed after the render function finishes
+
+	2. Update =>
+		a) render - the component gets rerendered new html etc
+		b) componentDidUpdate - executes code after the component has updated
+
+	3. Unmount =>
+		a) componentWillUnmount - executes code before the component gets removed
+
+	A react class:
+	class ClassName extends React.Component {
+		myMethod() {
+			<myHTML html="this.props.code"/>
+		}
+
+		render() {
+			return myMethod()
+		}
+	}
+
+	What are cookies?
+	* Strings of data stored in users browser over multiple sessions
+	* Commonly used for 'remembering' logged in users
+	* Stored as name value pairs eg 'name': 'Valeri'
+-->

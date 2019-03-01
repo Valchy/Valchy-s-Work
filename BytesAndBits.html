@@ -24,11 +24,13 @@ button:hover {cursor: pointer;}
 	</ul>
 </div>
 
+<!-- best way to finish of the task -->
+
 <div class="mainPage">
 	<h1> Bytes and Bites </h1>
 
 	<div class="myConverter">
-		<div class="fromTo">
+		<div class="fromTo" id="options">
 			<div class="choose">
 				<span> From </span>
 				<select onchange="changePlaceholder(this, true);" id="from">
@@ -51,37 +53,32 @@ button:hover {cursor: pointer;}
 			<button onclick="calc();">
 				Convert
 			</button>
-			<div class="choose">
-				<span> To </span>
-				<select onchange="changePlaceholder(this, false);" id="to">
-					<option disabled selected value style="display: none"></option>
-					<option value="bit"> Bits </option>
-					<option value="nibble"> Nibbles </option>
-					<option value="byte"> Bytes </option>
-					<option value="kilobit"> Kilobit </option>
-					<option value="kilobyte"> Kilobytes </option>
-					<option value="megabit"> Megabit </option>
-					<option value="megabyte"> Megabytes </option>
-					<option value="gigabit"> Gigabit </option>
-					<option value="gigabyte"> Gigabytes </option>
-					<option value="terabit"> Terabit </option>
-					<option value="terabyte"> Terabytes </option>
-					<option value="petabit"> Petabit </option>
-					<option value="petabyte"> Petabytes </option>
-				</select>
-			</div>
 		</div>
 
 		<input type="text" class="input" placeholder="Number of...">
 		<div class="output">
 			<span> Output<span id="theOutput">:</span> <span id="theResult"></span></span>
 		</div>
+		<button>
+			Or randomise outcome!
+		</button>
 	</div>
 </div>
 
 <script type="text/javascript" src="jquery-3.2.1.min.js"> </script>
+<script type="text/javascript" src="react.min.js"></script>
+<script type="text/javascript" src="react-dom.min.js"></script>
+<script type="text/javascript" src="react-dom-server.min.js"></script>
+<script type="text/javascript" src="react-with-addons.min.js"></script>
 <script type="text/javascript" src="EverythingJS.js"> </script>
+<script type="text/javascript" src="BytesAndBits.js"></script>
 <script type="text/javascript">
+	// React element creation
+	ReactDOM.render(React.createElement(React.Fragment, {'class': 'choose'}, [
+		React.createElement('span', null, 'To'),
+		React.createElement('select', {'onchange': 'changePlaceholder(this, false);'})
+	]), document.getElementById('options'));
+
 	function changePlaceholder (elm, theIf) {
 		if (theIf) {
 			$('.input').attr('placeholder', 'Number of ' + $(elm).val() + 's');
@@ -91,16 +88,7 @@ button:hover {cursor: pointer;}
 	}
 
 	function calc () {
-		var from = $('#from').val();
-		var to = $('#to').val();
 
-		// Transforming into bits
-		if (from === 'bits' && to === 'bytes') {
-
-		}
-
-		var result = 8*8;
-		$('#theResult').html(result);
 	}
 </script>
 </body>

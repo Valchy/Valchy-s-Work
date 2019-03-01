@@ -1,0 +1,47 @@
+Course 3 - Operating Systems and You: Becoming a Power User
+
+Paths: in windows its with a '\' and in Linux its with a '/'
+bin dir in Linux is like Program Files in windows
+~ or Tilde references our home directory (~/Desktop works :D)
+in Bash the escape character is \ while in windows cli its ` (eg. My` Cool` Folder or My\ Cool\ Folder)
+Wildcrd - A character that's used to help select files based on certain pattern (eg * (all) cp *.jpg ~/Desktop)
+nano + text file is a text editor for the bash
+echo - is a I/O stream, logs what was written
+Input/output streams (I/O streams) 1. stdout 2. stdin 3. stderr
+Windows domain - A network of computers, users, files, etc that are added to a central database
+User Access Control (UAC) - A feature in Windows that prevents unauthorized changes to a system
+windows + R then type netplwiz to view users and groups on windows home
+In windows, files and directory permissions are assigned using Access Control Lists or ACLs.
+Two types of SSH keys: public (lock something which then can only be opened by the private keys) or private (hidden key with which you can open the lock)
+VirtualBox (program) allows you to create your own VMs
+SSH - Secure Shell, A protocol implemented by other programs to securely access one computer from another
+VPN - Virtual Private Network, allows you to connect to a private network, live your work network over the internet
+Remote Connection - Allows us to manage multiple machines from anywhere in the work without being physically there
+PuTTY - a free, open source softwear that you can use to make remote connections through several netowrk protocols, including SSH (default port SSH uses is 22), (it also supports the SCP protocol)
+SCP - Secure Copy, is a command you can use in Linux to copy files between computers on a network
+Virtual Instance - a single virtual machine (VM)
+
+Commands:
+(for AWS) - sudo /opt/bitnami/ctlscript.sh stop || status || start || restart apache || restart (stop apache stuff, after .sh it can be either)
+(VM timer run command) - crontab -e <command>
+- touch - creates a file
+- ls (list) params: the directory -Force = shows hidden files, -l = gives additional information, -a shows hidden files
+- pwd (tells us in what directory we are in)
+- cd (change directory) - changes dir you are in
+- mkdir (make directory) - creates a folder
+- rmdir (removes a directory) - removes a folder
+- history (shows history commands) ctrl+r
+- cp (copy its like ctrl+c) -Recurse = copies sub files and dirs if there are, -verbose = prints new line for every copy
+- mv (move or rename) eg mv filenamedir newName or mv filenamedir newfilenamedir
+- rm (remove) deletes files (doesnt go to bin) -Force removes it even if you dont have some permissions
+- cat (view content) use instead of cat head or tail to see only beginning or end of file
+- less (more interractive way to read a file) q = quits, move with up, down arrow key, g = go beginning, G = go end of file / = word_search
+- /? to get info on command or --help
+- net (like password change, on next log on password change etc, remove / add user)
+- passwd + name of user (for Linux password change)
+- Get-LocalUser and Get-LocalGroupMember + name of group (this is for windows shell)
+- sudo cat /etc/passwd and sudo cat /etc/group
+
+Selectors:
+- * (all)
+- $null (nothing) or /dev/null
