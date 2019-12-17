@@ -44,7 +44,7 @@ window.onload = () => {
 
 	// Joke button event listener
 	document.getElementById('joke-btn').addEventListener('click', () => {
-		fetch('http://api.icndb.com/jokes/random/')
+		fetch('https://api.icndb.com/jokes/random/')
 		.then(response => response.json())
 		.then(response => {
 			document.getElementById('joke-popup-joke').innerHTML = response.value.joke.split('?').join('?<br>').split('!').join('!<br>').split('.').join('.<br>');
