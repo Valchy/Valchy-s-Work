@@ -33,6 +33,17 @@ body {
 	transition: all 0.8s ease 0s;
 }
 
+#slideshow-wrapper .title {
+	position: absolute;
+	top: 40px;
+	color: #fff;
+	opacity: 0.8;
+	font-size: 50px;
+	text-align: center;
+	font-weight: 900;
+	text-shadow: 4px 4px 0px #000;
+}
+
 #slideshow {
 	width: 100%;
 	height: 100%;
