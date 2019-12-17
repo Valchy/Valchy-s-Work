@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
+<link rel="Shortcut Icon" type="image/x-icon" href="imgs/icon.png">
+<title> Count Down! </title>
+</head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<body id="body">
+<div class="flex-center" id="slideshow-wrapper">
+	<div id="progress-bar"> </div>
+	<div class="flex-center" id="slideshow">
+		<div class="flex-center" style="flex-direction: column;">
+			<div class="flex-center time-wrapper">
+				<div>
+					<h1> Days </h1>
+					<span class="flex-center" id="days-left"></span>
+				</div>
+				<div>
+					<h1> Hours </h1>
+					<span class="flex-center" id="hours-left"></span>
+				</div>
+				<div>
+					<h1> Minutes </h1>
+					<span class="flex-center" id="minutes-left"></span>
+				</div>
+				<div>
+					<h1> Seconds </h1>
+					<span class="flex-center" id="seconds-left"></span>
+				</div>
+			</div>
+			<div class="flex-center loader-wrapper">
+				<div id="loader"></div>
+				<h1> LOADING EVENT... </h1>
+			</div>
+		</div>
+		<div class="flex-center box-shape">
+			<a href="#advent-calendar"> Check the advent calendar! </a>
+		</div>
+	</div>
+</div>
+<div class="flex-center advent-calendar" id="advent-calendar">
+	<span class="flex-center" id="alert-task"> Bloop. </span>
+	<div class="flex-center calendar-options">
+		<h1> <b>L</b>AN <b>P</b>ARTY <b>A</b>DVENT <b>C</b>ALENDAR <b>W</b>eek </h1>
+		<div day="16" class="advent-calendar-option">
+			<div class="flex-center"> 16 </div>
+			<span> Monday </span>
+		</div>
+		<div day="17" class="advent-calendar-option">
+			<div class="flex-center"> 17 </div>
+			<span> Tuesday </span>
+		</div>
+		<div day="18" class="advent-calendar-option">
+			<div class="flex-center"> 18 </div>
+			<span> Wednesdsy </span>
+		</div>
+		<div day="19" class="advent-calendar-option">
+			<div class="flex-center"> 19 </div>
+			<span> Thursday </span>
+		</div>
+		<div day="20" class="advent-calendar-option">
+			<div class="flex-center"> 20 </div>
+			<span> Friday </span>
+		</div>
+		<button id="joke-btn"> Random Joke </button>
+	</div>
+	<div id="joke-popup">
+		<span id="joke-popup-joke"></span>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
