@@ -14,7 +14,7 @@
     "express-handlebars": "^3.0.0",
     "express-validator": "^5.3.0",
     "fs": "0.0.1-security",
-    "handlebars": "^4.0.12",
+    "handlebars": "^4.4.5",
     "handlebars-loader": "^1.7.0",
     "joi": "^14.0.1",
     "jsonwebtoken": "^8.3.0",
