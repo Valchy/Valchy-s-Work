@@ -27,7 +27,7 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "rss-parser": "^3.5.2",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "react": "^16.7.0",
